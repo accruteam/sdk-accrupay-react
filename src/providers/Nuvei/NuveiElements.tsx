@@ -1,6 +1,6 @@
 import { memo, useEffect, useState, createContext, useContext, ReactNode } from 'react';
-import { loadScript } from './helpers';
-import * as NuveiApi from './nuvei-api';
+import { loadScript } from '../../helpers';
+import * as NuveiApi from '../../nuvei-api';
 
 const NUVEI_SDK_URL = 'https://cdn.safecharge.com/safecharge_resources/v1/websdk/safecharge.js';
 
@@ -245,3 +245,4 @@ export const PaymentField = {
   SubmitBtn,
 }
 
+export default PaymentField;

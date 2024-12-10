@@ -4,14 +4,16 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "clean": "rm -rf node_modules && rm yarn.lock && yarn",
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
-  "peerDependencies": {
+  "dependencies": {
     "react": ">=16.8.0 <19.0.0",
-    "react-dom": ">=16.8.0 <19.0.0"
+    "react-dom": ">=16.8.0 <19.0.0",
+    "sass": "^1.82.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.15.0",
