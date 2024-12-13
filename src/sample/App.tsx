@@ -1,42 +1,40 @@
-import { AccruPay, PaymentField } from '..'
+import { AccruPay, form } from '../AccruPay';
+import './styles.scss';
 
-const { merchantId, merchantSiteId } = JSON.parse(import.meta.env.VITE_NUVEI_CONFIG);
+const App = () => {
+  const provider = 'nuvei';
+  const AccruPaymentForm = form(provider)!;
 
-const config = {
-  env: 'int',
-  merchantId,
-  merchantSiteId,
-}
-
-function App() {
   return (
-    <AccruPay 
-      provider={'nuvei'} 
-      config={config}
-    >
-      <h2>Payment Form</h2>
-      <p>Name</p>
-      <PaymentField.CardHolderName 
-        placeholder="Name on Card"
-      />
-      <p>Credit Card Number</p>
-      <div style={{ border: '1px solid gray'}}>
-        <PaymentField.CreditCardNumber />
+    <AccruPay preferredProvider={provider}>
+      <div>
+        <h2>Payment Form</h2>
+        <p>Name</p>
+        <div className='myinput'>
+          <AccruPaymentForm.CardHolderName placeholder="Name on Card" />
+        </div>
+        <p>Credit Card Number</p>
+        <div style={{ border: '1px solid gray'}}>
+          <AccruPaymentForm.CreditCardNumber />
+        </div>
+        <p>Expiration Date</p>
+        <div style={{ border: '1px solid gray'}}>
+          <AccruPaymentForm.CreditCardExpiration />
+        </div>
+        <p>Verification Code</p>
+        <div style={{ border: '1px solid gray'}}>
+          <AccruPaymentForm.CreditCardCvc />
+        </div>
+        <div>
+          <AccruPaymentForm.SubmitBtn 
+            text={"Submit"} 
+            onSuccess={() => alert('Payment success')} 
+            onError={(error) => alert(error)}
+          />
+        </div>
       </div>
-      <p>Expiration Date</p>
-      <div style={{ border: '1px solid gray'}}>
-        <PaymentField.CreditCardExpiration />
-      </div>
-      <p>Verification Code</p>
-      <div style={{ border: '1px solid gray'}}>
-        <PaymentField.CreditCardCvc />
-      </div>
-      <br />
-      <PaymentField.SubmitBtn>
-        {(submitFn) => (<button onClick={() => submitFn().then(() => alert('payment success'))}>Submit</button>)}
-      </PaymentField.SubmitBtn>
     </AccruPay>
   )
 }
 
-export default App
+export default App;
