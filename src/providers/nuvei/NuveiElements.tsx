@@ -1,6 +1,7 @@
-import { memo, useEffect, useState, createContext, useContext, ReactNode } from 'react';
+import { memo, useEffect, useState, createContext, useContext } from 'react';
 import { loadScript } from '../../helpers';
-import * as NuveiApi from '../../nuvei-api';
+import * as Api from '../../api/api';
+import { SubmitPaymentCallbacks } from '../../types';
 
 const NUVEI_SDK_URL = 'https://cdn.safecharge.com/safecharge_resources/v1/websdk/safecharge.js';
 
@@ -24,7 +25,7 @@ type NuveiSecureFields = 'ccNumber' | 'ccExpiration' | 'ccCvc';
 type CreditCardContext = {
   form: CreditCardForm;
   updateField: (field: keyof CreditCardForm, value: unknown) => void;
-  submitPayment: () => Promise<unknown>;
+  submitPayment: (callbacks: SubmitPaymentCallbacks) => void;
   safeCharge: {
     fields: (...args: unknown[]) => unknown;
     createPayment: (payload: 
@@ -59,8 +60,7 @@ type CreditCardContext = {
 
 const PaymentFormContext = createContext<CreditCardContext | undefined>(undefined);
 
-type Props = {
-  provider: 'nuvei';
+export type Props = {
   config: {
     env: string,
     merchantId: string,
@@ -72,12 +72,10 @@ type Props = {
 async function submitPaymentToNuvei(safeCharge: CreditCardContext['safeCharge'], payload: Parameters<CreditCardContext['safeCharge']['createPayment']>[0]) {
   const result = await safeCharge.createPayment(payload)
 
-  console.log('result', result);
-
   return result;
 }
 
-export function BasePaymentForm({ children, provider, config }: Props) {
+export function NuveiContext({ children, config }: Props) {
   const [form, setForm] = useState<CreditCardForm>({
     cardNumber: null,
     cardExpiry: null,
@@ -89,17 +87,13 @@ export function BasePaymentForm({ children, provider, config }: Props) {
   const [safeChargeFields, setSafeChargeFields] = useState<CreditCardContext['safeChargeFields']>();
   const [sessionToken, setSessionToken] = useState<string>('');
 
-  if (provider !== 'nuvei') {
-    throw new Error('Our only provider is nuvei for now');
-  }
-
   if (!config) {
     throw new Error('config missing');
   }
 
   useEffect(() => {
     async function fetchSessionToken() {
-      const sessionToken = await NuveiApi.initializeSession('1000');
+      const sessionToken = await Api.getToken('nuvei', { amount: 1000 });
       setSessionToken(sessionToken);
     }
 
@@ -138,7 +132,7 @@ export function BasePaymentForm({ children, provider, config }: Props) {
     setForm((prev) => ({ ...prev, [field]: value }));
   };
 
-  async function submitPayment() {
+  async function submitPayment(callbacks: SubmitPaymentCallbacks) {
     try {
       if (!form.cardHolderName) {
         throw new Error('Card holder name is required.');
@@ -157,14 +151,21 @@ export function BasePaymentForm({ children, provider, config }: Props) {
       }
     } catch (error: unknown) {
       console.error(error);
-      return null;
+      callbacks.onError(error);
+      callbacks.onComplete();
     }
 
-    return submitPaymentToNuvei(safeCharge!, {
+    const result = await submitPaymentToNuvei(safeCharge!, {
       cardHolderName: form.cardHolderName,
       sessionToken,
       paymentOption: form.cardNumber,
     })
+
+    if (result) {
+      callbacks.onComplete();
+    } else {
+      callbacks.onComplete();
+    }
   }
 
   if (!safeCharge || !safeChargeFields || !sessionToken) {
@@ -177,8 +178,6 @@ export function BasePaymentForm({ children, provider, config }: Props) {
     </PaymentFormContext.Provider>
   );
 }
-
-export const AccruPay = memo(BasePaymentForm);
 
 function useFormContext() {
   return useContext(PaymentFormContext)!;
@@ -230,19 +229,27 @@ function CardHolderName(props: React.InputHTMLAttributes<HTMLInputElement>) {
   return <input onChange={(e) => updateField('cardHolderName', e.target.value)} {...props} />
 }
 
-// eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
-function SubmitBtn({ children } : { children: (submitFn: Function) => ReactNode }) {
+function SubmitBtn(props: React.ButtonHTMLAttributes<Omit<HTMLButtonElement, 'onClick'>> & Partial<{ onSuccess: () => unknown; onError: () => unknown; onComplete: () => unknown; onSubmit: () => unknown } & { text: string }>) {
   const { submitPayment } = useFormContext();
+  const { text, onSuccess, onError, onComplete, ...rest } = props;
 
-  return <>{children(submitPayment)}</>
+  return <button onClick={async () => {
+    if (rest.onSubmit) {
+      await rest.onSubmit();
+    }
+
+    return submitPayment({
+      onSuccess: onSuccess || (() => {}),
+      onError: onError || (() => {}),
+      onComplete: onComplete || (() => {}),
+    });
+  }} {...rest}>{text}</button>
 }
 
-export const PaymentField = {
+export const NuveiPaymentFields = {
   CardHolderName,
   CreditCardNumber,
   CreditCardExpiration,
   CreditCardCvc,
   SubmitBtn,
 }
-
-export default PaymentField;

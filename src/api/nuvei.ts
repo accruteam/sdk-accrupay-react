@@ -24,8 +24,7 @@ async function generateSignature(payload: { merchantId: string, merchantSiteId: 
     .join('');
 }
 
-/*
-async function getPaymentStatus(sessionToken: string): Promise<string> {
+export async function getPaymentStatus(sessionToken: string): Promise<Record<string, unknown>> {
   const payload = {
     sessionToken
   };
@@ -43,7 +42,6 @@ async function getPaymentStatus(sessionToken: string): Promise<string> {
     throw new Error("Error initializing session");
   }
 }
-*/
 
 export async function initializeSession(amount: string) {
   const payload = {
