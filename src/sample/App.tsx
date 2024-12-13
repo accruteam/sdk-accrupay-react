@@ -26,7 +26,11 @@ const App = () => {
           <AccruPaymentForm.CreditCardCvc />
         </div>
         <div>
-          <AccruPaymentForm.SubmitBtn />
+          <AccruPaymentForm.SubmitBtn 
+            text={"Submit"} 
+            onSuccess={() => alert('Payment success')} 
+            onError={(error) => alert(error)}
+          />
         </div>
       </div>
     </AccruPay>

@@ -1,7 +1,8 @@
 import { memo, useEffect, useState, createContext, useContext } from 'react';
-import { loadScript } from '../../helpers';
 import * as Api from '../../api/api';
-import { SubmitPaymentCallbacks } from '../../types';
+import { NuveiPaymentPayload, NuveiPaymentResponse, SubmitPaymentCallbacks } from '../../types';
+import { loadScript } from './helpers';
+import { capitalizeFirstLetter } from '../helpers';
 
 const NUVEI_SDK_URL = 'https://cdn.safecharge.com/safecharge_resources/v1/websdk/safecharge.js';
 
@@ -28,26 +29,8 @@ type CreditCardContext = {
   submitPayment: (callbacks: SubmitPaymentCallbacks) => void;
   safeCharge: {
     fields: (...args: unknown[]) => unknown;
-    createPayment: (payload: 
-      { 
-        sessionToken: string, 
-        cardHolderName: string, 
-        paymentOption: unknown, 
-        billingAddress?: Partial<{
-          country: string;
-          state: string;
-          email: string;
-
-          firstName: string;
-          lastName: string;
-
-          phone:string;
-          city: string;
-          address: string;
-          streetNumber: string;
-          zip: string;
-        }>
-      }
+    createPayment: (payload: NuveiPaymentPayload,
+      callback: (response: NuveiPaymentResponse) => void,
     ) => Promise<unknown>,
   };
   safeChargeFields: {
@@ -69,10 +52,19 @@ export type Props = {
   children: React.ReactNode;
 }
 
-async function submitPaymentToNuvei(safeCharge: CreditCardContext['safeCharge'], payload: Parameters<CreditCardContext['safeCharge']['createPayment']>[0]) {
-  const result = await safeCharge.createPayment(payload)
-
-  return result;
+async function submitPaymentToNuvei(safeCharge: CreditCardContext['safeCharge'], payload: Parameters<CreditCardContext['safeCharge']['createPayment']>[0]): Promise<NuveiPaymentResponse> {
+  return new Promise(function(res, rej) {
+    safeCharge.createPayment(payload, 
+      (response) => {
+        if (response.result === 'APPROVED') {
+          res(response);
+        } else {
+          const reason = response.errorDescription ? String(response.errorDescription).toLowerCase() : '';
+          const status = response.transactionStatus ? String(response.transactionStatus).toLowerCase() : 'failed';
+          rej(new Error(`Transaction ${status}.${!status.includes(reason) ? ` Reason: ${capitalizeFirstLetter(reason)}.` : ''}`))
+        }
+      }
+      )})
 }
 
 export function NuveiContext({ children, config }: Props) {
@@ -153,19 +145,22 @@ export function NuveiContext({ children, config }: Props) {
       console.error(error);
       callbacks.onError(error);
       callbacks.onComplete();
+      return;
     }
 
-    const result = await submitPaymentToNuvei(safeCharge!, {
-      cardHolderName: form.cardHolderName,
-      sessionToken,
-      paymentOption: form.cardNumber,
-    })
-
-    if (result) {
-      callbacks.onComplete();
-    } else {
-      callbacks.onComplete();
+    try {
+      const paymentResult = await submitPaymentToNuvei(safeCharge!, {
+        cardHolderName: form.cardHolderName,
+        sessionToken,
+        paymentOption: form.cardNumber,
+      });
+      callbacks.onSuccess(paymentResult);
+    } catch (error) {
+      console.error(error);
+      callbacks.onError(error);
     }
+
+    callbacks.onComplete();
   }
 
   if (!safeCharge || !safeChargeFields || !sessionToken) {
@@ -229,7 +224,10 @@ function CardHolderName(props: React.InputHTMLAttributes<HTMLInputElement>) {
   return <input onChange={(e) => updateField('cardHolderName', e.target.value)} {...props} />
 }
 
-function SubmitBtn(props: React.ButtonHTMLAttributes<Omit<HTMLButtonElement, 'onClick'>> & Partial<{ onSuccess: () => unknown; onError: () => unknown; onComplete: () => unknown; onSubmit: () => unknown } & { text: string }>) {
+
+type SubmitBtnProps = React.ButtonHTMLAttributes<Omit<HTMLButtonElement, 'onClick'>> & Partial<SubmitPaymentCallbacks> & { text: string, onSubmit?: () => Promise<void> | void };
+
+export function SubmitBtn(props: SubmitBtnProps) {
   const { submitPayment } = useFormContext();
   const { text, onSuccess, onError, onComplete, ...rest } = props;
 
