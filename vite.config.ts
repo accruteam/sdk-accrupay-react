@@ -7,10 +7,10 @@ export default defineConfig({
   plugins: [react(), dts()],
   build: {
     lib: {
-      entry: 'src/index.tsx',
+      entry: 'src/AccruPay.tsx',
       name: 'Accru', 
       formats: ['es', 'umd'],
-      fileName: (format) => `accru.${format}.js`,
+      fileName: (format) => `index.${format}.js`,
     },
     rollupOptions: {
       external: ['react', 'react-dom'],

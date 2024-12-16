@@ -1,8 +1,10 @@
+import { readEnv } from '../providers/helpers';
 import { Provider } from '../types';
 import * as NuveiApi from './nuvei';
 
 export async function getProviders(): Promise<{ name: Provider, config: Record<string, unknown> }[]> {
-  const { merchantId, merchantSiteId } = JSON.parse(import.meta.env.VITE_NUVEI_CONFIG);
+  const env = readEnv();
+  const { merchantId, merchantSiteId } = JSON.parse(env.NUVEI_CONFIG);
 
   return [
     {

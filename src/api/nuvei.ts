@@ -1,4 +1,7 @@
-const { merchantId, merchantSiteId, merchantSecretKey } = JSON.parse(import.meta.env.VITE_NUVEI_CONFIG);
+import { readEnv } from "../providers/helpers";
+
+const env = readEnv();
+const { merchantId, merchantSiteId, merchantSecretKey } = JSON.parse(env.NUVEI_CONFIG);
 
 function dateToTimestamp(date: Date) {
   const year = date.getFullYear();
