@@ -14,6 +14,8 @@
 
 5. Add tests so that we're sure that multiple react versions are supported.
 
+6. Make sure types work when importing the library.
+
 ### Testing locally
 
 Run the following and follow the instructions.

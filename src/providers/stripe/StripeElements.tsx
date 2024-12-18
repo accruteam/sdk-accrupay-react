@@ -14,6 +14,7 @@ const PaymentFormContext = createContext<PaymentContext | undefined>(undefined);
 export type Props = {
   config: {
     publishableKey: string;
+    // TODO:
     // the secret key would not be returned from the backend
     // but we need it to create the intent 
     // until we swap backend calls.
