@@ -10,6 +10,10 @@
 
 3. Be more intelligent about what stripe versions we're going to be supporting.
 
+4. Support code-splitting.
+
+5. Add tests so that we're sure that multiple react versions are supported.
+
 ### Testing locally
 
 Run the following and follow the instructions.
