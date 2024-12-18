@@ -13,11 +13,13 @@ export default defineConfig({
       fileName: (format) => `index.${format}.js`,
     },
     rollupOptions: {
-      external: ['react', 'react-dom'],
+      external: ['react', 'react-dom', '@stripe/react-stripe-js', '@stripe/stripe-js'],
       output: {
         globals: {
           react: 'React',
           'react-dom': 'ReactDOM',
+          '@stripe/react-stripe-js': 'ReactStripeJs',
+          '@stripe/stripe-js': 'StripeJs',
         },
       },
     },

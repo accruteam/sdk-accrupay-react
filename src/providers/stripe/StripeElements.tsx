@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect, useState } from 'react';
+import React, { createContext, useContext, useEffect, useRef, useState } from 'react';
 import { loadStripe, Stripe } from '@stripe/stripe-js';
 import {
   Elements,
@@ -108,17 +108,19 @@ function useFormContext() {
 const GenericSecureFormField = ({ fieldType } : { fieldType: CreditCardSecureField }) => {
   const elements = useElements();
   const id = `accru-payment-form-${fieldType}-container`;
+  const hasRun = useRef(false);
 
   useEffect(() => {
     function initializeElement() { 
-      setTimeout(() => {
-        // @ts-ignore
-        const element = elements!.create(fieldType);
-        element.mount(`#${id}`);
-      }, 100)
+      // @ts-ignore
+      const element = elements!.create(fieldType);
+      element.mount(`#${id}`);
     };
 
-    initializeElement();
+    if (!hasRun.current) {
+      hasRun.current = true;
+      initializeElement();
+    }
   }, []);
 
   return <div id={id } />
