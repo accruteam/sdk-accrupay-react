@@ -48,3 +48,6 @@ export type SubmitPaymentCallbacks = {
   onError: (error: unknown) => unknown;
   onComplete: () => unknown;
 }
+
+export type ProviderConfiguration = { name: Provider, config: Record<string, unknown> };
+export type ProvidersConfiguration = ProviderConfiguration[];
