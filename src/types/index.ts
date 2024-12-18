@@ -8,10 +8,8 @@ export type NuveiPaymentPayload = {
     country: string;
     state: string;
     email: string;
-
     firstName: string;
     lastName: string;
-
     phone:string;
     city: string;
     address: string;
@@ -43,11 +41,29 @@ export type NuveiPaymentResponse = {
   xid: string;
 }
 
-export type SubmitPaymentCallbacks = {
-  onSuccess: (response: NuveiPaymentResponse) => unknown;
+export type SecureField = 'cardNumber' | 'cardExpiry' | 'cardCvc';
+
+export type SubmitPaymentCallbacks<T = any> = {
+  onSuccess: (response: T) => unknown;
   onError: (error: unknown) => unknown;
   onComplete: () => unknown;
 }
 
 export type ProviderConfiguration = { name: Provider, config: Record<string, unknown> };
 export type ProvidersConfiguration = ProviderConfiguration[];
+
+export type CreditCardSecureFields<T = any> = {
+  cardNumber: T | null;
+  cardExpiry: T | null;
+  cardCvc: T | null;
+}
+
+export type CreditCardForm<T = any> = CreditCardSecureFields<T> & {
+  cardHolderName: string;
+}
+
+export type PaymentContext<T = {}, U = any> = T & {
+  updateField: (field: keyof CreditCardForm, value: unknown) => void;
+  submitPayment: (callbacks: SubmitPaymentCallbacks) => void;
+  form: CreditCardForm<U>;
+}

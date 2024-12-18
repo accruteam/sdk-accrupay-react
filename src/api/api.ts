@@ -1,9 +1,17 @@
 import { Provider } from '../types';
 import * as NuveiApi from './nuvei';
+import * as StripeApi from './stripe';
 
-export async function getToken(provider: Provider, { amount} : { amount: number }, config: Parameters<typeof NuveiApi.initializeSession>[1]) {
+type NuveiInitConfig = Parameters<typeof NuveiApi.initializeSession>[1];
+type StripeInitConfig = Parameters<typeof StripeApi.createPaymentIntent>[1];
+
+export async function getToken(provider: Provider, { amount} : { amount: number }, config: | Parameters<typeof StripeApi.createPaymentIntent>[1]) {
   if (provider === 'nuvei') {
-    return NuveiApi.initializeSession(amount.toString(), config);
+    return NuveiApi.initializeSession(amount.toString(), config as unknown as NuveiInitConfig);
+  }
+
+  if (provider === 'stripe') {
+    return StripeApi.createPaymentIntent(amount, config as unknown as StripeInitConfig);
   }
 
   return undefined;
