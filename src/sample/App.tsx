@@ -6,7 +6,10 @@ const App = () => {
   const AccruPaymentForm = form(provider)!;
 
   return (
-    <AccruPay preferredProvider={provider}>
+    <AccruPay 
+      preferredProvider={provider}
+      preReleaseGetProviders={async () => [{ name: 'nuvei', config: JSON.parse(import.meta.env.VITE_NUVEI_CONFIG || '{}') }]}
+    >
       <div>
         <h2>Payment Form</h2>
         <p>Name</p>

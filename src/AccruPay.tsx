@@ -1,28 +1,26 @@
-import * as Api from './api/api';
 import { useEffect, useState } from 'react';
-import { Provider } from './types';
+import { Provider, ProvidersConfiguration } from './types';
 import { NuveiContext, NuveiPaymentFields, Props as NuveiProps } from './providers/nuvei/NuveiElements';
 
 type Props = {
   omniprovider?: true;
+  preReleaseGetProviders: () => Promise<ProvidersConfiguration>;
   preferredProvider: 'nuvei' | 'stripe';
   children: React.ReactNode;
 }
 
-type ProvidersData = Awaited<ReturnType<typeof Api.getProviders>>;
-
-function pluckProviderConfig(provider: Provider, providersData: ProvidersData): Record<string, unknown> {
+function pluckProviderConfig(provider: Provider, providersData: ProvidersConfiguration): Record<string, unknown> {
   return providersData.find(p => p.name === provider)!.config;
 }
 
 export function AccruPay(props: Props) {
   const [initialLoad, setInitialLoad] = useState<boolean>(false);
   const [provider] = useState<Provider>(props.preferredProvider);
-  const [providersData, setProvidersData] = useState<ProvidersData>([]);
+  const [providersData, setProvidersData] = useState<Awaited<ReturnType<Props['preReleaseGetProviders']>>>([]);
 
   useEffect(() => {
     async function getProviders() {
-      const providers = await Api.getProviders();
+      const providers = await props.preReleaseGetProviders();
       const providerNames = providers.map(p => p.name);
       if (!providerNames.includes(provider)) {
         throw new Error(

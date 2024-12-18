@@ -1,22 +1,9 @@
-import { readEnv } from '../providers/helpers';
 import { Provider } from '../types';
 import * as NuveiApi from './nuvei';
 
-export async function getProviders(): Promise<{ name: Provider, config: Record<string, unknown> }[]> {
-  const env = readEnv();
-  const { merchantId, merchantSiteId } = JSON.parse(env.NUVEI_CONFIG);
-
-  return [
-    {
-      name: 'nuvei',
-      config: { merchantId, merchantSiteId, env: 'int' },
-    }
-  ];
-}
-
-export async function getToken(provider: Provider, { amount} : { amount: number }) {
+export async function getToken(provider: Provider, { amount} : { amount: number }, config: Parameters<typeof NuveiApi.initializeSession>[1]) {
   if (provider === 'nuvei') {
-    return NuveiApi.initializeSession(amount.toString());
+    return NuveiApi.initializeSession(amount.toString(), config);
   }
 
   return undefined;

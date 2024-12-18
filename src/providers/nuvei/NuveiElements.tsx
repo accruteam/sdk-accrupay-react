@@ -85,7 +85,7 @@ export function NuveiContext({ children, config }: Props) {
 
   useEffect(() => {
     async function fetchSessionToken() {
-      const sessionToken = await Api.getToken('nuvei', { amount: 1000 });
+      const sessionToken = await Api.getToken('nuvei', { amount: 1000 }, config as unknown as Parameters<typeof Api.getToken>[2]);
       setSessionToken(sessionToken);
     }
 
