@@ -1,6 +1,9 @@
-import { memo, useEffect, useState, createContext, useContext, ReactNode } from 'react';
+import { memo, useEffect, useState, createContext, useContext } from 'react';
+import * as Api from '../../api/api';
+import { CreditCardForm, NuveiPaymentPayload, NuveiPaymentResponse, PaymentContext, SecureField, SubmitPaymentCallbacks } from '../../types';
 import { loadScript } from './helpers';
-import * as NuveiApi from './nuvei-api';
+import { capitalizeFirstLetter } from '../helpers';
+import { CardHolderName, SubmitBtn, SubmitBtnProps } from '../shared/Elements';
 
 const NUVEI_SDK_URL = 'https://cdn.safecharge.com/safecharge_resources/v1/websdk/safecharge.js';
 
@@ -9,58 +12,30 @@ type NuveiField = {
   stateClass: { complete: 'complete' };
 }
 
-type CreditCardSecureFields = {
-  cardNumber: NuveiField | null;
-  cardExpiry: NuveiField | null;
-  cardCvc: NuveiField | null;
-}
-
-type CreditCardForm = CreditCardSecureFields & {
-  cardHolderName: string;
-}
-
 type NuveiSecureFields = 'ccNumber' | 'ccExpiration' | 'ccCvc';
-
-type CreditCardContext = {
-  form: CreditCardForm;
-  updateField: (field: keyof CreditCardForm, value: unknown) => void;
-  submitPayment: () => Promise<unknown>;
-  safeCharge: {
-    fields: (...args: unknown[]) => unknown;
-    createPayment: (payload: 
-      { 
-        sessionToken: string, 
-        cardHolderName: string, 
-        paymentOption: unknown, 
-        billingAddress?: Partial<{
-          country: string;
-          state: string;
-          email: string;
-
-          firstName: string;
-          lastName: string;
-
-          phone:string;
-          city: string;
-          address: string;
-          streetNumber: string;
-          zip: string;
-        }>
-      }
-    ) => Promise<unknown>,
-  };
-  safeChargeFields: {
-    create: (field: NuveiSecureFields, options?: Record<string, unknown>) => {
-      attach: (id: string) => unknown;
-    },
-    instances: { type: string, instance: unknown }[]
-  }
+type NuveiSafeCharge = {
+  fields: (...args: unknown[]) => unknown;
+  createPayment: (payload: NuveiPaymentPayload,
+    callback: (response: NuveiPaymentResponse) => void,
+  ) => Promise<unknown>,
 }
 
-const PaymentFormContext = createContext<CreditCardContext | undefined>(undefined);
+type NuveiSafeChargeFields = {
+  create: (field: NuveiSecureFields, options?: Record<string, unknown>) => {
+    attach: (id: string) => unknown;
+  },
+  instances: { type: string, instance: unknown }[]
+}
 
-type Props = {
-  provider: 'nuvei';
+type ExpandNuveiContext = {
+  safeCharge: NuveiSafeCharge;
+  safeChargeFields: NuveiSafeChargeFields;
+}
+
+const PaymentFormContext = createContext<PaymentContext<ExpandNuveiContext, NuveiField> | undefined>(undefined);
+
+export type Props = {
+  amount: number;
   config: {
     env: string,
     merchantId: string,
@@ -69,15 +44,22 @@ type Props = {
   children: React.ReactNode;
 }
 
-async function submitPaymentToNuvei(safeCharge: CreditCardContext['safeCharge'], payload: Parameters<CreditCardContext['safeCharge']['createPayment']>[0]) {
-  const result = await safeCharge.createPayment(payload)
-
-  console.log('result', result);
-
-  return result;
+async function submitPaymentToNuvei(safeCharge: NuveiSafeCharge, payload: Parameters<NuveiSafeCharge['createPayment']>[0]): Promise<NuveiPaymentResponse> {
+  return new Promise(function(res, rej) {
+    safeCharge.createPayment(payload, 
+      (response) => {
+        if (response.result === 'APPROVED') {
+          res(response);
+        } else {
+          const reason = response.errorDescription ? String(response.errorDescription).toLowerCase() : '';
+          const status = response.transactionStatus ? String(response.transactionStatus).toLowerCase() : 'failed';
+          rej(new Error(`Transaction ${status}.${!status.includes(reason) ? ` Reason: ${capitalizeFirstLetter(reason)}.` : ''}`))
+        }
+      }
+      )})
 }
 
-export function BasePaymentForm({ children, provider, config }: Props) {
+export function NuveiWrapper({ children, amount, config }: Props) {
   const [form, setForm] = useState<CreditCardForm>({
     cardNumber: null,
     cardExpiry: null,
@@ -85,13 +67,9 @@ export function BasePaymentForm({ children, provider, config }: Props) {
     cardHolderName: ''
   });
 
-  const [safeCharge, setSafeCharge] = useState<CreditCardContext['safeCharge']>();
-  const [safeChargeFields, setSafeChargeFields] = useState<CreditCardContext['safeChargeFields']>();
+  const [safeCharge, setSafeCharge] = useState<NuveiSafeCharge>();
+  const [safeChargeFields, setSafeChargeFields] = useState<NuveiSafeChargeFields>();
   const [sessionToken, setSessionToken] = useState<string>('');
-
-  if (provider !== 'nuvei') {
-    throw new Error('Our only provider is nuvei for now');
-  }
 
   if (!config) {
     throw new Error('config missing');
@@ -99,7 +77,7 @@ export function BasePaymentForm({ children, provider, config }: Props) {
 
   useEffect(() => {
     async function fetchSessionToken() {
-      const sessionToken = await NuveiApi.initializeSession('1000');
+      const sessionToken = await Api.getToken('nuvei', { amount }, config as unknown as Parameters<typeof Api.getToken>[2]);
       setSessionToken(sessionToken);
     }
 
@@ -129,7 +107,7 @@ export function BasePaymentForm({ children, provider, config }: Props) {
         // fontSize: '16px',
       });
 
-      setSafeChargeFields(safeChargeFields as CreditCardContext['safeChargeFields']);
+      setSafeChargeFields(safeChargeFields as NuveiSafeChargeFields);
     }
   }, [safeCharge, safeChargeFields]);
 
@@ -138,7 +116,7 @@ export function BasePaymentForm({ children, provider, config }: Props) {
     setForm((prev) => ({ ...prev, [field]: value }));
   };
 
-  async function submitPayment() {
+  async function submitPayment(callbacks: SubmitPaymentCallbacks<NuveiPaymentResponse>) {
     try {
       if (!form.cardHolderName) {
         throw new Error('Card holder name is required.');
@@ -157,14 +135,24 @@ export function BasePaymentForm({ children, provider, config }: Props) {
       }
     } catch (error: unknown) {
       console.error(error);
-      return null;
+      callbacks.onError(error);
+      callbacks.onComplete();
+      return;
     }
 
-    return submitPaymentToNuvei(safeCharge!, {
-      cardHolderName: form.cardHolderName,
-      sessionToken,
-      paymentOption: form.cardNumber,
-    })
+    try {
+      const paymentResult = await submitPaymentToNuvei(safeCharge!, {
+        cardHolderName: form.cardHolderName,
+        sessionToken,
+        paymentOption: form.cardNumber,
+      });
+      callbacks.onSuccess(paymentResult);
+    } catch (error) {
+      console.error(error);
+      callbacks.onError(error);
+    }
+
+    callbacks.onComplete();
   }
 
   if (!safeCharge || !safeChargeFields || !sessionToken) {
@@ -178,13 +166,11 @@ export function BasePaymentForm({ children, provider, config }: Props) {
   );
 }
 
-export const AccruPay = memo(BasePaymentForm);
-
 function useFormContext() {
   return useContext(PaymentFormContext)!;
 }
 
-function mapCreditCardFieldToNuveiFieldType(key: keyof CreditCardSecureFields): NuveiSecureFields {
+function mapCreditCardFieldToNuveiFieldType(key: SecureField): NuveiSecureFields {
   switch(key) {
     case 'cardNumber':
       return 'ccNumber';
@@ -195,7 +181,7 @@ function mapCreditCardFieldToNuveiFieldType(key: keyof CreditCardSecureFields): 
   }
 }
 
-const GenericSecureFormField = memo(({ fieldType} : { fieldType: keyof CreditCardSecureFields }) => {
+const GenericSecureFormField = memo(({ fieldType} : { fieldType: SecureField }) => {
   const { updateField, safeChargeFields } = useFormContext();
   const id = `accru-payment-form-${fieldType}-container`;
 
@@ -225,23 +211,25 @@ function CreditCardCvc() {
   return <GenericSecureFormField fieldType="cardCvc" />
 }
 
-function CardHolderName(props: React.InputHTMLAttributes<HTMLInputElement>) {
+function CardHolderNameWrapper(props: Omit<React.InputHTMLAttributes<HTMLInputElement>, 'onChange'>) {
   const { updateField } = useFormContext();
-  return <input onChange={(e) => updateField('cardHolderName', e.target.value)} {...props} />
+  
+  function onChange(e: React.ChangeEvent<HTMLInputElement>) {
+    return updateField('cardHolderName', e.target.value)
+  }
+
+  return <CardHolderName {...props} onChange={onChange} />
 }
 
-// eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
-function SubmitBtn({ children } : { children: (submitFn: Function) => ReactNode }) {
+export function SubmitBtnWrapper(props: Omit<SubmitBtnProps, 'submitPayment'>) {
   const { submitPayment } = useFormContext();
-
-  return <>{children(submitPayment)}</>
+  return <SubmitBtn {...props} submitPayment={submitPayment} />
 }
 
-export const PaymentField = {
-  CardHolderName,
+export const NuveiPaymentFields = {
+  CardHolderName: CardHolderNameWrapper,
   CreditCardNumber,
   CreditCardExpiration,
   CreditCardCvc,
-  SubmitBtn,
+  SubmitBtn: SubmitBtnWrapper,
 }
-

@@ -1,42 +1,52 @@
-import { AccruPay, PaymentField } from '..'
+import { AccruPay, form } from '../AccruPay';
+import { ProvidersConfiguration } from '../types';
+import './styles.scss';
 
-const { merchantId, merchantSiteId } = JSON.parse(import.meta.env.VITE_NUVEI_CONFIG);
-
-const config = {
-  env: 'int',
-  merchantId,
-  merchantSiteId,
+async function getProviders(): Promise<ProvidersConfiguration> {
+  return [
+    { name: 'nuvei', config: JSON.parse(import.meta.env.VITE_NUVEI_CONFIG || '{}') },
+    { name: 'stripe', config: JSON.parse(import.meta.env.VITE_STRIPE_CONFIG || '{}') },
+  ]
 }
 
-function App() {
+const App = () => {
+  const provider = 'stripe';
+  const AccruPaymentForm = form(provider)!;
+
   return (
     <AccruPay 
-      provider={'nuvei'} 
-      config={config}
+      amount={500.55}
+      preferredProvider={provider}
+      preReleaseGetProviders={getProviders}
     >
-      <h2>Payment Form</h2>
-      <p>Name</p>
-      <PaymentField.CardHolderName 
-        placeholder="Name on Card"
-      />
-      <p>Credit Card Number</p>
-      <div style={{ border: '1px solid gray'}}>
-        <PaymentField.CreditCardNumber />
+      <div>
+        <h2>Payment Form</h2>
+        <p>Name</p>
+        <div>
+          <AccruPaymentForm.CardHolderName placeholder="Name on Card" />
+        </div>
+        <p>Credit Card Number</p>
+        <div style={{ border: '1px solid gray'}}>
+          <AccruPaymentForm.CreditCardNumber />
+        </div>
+        <p>Expiration Date</p>
+        <div style={{ border: '1px solid gray'}}>
+          <AccruPaymentForm.CreditCardExpiration />
+        </div>
+        <p>Verification Code</p>
+        <div style={{ border: '1px solid gray'}}>
+          <AccruPaymentForm.CreditCardCvc />
+        </div>
+        <div>
+          <AccruPaymentForm.SubmitBtn 
+            text={"Submit"} 
+            onSuccess={() => alert('Payment success')} 
+            onError={(error) => alert(error)}
+          />
+        </div>
       </div>
-      <p>Expiration Date</p>
-      <div style={{ border: '1px solid gray'}}>
-        <PaymentField.CreditCardExpiration />
-      </div>
-      <p>Verification Code</p>
-      <div style={{ border: '1px solid gray'}}>
-        <PaymentField.CreditCardCvc />
-      </div>
-      <br />
-      <PaymentField.SubmitBtn>
-        {(submitFn) => (<button onClick={() => submitFn().then(() => alert('payment success'))}>Submit</button>)}
-      </PaymentField.SubmitBtn>
     </AccruPay>
   )
 }
 
-export default App
+export default App;

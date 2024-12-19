@@ -1,4 +1,3 @@
-const { merchantId, merchantSiteId, merchantSecretKey } = JSON.parse(import.meta.env.VITE_NUVEI_CONFIG);
 
 function dateToTimestamp(date: Date) {
   const year = date.getFullYear();
@@ -11,7 +10,7 @@ function dateToTimestamp(date: Date) {
   return `${year}${month}${day}${hours}${minutes}${seconds}`;
 }
 
-async function generateSignature(payload: { merchantId: string, merchantSiteId: string, clientRequestId: string, amount: string, currency: string, timeStamp: string }) {
+async function generateSignature(payload: { merchantId: string, merchantSiteId: string, clientRequestId: string, amount: string, currency: string, timeStamp: string }, merchantSecretKey: string) {
   const data = `${payload.merchantId}${payload.merchantSiteId}${payload.clientRequestId}${payload.amount}${payload.currency}${payload.timeStamp}${merchantSecretKey}`;
 
   const encoder = new TextEncoder();
@@ -24,8 +23,7 @@ async function generateSignature(payload: { merchantId: string, merchantSiteId: 
     .join('');
 }
 
-/*
-async function getPaymentStatus(sessionToken: string): Promise<string> {
+export async function getPaymentStatus(sessionToken: string): Promise<Record<string, unknown>> {
   const payload = {
     sessionToken
   };
@@ -43,12 +41,17 @@ async function getPaymentStatus(sessionToken: string): Promise<string> {
     throw new Error("Error initializing session");
   }
 }
-*/
 
-export async function initializeSession(amount: string) {
+type NuveiProviderConfiguration = {
+  merchantId: string;
+  merchantSiteId: string;
+  merchantSecretKey: string;
+}
+
+export async function initializeSession(amount: string, config: NuveiProviderConfiguration) {
   const payload = {
-    merchantId,
-    merchantSiteId,
+    merchantId: config.merchantId,
+    merchantSiteId: config.merchantSiteId,
     amount,
     currency: 'USD',
     timeStamp: dateToTimestamp(new Date()),
@@ -62,7 +65,7 @@ export async function initializeSession(amount: string) {
     checksum: '',
   };
 
-  payload.checksum = await generateSignature(payload);
+  payload.checksum = await generateSignature(payload, config.merchantSecretKey);
 
   try {
     const response = await fetch('https://ppp-test.nuvei.com/ppp/api/v1/openOrder.do', {
@@ -73,7 +76,7 @@ export async function initializeSession(amount: string) {
       body: JSON.stringify(payload)
     });
 
-    const { sessionToken } = await response.json(); 
+    const { sessionToken } = await response.json();
     return sessionToken;
   } catch (error) {
     console.error(error);

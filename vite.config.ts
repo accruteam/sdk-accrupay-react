@@ -7,17 +7,19 @@ export default defineConfig({
   plugins: [react(), dts()],
   build: {
     lib: {
-      entry: 'src/index.tsx',
+      entry: 'src/AccruPay.tsx',
       name: 'Accru', 
       formats: ['es', 'umd'],
-      fileName: (format) => `accru.${format}.js`,
+      fileName: (format) => `index.${format}.js`,
     },
     rollupOptions: {
-      external: ['react', 'react-dom'],
+      external: ['react', 'react-dom', '@stripe/react-stripe-js', '@stripe/stripe-js'],
       output: {
         globals: {
           react: 'React',
           'react-dom': 'ReactDOM',
+          '@stripe/react-stripe-js': 'ReactStripeJs',
+          '@stripe/stripe-js': 'StripeJs',
         },
       },
     },
