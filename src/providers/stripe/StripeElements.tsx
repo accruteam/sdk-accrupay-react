@@ -12,6 +12,7 @@ import { CreditCardForm, PaymentContext, SubmitPaymentCallbacks } from '../../ty
 const PaymentFormContext = createContext<PaymentContext | undefined>(undefined);
 
 export type Props = {
+  amount: number;
   config: {
     publishableKey: string;
     // TODO:
@@ -23,14 +24,14 @@ export type Props = {
   children: React.ReactNode;
 }
 
-export function StripeWrapper({ children, config }: Props) {
+export function StripeWrapper({ amount, children, config }: Props) {
   const [stripe, setStripe] = useState<Stripe>();
   const [clientSecret, setClientSecret] = useState('');
 
   useEffect(() => {
     async function setupStripeAndPaymentIntent() {
       const stripe = await loadStripe(config.publishableKey);
-      const clientSecret = await Api.getToken('stripe', { amount: 1000 }, { secretKey: config.secretKey })
+      const clientSecret = await Api.getToken('stripe', { amount }, { secretKey: config.secretKey })
 
       setStripe(stripe!);
       setClientSecret(clientSecret);

@@ -35,6 +35,7 @@ type ExpandNuveiContext = {
 const PaymentFormContext = createContext<PaymentContext<ExpandNuveiContext, NuveiField> | undefined>(undefined);
 
 export type Props = {
+  amount: number;
   config: {
     env: string,
     merchantId: string,
@@ -58,7 +59,7 @@ async function submitPaymentToNuvei(safeCharge: NuveiSafeCharge, payload: Parame
       )})
 }
 
-export function NuveiWrapper({ children, config }: Props) {
+export function NuveiWrapper({ children, amount, config }: Props) {
   const [form, setForm] = useState<CreditCardForm>({
     cardNumber: null,
     cardExpiry: null,
@@ -76,7 +77,7 @@ export function NuveiWrapper({ children, config }: Props) {
 
   useEffect(() => {
     async function fetchSessionToken() {
-      const sessionToken = await Api.getToken('nuvei', { amount: 1000 }, config as unknown as Parameters<typeof Api.getToken>[2]);
+      const sessionToken = await Api.getToken('nuvei', { amount }, config as unknown as Parameters<typeof Api.getToken>[2]);
       setSessionToken(sessionToken);
     }
 
