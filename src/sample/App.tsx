@@ -10,12 +10,12 @@ async function getProviders(): Promise<ProvidersConfiguration> {
 }
 
 const App = () => {
-  const provider = 'nuvei';
+  const provider = 'stripe';
   const AccruPaymentForm = form(provider)!;
 
   return (
     <AccruPay 
-      amount={500}
+      amount={500.55}
       preferredProvider={provider}
       preReleaseGetProviders={getProviders}
     >

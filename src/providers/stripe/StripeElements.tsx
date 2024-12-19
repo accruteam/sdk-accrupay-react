@@ -31,7 +31,9 @@ export function StripeWrapper({ amount, children, config }: Props) {
   useEffect(() => {
     async function setupStripeAndPaymentIntent() {
       const stripe = await loadStripe(config.publishableKey);
-      const clientSecret = await Api.getToken('stripe', { amount }, { secretKey: config.secretKey })
+      const shiftedAmount = amount * 100;
+      const intAmount = parseInt(shiftedAmount.toFixed(2), 10);
+      const clientSecret = await Api.getToken('stripe', { amount: intAmount }, { secretKey: config.secretKey })
 
       setStripe(stripe!);
       setClientSecret(clientSecret);
