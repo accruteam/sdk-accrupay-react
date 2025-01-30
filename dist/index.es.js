@@ -1,8 +1,8 @@
-import xa, { createContext as Aa, memo as ii, useEffect as nt, useContext as Ca, useState as qe, useRef as si } from "react";
-import { loadStripe as li } from "@stripe/stripe-js";
-import { Elements as ui, useStripe as ci, useElements as Ra } from "@stripe/react-stripe-js";
+import xa, { createContext as Ca, memo as ai, useEffect as yt, useContext as Aa, useState as Fe, useRef as ii } from "react";
+import { loadStripe as si } from "@stripe/stripe-js";
+import { Elements as li, useStripe as ui, useElements as Ra } from "@stripe/react-stripe-js";
 var ro = typeof globalThis < "u" ? globalThis : typeof window < "u" ? window : typeof global < "u" ? global : typeof self < "u" ? self : {};
-function di(t) {
+function ci(t) {
   if (t.__esModule) return t;
   var e = t.default;
   if (typeof e == "function") {
@@ -21,7 +21,7 @@ function di(t) {
     });
   }), r;
 }
-var er = { exports: {} }, Ct = {};
+var er = { exports: {} }, At = {};
 /**
  * @license React
  * react-jsx-runtime.production.min.js
@@ -32,18 +32,18 @@ var er = { exports: {} }, Ct = {};
  * LICENSE file in the root directory of this source tree.
  */
 var no;
-function hi() {
-  if (no) return Ct;
+function di() {
+  if (no) return At;
   no = 1;
   var t = xa, e = Symbol.for("react.element"), r = Symbol.for("react.fragment"), n = Object.prototype.hasOwnProperty, a = t.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED.ReactCurrentOwner, s = { key: !0, ref: !0, __self: !0, __source: !0 };
-  function c(f, y, _) {
-    var l, h = {}, T = null, m = null;
-    _ !== void 0 && (T = "" + _), y.key !== void 0 && (T = "" + y.key), y.ref !== void 0 && (m = y.ref);
-    for (l in y) n.call(y, l) && !s.hasOwnProperty(l) && (h[l] = y[l]);
-    if (f && f.defaultProps) for (l in y = f.defaultProps, y) h[l] === void 0 && (h[l] = y[l]);
-    return { $$typeof: e, type: f, key: T, ref: m, props: h, _owner: a.current };
+  function d(f, v, _) {
+    var l, c = {}, g = null, P = null;
+    _ !== void 0 && (g = "" + _), v.key !== void 0 && (g = "" + v.key), v.ref !== void 0 && (P = v.ref);
+    for (l in v) n.call(v, l) && !s.hasOwnProperty(l) && (c[l] = v[l]);
+    if (f && f.defaultProps) for (l in v = f.defaultProps, v) c[l] === void 0 && (c[l] = v[l]);
+    return { $$typeof: e, type: f, key: g, ref: P, props: c, _owner: a.current };
   }
-  return Ct.Fragment = r, Ct.jsx = c, Ct.jsxs = c, Ct;
+  return At.Fragment = r, At.jsx = d, At.jsxs = d, At;
 }
 var Rt = {};
 /**
@@ -56,17 +56,17 @@ var Rt = {};
  * LICENSE file in the root directory of this source tree.
  */
 var oo;
-function fi() {
+function hi() {
   return oo || (oo = 1, process.env.NODE_ENV !== "production" && function() {
-    var t = xa, e = Symbol.for("react.element"), r = Symbol.for("react.portal"), n = Symbol.for("react.fragment"), a = Symbol.for("react.strict_mode"), s = Symbol.for("react.profiler"), c = Symbol.for("react.provider"), f = Symbol.for("react.context"), y = Symbol.for("react.forward_ref"), _ = Symbol.for("react.suspense"), l = Symbol.for("react.suspense_list"), h = Symbol.for("react.memo"), T = Symbol.for("react.lazy"), m = Symbol.for("react.offscreen"), g = Symbol.iterator, O = "@@iterator";
+    var t = xa, e = Symbol.for("react.element"), r = Symbol.for("react.portal"), n = Symbol.for("react.fragment"), a = Symbol.for("react.strict_mode"), s = Symbol.for("react.profiler"), d = Symbol.for("react.provider"), f = Symbol.for("react.context"), v = Symbol.for("react.forward_ref"), _ = Symbol.for("react.suspense"), l = Symbol.for("react.suspense_list"), c = Symbol.for("react.memo"), g = Symbol.for("react.lazy"), P = Symbol.for("react.offscreen"), T = Symbol.iterator, O = "@@iterator";
     function u(i) {
       if (i === null || typeof i != "object")
         return null;
-      var E = g && i[g] || i[O];
+      var E = T && i[T] || i[O];
       return typeof E == "function" ? E : null;
     }
     var p = t.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
-    function P(i) {
+    function y(i) {
       {
         for (var E = arguments.length, x = new Array(E > 1 ? E - 1 : 0), M = 1; M < E; M++)
           x[M - 1] = arguments[M];
@@ -77,35 +77,35 @@ function fi() {
       {
         var M = p.ReactDebugCurrentFrame, j = M.getStackAddendum();
         j !== "" && (E += "%s", x = x.concat([j]));
-        var B = x.map(function(k) {
-          return String(k);
+        var B = x.map(function(q) {
+          return String(q);
         });
         B.unshift("Warning: " + E), Function.prototype.apply.call(console[i], console, B);
       }
     }
-    var S = !1, A = !1, w = !1, I = !1, R = !1, G;
+    var S = !1, C = !1, w = !1, $ = !1, R = !1, G;
     G = Symbol.for("react.module.reference");
-    function C(i) {
-      return !!(typeof i == "string" || typeof i == "function" || i === n || i === s || R || i === a || i === _ || i === l || I || i === m || S || A || w || typeof i == "object" && i !== null && (i.$$typeof === T || i.$$typeof === h || i.$$typeof === c || i.$$typeof === f || i.$$typeof === y || // This needs to include all possible module reference object
+    function A(i) {
+      return !!(typeof i == "string" || typeof i == "function" || i === n || i === s || R || i === a || i === _ || i === l || $ || i === P || S || C || w || typeof i == "object" && i !== null && (i.$$typeof === g || i.$$typeof === c || i.$$typeof === d || i.$$typeof === f || i.$$typeof === v || // This needs to include all possible module reference object
       // types supported by any Flight configuration anywhere since
       // we don't know which Flight build this will end up being used
       // with.
       i.$$typeof === G || i.getModuleId !== void 0));
     }
-    function L(i, E, x) {
+    function U(i, E, x) {
       var M = i.displayName;
       if (M)
         return M;
       var j = E.displayName || E.name || "";
       return j !== "" ? x + "(" + j + ")" : x;
     }
-    function $(i) {
+    function I(i) {
       return i.displayName || "Context";
     }
     function Q(i) {
       if (i == null)
         return null;
-      if (typeof i.tag == "number" && P("Received an unexpected object in getComponentNameFromType(). This is likely a bug in React. Please file an issue."), typeof i == "function")
+      if (typeof i.tag == "number" && y("Received an unexpected object in getComponentNameFromType(). This is likely a bug in React. Please file an issue."), typeof i == "function")
         return i.displayName || i.name || null;
       if (typeof i == "string")
         return i;
@@ -127,19 +127,19 @@ function fi() {
         switch (i.$$typeof) {
           case f:
             var E = i;
-            return $(E) + ".Consumer";
-          case c:
+            return I(E) + ".Consumer";
+          case d:
             var x = i;
-            return $(x._context) + ".Provider";
-          case y:
-            return L(i, i.render, "ForwardRef");
-          case h:
+            return I(x._context) + ".Provider";
+          case v:
+            return U(i, i.render, "ForwardRef");
+          case c:
             var M = i.displayName || null;
             return M !== null ? M : Q(i.type) || "Memo";
-          case T: {
-            var j = i, B = j._payload, k = j._init;
+          case g: {
+            var j = i, B = j._payload, q = j._init;
             try {
-              return Q(k(B));
+              return Q(q(B));
             } catch {
               return null;
             }
@@ -147,14 +147,14 @@ function fi() {
         }
       return null;
     }
-    var Z = Object.assign, N = 0, fe, Oe, F, ye, pe, Me, $e;
+    var Z = Object.assign, N = 0, fe, Oe, F, ye, pe, Me, Ie;
     function Ne() {
     }
     Ne.__reactDisabledLog = !0;
-    function Ie() {
+    function $e() {
       {
         if (N === 0) {
-          fe = console.log, Oe = console.info, F = console.warn, ye = console.error, pe = console.group, Me = console.groupCollapsed, $e = console.groupEnd;
+          fe = console.log, Oe = console.info, F = console.warn, ye = console.error, pe = console.group, Me = console.groupCollapsed, Ie = console.groupEnd;
           var i = {
             configurable: !0,
             enumerable: !0,
@@ -202,14 +202,14 @@ function fi() {
               value: Me
             }),
             groupEnd: Z({}, i, {
-              value: $e
+              value: Ie
             })
           });
         }
-        N < 0 && P("disabledDepth fell below zero. This is a bug in React. Please file an issue.");
+        N < 0 && y("disabledDepth fell below zero. This is a bug in React. Please file an issue.");
       }
     }
-    var re = p.ReactCurrentDispatcher, H;
+    var ne = p.ReactCurrentDispatcher, H;
     function V(i, E, x) {
       {
         if (H === void 0)
@@ -241,30 +241,30 @@ function fi() {
       var j = Error.prepareStackTrace;
       Error.prepareStackTrace = void 0;
       var B;
-      B = re.current, re.current = null, Ie();
+      B = ne.current, ne.current = null, $e();
       try {
         if (E) {
-          var k = function() {
+          var q = function() {
             throw Error();
           };
-          if (Object.defineProperty(k.prototype, "props", {
+          if (Object.defineProperty(q.prototype, "props", {
             set: function() {
               throw Error();
             }
           }), typeof Reflect == "object" && Reflect.construct) {
             try {
-              Reflect.construct(k, []);
+              Reflect.construct(q, []);
             } catch (Te) {
               M = Te;
             }
-            Reflect.construct(i, [], k);
+            Reflect.construct(i, [], q);
           } else {
             try {
-              k.call();
+              q.call();
             } catch (Te) {
               M = Te;
             }
-            i.call(k.prototype);
+            i.call(q.prototype);
           }
         } else {
           try {
@@ -276,30 +276,30 @@ function fi() {
         }
       } catch (Te) {
         if (Te && M && typeof Te.stack == "string") {
-          for (var q = Te.stack.split(`
+          for (var k = Te.stack.split(`
 `), de = M.stack.split(`
-`), X = q.length - 1, ae = de.length - 1; X >= 1 && ae >= 0 && q[X] !== de[ae]; )
-            ae--;
-          for (; X >= 1 && ae >= 0; X--, ae--)
-            if (q[X] !== de[ae]) {
-              if (X !== 1 || ae !== 1)
+`), X = k.length - 1, ie = de.length - 1; X >= 1 && ie >= 0 && k[X] !== de[ie]; )
+            ie--;
+          for (; X >= 1 && ie >= 0; X--, ie--)
+            if (k[X] !== de[ie]) {
+              if (X !== 1 || ie !== 1)
                 do
-                  if (X--, ae--, ae < 0 || q[X] !== de[ae]) {
+                  if (X--, ie--, ie < 0 || k[X] !== de[ie]) {
                     var Se = `
-` + q[X].replace(" at new ", " at ");
+` + k[X].replace(" at new ", " at ");
                     return i.displayName && Se.includes("<anonymous>") && (Se = Se.replace("<anonymous>", i.displayName)), typeof i == "function" && z.set(i, Se), Se;
                   }
-                while (X >= 1 && ae >= 0);
+                while (X >= 1 && ie >= 0);
               break;
             }
         }
       } finally {
-        W = !1, re.current = B, we(), Error.prepareStackTrace = j;
+        W = !1, ne.current = B, we(), Error.prepareStackTrace = j;
       }
-      var st = i ? i.displayName || i.name : "", Qe = st ? V(st) : "";
+      var it = i ? i.displayName || i.name : "", Qe = it ? V(it) : "";
       return typeof i == "function" && z.set(i, Qe), Qe;
     }
-    function ne(i, E, x) {
+    function oe(i, E, x) {
       return me(i, !1);
     }
     function xe(i) {
@@ -321,11 +321,11 @@ function fi() {
       }
       if (typeof i == "object")
         switch (i.$$typeof) {
-          case y:
-            return ne(i.render);
-          case h:
+          case v:
+            return oe(i.render);
+          case c:
             return Pe(i.type, E, x);
-          case T: {
+          case g: {
             var M = i, j = M._payload, B = M._init;
             try {
               return Pe(B(j), E, x);
@@ -335,7 +335,7 @@ function fi() {
         }
       return "";
     }
-    var oe = Object.prototype.hasOwnProperty, ue = {}, ge = p.ReactDebugCurrentFrame;
+    var ae = Object.prototype.hasOwnProperty, ue = {}, ge = p.ReactDebugCurrentFrame;
     function Ee(i) {
       if (i) {
         var E = i._owner, x = Pe(i.type, i._source, E ? E.type : null);
@@ -343,28 +343,28 @@ function fi() {
       } else
         ge.setExtraStackFrame(null);
     }
-    function Ue(i, E, x, M, j) {
+    function Le(i, E, x, M, j) {
       {
-        var B = Function.call.bind(oe);
-        for (var k in i)
-          if (B(i, k)) {
-            var q = void 0;
+        var B = Function.call.bind(ae);
+        for (var q in i)
+          if (B(i, q)) {
+            var k = void 0;
             try {
-              if (typeof i[k] != "function") {
-                var de = Error((M || "React class") + ": " + x + " type `" + k + "` is invalid; it must be a function, usually from the `prop-types` package, but received `" + typeof i[k] + "`.This often happens because of typos such as `PropTypes.function` instead of `PropTypes.func`.");
+              if (typeof i[q] != "function") {
+                var de = Error((M || "React class") + ": " + x + " type `" + q + "` is invalid; it must be a function, usually from the `prop-types` package, but received `" + typeof i[q] + "`.This often happens because of typos such as `PropTypes.function` instead of `PropTypes.func`.");
                 throw de.name = "Invariant Violation", de;
               }
-              q = i[k](E, k, M, x, null, "SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED");
+              k = i[q](E, q, M, x, null, "SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED");
             } catch (X) {
-              q = X;
+              k = X;
             }
-            q && !(q instanceof Error) && (Ee(j), P("%s: type specification of %s `%s` is invalid; the type checker function must return `null` or an `Error` but returned a %s. You may have forgotten to pass an argument to the type checker creator (arrayOf, instanceOf, objectOf, oneOf, oneOfType, and shape all require an argument).", M || "React class", x, k, typeof q), Ee(null)), q instanceof Error && !(q.message in ue) && (ue[q.message] = !0, Ee(j), P("Failed %s type: %s", x, q.message), Ee(null));
+            k && !(k instanceof Error) && (Ee(j), y("%s: type specification of %s `%s` is invalid; the type checker function must return `null` or an `Error` but returned a %s. You may have forgotten to pass an argument to the type checker creator (arrayOf, instanceOf, objectOf, oneOf, oneOfType, and shape all require an argument).", M || "React class", x, q, typeof k), Ee(null)), k instanceof Error && !(k.message in ue) && (ue[k.message] = !0, Ee(j), y("Failed %s type: %s", x, k.message), Ee(null));
           }
       }
     }
-    var Le = Array.isArray;
+    var Ue = Array.isArray;
     function gt(i) {
-      return Le(i);
+      return Ue(i);
     }
     function Mr(i) {
       {
@@ -372,7 +372,7 @@ function fi() {
         return x;
       }
     }
-    function $r(i) {
+    function Ir(i) {
       try {
         return Jt(i), !1;
       } catch {
@@ -383,18 +383,18 @@ function fi() {
       return "" + i;
     }
     function Tt(i) {
-      if ($r(i))
-        return P("The provided key is an unsupported type %s. This value must be coerced to a string before before using it here.", Mr(i)), Jt(i);
+      if (Ir(i))
+        return y("The provided key is an unsupported type %s. This value must be coerced to a string before before using it here.", Mr(i)), Jt(i);
     }
     var Ve = p.ReactCurrentOwner, Ke = {
       key: !0,
       ref: !0,
       __self: !0,
       __source: !0
-    }, ot, _t, Et;
+    }, nt, _t, Et;
     Et = {};
-    function Ir(i) {
-      if (oe.call(i, "ref")) {
+    function $r(i) {
+      if (ae.call(i, "ref")) {
         var E = Object.getOwnPropertyDescriptor(i, "ref").get;
         if (E && E.isReactWarning)
           return !1;
@@ -402,23 +402,23 @@ function fi() {
       return i.ref !== void 0;
     }
     function St(i) {
-      if (oe.call(i, "key")) {
+      if (ae.call(i, "key")) {
         var E = Object.getOwnPropertyDescriptor(i, "key").get;
         if (E && E.isReactWarning)
           return !1;
       }
       return i.key !== void 0;
     }
-    function at(i, E) {
+    function ot(i, E) {
       if (typeof i.ref == "string" && Ve.current && E && Ve.current.stateNode !== E) {
         var x = Q(Ve.current.type);
-        Et[x] || (P('Component "%s" contains the string ref "%s". Support for string refs will be removed in a future major release. This case cannot be automatically converted to an arrow function. We ask you to manually fix this case by using useRef() or createRef() instead. Learn more about using refs safely here: https://reactjs.org/link/strict-mode-string-ref', Q(Ve.current.type), i.ref), Et[x] = !0);
+        Et[x] || (y('Component "%s" contains the string ref "%s". Support for string refs will be removed in a future major release. This case cannot be automatically converted to an arrow function. We ask you to manually fix this case by using useRef() or createRef() instead. Learn more about using refs safely here: https://reactjs.org/link/strict-mode-string-ref', Q(Ve.current.type), i.ref), Et[x] = !0);
       }
     }
-    function d(i, E) {
+    function h(i, E) {
       {
         var x = function() {
-          ot || (ot = !0, P("%s: `key` is not a prop. Trying to access it will result in `undefined` being returned. If you need to access the same value within the child component, you should pass it as a different prop. (https://reactjs.org/link/special-props)", E));
+          nt || (nt = !0, y("%s: `key` is not a prop. Trying to access it will result in `undefined` being returned. If you need to access the same value within the child component, you should pass it as a different prop. (https://reactjs.org/link/special-props)", E));
         };
         x.isReactWarning = !0, Object.defineProperty(i, "key", {
           get: x,
@@ -426,10 +426,10 @@ function fi() {
         });
       }
     }
-    function v(i, E) {
+    function m(i, E) {
       {
         var x = function() {
-          _t || (_t = !0, P("%s: `ref` is not a prop. Trying to access it will result in `undefined` being returned. If you need to access the same value within the child component, you should pass it as a different prop. (https://reactjs.org/link/special-props)", E));
+          _t || (_t = !0, y("%s: `ref` is not a prop. Trying to access it will result in `undefined` being returned. If you need to access the same value within the child component, you should pass it as a different prop. (https://reactjs.org/link/special-props)", E));
         };
         x.isReactWarning = !0, Object.defineProperty(i, "ref", {
           get: x,
@@ -437,51 +437,51 @@ function fi() {
         });
       }
     }
-    var U = function(i, E, x, M, j, B, k) {
-      var q = {
+    var L = function(i, E, x, M, j, B, q) {
+      var k = {
         // This tag allows us to uniquely identify this as a React Element
         $$typeof: e,
         // Built-in properties that belong on the element
         type: i,
         key: E,
         ref: x,
-        props: k,
+        props: q,
         // Record the component responsible for creating this element.
         _owner: B
       };
-      return q._store = {}, Object.defineProperty(q._store, "validated", {
+      return k._store = {}, Object.defineProperty(k._store, "validated", {
         configurable: !1,
         enumerable: !1,
         writable: !0,
         value: !1
-      }), Object.defineProperty(q, "_self", {
+      }), Object.defineProperty(k, "_self", {
         configurable: !1,
         enumerable: !1,
         writable: !1,
         value: M
-      }), Object.defineProperty(q, "_source", {
+      }), Object.defineProperty(k, "_source", {
         configurable: !1,
         enumerable: !1,
         writable: !1,
         value: j
-      }), Object.freeze && (Object.freeze(q.props), Object.freeze(q)), q;
+      }), Object.freeze && (Object.freeze(k.props), Object.freeze(k)), k;
     };
     function Y(i, E, x, M, j) {
       {
-        var B, k = {}, q = null, de = null;
-        x !== void 0 && (Tt(x), q = "" + x), St(E) && (Tt(E.key), q = "" + E.key), Ir(E) && (de = E.ref, at(E, j));
+        var B, q = {}, k = null, de = null;
+        x !== void 0 && (Tt(x), k = "" + x), St(E) && (Tt(E.key), k = "" + E.key), $r(E) && (de = E.ref, ot(E, j));
         for (B in E)
-          oe.call(E, B) && !Ke.hasOwnProperty(B) && (k[B] = E[B]);
+          ae.call(E, B) && !Ke.hasOwnProperty(B) && (q[B] = E[B]);
         if (i && i.defaultProps) {
           var X = i.defaultProps;
           for (B in X)
-            k[B] === void 0 && (k[B] = X[B]);
+            q[B] === void 0 && (q[B] = X[B]);
         }
-        if (q || de) {
-          var ae = typeof i == "function" ? i.displayName || i.name || "Unknown" : i;
-          q && d(k, ae), de && v(k, ae);
+        if (k || de) {
+          var ie = typeof i == "function" ? i.displayName || i.name || "Unknown" : i;
+          k && h(q, ie), de && m(q, ie);
         }
-        return U(i, q, de, j, M, Ve.current, k);
+        return L(i, k, de, j, M, Ve.current, q);
       }
     }
     var K = p.ReactCurrentOwner, D = p.ReactDebugCurrentFrame;
@@ -492,12 +492,12 @@ function fi() {
       } else
         D.setExtraStackFrame(null);
     }
-    var Ae;
-    Ae = !1;
+    var Ce;
+    Ce = !1;
     function ce(i) {
       return typeof i == "object" && i !== null && i.$$typeof === e;
     }
-    function Ce() {
+    function Ae() {
       {
         if (K.current) {
           var i = Q(K.current.type);
@@ -512,10 +512,10 @@ Check the render method of \`` + i + "`.";
     function bt(i) {
       return "";
     }
-    var Fe = {};
+    var ke = {};
     function _e(i) {
       {
-        var E = Ce();
+        var E = Ae();
         if (!E) {
           var x = typeof i == "string" ? i : i.displayName || i.name;
           x && (E = `
@@ -531,11 +531,11 @@ Check the top-level render call using <` + x + ">.");
           return;
         i._store.validated = !0;
         var x = _e(E);
-        if (Fe[x])
+        if (ke[x])
           return;
-        Fe[x] = !0;
+        ke[x] = !0;
         var M = "";
-        i && i._owner && i._owner !== K.current && (M = " It was passed a child from " + Q(i._owner.type) + "."), ve(i), P('Each child in a list should have a unique "key" prop.%s%s See https://reactjs.org/link/warning-keys for more information.', x, M), ve(null);
+        i && i._owner && i._owner !== K.current && (M = " It was passed a child from " + Q(i._owner.type) + "."), ve(i), y('Each child in a list should have a unique "key" prop.%s%s See https://reactjs.org/link/warning-keys for more information.', x, M), ve(null);
       }
     }
     function wt(i, E) {
@@ -552,8 +552,8 @@ Check the top-level render call using <` + x + ">.");
         else if (i) {
           var j = u(i);
           if (typeof j == "function" && j !== i.entries)
-            for (var B = j.call(i), k; !(k = B.next()).done; )
-              ce(k.value) && Ot(k.value, E);
+            for (var B = j.call(i), q; !(q = B.next()).done; )
+              ce(q.value) && Ot(q.value, E);
         }
       }
     }
@@ -565,21 +565,21 @@ Check the top-level render call using <` + x + ">.");
         var x;
         if (typeof E == "function")
           x = E.propTypes;
-        else if (typeof E == "object" && (E.$$typeof === y || // Note: Memo only checks outer props here.
+        else if (typeof E == "object" && (E.$$typeof === v || // Note: Memo only checks outer props here.
         // Inner props are checked in the reconciler.
-        E.$$typeof === h))
+        E.$$typeof === c))
           x = E.propTypes;
         else
           return;
         if (x) {
           var M = Q(E);
-          Ue(x, i.props, "prop", M, i);
-        } else if (E.PropTypes !== void 0 && !Ae) {
-          Ae = !0;
+          Le(x, i.props, "prop", M, i);
+        } else if (E.PropTypes !== void 0 && !Ce) {
+          Ce = !0;
           var j = Q(E);
-          P("Component %s declared `PropTypes` instead of `propTypes`. Did you misspell the property assignment?", j || "Unknown");
+          y("Component %s declared `PropTypes` instead of `propTypes`. Did you misspell the property assignment?", j || "Unknown");
         }
-        typeof E.getDefaultProps == "function" && !E.getDefaultProps.isReactClassApproved && P("getDefaultProps is only used on classic React.createClass definitions. Use a static property named `defaultProps` instead.");
+        typeof E.getDefaultProps == "function" && !E.getDefaultProps.isReactClassApproved && y("getDefaultProps is only used on classic React.createClass definitions. Use a static property named `defaultProps` instead.");
       }
     }
     function Ye(i) {
@@ -587,117 +587,242 @@ Check the top-level render call using <` + x + ">.");
         for (var E = Object.keys(i.props), x = 0; x < E.length; x++) {
           var M = E[x];
           if (M !== "children" && M !== "key") {
-            ve(i), P("Invalid prop `%s` supplied to `React.Fragment`. React.Fragment can only have `key` and `children` props.", M), ve(null);
+            ve(i), y("Invalid prop `%s` supplied to `React.Fragment`. React.Fragment can only have `key` and `children` props.", M), ve(null);
             break;
           }
         }
-        i.ref !== null && (ve(i), P("Invalid attribute `ref` supplied to `React.Fragment`."), ve(null));
+        i.ref !== null && (ve(i), y("Invalid attribute `ref` supplied to `React.Fragment`."), ve(null));
       }
     }
-    var it = {};
+    var at = {};
     function Je(i, E, x, M, j, B) {
       {
-        var k = C(i);
-        if (!k) {
-          var q = "";
-          (i === void 0 || typeof i == "object" && i !== null && Object.keys(i).length === 0) && (q += " You likely forgot to export your component from the file it's defined in, or you might have mixed up default and named imports.");
+        var q = A(i);
+        if (!q) {
+          var k = "";
+          (i === void 0 || typeof i == "object" && i !== null && Object.keys(i).length === 0) && (k += " You likely forgot to export your component from the file it's defined in, or you might have mixed up default and named imports.");
           var de = bt();
-          de ? q += de : q += Ce();
+          de ? k += de : k += Ae();
           var X;
-          i === null ? X = "null" : gt(i) ? X = "array" : i !== void 0 && i.$$typeof === e ? (X = "<" + (Q(i.type) || "Unknown") + " />", q = " Did you accidentally export a JSX literal instead of a component?") : X = typeof i, P("React.jsx: type is invalid -- expected a string (for built-in components) or a class/function (for composite components) but got: %s.%s", X, q);
+          i === null ? X = "null" : gt(i) ? X = "array" : i !== void 0 && i.$$typeof === e ? (X = "<" + (Q(i.type) || "Unknown") + " />", k = " Did you accidentally export a JSX literal instead of a component?") : X = typeof i, y("React.jsx: type is invalid -- expected a string (for built-in components) or a class/function (for composite components) but got: %s.%s", X, k);
         }
-        var ae = Y(i, E, x, j, B);
-        if (ae == null)
-          return ae;
-        if (k) {
+        var ie = Y(i, E, x, j, B);
+        if (ie == null)
+          return ie;
+        if (q) {
           var Se = E.children;
           if (Se !== void 0)
             if (M)
               if (gt(Se)) {
-                for (var st = 0; st < Se.length; st++)
-                  wt(Se[st], i);
+                for (var it = 0; it < Se.length; it++)
+                  wt(Se[it], i);
                 Object.freeze && Object.freeze(Se);
               } else
-                P("React.jsx: Static children should always be an array. You are likely explicitly calling React.jsxs or React.jsxDEV. Use the Babel transform instead.");
+                y("React.jsx: Static children should always be an array. You are likely explicitly calling React.jsxs or React.jsxDEV. Use the Babel transform instead.");
             else
               wt(Se, i);
         }
-        if (oe.call(E, "key")) {
-          var Qe = Q(i), Te = Object.keys(E).filter(function(ai) {
-            return ai !== "key";
+        if (ae.call(E, "key")) {
+          var Qe = Q(i), Te = Object.keys(E).filter(function(oi) {
+            return oi !== "key";
           }), Gr = Te.length > 0 ? "{key: someKey, " + Te.join(": ..., ") + ": ...}" : "{key: someKey}";
-          if (!it[Qe + Gr]) {
-            var oi = Te.length > 0 ? "{" + Te.join(": ..., ") + ": ...}" : "{}";
-            P(`A props object containing a "key" prop is being spread into JSX:
+          if (!at[Qe + Gr]) {
+            var ni = Te.length > 0 ? "{" + Te.join(": ..., ") + ": ...}" : "{}";
+            y(`A props object containing a "key" prop is being spread into JSX:
   let props = %s;
   <%s {...props} />
 React keys must be passed directly to JSX without using spread:
   let props = %s;
-  <%s key={someKey} {...props} />`, Gr, Qe, oi, Qe), it[Qe + Gr] = !0;
+  <%s key={someKey} {...props} />`, Gr, Qe, ni, Qe), at[Qe + Gr] = !0;
           }
         }
-        return i === n ? Ye(ae) : Qt(ae), ae;
+        return i === n ? Ye(ie) : Qt(ie), ie;
       }
     }
     function xt(i, E, x) {
       return Je(i, E, x, !0);
     }
-    function At(i, E, x) {
+    function Ct(i, E, x) {
       return Je(i, E, x, !1);
     }
-    var Xt = At, Zt = xt;
+    var Xt = Ct, Zt = xt;
     Rt.Fragment = n, Rt.jsx = Xt, Rt.jsxs = Zt;
   }()), Rt;
 }
 var ao;
-function pi() {
-  return ao || (ao = 1, process.env.NODE_ENV === "production" ? er.exports = hi() : er.exports = fi()), er.exports;
+function fi() {
+  return ao || (ao = 1, process.env.NODE_ENV === "production" ? er.exports = di() : er.exports = hi()), er.exports;
 }
-var ie = pi();
+var re = fi();
+async function pi(t) {
+  return new Promise((e, r) => {
+    if (document.querySelector(`script[src="${t}"]`)) {
+      e();
+      return;
+    }
+    const a = Object.assign(document.createElement("script"), {
+      type: "text/javascript",
+      defer: !0,
+      src: t,
+      onerror: (s) => {
+        r(s);
+      }
+    });
+    a.onload = () => {
+      e();
+    }, document.body.appendChild(a);
+  });
+}
 function mi(t) {
-  const e = t.getFullYear(), r = String(t.getMonth() + 1).padStart(2, "0"), n = String(t.getDate()).padStart(2, "0"), a = String(t.getHours()).padStart(2, "0"), s = String(t.getMinutes()).padStart(2, "0"), c = String(t.getSeconds()).padStart(2, "0");
-  return `${e}${r}${n}${a}${s}${c}`;
+  return t.charAt(0).toUpperCase() + t.slice(1);
 }
-async function vi(t, e) {
-  const r = `${t.merchantId}${t.merchantSiteId}${t.clientRequestId}${t.amount}${t.currency}${t.timeStamp}${e}`, a = new TextEncoder().encode(r), s = await crypto.subtle.digest("SHA-256", a);
-  return Array.from(new Uint8Array(s)).map((c) => c.toString(16).padStart(2, "0")).join("");
+function Ma(t) {
+  const { text: e, onSuccess: r, onError: n, onComplete: a, submitPayment: s, ...d } = t;
+  return /* @__PURE__ */ re.jsx("button", { onClick: async () => (d.onSubmit && await d.onSubmit(), s({
+    onSuccess: r || (() => {
+    }),
+    onError: n || (() => {
+    }),
+    onComplete: a || (() => {
+    })
+  })), ...d, children: e });
 }
+function Ia(t) {
+  const { onChange: e, ...r } = t;
+  return /* @__PURE__ */ re.jsx("input", { onChange: e, ...r });
+}
+const vi = "https://cdn.safecharge.com/safecharge_resources/v1/websdk/safecharge.js", $a = Ca(void 0);
 async function yi(t, e) {
-  const r = {
-    merchantId: e.merchantId,
-    merchantSiteId: e.merchantSiteId,
-    amount: t,
-    currency: "USD",
-    timeStamp: mi(/* @__PURE__ */ new Date()),
-    clientRequestId: "nicola@fyclabs.com",
-    billingAddress: {
-      country: "US",
-      email: "nicola@fyclabs.com",
-      firstName: "nicola",
-      lastName: "luongo"
-    },
-    checksum: ""
-  };
-  r.checksum = await vi(r, e.merchantSecretKey);
-  try {
-    const n = await fetch("https://ppp-test.nuvei.com/ppp/api/v1/openOrder.do", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(r)
-    }), { sessionToken: a } = await n.json();
-    return a;
-  } catch (n) {
-    throw console.error(n), new Error("Error initializing session");
+  return new Promise(function(r, n) {
+    t.createPayment(
+      e,
+      (a) => {
+        if (a.result === "APPROVED")
+          r(a);
+        else {
+          const s = a.errorDescription ? String(a.errorDescription).toLowerCase() : "", d = a.transactionStatus ? String(a.transactionStatus).toLowerCase() : "failed";
+          n(new Error(`Transaction ${d}.${d.includes(s) ? "" : ` Reason: ${mi(s)}.`}`));
+        }
+      }
+    );
+  });
+}
+function Pi({ children: t, sessionToken: e, config: r }) {
+  const [n, a] = Fe({
+    cardNumber: null,
+    cardExpiry: null,
+    cardCvc: null,
+    cardHolderName: ""
+  }), [s, d] = Fe(), [f, v] = Fe();
+  if (!r)
+    throw new Error("config missing");
+  yt(() => {
+    pi(vi).then(() => {
+      window.SafeCharge !== void 0 && d(
+        window.SafeCharge({
+          env: r.env,
+          merchantId: r.merchantId,
+          merchantSiteId: r.merchantSiteId
+        })
+      );
+    });
+  }, []), yt(() => {
+    if (s && !f) {
+      const c = s.fields({
+        // fonts: [{ cssUrl: 'https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap' }],
+        // locale: 'en',
+        // fontSize: '16px',
+      });
+      v(c);
+    }
+  }, [s, f]);
+  function _(c, g) {
+    a((P) => ({ ...P, [c]: g }));
+  }
+  async function l(c) {
+    try {
+      if (!n.cardHolderName)
+        throw new Error("Card holder name is required.");
+      if (!n.cardNumber.parentElm.classList.contains(n.cardNumber.stateClass.complete))
+        throw new Error("Invalid card number.");
+      if (!n.cardExpiry.parentElm.classList.contains(n.cardExpiry.stateClass.complete))
+        throw new Error("Invalid card expiry.");
+      if (!n.cardCvc.parentElm.classList.contains(n.cardCvc.stateClass.complete))
+        throw new Error("Invalid card cvc.");
+    } catch (g) {
+      console.error(g), c.onError(g), c.onComplete();
+      return;
+    }
+    try {
+      const g = await yi(s, {
+        cardHolderName: n.cardHolderName,
+        sessionToken: e,
+        paymentOption: n.cardNumber
+      });
+      c.onSuccess(g);
+    } catch (g) {
+      console.error(g), c.onError(g);
+    }
+    c.onComplete();
+  }
+  return !s || !f || !e ? null : /* @__PURE__ */ re.jsx($a.Provider, { value: { submitPayment: l, form: n, updateField: _, safeCharge: s, safeChargeFields: f }, children: t });
+}
+function Un() {
+  return Aa($a);
+}
+function gi(t) {
+  switch (t) {
+    case "cardNumber":
+      return "ccNumber";
+    case "cardExpiry":
+      return "ccExpiration";
+    case "cardCvc":
+      return "ccCvc";
   }
 }
+const jn = ai(({ fieldType: t }) => {
+  const { updateField: e, safeChargeFields: r } = Un(), n = `accru-payment-form-${t}-container`;
+  return yt(() => {
+    const a = gi(t);
+    if (!r.instances.map((s) => s.type).includes(a)) {
+      const s = r.create(a, {});
+      s.attach(`#${n}`), e(t, s);
+    }
+  }, []), /* @__PURE__ */ re.jsx("div", { id: n });
+});
+function Ti() {
+  return /* @__PURE__ */ re.jsx(jn, { fieldType: "cardNumber" });
+}
+function _i() {
+  return /* @__PURE__ */ re.jsx(jn, { fieldType: "cardExpiry" });
+}
+function Ei() {
+  return /* @__PURE__ */ re.jsx(jn, { fieldType: "cardCvc" });
+}
+function Si(t) {
+  const { updateField: e } = Un();
+  function r(n) {
+    return e("cardHolderName", n.target.value);
+  }
+  return /* @__PURE__ */ re.jsx(Ia, { ...t, onChange: r });
+}
+function bi(t) {
+  const { submitPayment: e } = Un();
+  return /* @__PURE__ */ re.jsx(Ma, { ...t, submitPayment: e });
+}
+const Oi = {
+  CardHolderName: Si,
+  CreditCardNumber: Ti,
+  CreditCardExpiration: _i,
+  CreditCardCvc: Ei,
+  SubmitBtn: bi
+};
 class be {
   /** The client name used for diagnostics. */
   getClientName() {
     throw new Error("getClientName not implemented.");
   }
-  makeRequest(e, r, n, a, s, c, f, y) {
+  makeRequest(e, r, n, a, s, d, f, v) {
     throw new Error("makeRequest not implemented.");
   }
   /** Helper to make a consistent timeout error across implementations. */
@@ -708,7 +833,7 @@ class be {
 }
 be.CONNECTION_CLOSED_ERROR_CODES = ["ECONNRESET", "EPIPE"];
 be.TIMEOUT_ERROR_CODE = "ETIMEDOUT";
-class Ma {
+class Ga {
   constructor(e, r) {
     this._statusCode = e, this._headers = r;
   }
@@ -740,12 +865,12 @@ class Or extends be {
   static makeFetchWithRaceTimeout(e) {
     return (r, n, a) => {
       let s;
-      const c = new Promise((y, _) => {
+      const d = new Promise((v, _) => {
         s = setTimeout(() => {
           s = null, _(be.makeTimeoutError());
         }, a);
       }), f = e(r, n);
-      return Promise.race([f, c]).finally(() => {
+      return Promise.race([f, d]).finally(() => {
         s && clearTimeout(s);
       });
     };
@@ -753,15 +878,15 @@ class Or extends be {
   static makeFetchWithAbortTimeout(e) {
     return async (r, n, a) => {
       const s = new AbortController();
-      let c = setTimeout(() => {
-        c = null, s.abort(be.makeTimeoutError());
+      let d = setTimeout(() => {
+        d = null, s.abort(be.makeTimeoutError());
       }, a);
       try {
         return await e(r, Object.assign(Object.assign({}, n), { signal: s.signal }));
       } catch (f) {
         throw f.name === "AbortError" ? be.makeTimeoutError() : f;
       } finally {
-        c && clearTimeout(c);
+        d && clearTimeout(d);
       }
     };
   }
@@ -769,22 +894,22 @@ class Or extends be {
   getClientName() {
     return "fetch";
   }
-  async makeRequest(e, r, n, a, s, c, f, y) {
+  async makeRequest(e, r, n, a, s, d, f, v) {
     const _ = f === "http", l = new URL(n, `${_ ? "http" : "https"}://${e}`);
     l.port = r;
-    const h = a == "POST" || a == "PUT" || a == "PATCH", T = c || (h ? "" : void 0), m = await this._fetchFn(l.toString(), {
+    const c = a == "POST" || a == "PUT" || a == "PATCH", g = d || (c ? "" : void 0), P = await this._fetchFn(l.toString(), {
       method: a,
       // @ts-ignore
       headers: s,
       // @ts-ignore
-      body: T
-    }, y);
-    return new Ln(m);
+      body: g
+    }, v);
+    return new Hn(P);
   }
 }
-class Ln extends Ma {
+class Hn extends Ga {
   constructor(e) {
-    super(e.status, Ln._transformHeadersToObject(e.headers)), this._res = e;
+    super(e.status, Hn._transformHeadersToObject(e.headers)), this._res = e;
   }
   getRawResponse() {
     return this._res;
@@ -805,7 +930,7 @@ class Ln extends Ma {
     return r;
   }
 }
-class $a {
+class Da {
   /**
    * Computes a SHA-256 HMAC given a secret and a payload (encoded in UTF-8).
    * The output HMAC should be encoded in hexadecimal.
@@ -838,24 +963,24 @@ class $a {
     throw new Error("computeSHA256 not implemented.");
   }
 }
-class Ia extends Error {
+class qa extends Error {
 }
-class Pi extends $a {
+class wi extends Da {
   constructor(e) {
     super(), this.subtleCrypto = e || crypto.subtle;
   }
   /** @override */
   computeHMACSignature(e, r) {
-    throw new Ia("SubtleCryptoProvider cannot be used in a synchronous context.");
+    throw new qa("SubtleCryptoProvider cannot be used in a synchronous context.");
   }
   /** @override */
   async computeHMACSignatureAsync(e, r) {
     const n = new TextEncoder(), a = await this.subtleCrypto.importKey("raw", n.encode(r), {
       name: "HMAC",
       hash: { name: "SHA-256" }
-    }, !1, ["sign"]), s = await this.subtleCrypto.sign("hmac", a, n.encode(e)), c = new Uint8Array(s), f = new Array(c.length);
-    for (let y = 0; y < c.length; y++)
-      f[y] = Fn[c[y]];
+    }, !1, ["sign"]), s = await this.subtleCrypto.sign("hmac", a, n.encode(e)), d = new Uint8Array(s), f = new Array(d.length);
+    for (let v = 0; v < d.length; v++)
+      f[v] = Fn[d[v]];
     return f.join("");
   }
   /** @override */
@@ -866,7 +991,7 @@ class Pi extends $a {
 const Fn = new Array(256);
 for (let t = 0; t < Fn.length; t++)
   Fn[t] = t.toString(16).padStart(2, "0");
-class gi {
+class xi {
   constructor() {
     this._fetchFn = null, this._agent = null;
   }
@@ -943,18 +1068,18 @@ class gi {
    * Creates a CryptoProvider which uses the SubtleCrypto interface of the Web Crypto API.
    */
   createSubtleCryptoProvider(e) {
-    return new Pi(e);
+    return new wi(e);
   }
   createDefaultCryptoProvider() {
     throw new Error("createDefaultCryptoProvider not implemented.");
   }
 }
-class Ti extends Event {
+class Ci extends Event {
   constructor(e, r) {
     super(e), this.data = r;
   }
 }
-class _i {
+class Ai {
   constructor() {
     this.eventTarget = new EventTarget(), this.listenerMapping = /* @__PURE__ */ new Map();
   }
@@ -977,17 +1102,17 @@ class _i {
     });
   }
   emit(e, r) {
-    return this.eventTarget.dispatchEvent(new Ti(e, r));
+    return this.eventTarget.dispatchEvent(new Ci(e, r));
   }
 }
-class Ei extends gi {
+class Ri extends xi {
   /** @override */
   getUname() {
     return Promise.resolve(null);
   }
   /** @override */
   createEmitter() {
-    return new _i();
+    return new Ai();
   }
   /** @override */
   tryBufferData(e) {
@@ -1015,31 +1140,31 @@ class Ei extends gi {
 const xr = (t) => {
   switch (t.type) {
     case "card_error":
-      return new Da(t);
-    case "invalid_request_error":
-      return new jn(t);
-    case "api_error":
-      return new Hn(t);
-    case "authentication_error":
-      return new Bn(t);
-    case "rate_limit_error":
-      return new Wn(t);
-    case "idempotency_error":
       return new Fa(t);
-    case "invalid_grant":
-      return new Na(t);
-    default:
+    case "invalid_request_error":
+      return new Bn(t);
+    case "api_error":
+      return new Wn(t);
+    case "authentication_error":
+      return new zn(t);
+    case "rate_limit_error":
+      return new Vn(t);
+    case "idempotency_error":
       return new Ua(t);
+    case "invalid_grant":
+      return new ja(t);
+    default:
+      return new Ha(t);
   }
-}, Ga = (t) => {
+}, ka = (t) => {
   switch (t.type) {
     // switchCases: The beginning of the section generated from our OpenAPI spec
     case "temporary_session_expired":
-      return new La(t);
+      return new Ba(t);
   }
   switch (t.code) {
     case "invalid_fields":
-      return new jn(t);
+      return new Bn(t);
   }
   return xr(t);
 };
@@ -1049,37 +1174,37 @@ class he extends Error {
   }
 }
 he.generate = xr;
-class Da extends he {
+class Fa extends he {
   constructor(e = {}) {
     super(e, "StripeCardError");
   }
 }
-class jn extends he {
+class Bn extends he {
   constructor(e = {}) {
     super(e, "StripeInvalidRequestError");
   }
 }
-class Hn extends he {
+class Wn extends he {
   constructor(e = {}) {
     super(e, "StripeAPIError");
   }
 }
-class Bn extends he {
+class zn extends he {
   constructor(e = {}) {
     super(e, "StripeAuthenticationError");
   }
 }
-class ka extends he {
+class Na extends he {
   constructor(e = {}) {
     super(e, "StripePermissionError");
   }
 }
-class Wn extends he {
+class Vn extends he {
   constructor(e = {}) {
     super(e, "StripeRateLimitError");
   }
 }
-class qa extends he {
+class La extends he {
   constructor(e = {}) {
     super(e, "StripeConnectionError");
   }
@@ -1089,73 +1214,73 @@ class ze extends he {
     super(n, "StripeSignatureVerificationError"), this.header = e, this.payload = r;
   }
 }
-class Fa extends he {
+class Ua extends he {
   constructor(e = {}) {
     super(e, "StripeIdempotencyError");
   }
 }
-class Na extends he {
+class ja extends he {
   constructor(e = {}) {
     super(e, "StripeInvalidGrantError");
   }
 }
-class Ua extends he {
+class Ha extends he {
   constructor(e = {}) {
     super(e, "StripeUnknownError");
   }
 }
-class La extends he {
+class Ba extends he {
   constructor(e = {}) {
     super(e, "TemporarySessionExpiredError");
   }
 }
 const io = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  StripeAPIError: Hn,
-  StripeAuthenticationError: Bn,
-  StripeCardError: Da,
-  StripeConnectionError: qa,
+  StripeAPIError: Wn,
+  StripeAuthenticationError: zn,
+  StripeCardError: Fa,
+  StripeConnectionError: La,
   StripeError: he,
-  StripeIdempotencyError: Fa,
-  StripeInvalidGrantError: Na,
-  StripeInvalidRequestError: jn,
-  StripePermissionError: ka,
-  StripeRateLimitError: Wn,
+  StripeIdempotencyError: Ua,
+  StripeInvalidGrantError: ja,
+  StripeInvalidRequestError: Bn,
+  StripePermissionError: Na,
+  StripeRateLimitError: Vn,
   StripeSignatureVerificationError: ze,
-  StripeUnknownError: Ua,
-  TemporarySessionExpiredError: La,
+  StripeUnknownError: Ha,
+  TemporarySessionExpiredError: Ba,
   generateV1Error: xr,
-  generateV2Error: Ga
+  generateV2Error: ka
 }, Symbol.toStringTag, { value: "Module" }));
 var Dr, so;
 function Pt() {
   return so || (so = 1, Dr = TypeError), Dr;
 }
-const Si = {}, bi = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const Mi = {}, Ii = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: Si
-}, Symbol.toStringTag, { value: "Module" })), Oi = /* @__PURE__ */ di(bi);
-var kr, lo;
-function Ar() {
-  if (lo) return kr;
+  default: Mi
+}, Symbol.toStringTag, { value: "Module" })), $i = /* @__PURE__ */ ci(Ii);
+var qr, lo;
+function Cr() {
+  if (lo) return qr;
   lo = 1;
-  var t = typeof Map == "function" && Map.prototype, e = Object.getOwnPropertyDescriptor && t ? Object.getOwnPropertyDescriptor(Map.prototype, "size") : null, r = t && e && typeof e.get == "function" ? e.get : null, n = t && Map.prototype.forEach, a = typeof Set == "function" && Set.prototype, s = Object.getOwnPropertyDescriptor && a ? Object.getOwnPropertyDescriptor(Set.prototype, "size") : null, c = a && s && typeof s.get == "function" ? s.get : null, f = a && Set.prototype.forEach, y = typeof WeakMap == "function" && WeakMap.prototype, _ = y ? WeakMap.prototype.has : null, l = typeof WeakSet == "function" && WeakSet.prototype, h = l ? WeakSet.prototype.has : null, T = typeof WeakRef == "function" && WeakRef.prototype, m = T ? WeakRef.prototype.deref : null, g = Boolean.prototype.valueOf, O = Object.prototype.toString, u = Function.prototype.toString, p = String.prototype.match, P = String.prototype.slice, b = String.prototype.replace, S = String.prototype.toUpperCase, A = String.prototype.toLowerCase, w = RegExp.prototype.test, I = Array.prototype.concat, R = Array.prototype.join, G = Array.prototype.slice, C = Math.floor, L = typeof BigInt == "function" ? BigInt.prototype.valueOf : null, $ = Object.getOwnPropertySymbols, Q = typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? Symbol.prototype.toString : null, Z = typeof Symbol == "function" && typeof Symbol.iterator == "object", N = typeof Symbol == "function" && Symbol.toStringTag && (typeof Symbol.toStringTag === Z || !0) ? Symbol.toStringTag : null, fe = Object.prototype.propertyIsEnumerable, Oe = (typeof Reflect == "function" ? Reflect.getPrototypeOf : Object.getPrototypeOf) || ([].__proto__ === Array.prototype ? function(d) {
-    return d.__proto__;
+  var t = typeof Map == "function" && Map.prototype, e = Object.getOwnPropertyDescriptor && t ? Object.getOwnPropertyDescriptor(Map.prototype, "size") : null, r = t && e && typeof e.get == "function" ? e.get : null, n = t && Map.prototype.forEach, a = typeof Set == "function" && Set.prototype, s = Object.getOwnPropertyDescriptor && a ? Object.getOwnPropertyDescriptor(Set.prototype, "size") : null, d = a && s && typeof s.get == "function" ? s.get : null, f = a && Set.prototype.forEach, v = typeof WeakMap == "function" && WeakMap.prototype, _ = v ? WeakMap.prototype.has : null, l = typeof WeakSet == "function" && WeakSet.prototype, c = l ? WeakSet.prototype.has : null, g = typeof WeakRef == "function" && WeakRef.prototype, P = g ? WeakRef.prototype.deref : null, T = Boolean.prototype.valueOf, O = Object.prototype.toString, u = Function.prototype.toString, p = String.prototype.match, y = String.prototype.slice, b = String.prototype.replace, S = String.prototype.toUpperCase, C = String.prototype.toLowerCase, w = RegExp.prototype.test, $ = Array.prototype.concat, R = Array.prototype.join, G = Array.prototype.slice, A = Math.floor, U = typeof BigInt == "function" ? BigInt.prototype.valueOf : null, I = Object.getOwnPropertySymbols, Q = typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? Symbol.prototype.toString : null, Z = typeof Symbol == "function" && typeof Symbol.iterator == "object", N = typeof Symbol == "function" && Symbol.toStringTag && (typeof Symbol.toStringTag === Z || !0) ? Symbol.toStringTag : null, fe = Object.prototype.propertyIsEnumerable, Oe = (typeof Reflect == "function" ? Reflect.getPrototypeOf : Object.getPrototypeOf) || ([].__proto__ === Array.prototype ? function(h) {
+    return h.__proto__;
   } : null);
-  function F(d, v) {
-    if (d === 1 / 0 || d === -1 / 0 || d !== d || d && d > -1e3 && d < 1e3 || w.call(/e/, v))
-      return v;
-    var U = /[0-9](?=(?:[0-9]{3})+(?![0-9]))/g;
-    if (typeof d == "number") {
-      var Y = d < 0 ? -C(-d) : C(d);
-      if (Y !== d) {
-        var K = String(Y), D = P.call(v, K.length + 1);
-        return b.call(K, U, "$&_") + "." + b.call(b.call(D, /([0-9]{3})/g, "$&_"), /_$/, "");
+  function F(h, m) {
+    if (h === 1 / 0 || h === -1 / 0 || h !== h || h && h > -1e3 && h < 1e3 || w.call(/e/, m))
+      return m;
+    var L = /[0-9](?=(?:[0-9]{3})+(?![0-9]))/g;
+    if (typeof h == "number") {
+      var Y = h < 0 ? -A(-h) : A(h);
+      if (Y !== h) {
+        var K = String(Y), D = y.call(m, K.length + 1);
+        return b.call(K, L, "$&_") + "." + b.call(b.call(D, /([0-9]{3})/g, "$&_"), /_$/, "");
       }
     }
-    return b.call(v, U, "$&_");
+    return b.call(m, L, "$&_");
   }
-  var ye = Oi, pe = ye.custom, Me = ne(pe) ? pe : null, $e = {
+  var ye = $i, pe = ye.custom, Me = oe(pe) ? pe : null, Ie = {
     __proto__: null,
     double: '"',
     single: "'"
@@ -1164,461 +1289,461 @@ function Ar() {
     double: /(["\\])/g,
     single: /(['\\])/g
   };
-  kr = function d(v, U, Y, K) {
-    var D = U || {};
-    if (oe(D, "quoteStyle") && !oe($e, D.quoteStyle))
+  qr = function h(m, L, Y, K) {
+    var D = L || {};
+    if (ae(D, "quoteStyle") && !ae(Ie, D.quoteStyle))
       throw new TypeError('option "quoteStyle" must be "single" or "double"');
-    if (oe(D, "maxStringLength") && (typeof D.maxStringLength == "number" ? D.maxStringLength < 0 && D.maxStringLength !== 1 / 0 : D.maxStringLength !== null))
+    if (ae(D, "maxStringLength") && (typeof D.maxStringLength == "number" ? D.maxStringLength < 0 && D.maxStringLength !== 1 / 0 : D.maxStringLength !== null))
       throw new TypeError('option "maxStringLength", if provided, must be a positive integer, Infinity, or `null`');
-    var ve = oe(D, "customInspect") ? D.customInspect : !0;
+    var ve = ae(D, "customInspect") ? D.customInspect : !0;
     if (typeof ve != "boolean" && ve !== "symbol")
       throw new TypeError("option \"customInspect\", if provided, must be `true`, `false`, or `'symbol'`");
-    if (oe(D, "indent") && D.indent !== null && D.indent !== "	" && !(parseInt(D.indent, 10) === D.indent && D.indent > 0))
+    if (ae(D, "indent") && D.indent !== null && D.indent !== "	" && !(parseInt(D.indent, 10) === D.indent && D.indent > 0))
       throw new TypeError('option "indent" must be "\\t", an integer > 0, or `null`');
-    if (oe(D, "numericSeparator") && typeof D.numericSeparator != "boolean")
+    if (ae(D, "numericSeparator") && typeof D.numericSeparator != "boolean")
       throw new TypeError('option "numericSeparator", if provided, must be `true` or `false`');
-    var Ae = D.numericSeparator;
-    if (typeof v > "u")
+    var Ce = D.numericSeparator;
+    if (typeof m > "u")
       return "undefined";
-    if (v === null)
+    if (m === null)
       return "null";
-    if (typeof v == "boolean")
-      return v ? "true" : "false";
-    if (typeof v == "string")
-      return Tt(v, D);
-    if (typeof v == "number") {
-      if (v === 0)
-        return 1 / 0 / v > 0 ? "0" : "-0";
-      var ce = String(v);
-      return Ae ? F(v, ce) : ce;
+    if (typeof m == "boolean")
+      return m ? "true" : "false";
+    if (typeof m == "string")
+      return Tt(m, D);
+    if (typeof m == "number") {
+      if (m === 0)
+        return 1 / 0 / m > 0 ? "0" : "-0";
+      var ce = String(m);
+      return Ce ? F(m, ce) : ce;
     }
-    if (typeof v == "bigint") {
-      var Ce = String(v) + "n";
-      return Ae ? F(v, Ce) : Ce;
+    if (typeof m == "bigint") {
+      var Ae = String(m) + "n";
+      return Ce ? F(m, Ae) : Ae;
     }
     var bt = typeof D.depth > "u" ? 5 : D.depth;
-    if (typeof Y > "u" && (Y = 0), Y >= bt && bt > 0 && typeof v == "object")
-      return re(v) ? "[Array]" : "[Object]";
-    var Fe = Ir(D, Y);
+    if (typeof Y > "u" && (Y = 0), Y >= bt && bt > 0 && typeof m == "object")
+      return ne(m) ? "[Array]" : "[Object]";
+    var ke = $r(D, Y);
     if (typeof K > "u")
       K = [];
-    else if (Ee(K, v) >= 0)
+    else if (Ee(K, m) >= 0)
       return "[Circular]";
-    function _e(k, q, de) {
-      if (q && (K = G.call(K), K.push(q)), de) {
+    function _e(q, k, de) {
+      if (k && (K = G.call(K), K.push(k)), de) {
         var X = {
           depth: D.depth
         };
-        return oe(D, "quoteStyle") && (X.quoteStyle = D.quoteStyle), d(k, X, Y + 1, K);
+        return ae(D, "quoteStyle") && (X.quoteStyle = D.quoteStyle), h(q, X, Y + 1, K);
       }
-      return d(k, D, Y + 1, K);
+      return h(q, D, Y + 1, K);
     }
-    if (typeof v == "function" && !V(v)) {
-      var Ot = ge(v), wt = at(v, _e);
+    if (typeof m == "function" && !V(m)) {
+      var Ot = ge(m), wt = ot(m, _e);
       return "[Function" + (Ot ? ": " + Ot : " (anonymous)") + "]" + (wt.length > 0 ? " { " + R.call(wt, ", ") + " }" : "");
     }
-    if (ne(v)) {
-      var Qt = Z ? b.call(String(v), /^(Symbol\(.*\))_[^)]*$/, "$1") : Q.call(v);
-      return typeof v == "object" && !Z ? Ke(Qt) : Qt;
+    if (oe(m)) {
+      var Qt = Z ? b.call(String(m), /^(Symbol\(.*\))_[^)]*$/, "$1") : Q.call(m);
+      return typeof m == "object" && !Z ? Ke(Qt) : Qt;
     }
-    if (Jt(v)) {
-      for (var Ye = "<" + A.call(String(v.nodeName)), it = v.attributes || [], Je = 0; Je < it.length; Je++)
-        Ye += " " + it[Je].name + "=" + Ie(we(it[Je].value), "double", D);
-      return Ye += ">", v.childNodes && v.childNodes.length && (Ye += "..."), Ye += "</" + A.call(String(v.nodeName)) + ">", Ye;
+    if (Jt(m)) {
+      for (var Ye = "<" + C.call(String(m.nodeName)), at = m.attributes || [], Je = 0; Je < at.length; Je++)
+        Ye += " " + at[Je].name + "=" + $e(we(at[Je].value), "double", D);
+      return Ye += ">", m.childNodes && m.childNodes.length && (Ye += "..."), Ye += "</" + C.call(String(m.nodeName)) + ">", Ye;
     }
-    if (re(v)) {
-      if (v.length === 0)
+    if (ne(m)) {
+      if (m.length === 0)
         return "[]";
-      var xt = at(v, _e);
-      return Fe && !Et(xt) ? "[" + St(xt, Fe) + "]" : "[ " + R.call(xt, ", ") + " ]";
+      var xt = ot(m, _e);
+      return ke && !Et(xt) ? "[" + St(xt, ke) + "]" : "[ " + R.call(xt, ", ") + " ]";
     }
-    if (W(v)) {
-      var At = at(v, _e);
-      return !("cause" in Error.prototype) && "cause" in v && !fe.call(v, "cause") ? "{ [" + String(v) + "] " + R.call(I.call("[cause]: " + _e(v.cause), At), ", ") + " }" : At.length === 0 ? "[" + String(v) + "]" : "{ [" + String(v) + "] " + R.call(At, ", ") + " }";
+    if (W(m)) {
+      var Ct = ot(m, _e);
+      return !("cause" in Error.prototype) && "cause" in m && !fe.call(m, "cause") ? "{ [" + String(m) + "] " + R.call($.call("[cause]: " + _e(m.cause), Ct), ", ") + " }" : Ct.length === 0 ? "[" + String(m) + "]" : "{ [" + String(m) + "] " + R.call(Ct, ", ") + " }";
     }
-    if (typeof v == "object" && ve) {
-      if (Me && typeof v[Me] == "function" && ye)
-        return ye(v, { depth: bt - Y });
-      if (ve !== "symbol" && typeof v.inspect == "function")
-        return v.inspect();
+    if (typeof m == "object" && ve) {
+      if (Me && typeof m[Me] == "function" && ye)
+        return ye(m, { depth: bt - Y });
+      if (ve !== "symbol" && typeof m.inspect == "function")
+        return m.inspect();
     }
-    if (Ue(v)) {
+    if (Le(m)) {
       var Xt = [];
-      return n && n.call(v, function(k, q) {
-        Xt.push(_e(q, v, !0) + " => " + _e(k, v));
-      }), _t("Map", r.call(v), Xt, Fe);
+      return n && n.call(m, function(q, k) {
+        Xt.push(_e(k, m, !0) + " => " + _e(q, m));
+      }), _t("Map", r.call(m), Xt, ke);
     }
-    if (Mr(v)) {
+    if (Mr(m)) {
       var Zt = [];
-      return f && f.call(v, function(k) {
-        Zt.push(_e(k, v));
-      }), _t("Set", c.call(v), Zt, Fe);
+      return f && f.call(m, function(q) {
+        Zt.push(_e(q, m));
+      }), _t("Set", d.call(m), Zt, ke);
     }
-    if (Le(v))
-      return ot("WeakMap");
-    if ($r(v))
-      return ot("WeakSet");
-    if (gt(v))
-      return ot("WeakRef");
-    if (le(v))
-      return Ke(_e(Number(v)));
-    if (xe(v))
-      return Ke(_e(L.call(v)));
-    if (me(v))
-      return Ke(g.call(v));
-    if (z(v))
-      return Ke(_e(String(v)));
-    if (typeof window < "u" && v === window)
+    if (Ue(m))
+      return nt("WeakMap");
+    if (Ir(m))
+      return nt("WeakSet");
+    if (gt(m))
+      return nt("WeakRef");
+    if (le(m))
+      return Ke(_e(Number(m)));
+    if (xe(m))
+      return Ke(_e(U.call(m)));
+    if (me(m))
+      return Ke(T.call(m));
+    if (z(m))
+      return Ke(_e(String(m)));
+    if (typeof window < "u" && m === window)
       return "{ [object Window] }";
-    if (typeof globalThis < "u" && v === globalThis || typeof ro < "u" && v === ro)
+    if (typeof globalThis < "u" && m === globalThis || typeof ro < "u" && m === ro)
       return "{ [object globalThis] }";
-    if (!H(v) && !V(v)) {
-      var i = at(v, _e), E = Oe ? Oe(v) === Object.prototype : v instanceof Object || v.constructor === Object, x = v instanceof Object ? "" : "null prototype", M = !E && N && Object(v) === v && N in v ? P.call(ue(v), 8, -1) : x ? "Object" : "", j = E || typeof v.constructor != "function" ? "" : v.constructor.name ? v.constructor.name + " " : "", B = j + (M || x ? "[" + R.call(I.call([], M || [], x || []), ": ") + "] " : "");
-      return i.length === 0 ? B + "{}" : Fe ? B + "{" + St(i, Fe) + "}" : B + "{ " + R.call(i, ", ") + " }";
+    if (!H(m) && !V(m)) {
+      var i = ot(m, _e), E = Oe ? Oe(m) === Object.prototype : m instanceof Object || m.constructor === Object, x = m instanceof Object ? "" : "null prototype", M = !E && N && Object(m) === m && N in m ? y.call(ue(m), 8, -1) : x ? "Object" : "", j = E || typeof m.constructor != "function" ? "" : m.constructor.name ? m.constructor.name + " " : "", B = j + (M || x ? "[" + R.call($.call([], M || [], x || []), ": ") + "] " : "");
+      return i.length === 0 ? B + "{}" : ke ? B + "{" + St(i, ke) + "}" : B + "{ " + R.call(i, ", ") + " }";
     }
-    return String(v);
+    return String(m);
   };
-  function Ie(d, v, U) {
-    var Y = U.quoteStyle || v, K = $e[Y];
-    return K + d + K;
+  function $e(h, m, L) {
+    var Y = L.quoteStyle || m, K = Ie[Y];
+    return K + h + K;
   }
-  function we(d) {
-    return b.call(String(d), /"/g, "&quot;");
+  function we(h) {
+    return b.call(String(h), /"/g, "&quot;");
   }
-  function re(d) {
-    return ue(d) === "[object Array]" && (!N || !(typeof d == "object" && N in d));
+  function ne(h) {
+    return ue(h) === "[object Array]" && (!N || !(typeof h == "object" && N in h));
   }
-  function H(d) {
-    return ue(d) === "[object Date]" && (!N || !(typeof d == "object" && N in d));
+  function H(h) {
+    return ue(h) === "[object Date]" && (!N || !(typeof h == "object" && N in h));
   }
-  function V(d) {
-    return ue(d) === "[object RegExp]" && (!N || !(typeof d == "object" && N in d));
+  function V(h) {
+    return ue(h) === "[object RegExp]" && (!N || !(typeof h == "object" && N in h));
   }
-  function W(d) {
-    return ue(d) === "[object Error]" && (!N || !(typeof d == "object" && N in d));
+  function W(h) {
+    return ue(h) === "[object Error]" && (!N || !(typeof h == "object" && N in h));
   }
-  function z(d) {
-    return ue(d) === "[object String]" && (!N || !(typeof d == "object" && N in d));
+  function z(h) {
+    return ue(h) === "[object String]" && (!N || !(typeof h == "object" && N in h));
   }
-  function le(d) {
-    return ue(d) === "[object Number]" && (!N || !(typeof d == "object" && N in d));
+  function le(h) {
+    return ue(h) === "[object Number]" && (!N || !(typeof h == "object" && N in h));
   }
-  function me(d) {
-    return ue(d) === "[object Boolean]" && (!N || !(typeof d == "object" && N in d));
+  function me(h) {
+    return ue(h) === "[object Boolean]" && (!N || !(typeof h == "object" && N in h));
   }
-  function ne(d) {
+  function oe(h) {
     if (Z)
-      return d && typeof d == "object" && d instanceof Symbol;
-    if (typeof d == "symbol")
+      return h && typeof h == "object" && h instanceof Symbol;
+    if (typeof h == "symbol")
       return !0;
-    if (!d || typeof d != "object" || !Q)
+    if (!h || typeof h != "object" || !Q)
       return !1;
     try {
-      return Q.call(d), !0;
+      return Q.call(h), !0;
     } catch {
     }
     return !1;
   }
-  function xe(d) {
-    if (!d || typeof d != "object" || !L)
+  function xe(h) {
+    if (!h || typeof h != "object" || !U)
       return !1;
     try {
-      return L.call(d), !0;
+      return U.call(h), !0;
     } catch {
     }
     return !1;
   }
-  var Pe = Object.prototype.hasOwnProperty || function(d) {
-    return d in this;
+  var Pe = Object.prototype.hasOwnProperty || function(h) {
+    return h in this;
   };
-  function oe(d, v) {
-    return Pe.call(d, v);
+  function ae(h, m) {
+    return Pe.call(h, m);
   }
-  function ue(d) {
-    return O.call(d);
+  function ue(h) {
+    return O.call(h);
   }
-  function ge(d) {
-    if (d.name)
-      return d.name;
-    var v = p.call(u.call(d), /^function\s*([\w$]+)/);
-    return v ? v[1] : null;
+  function ge(h) {
+    if (h.name)
+      return h.name;
+    var m = p.call(u.call(h), /^function\s*([\w$]+)/);
+    return m ? m[1] : null;
   }
-  function Ee(d, v) {
-    if (d.indexOf)
-      return d.indexOf(v);
-    for (var U = 0, Y = d.length; U < Y; U++)
-      if (d[U] === v)
-        return U;
+  function Ee(h, m) {
+    if (h.indexOf)
+      return h.indexOf(m);
+    for (var L = 0, Y = h.length; L < Y; L++)
+      if (h[L] === m)
+        return L;
     return -1;
   }
-  function Ue(d) {
-    if (!r || !d || typeof d != "object")
+  function Le(h) {
+    if (!r || !h || typeof h != "object")
       return !1;
     try {
-      r.call(d);
+      r.call(h);
       try {
-        c.call(d);
+        d.call(h);
       } catch {
         return !0;
       }
-      return d instanceof Map;
+      return h instanceof Map;
     } catch {
     }
     return !1;
   }
-  function Le(d) {
-    if (!_ || !d || typeof d != "object")
+  function Ue(h) {
+    if (!_ || !h || typeof h != "object")
       return !1;
     try {
-      _.call(d, _);
+      _.call(h, _);
       try {
-        h.call(d, h);
+        c.call(h, c);
       } catch {
         return !0;
       }
-      return d instanceof WeakMap;
+      return h instanceof WeakMap;
     } catch {
     }
     return !1;
   }
-  function gt(d) {
-    if (!m || !d || typeof d != "object")
+  function gt(h) {
+    if (!P || !h || typeof h != "object")
       return !1;
     try {
-      return m.call(d), !0;
+      return P.call(h), !0;
     } catch {
     }
     return !1;
   }
-  function Mr(d) {
-    if (!c || !d || typeof d != "object")
+  function Mr(h) {
+    if (!d || !h || typeof h != "object")
       return !1;
     try {
-      c.call(d);
+      d.call(h);
       try {
-        r.call(d);
+        r.call(h);
       } catch {
         return !0;
       }
-      return d instanceof Set;
+      return h instanceof Set;
     } catch {
     }
     return !1;
   }
-  function $r(d) {
-    if (!h || !d || typeof d != "object")
+  function Ir(h) {
+    if (!c || !h || typeof h != "object")
       return !1;
     try {
-      h.call(d, h);
+      c.call(h, c);
       try {
-        _.call(d, _);
+        _.call(h, _);
       } catch {
         return !0;
       }
-      return d instanceof WeakSet;
+      return h instanceof WeakSet;
     } catch {
     }
     return !1;
   }
-  function Jt(d) {
-    return !d || typeof d != "object" ? !1 : typeof HTMLElement < "u" && d instanceof HTMLElement ? !0 : typeof d.nodeName == "string" && typeof d.getAttribute == "function";
+  function Jt(h) {
+    return !h || typeof h != "object" ? !1 : typeof HTMLElement < "u" && h instanceof HTMLElement ? !0 : typeof h.nodeName == "string" && typeof h.getAttribute == "function";
   }
-  function Tt(d, v) {
-    if (d.length > v.maxStringLength) {
-      var U = d.length - v.maxStringLength, Y = "... " + U + " more character" + (U > 1 ? "s" : "");
-      return Tt(P.call(d, 0, v.maxStringLength), v) + Y;
+  function Tt(h, m) {
+    if (h.length > m.maxStringLength) {
+      var L = h.length - m.maxStringLength, Y = "... " + L + " more character" + (L > 1 ? "s" : "");
+      return Tt(y.call(h, 0, m.maxStringLength), m) + Y;
     }
-    var K = Ne[v.quoteStyle || "single"];
+    var K = Ne[m.quoteStyle || "single"];
     K.lastIndex = 0;
-    var D = b.call(b.call(d, K, "\\$1"), /[\x00-\x1f]/g, Ve);
-    return Ie(D, "single", v);
+    var D = b.call(b.call(h, K, "\\$1"), /[\x00-\x1f]/g, Ve);
+    return $e(D, "single", m);
   }
-  function Ve(d) {
-    var v = d.charCodeAt(0), U = {
+  function Ve(h) {
+    var m = h.charCodeAt(0), L = {
       8: "b",
       9: "t",
       10: "n",
       12: "f",
       13: "r"
-    }[v];
-    return U ? "\\" + U : "\\x" + (v < 16 ? "0" : "") + S.call(v.toString(16));
+    }[m];
+    return L ? "\\" + L : "\\x" + (m < 16 ? "0" : "") + S.call(m.toString(16));
   }
-  function Ke(d) {
-    return "Object(" + d + ")";
+  function Ke(h) {
+    return "Object(" + h + ")";
   }
-  function ot(d) {
-    return d + " { ? }";
+  function nt(h) {
+    return h + " { ? }";
   }
-  function _t(d, v, U, Y) {
-    var K = Y ? St(U, Y) : R.call(U, ", ");
-    return d + " (" + v + ") {" + K + "}";
+  function _t(h, m, L, Y) {
+    var K = Y ? St(L, Y) : R.call(L, ", ");
+    return h + " (" + m + ") {" + K + "}";
   }
-  function Et(d) {
-    for (var v = 0; v < d.length; v++)
-      if (Ee(d[v], `
+  function Et(h) {
+    for (var m = 0; m < h.length; m++)
+      if (Ee(h[m], `
 `) >= 0)
         return !1;
     return !0;
   }
-  function Ir(d, v) {
-    var U;
-    if (d.indent === "	")
-      U = "	";
-    else if (typeof d.indent == "number" && d.indent > 0)
-      U = R.call(Array(d.indent + 1), " ");
+  function $r(h, m) {
+    var L;
+    if (h.indent === "	")
+      L = "	";
+    else if (typeof h.indent == "number" && h.indent > 0)
+      L = R.call(Array(h.indent + 1), " ");
     else
       return null;
     return {
-      base: U,
-      prev: R.call(Array(v + 1), U)
+      base: L,
+      prev: R.call(Array(m + 1), L)
     };
   }
-  function St(d, v) {
-    if (d.length === 0)
+  function St(h, m) {
+    if (h.length === 0)
       return "";
-    var U = `
-` + v.prev + v.base;
-    return U + R.call(d, "," + U) + `
-` + v.prev;
+    var L = `
+` + m.prev + m.base;
+    return L + R.call(h, "," + L) + `
+` + m.prev;
   }
-  function at(d, v) {
-    var U = re(d), Y = [];
-    if (U) {
-      Y.length = d.length;
-      for (var K = 0; K < d.length; K++)
-        Y[K] = oe(d, K) ? v(d[K], d) : "";
+  function ot(h, m) {
+    var L = ne(h), Y = [];
+    if (L) {
+      Y.length = h.length;
+      for (var K = 0; K < h.length; K++)
+        Y[K] = ae(h, K) ? m(h[K], h) : "";
     }
-    var D = typeof $ == "function" ? $(d) : [], ve;
+    var D = typeof I == "function" ? I(h) : [], ve;
     if (Z) {
       ve = {};
-      for (var Ae = 0; Ae < D.length; Ae++)
-        ve["$" + D[Ae]] = D[Ae];
-    }
-    for (var ce in d)
-      oe(d, ce) && (U && String(Number(ce)) === ce && ce < d.length || Z && ve["$" + ce] instanceof Symbol || (w.call(/[^\w$]/, ce) ? Y.push(v(ce, d) + ": " + v(d[ce], d)) : Y.push(ce + ": " + v(d[ce], d))));
-    if (typeof $ == "function")
       for (var Ce = 0; Ce < D.length; Ce++)
-        fe.call(d, D[Ce]) && Y.push("[" + v(D[Ce]) + "]: " + v(d[D[Ce]], d));
+        ve["$" + D[Ce]] = D[Ce];
+    }
+    for (var ce in h)
+      ae(h, ce) && (L && String(Number(ce)) === ce && ce < h.length || Z && ve["$" + ce] instanceof Symbol || (w.call(/[^\w$]/, ce) ? Y.push(m(ce, h) + ": " + m(h[ce], h)) : Y.push(ce + ": " + m(h[ce], h))));
+    if (typeof I == "function")
+      for (var Ae = 0; Ae < D.length; Ae++)
+        fe.call(h, D[Ae]) && Y.push("[" + m(D[Ae]) + "]: " + m(h[D[Ae]], h));
     return Y;
   }
-  return kr;
+  return qr;
 }
-var qr, uo;
-function wi() {
-  if (uo) return qr;
+var kr, uo;
+function Gi() {
+  if (uo) return kr;
   uo = 1;
-  var t = /* @__PURE__ */ Ar(), e = /* @__PURE__ */ Pt(), r = function(f, y, _) {
-    for (var l = f, h; (h = l.next) != null; l = h)
-      if (h.key === y)
-        return l.next = h.next, _ || (h.next = /** @type {NonNullable<typeof list.next>} */
-        f.next, f.next = h), h;
-  }, n = function(f, y) {
+  var t = /* @__PURE__ */ Cr(), e = /* @__PURE__ */ Pt(), r = function(f, v, _) {
+    for (var l = f, c; (c = l.next) != null; l = c)
+      if (c.key === v)
+        return l.next = c.next, _ || (c.next = /** @type {NonNullable<typeof list.next>} */
+        f.next, f.next = c), c;
+  }, n = function(f, v) {
     if (f) {
-      var _ = r(f, y);
+      var _ = r(f, v);
       return _ && _.value;
     }
-  }, a = function(f, y, _) {
-    var l = r(f, y);
+  }, a = function(f, v, _) {
+    var l = r(f, v);
     l ? l.value = _ : f.next = /** @type {import('./list.d.ts').ListNode<typeof value, typeof key>} */
     {
       // eslint-disable-line no-param-reassign, no-extra-parens
-      key: y,
+      key: v,
       next: f.next,
       value: _
     };
-  }, s = function(f, y) {
-    return f ? !!r(f, y) : !1;
-  }, c = function(f, y) {
+  }, s = function(f, v) {
+    return f ? !!r(f, v) : !1;
+  }, d = function(f, v) {
     if (f)
-      return r(f, y, !0);
+      return r(f, v, !0);
   };
-  return qr = function() {
-    var y, _ = {
+  return kr = function() {
+    var v, _ = {
       assert: function(l) {
         if (!_.has(l))
           throw new e("Side channel does not contain " + t(l));
       },
       delete: function(l) {
-        var h = y && y.next, T = c(y, l);
-        return T && h && h === T && (y = void 0), !!T;
+        var c = v && v.next, g = d(v, l);
+        return g && c && c === g && (v = void 0), !!g;
       },
       get: function(l) {
-        return n(y, l);
+        return n(v, l);
       },
       has: function(l) {
-        return s(y, l);
+        return s(v, l);
       },
-      set: function(l, h) {
-        y || (y = {
+      set: function(l, c) {
+        v || (v = {
           next: void 0
         }), a(
           /** @type {NonNullable<typeof $o>} */
-          y,
+          v,
           l,
-          h
+          c
         );
       }
     };
     return _;
-  }, qr;
+  }, kr;
 }
 var Fr, co;
-function xi() {
+function Di() {
   return co || (co = 1, Fr = Object), Fr;
 }
 var Nr, ho;
-function Ai() {
+function qi() {
   return ho || (ho = 1, Nr = Error), Nr;
 }
-var Ur, fo;
-function Ci() {
-  return fo || (fo = 1, Ur = EvalError), Ur;
+var Lr, fo;
+function ki() {
+  return fo || (fo = 1, Lr = EvalError), Lr;
 }
-var Lr, po;
-function Ri() {
-  return po || (po = 1, Lr = RangeError), Lr;
+var Ur, po;
+function Fi() {
+  return po || (po = 1, Ur = RangeError), Ur;
 }
 var jr, mo;
-function Mi() {
+function Ni() {
   return mo || (mo = 1, jr = ReferenceError), jr;
 }
 var Hr, vo;
-function $i() {
+function Li() {
   return vo || (vo = 1, Hr = SyntaxError), Hr;
 }
 var Br, yo;
-function Ii() {
+function Ui() {
   return yo || (yo = 1, Br = URIError), Br;
 }
 var Wr, Po;
-function Gi() {
+function ji() {
   return Po || (Po = 1, Wr = Math.abs), Wr;
 }
 var zr, go;
-function Di() {
+function Hi() {
   return go || (go = 1, zr = Math.floor), zr;
 }
 var Vr, To;
-function ki() {
+function Bi() {
   return To || (To = 1, Vr = Math.max), Vr;
 }
 var Kr, _o;
-function qi() {
+function Wi() {
   return _o || (_o = 1, Kr = Math.min), Kr;
 }
 var Yr, Eo;
-function Fi() {
+function zi() {
   return Eo || (Eo = 1, Yr = Math.pow), Yr;
 }
 var Jr, So;
-function Ni() {
+function Vi() {
   return So || (So = 1, Jr = Object.getOwnPropertyDescriptor), Jr;
 }
 var Qr, bo;
-function ja() {
+function Wa() {
   if (bo) return Qr;
   bo = 1;
-  var t = /* @__PURE__ */ Ni();
+  var t = /* @__PURE__ */ Vi();
   if (t)
     try {
       t([], "length");
@@ -1628,7 +1753,7 @@ function ja() {
   return Qr = t, Qr;
 }
 var Xr, Oo;
-function Ui() {
+function Ki() {
   if (Oo) return Xr;
   Oo = 1;
   var t = Object.defineProperty || !1;
@@ -1641,7 +1766,7 @@ function Ui() {
   return Xr = t, Xr;
 }
 var Zr, wo;
-function Li() {
+function Yi() {
   return wo || (wo = 1, Zr = function() {
     if (typeof Symbol != "function" || typeof Object.getOwnPropertySymbols != "function")
       return !1;
@@ -1656,8 +1781,8 @@ function Li() {
       return !1;
     if (typeof Object.keys == "function" && Object.keys(e).length !== 0 || typeof Object.getOwnPropertyNames == "function" && Object.getOwnPropertyNames(e).length !== 0)
       return !1;
-    var c = Object.getOwnPropertySymbols(e);
-    if (c.length !== 1 || c[0] !== r || !Object.prototype.propertyIsEnumerable.call(e, r))
+    var d = Object.getOwnPropertySymbols(e);
+    if (d.length !== 1 || d[0] !== r || !Object.prototype.propertyIsEnumerable.call(e, r))
       return !1;
     if (typeof Object.getOwnPropertyDescriptor == "function") {
       var f = (
@@ -1671,39 +1796,39 @@ function Li() {
   }), Zr;
 }
 var en, xo;
-function ji() {
+function Ji() {
   if (xo) return en;
   xo = 1;
-  var t = typeof Symbol < "u" && Symbol, e = Li();
+  var t = typeof Symbol < "u" && Symbol, e = Yi();
   return en = function() {
     return typeof t != "function" || typeof Symbol != "function" || typeof t("foo") != "symbol" || typeof Symbol("bar") != "symbol" ? !1 : e();
   }, en;
 }
-var tn, Ao;
-function Hi() {
-  if (Ao) return tn;
-  Ao = 1;
-  var t = "Function.prototype.bind called on incompatible ", e = Object.prototype.toString, r = Math.max, n = "[object Function]", a = function(y, _) {
-    for (var l = [], h = 0; h < y.length; h += 1)
-      l[h] = y[h];
-    for (var T = 0; T < _.length; T += 1)
-      l[T + y.length] = _[T];
+var tn, Co;
+function Qi() {
+  if (Co) return tn;
+  Co = 1;
+  var t = "Function.prototype.bind called on incompatible ", e = Object.prototype.toString, r = Math.max, n = "[object Function]", a = function(v, _) {
+    for (var l = [], c = 0; c < v.length; c += 1)
+      l[c] = v[c];
+    for (var g = 0; g < _.length; g += 1)
+      l[g + v.length] = _[g];
     return l;
-  }, s = function(y, _) {
-    for (var l = [], h = _, T = 0; h < y.length; h += 1, T += 1)
-      l[T] = y[h];
+  }, s = function(v, _) {
+    for (var l = [], c = _, g = 0; c < v.length; c += 1, g += 1)
+      l[g] = v[c];
     return l;
-  }, c = function(f, y) {
+  }, d = function(f, v) {
     for (var _ = "", l = 0; l < f.length; l += 1)
-      _ += f[l], l + 1 < f.length && (_ += y);
+      _ += f[l], l + 1 < f.length && (_ += v);
     return _;
   };
-  return tn = function(y) {
+  return tn = function(v) {
     var _ = this;
     if (typeof _ != "function" || e.apply(_) !== n)
       throw new TypeError(t + _);
-    for (var l = s(arguments, 1), h, T = function() {
-      if (this instanceof h) {
+    for (var l = s(arguments, 1), c, g = function() {
+      if (this instanceof c) {
         var p = _.apply(
           this,
           a(l, arguments)
@@ -1711,50 +1836,50 @@ function Hi() {
         return Object(p) === p ? p : this;
       }
       return _.apply(
-        y,
+        v,
         a(l, arguments)
       );
-    }, m = r(0, _.length - l.length), g = [], O = 0; O < m; O++)
-      g[O] = "$" + O;
-    if (h = Function("binder", "return function (" + c(g, ",") + "){ return binder.apply(this,arguments); }")(T), _.prototype) {
+    }, P = r(0, _.length - l.length), T = [], O = 0; O < P; O++)
+      T[O] = "$" + O;
+    if (c = Function("binder", "return function (" + d(T, ",") + "){ return binder.apply(this,arguments); }")(g), _.prototype) {
       var u = function() {
       };
-      u.prototype = _.prototype, h.prototype = new u(), u.prototype = null;
+      u.prototype = _.prototype, c.prototype = new u(), u.prototype = null;
     }
-    return h;
+    return c;
   }, tn;
 }
-var rn, Co;
-function Cr() {
-  if (Co) return rn;
-  Co = 1;
-  var t = Hi();
+var rn, Ao;
+function Ar() {
+  if (Ao) return rn;
+  Ao = 1;
+  var t = Qi();
   return rn = Function.prototype.bind || t, rn;
 }
 var nn, Ro;
-function zn() {
+function Kn() {
   return Ro || (Ro = 1, nn = Function.prototype.call), nn;
 }
 var on, Mo;
-function Ha() {
+function za() {
   return Mo || (Mo = 1, on = Function.prototype.apply), on;
 }
-var an, $o;
-function Bi() {
-  return $o || ($o = 1, an = typeof Reflect < "u" && Reflect && Reflect.apply), an;
+var an, Io;
+function Xi() {
+  return Io || (Io = 1, an = typeof Reflect < "u" && Reflect && Reflect.apply), an;
 }
-var sn, Io;
-function Wi() {
-  if (Io) return sn;
-  Io = 1;
-  var t = Cr(), e = Ha(), r = zn(), n = Bi();
+var sn, $o;
+function Zi() {
+  if ($o) return sn;
+  $o = 1;
+  var t = Ar(), e = za(), r = Kn(), n = Xi();
   return sn = n || t.call(r, e), sn;
 }
 var ln, Go;
-function Ba() {
+function Va() {
   if (Go) return ln;
   Go = 1;
-  var t = Cr(), e = /* @__PURE__ */ Pt(), r = zn(), n = Wi();
+  var t = Ar(), e = /* @__PURE__ */ Pt(), r = Kn(), n = Zi();
   return ln = function(s) {
     if (s.length < 1 || typeof s[0] != "function")
       throw new e("a function is required");
@@ -1762,16 +1887,16 @@ function Ba() {
   }, ln;
 }
 var un, Do;
-function zi() {
+function es() {
   if (Do) return un;
   Do = 1;
-  var t = Ba(), e = /* @__PURE__ */ ja(), r;
+  var t = Va(), e = /* @__PURE__ */ Wa(), r;
   try {
     r = /** @type {{ __proto__?: typeof Array.prototype }} */
     [].__proto__ === Array.prototype;
-  } catch (c) {
-    if (!c || typeof c != "object" || !("code" in c) || c.code !== "ERR_PROTO_ACCESS")
-      throw c;
+  } catch (d) {
+    if (!d || typeof d != "object" || !("code" in d) || d.code !== "ERR_PROTO_ACCESS")
+      throw d;
   }
   var n = !!r && e && e(
     Object.prototype,
@@ -1785,35 +1910,35 @@ function zi() {
     }
   ) : !1, un;
 }
-var cn, ko;
-function Vi() {
-  if (ko) return cn;
-  ko = 1;
-  var t = Function.prototype.call, e = Object.prototype.hasOwnProperty, r = Cr();
+var cn, qo;
+function ts() {
+  if (qo) return cn;
+  qo = 1;
+  var t = Function.prototype.call, e = Object.prototype.hasOwnProperty, r = Ar();
   return cn = r.call(t, e), cn;
 }
-var dn, qo;
-function Vn() {
-  if (qo) return dn;
-  qo = 1;
-  var t, e = /* @__PURE__ */ xi(), r = /* @__PURE__ */ Ai(), n = /* @__PURE__ */ Ci(), a = /* @__PURE__ */ Ri(), s = /* @__PURE__ */ Mi(), c = /* @__PURE__ */ $i(), f = /* @__PURE__ */ Pt(), y = /* @__PURE__ */ Ii(), _ = /* @__PURE__ */ Gi(), l = /* @__PURE__ */ Di(), h = /* @__PURE__ */ ki(), T = /* @__PURE__ */ qi(), m = /* @__PURE__ */ Fi(), g = Function, O = function(re) {
+var dn, ko;
+function Yn() {
+  if (ko) return dn;
+  ko = 1;
+  var t, e = /* @__PURE__ */ Di(), r = /* @__PURE__ */ qi(), n = /* @__PURE__ */ ki(), a = /* @__PURE__ */ Fi(), s = /* @__PURE__ */ Ni(), d = /* @__PURE__ */ Li(), f = /* @__PURE__ */ Pt(), v = /* @__PURE__ */ Ui(), _ = /* @__PURE__ */ ji(), l = /* @__PURE__ */ Hi(), c = /* @__PURE__ */ Bi(), g = /* @__PURE__ */ Wi(), P = /* @__PURE__ */ zi(), T = Function, O = function(ne) {
     try {
-      return g('"use strict"; return (' + re + ").constructor;")();
+      return T('"use strict"; return (' + ne + ").constructor;")();
     } catch {
     }
-  }, u = /* @__PURE__ */ ja(), p = /* @__PURE__ */ Ui(), P = function() {
+  }, u = /* @__PURE__ */ Wa(), p = /* @__PURE__ */ Ki(), y = function() {
     throw new f();
   }, b = u ? function() {
     try {
-      return arguments.callee, P;
+      return arguments.callee, y;
     } catch {
       try {
         return u(arguments, "callee").get;
       } catch {
-        return P;
+        return y;
       }
     }
-  }() : P, S = ji()(), A = /* @__PURE__ */ zi(), w = typeof Reflect == "function" && Reflect.getPrototypeOf || e.getPrototypeOf || A, I = Ha(), R = zn(), G = {}, C = typeof Uint8Array > "u" || !w ? t : w(Uint8Array), L = {
+  }() : y, S = Ji()(), C = /* @__PURE__ */ es(), w = typeof Reflect == "function" && Reflect.getPrototypeOf || e.getPrototypeOf || C, $ = za(), R = Kn(), G = {}, A = typeof Uint8Array > "u" || !w ? t : w(Uint8Array), U = {
     __proto__: null,
     "%AggregateError%": typeof AggregateError > "u" ? t : AggregateError,
     "%Array%": Array,
@@ -1842,7 +1967,7 @@ function Vn() {
     "%Float32Array%": typeof Float32Array > "u" ? t : Float32Array,
     "%Float64Array%": typeof Float64Array > "u" ? t : Float64Array,
     "%FinalizationRegistry%": typeof FinalizationRegistry > "u" ? t : FinalizationRegistry,
-    "%Function%": g,
+    "%Function%": T,
     "%GeneratorFunction%": G,
     "%Int8Array%": typeof Int8Array > "u" ? t : Int8Array,
     "%Int16Array%": typeof Int16Array > "u" ? t : Int16Array,
@@ -1871,35 +1996,35 @@ function Vn() {
     "%String%": String,
     "%StringIteratorPrototype%": S && w ? w(""[Symbol.iterator]()) : t,
     "%Symbol%": S ? Symbol : t,
-    "%SyntaxError%": c,
+    "%SyntaxError%": d,
     "%ThrowTypeError%": b,
-    "%TypedArray%": C,
+    "%TypedArray%": A,
     "%TypeError%": f,
     "%Uint8Array%": typeof Uint8Array > "u" ? t : Uint8Array,
     "%Uint8ClampedArray%": typeof Uint8ClampedArray > "u" ? t : Uint8ClampedArray,
     "%Uint16Array%": typeof Uint16Array > "u" ? t : Uint16Array,
     "%Uint32Array%": typeof Uint32Array > "u" ? t : Uint32Array,
-    "%URIError%": y,
+    "%URIError%": v,
     "%WeakMap%": typeof WeakMap > "u" ? t : WeakMap,
     "%WeakRef%": typeof WeakRef > "u" ? t : WeakRef,
     "%WeakSet%": typeof WeakSet > "u" ? t : WeakSet,
     "%Function.prototype.call%": R,
-    "%Function.prototype.apply%": I,
+    "%Function.prototype.apply%": $,
     "%Object.defineProperty%": p,
     "%Math.abs%": _,
     "%Math.floor%": l,
-    "%Math.max%": h,
-    "%Math.min%": T,
-    "%Math.pow%": m
+    "%Math.max%": c,
+    "%Math.min%": g,
+    "%Math.pow%": P
   };
   if (w)
     try {
       null.error;
-    } catch (re) {
-      var $ = w(w(re));
-      L["%Error.prototype%"] = $;
+    } catch (ne) {
+      var I = w(w(ne));
+      U["%Error.prototype%"] = I;
     }
-  var Q = function re(H) {
+  var Q = function ne(H) {
     var V;
     if (H === "%AsyncFunction%")
       V = O("async function () {}");
@@ -1908,13 +2033,13 @@ function Vn() {
     else if (H === "%AsyncGeneratorFunction%")
       V = O("async function* () {}");
     else if (H === "%AsyncGenerator%") {
-      var W = re("%AsyncGeneratorFunction%");
+      var W = ne("%AsyncGeneratorFunction%");
       W && (V = W.prototype);
     } else if (H === "%AsyncIteratorPrototype%") {
-      var z = re("%AsyncGenerator%");
+      var z = ne("%AsyncGenerator%");
       z && w && (V = w(z.prototype));
     }
-    return L[H] = V, V;
+    return U[H] = V, V;
   }, Z = {
     __proto__: null,
     "%ArrayBufferPrototype%": ["ArrayBuffer", "prototype"],
@@ -1968,20 +2093,20 @@ function Vn() {
     "%URIErrorPrototype%": ["URIError", "prototype"],
     "%WeakMapPrototype%": ["WeakMap", "prototype"],
     "%WeakSetPrototype%": ["WeakSet", "prototype"]
-  }, N = Cr(), fe = /* @__PURE__ */ Vi(), Oe = N.call(R, Array.prototype.concat), F = N.call(I, Array.prototype.splice), ye = N.call(R, String.prototype.replace), pe = N.call(R, String.prototype.slice), Me = N.call(R, RegExp.prototype.exec), $e = /[^%.[\]]+|\[(?:(-?\d+(?:\.\d+)?)|(["'])((?:(?!\2)[^\\]|\\.)*?)\2)\]|(?=(?:\.|\[\])(?:\.|\[\]|%$))/g, Ne = /\\(\\)?/g, Ie = function(H) {
+  }, N = Ar(), fe = /* @__PURE__ */ ts(), Oe = N.call(R, Array.prototype.concat), F = N.call($, Array.prototype.splice), ye = N.call(R, String.prototype.replace), pe = N.call(R, String.prototype.slice), Me = N.call(R, RegExp.prototype.exec), Ie = /[^%.[\]]+|\[(?:(-?\d+(?:\.\d+)?)|(["'])((?:(?!\2)[^\\]|\\.)*?)\2)\]|(?=(?:\.|\[\])(?:\.|\[\]|%$))/g, Ne = /\\(\\)?/g, $e = function(H) {
     var V = pe(H, 0, 1), W = pe(H, -1);
     if (V === "%" && W !== "%")
-      throw new c("invalid intrinsic syntax, expected closing `%`");
+      throw new d("invalid intrinsic syntax, expected closing `%`");
     if (W === "%" && V !== "%")
-      throw new c("invalid intrinsic syntax, expected opening `%`");
+      throw new d("invalid intrinsic syntax, expected opening `%`");
     var z = [];
-    return ye(H, $e, function(le, me, ne, xe) {
-      z[z.length] = ne ? ye(xe, Ne, "$1") : me || le;
+    return ye(H, Ie, function(le, me, oe, xe) {
+      z[z.length] = oe ? ye(xe, Ne, "$1") : me || le;
     }), z;
   }, we = function(H, V) {
     var W = H, z;
-    if (fe(Z, W) && (z = Z[W], W = "%" + z[0] + "%"), fe(L, W)) {
-      var le = L[W];
+    if (fe(Z, W) && (z = Z[W], W = "%" + z[0] + "%"), fe(U, W)) {
+      var le = U[W];
       if (le === G && (le = Q(W)), typeof le > "u" && !V)
         throw new f("intrinsic " + H + " exists, but is not available. Please file an issue!");
       return {
@@ -1990,7 +2115,7 @@ function Vn() {
         value: le
       };
     }
-    throw new c("intrinsic " + H + " does not exist!");
+    throw new d("intrinsic " + H + " does not exist!");
   };
   return dn = function(H, V) {
     if (typeof H != "string" || H.length === 0)
@@ -1998,122 +2123,122 @@ function Vn() {
     if (arguments.length > 1 && typeof V != "boolean")
       throw new f('"allowMissing" argument must be a boolean');
     if (Me(/^%?[^%]*%?$/, H) === null)
-      throw new c("`%` may not be present anywhere but at the beginning and end of the intrinsic name");
-    var W = Ie(H), z = W.length > 0 ? W[0] : "", le = we("%" + z + "%", V), me = le.name, ne = le.value, xe = !1, Pe = le.alias;
+      throw new d("`%` may not be present anywhere but at the beginning and end of the intrinsic name");
+    var W = $e(H), z = W.length > 0 ? W[0] : "", le = we("%" + z + "%", V), me = le.name, oe = le.value, xe = !1, Pe = le.alias;
     Pe && (z = Pe[0], F(W, Oe([0, 1], Pe)));
-    for (var oe = 1, ue = !0; oe < W.length; oe += 1) {
-      var ge = W[oe], Ee = pe(ge, 0, 1), Ue = pe(ge, -1);
-      if ((Ee === '"' || Ee === "'" || Ee === "`" || Ue === '"' || Ue === "'" || Ue === "`") && Ee !== Ue)
-        throw new c("property names with quotes must have matching quotes");
-      if ((ge === "constructor" || !ue) && (xe = !0), z += "." + ge, me = "%" + z + "%", fe(L, me))
-        ne = L[me];
-      else if (ne != null) {
-        if (!(ge in ne)) {
+    for (var ae = 1, ue = !0; ae < W.length; ae += 1) {
+      var ge = W[ae], Ee = pe(ge, 0, 1), Le = pe(ge, -1);
+      if ((Ee === '"' || Ee === "'" || Ee === "`" || Le === '"' || Le === "'" || Le === "`") && Ee !== Le)
+        throw new d("property names with quotes must have matching quotes");
+      if ((ge === "constructor" || !ue) && (xe = !0), z += "." + ge, me = "%" + z + "%", fe(U, me))
+        oe = U[me];
+      else if (oe != null) {
+        if (!(ge in oe)) {
           if (!V)
             throw new f("base intrinsic for " + H + " exists, but the property is not available.");
           return;
         }
-        if (u && oe + 1 >= W.length) {
-          var Le = u(ne, ge);
-          ue = !!Le, ue && "get" in Le && !("originalValue" in Le.get) ? ne = Le.get : ne = ne[ge];
+        if (u && ae + 1 >= W.length) {
+          var Ue = u(oe, ge);
+          ue = !!Ue, ue && "get" in Ue && !("originalValue" in Ue.get) ? oe = Ue.get : oe = oe[ge];
         } else
-          ue = fe(ne, ge), ne = ne[ge];
-        ue && !xe && (L[me] = ne);
+          ue = fe(oe, ge), oe = oe[ge];
+        ue && !xe && (U[me] = oe);
       }
     }
-    return ne;
+    return oe;
   }, dn;
 }
 var hn, Fo;
-function Wa() {
+function Ka() {
   if (Fo) return hn;
   Fo = 1;
-  var t = /* @__PURE__ */ Vn(), e = Ba(), r = e([t("%String.prototype.indexOf%")]);
+  var t = /* @__PURE__ */ Yn(), e = Va(), r = e([t("%String.prototype.indexOf%")]);
   return hn = function(a, s) {
-    var c = (
+    var d = (
       /** @type {Parameters<typeof callBindBasic>[0][0]} */
       t(a, !!s)
     );
-    return typeof c == "function" && r(a, ".prototype.") > -1 ? e([c]) : c;
+    return typeof d == "function" && r(a, ".prototype.") > -1 ? e([d]) : d;
   }, hn;
 }
 var fn, No;
-function za() {
+function Ya() {
   if (No) return fn;
   No = 1;
-  var t = /* @__PURE__ */ Vn(), e = /* @__PURE__ */ Wa(), r = /* @__PURE__ */ Ar(), n = /* @__PURE__ */ Pt(), a = t("%Map%", !0), s = e("Map.prototype.get", !0), c = e("Map.prototype.set", !0), f = e("Map.prototype.has", !0), y = e("Map.prototype.delete", !0), _ = e("Map.prototype.size", !0);
+  var t = /* @__PURE__ */ Yn(), e = /* @__PURE__ */ Ka(), r = /* @__PURE__ */ Cr(), n = /* @__PURE__ */ Pt(), a = t("%Map%", !0), s = e("Map.prototype.get", !0), d = e("Map.prototype.set", !0), f = e("Map.prototype.has", !0), v = e("Map.prototype.delete", !0), _ = e("Map.prototype.size", !0);
   return fn = !!a && /** @type {Exclude<import('.'), false>} */
   function() {
-    var h, T = {
-      assert: function(m) {
-        if (!T.has(m))
-          throw new n("Side channel does not contain " + r(m));
+    var c, g = {
+      assert: function(P) {
+        if (!g.has(P))
+          throw new n("Side channel does not contain " + r(P));
       },
-      delete: function(m) {
-        if (h) {
-          var g = y(h, m);
-          return _(h) === 0 && (h = void 0), g;
+      delete: function(P) {
+        if (c) {
+          var T = v(c, P);
+          return _(c) === 0 && (c = void 0), T;
         }
         return !1;
       },
-      get: function(m) {
-        if (h)
-          return s(h, m);
+      get: function(P) {
+        if (c)
+          return s(c, P);
       },
-      has: function(m) {
-        return h ? f(h, m) : !1;
+      has: function(P) {
+        return c ? f(c, P) : !1;
       },
-      set: function(m, g) {
-        h || (h = new a()), c(h, m, g);
+      set: function(P, T) {
+        c || (c = new a()), d(c, P, T);
       }
     };
-    return T;
+    return g;
   }, fn;
 }
-var pn, Uo;
-function Ki() {
-  if (Uo) return pn;
-  Uo = 1;
-  var t = /* @__PURE__ */ Vn(), e = /* @__PURE__ */ Wa(), r = /* @__PURE__ */ Ar(), n = za(), a = /* @__PURE__ */ Pt(), s = t("%WeakMap%", !0), c = e("WeakMap.prototype.get", !0), f = e("WeakMap.prototype.set", !0), y = e("WeakMap.prototype.has", !0), _ = e("WeakMap.prototype.delete", !0);
+var pn, Lo;
+function rs() {
+  if (Lo) return pn;
+  Lo = 1;
+  var t = /* @__PURE__ */ Yn(), e = /* @__PURE__ */ Ka(), r = /* @__PURE__ */ Cr(), n = Ya(), a = /* @__PURE__ */ Pt(), s = t("%WeakMap%", !0), d = e("WeakMap.prototype.get", !0), f = e("WeakMap.prototype.set", !0), v = e("WeakMap.prototype.has", !0), _ = e("WeakMap.prototype.delete", !0);
   return pn = s ? (
     /** @type {Exclude<import('.'), false>} */
     function() {
-      var h, T, m = {
-        assert: function(g) {
-          if (!m.has(g))
-            throw new a("Side channel does not contain " + r(g));
+      var c, g, P = {
+        assert: function(T) {
+          if (!P.has(T))
+            throw new a("Side channel does not contain " + r(T));
         },
-        delete: function(g) {
-          if (s && g && (typeof g == "object" || typeof g == "function")) {
-            if (h)
-              return _(h, g);
-          } else if (n && T)
-            return T.delete(g);
+        delete: function(T) {
+          if (s && T && (typeof T == "object" || typeof T == "function")) {
+            if (c)
+              return _(c, T);
+          } else if (n && g)
+            return g.delete(T);
           return !1;
         },
-        get: function(g) {
-          return s && g && (typeof g == "object" || typeof g == "function") && h ? c(h, g) : T && T.get(g);
+        get: function(T) {
+          return s && T && (typeof T == "object" || typeof T == "function") && c ? d(c, T) : g && g.get(T);
         },
-        has: function(g) {
-          return s && g && (typeof g == "object" || typeof g == "function") && h ? y(h, g) : !!T && T.has(g);
+        has: function(T) {
+          return s && T && (typeof T == "object" || typeof T == "function") && c ? v(c, T) : !!g && g.has(T);
         },
-        set: function(g, O) {
-          s && g && (typeof g == "object" || typeof g == "function") ? (h || (h = new s()), f(h, g, O)) : n && (T || (T = n()), T.set(g, O));
+        set: function(T, O) {
+          s && T && (typeof T == "object" || typeof T == "function") ? (c || (c = new s()), f(c, T, O)) : n && (g || (g = n()), g.set(T, O));
         }
       };
-      return m;
+      return P;
     }
   ) : n, pn;
 }
-var mn, Lo;
-function Yi() {
-  if (Lo) return mn;
-  Lo = 1;
-  var t = /* @__PURE__ */ Pt(), e = /* @__PURE__ */ Ar(), r = wi(), n = za(), a = Ki(), s = a || n || r;
+var mn, Uo;
+function ns() {
+  if (Uo) return mn;
+  Uo = 1;
+  var t = /* @__PURE__ */ Pt(), e = /* @__PURE__ */ Cr(), r = Gi(), n = Ya(), a = rs(), s = a || n || r;
   return mn = function() {
-    var f, y = {
+    var f, v = {
       assert: function(_) {
-        if (!y.has(_))
+        if (!v.has(_))
           throw new t("Side channel does not contain " + e(_));
       },
       delete: function(_) {
@@ -2129,11 +2254,11 @@ function Yi() {
         f || (f = s()), f.set(_, l);
       }
     };
-    return y;
+    return v;
   }, mn;
 }
 var vn, jo;
-function Kn() {
+function Jn() {
   if (jo) return vn;
   jo = 1;
   var t = String.prototype.replace, e = /%20/g, r = {
@@ -2155,65 +2280,65 @@ function Kn() {
   }, vn;
 }
 var yn, Ho;
-function Va() {
+function Ja() {
   if (Ho) return yn;
   Ho = 1;
-  var t = /* @__PURE__ */ Kn(), e = Object.prototype.hasOwnProperty, r = Array.isArray, n = function() {
+  var t = /* @__PURE__ */ Jn(), e = Object.prototype.hasOwnProperty, r = Array.isArray, n = function() {
     for (var u = [], p = 0; p < 256; ++p)
       u.push("%" + ((p < 16 ? "0" : "") + p.toString(16)).toUpperCase());
     return u;
   }(), a = function(p) {
     for (; p.length > 1; ) {
-      var P = p.pop(), b = P.obj[P.prop];
+      var y = p.pop(), b = y.obj[y.prop];
       if (r(b)) {
-        for (var S = [], A = 0; A < b.length; ++A)
-          typeof b[A] < "u" && S.push(b[A]);
-        P.obj[P.prop] = S;
+        for (var S = [], C = 0; C < b.length; ++C)
+          typeof b[C] < "u" && S.push(b[C]);
+        y.obj[y.prop] = S;
       }
     }
-  }, s = function(p, P) {
-    for (var b = P && P.plainObjects ? { __proto__: null } : {}, S = 0; S < p.length; ++S)
+  }, s = function(p, y) {
+    for (var b = y && y.plainObjects ? { __proto__: null } : {}, S = 0; S < p.length; ++S)
       typeof p[S] < "u" && (b[S] = p[S]);
     return b;
-  }, c = function u(p, P, b) {
-    if (!P)
+  }, d = function u(p, y, b) {
+    if (!y)
       return p;
-    if (typeof P != "object" && typeof P != "function") {
+    if (typeof y != "object" && typeof y != "function") {
       if (r(p))
-        p.push(P);
+        p.push(y);
       else if (p && typeof p == "object")
-        (b && (b.plainObjects || b.allowPrototypes) || !e.call(Object.prototype, P)) && (p[P] = !0);
+        (b && (b.plainObjects || b.allowPrototypes) || !e.call(Object.prototype, y)) && (p[y] = !0);
       else
-        return [p, P];
+        return [p, y];
       return p;
     }
     if (!p || typeof p != "object")
-      return [p].concat(P);
+      return [p].concat(y);
     var S = p;
-    return r(p) && !r(P) && (S = s(p, b)), r(p) && r(P) ? (P.forEach(function(A, w) {
+    return r(p) && !r(y) && (S = s(p, b)), r(p) && r(y) ? (y.forEach(function(C, w) {
       if (e.call(p, w)) {
-        var I = p[w];
-        I && typeof I == "object" && A && typeof A == "object" ? p[w] = u(I, A, b) : p.push(A);
+        var $ = p[w];
+        $ && typeof $ == "object" && C && typeof C == "object" ? p[w] = u($, C, b) : p.push(C);
       } else
-        p[w] = A;
-    }), p) : Object.keys(P).reduce(function(A, w) {
-      var I = P[w];
-      return e.call(A, w) ? A[w] = u(A[w], I, b) : A[w] = I, A;
+        p[w] = C;
+    }), p) : Object.keys(y).reduce(function(C, w) {
+      var $ = y[w];
+      return e.call(C, w) ? C[w] = u(C[w], $, b) : C[w] = $, C;
     }, S);
-  }, f = function(p, P) {
-    return Object.keys(P).reduce(function(b, S) {
-      return b[S] = P[S], b;
+  }, f = function(p, y) {
+    return Object.keys(y).reduce(function(b, S) {
+      return b[S] = y[S], b;
     }, p);
-  }, y = function(u, p, P) {
+  }, v = function(u, p, y) {
     var b = u.replace(/\+/g, " ");
-    if (P === "iso-8859-1")
+    if (y === "iso-8859-1")
       return b.replace(/%[0-9a-f]{2}/gi, unescape);
     try {
       return decodeURIComponent(b);
     } catch {
       return b;
     }
-  }, _ = 1024, l = function(p, P, b, S, A) {
+  }, _ = 1024, l = function(p, y, b, S, C) {
     if (p.length === 0)
       return p;
     var w = p;
@@ -2221,69 +2346,69 @@ function Va() {
       return escape(w).replace(/%u[0-9a-f]{4}/gi, function(Q) {
         return "%26%23" + parseInt(Q.slice(2), 16) + "%3B";
       });
-    for (var I = "", R = 0; R < w.length; R += _) {
-      for (var G = w.length >= _ ? w.slice(R, R + _) : w, C = [], L = 0; L < G.length; ++L) {
-        var $ = G.charCodeAt(L);
-        if ($ === 45 || $ === 46 || $ === 95 || $ === 126 || $ >= 48 && $ <= 57 || $ >= 65 && $ <= 90 || $ >= 97 && $ <= 122 || A === t.RFC1738 && ($ === 40 || $ === 41)) {
-          C[C.length] = G.charAt(L);
+    for (var $ = "", R = 0; R < w.length; R += _) {
+      for (var G = w.length >= _ ? w.slice(R, R + _) : w, A = [], U = 0; U < G.length; ++U) {
+        var I = G.charCodeAt(U);
+        if (I === 45 || I === 46 || I === 95 || I === 126 || I >= 48 && I <= 57 || I >= 65 && I <= 90 || I >= 97 && I <= 122 || C === t.RFC1738 && (I === 40 || I === 41)) {
+          A[A.length] = G.charAt(U);
           continue;
         }
-        if ($ < 128) {
-          C[C.length] = n[$];
+        if (I < 128) {
+          A[A.length] = n[I];
           continue;
         }
-        if ($ < 2048) {
-          C[C.length] = n[192 | $ >> 6] + n[128 | $ & 63];
+        if (I < 2048) {
+          A[A.length] = n[192 | I >> 6] + n[128 | I & 63];
           continue;
         }
-        if ($ < 55296 || $ >= 57344) {
-          C[C.length] = n[224 | $ >> 12] + n[128 | $ >> 6 & 63] + n[128 | $ & 63];
+        if (I < 55296 || I >= 57344) {
+          A[A.length] = n[224 | I >> 12] + n[128 | I >> 6 & 63] + n[128 | I & 63];
           continue;
         }
-        L += 1, $ = 65536 + (($ & 1023) << 10 | G.charCodeAt(L) & 1023), C[C.length] = n[240 | $ >> 18] + n[128 | $ >> 12 & 63] + n[128 | $ >> 6 & 63] + n[128 | $ & 63];
+        U += 1, I = 65536 + ((I & 1023) << 10 | G.charCodeAt(U) & 1023), A[A.length] = n[240 | I >> 18] + n[128 | I >> 12 & 63] + n[128 | I >> 6 & 63] + n[128 | I & 63];
       }
-      I += C.join("");
+      $ += A.join("");
     }
-    return I;
-  }, h = function(p) {
-    for (var P = [{ obj: { o: p }, prop: "o" }], b = [], S = 0; S < P.length; ++S)
-      for (var A = P[S], w = A.obj[A.prop], I = Object.keys(w), R = 0; R < I.length; ++R) {
-        var G = I[R], C = w[G];
-        typeof C == "object" && C !== null && b.indexOf(C) === -1 && (P.push({ obj: w, prop: G }), b.push(C));
+    return $;
+  }, c = function(p) {
+    for (var y = [{ obj: { o: p }, prop: "o" }], b = [], S = 0; S < y.length; ++S)
+      for (var C = y[S], w = C.obj[C.prop], $ = Object.keys(w), R = 0; R < $.length; ++R) {
+        var G = $[R], A = w[G];
+        typeof A == "object" && A !== null && b.indexOf(A) === -1 && (y.push({ obj: w, prop: G }), b.push(A));
       }
-    return a(P), p;
-  }, T = function(p) {
+    return a(y), p;
+  }, g = function(p) {
     return Object.prototype.toString.call(p) === "[object RegExp]";
-  }, m = function(p) {
+  }, P = function(p) {
     return !p || typeof p != "object" ? !1 : !!(p.constructor && p.constructor.isBuffer && p.constructor.isBuffer(p));
-  }, g = function(p, P) {
-    return [].concat(p, P);
-  }, O = function(p, P) {
+  }, T = function(p, y) {
+    return [].concat(p, y);
+  }, O = function(p, y) {
     if (r(p)) {
       for (var b = [], S = 0; S < p.length; S += 1)
-        b.push(P(p[S]));
+        b.push(y(p[S]));
       return b;
     }
-    return P(p);
+    return y(p);
   };
   return yn = {
     arrayToObject: s,
     assign: f,
-    combine: g,
-    compact: h,
-    decode: y,
+    combine: T,
+    compact: c,
+    decode: v,
     encode: l,
-    isBuffer: m,
-    isRegExp: T,
+    isBuffer: P,
+    isRegExp: g,
     maybeMap: O,
-    merge: c
+    merge: d
   }, yn;
 }
 var Pn, Bo;
-function Ji() {
+function os() {
   if (Bo) return Pn;
   Bo = 1;
-  var t = Yi(), e = /* @__PURE__ */ Va(), r = /* @__PURE__ */ Kn(), n = Object.prototype.hasOwnProperty, a = {
+  var t = ns(), e = /* @__PURE__ */ Ja(), r = /* @__PURE__ */ Jn(), n = Object.prototype.hasOwnProperty, a = {
     brackets: function(u) {
       return u + "[]";
     },
@@ -2294,9 +2419,9 @@ function Ji() {
     repeat: function(u) {
       return u;
     }
-  }, s = Array.isArray, c = Array.prototype.push, f = function(O, u) {
-    c.apply(O, s(u) ? u : [u]);
-  }, y = Date.prototype.toISOString, _ = r.default, l = {
+  }, s = Array.isArray, d = Array.prototype.push, f = function(O, u) {
+    d.apply(O, s(u) ? u : [u]);
+  }, v = Date.prototype.toISOString, _ = r.default, l = {
     addQueryPrefix: !1,
     allowDots: !1,
     allowEmptyArrays: !1,
@@ -2315,71 +2440,71 @@ function Ji() {
     // deprecated
     indices: !1,
     serializeDate: function(u) {
-      return y.call(u);
+      return v.call(u);
     },
     skipNulls: !1,
     strictNullHandling: !1
-  }, h = function(u) {
+  }, c = function(u) {
     return typeof u == "string" || typeof u == "number" || typeof u == "boolean" || typeof u == "symbol" || typeof u == "bigint";
-  }, T = {}, m = function O(u, p, P, b, S, A, w, I, R, G, C, L, $, Q, Z, N, fe, Oe) {
-    for (var F = u, ye = Oe, pe = 0, Me = !1; (ye = ye.get(T)) !== void 0 && !Me; ) {
-      var $e = ye.get(u);
-      if (pe += 1, typeof $e < "u") {
-        if ($e === pe)
+  }, g = {}, P = function O(u, p, y, b, S, C, w, $, R, G, A, U, I, Q, Z, N, fe, Oe) {
+    for (var F = u, ye = Oe, pe = 0, Me = !1; (ye = ye.get(g)) !== void 0 && !Me; ) {
+      var Ie = ye.get(u);
+      if (pe += 1, typeof Ie < "u") {
+        if (Ie === pe)
           throw new RangeError("Cyclic object value");
         Me = !0;
       }
-      typeof ye.get(T) > "u" && (pe = 0);
+      typeof ye.get(g) > "u" && (pe = 0);
     }
-    if (typeof G == "function" ? F = G(p, F) : F instanceof Date ? F = $(F) : P === "comma" && s(F) && (F = e.maybeMap(F, function(Pe) {
-      return Pe instanceof Date ? $(Pe) : Pe;
+    if (typeof G == "function" ? F = G(p, F) : F instanceof Date ? F = I(F) : y === "comma" && s(F) && (F = e.maybeMap(F, function(Pe) {
+      return Pe instanceof Date ? I(Pe) : Pe;
     })), F === null) {
-      if (A)
+      if (C)
         return R && !N ? R(p, l.encoder, fe, "key", Q) : p;
       F = "";
     }
-    if (h(F) || e.isBuffer(F)) {
+    if (c(F) || e.isBuffer(F)) {
       if (R) {
         var Ne = N ? p : R(p, l.encoder, fe, "key", Q);
         return [Z(Ne) + "=" + Z(R(F, l.encoder, fe, "value", Q))];
       }
       return [Z(p) + "=" + Z(String(F))];
     }
-    var Ie = [];
+    var $e = [];
     if (typeof F > "u")
-      return Ie;
+      return $e;
     var we;
-    if (P === "comma" && s(F))
+    if (y === "comma" && s(F))
       N && R && (F = e.maybeMap(F, R)), we = [{ value: F.length > 0 ? F.join(",") || null : void 0 }];
     else if (s(G))
       we = G;
     else {
-      var re = Object.keys(F);
-      we = C ? re.sort(C) : re;
+      var ne = Object.keys(F);
+      we = A ? ne.sort(A) : ne;
     }
-    var H = I ? String(p).replace(/\./g, "%2E") : String(p), V = b && s(F) && F.length === 1 ? H + "[]" : H;
+    var H = $ ? String(p).replace(/\./g, "%2E") : String(p), V = b && s(F) && F.length === 1 ? H + "[]" : H;
     if (S && s(F) && F.length === 0)
       return V + "[]";
     for (var W = 0; W < we.length; ++W) {
       var z = we[W], le = typeof z == "object" && z && typeof z.value < "u" ? z.value : F[z];
       if (!(w && le === null)) {
-        var me = L && I ? String(z).replace(/\./g, "%2E") : String(z), ne = s(F) ? typeof P == "function" ? P(V, me) : V : V + (L ? "." + me : "[" + me + "]");
+        var me = U && $ ? String(z).replace(/\./g, "%2E") : String(z), oe = s(F) ? typeof y == "function" ? y(V, me) : V : V + (U ? "." + me : "[" + me + "]");
         Oe.set(u, pe);
         var xe = t();
-        xe.set(T, Oe), f(Ie, O(
+        xe.set(g, Oe), f($e, O(
           le,
-          ne,
-          P,
+          oe,
+          y,
           b,
           S,
-          A,
-          w,
-          I,
-          P === "comma" && N && s(F) ? null : R,
-          G,
           C,
-          L,
+          w,
           $,
+          y === "comma" && N && s(F) ? null : R,
+          G,
+          A,
+          U,
+          I,
           Q,
           Z,
           N,
@@ -2388,8 +2513,8 @@ function Ji() {
         ));
       }
     }
-    return Ie;
-  }, g = function(u) {
+    return $e;
+  }, T = function(u) {
     if (!u)
       return l;
     if (typeof u.allowEmptyArrays < "u" && typeof u.allowEmptyArrays != "boolean")
@@ -2401,23 +2526,23 @@ function Ji() {
     var p = u.charset || l.charset;
     if (typeof u.charset < "u" && u.charset !== "utf-8" && u.charset !== "iso-8859-1")
       throw new TypeError("The charset option must be either utf-8, iso-8859-1, or undefined");
-    var P = r.default;
+    var y = r.default;
     if (typeof u.format < "u") {
       if (!n.call(r.formatters, u.format))
         throw new TypeError("Unknown format option provided.");
-      P = u.format;
+      y = u.format;
     }
-    var b = r.formatters[P], S = l.filter;
+    var b = r.formatters[y], S = l.filter;
     (typeof u.filter == "function" || s(u.filter)) && (S = u.filter);
-    var A;
-    if (u.arrayFormat in a ? A = u.arrayFormat : "indices" in u ? A = u.indices ? "indices" : "repeat" : A = l.arrayFormat, "commaRoundTrip" in u && typeof u.commaRoundTrip != "boolean")
+    var C;
+    if (u.arrayFormat in a ? C = u.arrayFormat : "indices" in u ? C = u.indices ? "indices" : "repeat" : C = l.arrayFormat, "commaRoundTrip" in u && typeof u.commaRoundTrip != "boolean")
       throw new TypeError("`commaRoundTrip` must be a boolean, or absent");
     var w = typeof u.allowDots > "u" ? u.encodeDotInKeys === !0 ? !0 : l.allowDots : !!u.allowDots;
     return {
       addQueryPrefix: typeof u.addQueryPrefix == "boolean" ? u.addQueryPrefix : l.addQueryPrefix,
       allowDots: w,
       allowEmptyArrays: typeof u.allowEmptyArrays == "boolean" ? !!u.allowEmptyArrays : l.allowEmptyArrays,
-      arrayFormat: A,
+      arrayFormat: C,
       charset: p,
       charsetSentinel: typeof u.charsetSentinel == "boolean" ? u.charsetSentinel : l.charsetSentinel,
       commaRoundTrip: !!u.commaRoundTrip,
@@ -2427,7 +2552,7 @@ function Ji() {
       encoder: typeof u.encoder == "function" ? u.encoder : l.encoder,
       encodeValuesOnly: typeof u.encodeValuesOnly == "boolean" ? u.encodeValuesOnly : l.encodeValuesOnly,
       filter: S,
-      format: P,
+      format: y,
       formatter: b,
       serializeDate: typeof u.serializeDate == "function" ? u.serializeDate : l.serializeDate,
       skipNulls: typeof u.skipNulls == "boolean" ? u.skipNulls : l.skipNulls,
@@ -2436,45 +2561,45 @@ function Ji() {
     };
   };
   return Pn = function(O, u) {
-    var p = O, P = g(u), b, S;
-    typeof P.filter == "function" ? (S = P.filter, p = S("", p)) : s(P.filter) && (S = P.filter, b = S);
-    var A = [];
+    var p = O, y = T(u), b, S;
+    typeof y.filter == "function" ? (S = y.filter, p = S("", p)) : s(y.filter) && (S = y.filter, b = S);
+    var C = [];
     if (typeof p != "object" || p === null)
       return "";
-    var w = a[P.arrayFormat], I = w === "comma" && P.commaRoundTrip;
-    b || (b = Object.keys(p)), P.sort && b.sort(P.sort);
+    var w = a[y.arrayFormat], $ = w === "comma" && y.commaRoundTrip;
+    b || (b = Object.keys(p)), y.sort && b.sort(y.sort);
     for (var R = t(), G = 0; G < b.length; ++G) {
-      var C = b[G], L = p[C];
-      P.skipNulls && L === null || f(A, m(
-        L,
-        C,
+      var A = b[G], U = p[A];
+      y.skipNulls && U === null || f(C, P(
+        U,
+        A,
         w,
-        I,
-        P.allowEmptyArrays,
-        P.strictNullHandling,
-        P.skipNulls,
-        P.encodeDotInKeys,
-        P.encode ? P.encoder : null,
-        P.filter,
-        P.sort,
-        P.allowDots,
-        P.serializeDate,
-        P.format,
-        P.formatter,
-        P.encodeValuesOnly,
-        P.charset,
+        $,
+        y.allowEmptyArrays,
+        y.strictNullHandling,
+        y.skipNulls,
+        y.encodeDotInKeys,
+        y.encode ? y.encoder : null,
+        y.filter,
+        y.sort,
+        y.allowDots,
+        y.serializeDate,
+        y.format,
+        y.formatter,
+        y.encodeValuesOnly,
+        y.charset,
         R
       ));
     }
-    var $ = A.join(P.delimiter), Q = P.addQueryPrefix === !0 ? "?" : "";
-    return P.charsetSentinel && (P.charset === "iso-8859-1" ? Q += "utf8=%26%2310003%3B&" : Q += "utf8=%E2%9C%93&"), $.length > 0 ? Q + $ : "";
+    var I = C.join(y.delimiter), Q = y.addQueryPrefix === !0 ? "?" : "";
+    return y.charsetSentinel && (y.charset === "iso-8859-1" ? Q += "utf8=%26%2310003%3B&" : Q += "utf8=%E2%9C%93&"), I.length > 0 ? Q + I : "";
   }, Pn;
 }
 var gn, Wo;
-function Qi() {
+function as() {
   if (Wo) return gn;
   Wo = 1;
-  var t = /* @__PURE__ */ Va(), e = Object.prototype.hasOwnProperty, r = Array.isArray, n = {
+  var t = /* @__PURE__ */ Ja(), e = Object.prototype.hasOwnProperty, r = Array.isArray, n = {
     allowDots: !1,
     allowEmptyArrays: !1,
     allowPrototypes: !1,
@@ -2495,55 +2620,55 @@ function Qi() {
     plainObjects: !1,
     strictDepth: !1,
     strictNullHandling: !1
-  }, a = function(T) {
-    return T.replace(/&#(\d+);/g, function(m, g) {
-      return String.fromCharCode(parseInt(g, 10));
+  }, a = function(g) {
+    return g.replace(/&#(\d+);/g, function(P, T) {
+      return String.fromCharCode(parseInt(T, 10));
     });
-  }, s = function(T, m) {
-    return T && typeof T == "string" && m.comma && T.indexOf(",") > -1 ? T.split(",") : T;
-  }, c = "utf8=%26%2310003%3B", f = "utf8=%E2%9C%93", y = function(m, g) {
-    var O = { __proto__: null }, u = g.ignoreQueryPrefix ? m.replace(/^\?/, "") : m;
+  }, s = function(g, P) {
+    return g && typeof g == "string" && P.comma && g.indexOf(",") > -1 ? g.split(",") : g;
+  }, d = "utf8=%26%2310003%3B", f = "utf8=%E2%9C%93", v = function(P, T) {
+    var O = { __proto__: null }, u = T.ignoreQueryPrefix ? P.replace(/^\?/, "") : P;
     u = u.replace(/%5B/gi, "[").replace(/%5D/gi, "]");
-    var p = g.parameterLimit === 1 / 0 ? void 0 : g.parameterLimit, P = u.split(g.delimiter, p), b = -1, S, A = g.charset;
-    if (g.charsetSentinel)
-      for (S = 0; S < P.length; ++S)
-        P[S].indexOf("utf8=") === 0 && (P[S] === f ? A = "utf-8" : P[S] === c && (A = "iso-8859-1"), b = S, S = P.length);
-    for (S = 0; S < P.length; ++S)
+    var p = T.parameterLimit === 1 / 0 ? void 0 : T.parameterLimit, y = u.split(T.delimiter, p), b = -1, S, C = T.charset;
+    if (T.charsetSentinel)
+      for (S = 0; S < y.length; ++S)
+        y[S].indexOf("utf8=") === 0 && (y[S] === f ? C = "utf-8" : y[S] === d && (C = "iso-8859-1"), b = S, S = y.length);
+    for (S = 0; S < y.length; ++S)
       if (S !== b) {
-        var w = P[S], I = w.indexOf("]="), R = I === -1 ? w.indexOf("=") : I + 1, G, C;
-        R === -1 ? (G = g.decoder(w, n.decoder, A, "key"), C = g.strictNullHandling ? null : "") : (G = g.decoder(w.slice(0, R), n.decoder, A, "key"), C = t.maybeMap(
-          s(w.slice(R + 1), g),
-          function($) {
-            return g.decoder($, n.decoder, A, "value");
+        var w = y[S], $ = w.indexOf("]="), R = $ === -1 ? w.indexOf("=") : $ + 1, G, A;
+        R === -1 ? (G = T.decoder(w, n.decoder, C, "key"), A = T.strictNullHandling ? null : "") : (G = T.decoder(w.slice(0, R), n.decoder, C, "key"), A = t.maybeMap(
+          s(w.slice(R + 1), T),
+          function(I) {
+            return T.decoder(I, n.decoder, C, "value");
           }
-        )), C && g.interpretNumericEntities && A === "iso-8859-1" && (C = a(String(C))), w.indexOf("[]=") > -1 && (C = r(C) ? [C] : C);
-        var L = e.call(O, G);
-        L && g.duplicates === "combine" ? O[G] = t.combine(O[G], C) : (!L || g.duplicates === "last") && (O[G] = C);
+        )), A && T.interpretNumericEntities && C === "iso-8859-1" && (A = a(String(A))), w.indexOf("[]=") > -1 && (A = r(A) ? [A] : A);
+        var U = e.call(O, G);
+        U && T.duplicates === "combine" ? O[G] = t.combine(O[G], A) : (!U || T.duplicates === "last") && (O[G] = A);
       }
     return O;
-  }, _ = function(T, m, g, O) {
-    for (var u = O ? m : s(m, g), p = T.length - 1; p >= 0; --p) {
-      var P, b = T[p];
-      if (b === "[]" && g.parseArrays)
-        P = g.allowEmptyArrays && (u === "" || g.strictNullHandling && u === null) ? [] : [].concat(u);
+  }, _ = function(g, P, T, O) {
+    for (var u = O ? P : s(P, T), p = g.length - 1; p >= 0; --p) {
+      var y, b = g[p];
+      if (b === "[]" && T.parseArrays)
+        y = T.allowEmptyArrays && (u === "" || T.strictNullHandling && u === null) ? [] : [].concat(u);
       else {
-        P = g.plainObjects ? { __proto__: null } : {};
-        var S = b.charAt(0) === "[" && b.charAt(b.length - 1) === "]" ? b.slice(1, -1) : b, A = g.decodeDotInKeys ? S.replace(/%2E/g, ".") : S, w = parseInt(A, 10);
-        !g.parseArrays && A === "" ? P = { 0: u } : !isNaN(w) && b !== A && String(w) === A && w >= 0 && g.parseArrays && w <= g.arrayLimit ? (P = [], P[w] = u) : A !== "__proto__" && (P[A] = u);
+        y = T.plainObjects ? { __proto__: null } : {};
+        var S = b.charAt(0) === "[" && b.charAt(b.length - 1) === "]" ? b.slice(1, -1) : b, C = T.decodeDotInKeys ? S.replace(/%2E/g, ".") : S, w = parseInt(C, 10);
+        !T.parseArrays && C === "" ? y = { 0: u } : !isNaN(w) && b !== C && String(w) === C && w >= 0 && T.parseArrays && w <= T.arrayLimit ? (y = [], y[w] = u) : C !== "__proto__" && (y[C] = u);
       }
-      u = P;
+      u = y;
     }
     return u;
-  }, l = function(m, g, O, u) {
-    if (m) {
-      var p = O.allowDots ? m.replace(/\.([^.[]+)/g, "[$1]") : m, P = /(\[[^[\]]*])/, b = /(\[[^[\]]*])/g, S = O.depth > 0 && P.exec(p), A = S ? p.slice(0, S.index) : p, w = [];
-      if (A) {
-        if (!O.plainObjects && e.call(Object.prototype, A) && !O.allowPrototypes)
+  }, l = function(P, T, O, u) {
+    if (P) {
+      var p = O.allowDots ? P.replace(/\.([^.[]+)/g, "[$1]") : P, y = /(\[[^[\]]*])/, b = /(\[[^[\]]*])/g, S = O.depth > 0 && y.exec(p), C = S ? p.slice(0, S.index) : p, w = [];
+      if (C) {
+        if (!O.plainObjects && e.call(Object.prototype, C) && !O.allowPrototypes)
           return;
-        w.push(A);
+        w.push(C);
       }
-      for (var I = 0; O.depth > 0 && (S = b.exec(p)) !== null && I < O.depth; ) {
-        if (I += 1, !O.plainObjects && e.call(Object.prototype, S[1].slice(1, -1)) && !O.allowPrototypes)
+      for (var $ = 0; O.depth > 0 && (S = b.exec(p)) !== null && $ < O.depth; ) {
+        if ($ += 1, !O.plainObjects && e.call(Object.prototype, S[1].slice(1, -1)) && !O.allowPrototypes)
           return;
         w.push(S[1]);
       }
@@ -2552,71 +2677,71 @@ function Qi() {
           throw new RangeError("Input depth exceeded depth option of " + O.depth + " and strictDepth is true");
         w.push("[" + p.slice(S.index) + "]");
       }
-      return _(w, g, O, u);
+      return _(w, T, O, u);
     }
-  }, h = function(m) {
-    if (!m)
+  }, c = function(P) {
+    if (!P)
       return n;
-    if (typeof m.allowEmptyArrays < "u" && typeof m.allowEmptyArrays != "boolean")
+    if (typeof P.allowEmptyArrays < "u" && typeof P.allowEmptyArrays != "boolean")
       throw new TypeError("`allowEmptyArrays` option can only be `true` or `false`, when provided");
-    if (typeof m.decodeDotInKeys < "u" && typeof m.decodeDotInKeys != "boolean")
+    if (typeof P.decodeDotInKeys < "u" && typeof P.decodeDotInKeys != "boolean")
       throw new TypeError("`decodeDotInKeys` option can only be `true` or `false`, when provided");
-    if (m.decoder !== null && typeof m.decoder < "u" && typeof m.decoder != "function")
+    if (P.decoder !== null && typeof P.decoder < "u" && typeof P.decoder != "function")
       throw new TypeError("Decoder has to be a function.");
-    if (typeof m.charset < "u" && m.charset !== "utf-8" && m.charset !== "iso-8859-1")
+    if (typeof P.charset < "u" && P.charset !== "utf-8" && P.charset !== "iso-8859-1")
       throw new TypeError("The charset option must be either utf-8, iso-8859-1, or undefined");
-    var g = typeof m.charset > "u" ? n.charset : m.charset, O = typeof m.duplicates > "u" ? n.duplicates : m.duplicates;
+    var T = typeof P.charset > "u" ? n.charset : P.charset, O = typeof P.duplicates > "u" ? n.duplicates : P.duplicates;
     if (O !== "combine" && O !== "first" && O !== "last")
       throw new TypeError("The duplicates option must be either combine, first, or last");
-    var u = typeof m.allowDots > "u" ? m.decodeDotInKeys === !0 ? !0 : n.allowDots : !!m.allowDots;
+    var u = typeof P.allowDots > "u" ? P.decodeDotInKeys === !0 ? !0 : n.allowDots : !!P.allowDots;
     return {
       allowDots: u,
-      allowEmptyArrays: typeof m.allowEmptyArrays == "boolean" ? !!m.allowEmptyArrays : n.allowEmptyArrays,
-      allowPrototypes: typeof m.allowPrototypes == "boolean" ? m.allowPrototypes : n.allowPrototypes,
-      allowSparse: typeof m.allowSparse == "boolean" ? m.allowSparse : n.allowSparse,
-      arrayLimit: typeof m.arrayLimit == "number" ? m.arrayLimit : n.arrayLimit,
-      charset: g,
-      charsetSentinel: typeof m.charsetSentinel == "boolean" ? m.charsetSentinel : n.charsetSentinel,
-      comma: typeof m.comma == "boolean" ? m.comma : n.comma,
-      decodeDotInKeys: typeof m.decodeDotInKeys == "boolean" ? m.decodeDotInKeys : n.decodeDotInKeys,
-      decoder: typeof m.decoder == "function" ? m.decoder : n.decoder,
-      delimiter: typeof m.delimiter == "string" || t.isRegExp(m.delimiter) ? m.delimiter : n.delimiter,
+      allowEmptyArrays: typeof P.allowEmptyArrays == "boolean" ? !!P.allowEmptyArrays : n.allowEmptyArrays,
+      allowPrototypes: typeof P.allowPrototypes == "boolean" ? P.allowPrototypes : n.allowPrototypes,
+      allowSparse: typeof P.allowSparse == "boolean" ? P.allowSparse : n.allowSparse,
+      arrayLimit: typeof P.arrayLimit == "number" ? P.arrayLimit : n.arrayLimit,
+      charset: T,
+      charsetSentinel: typeof P.charsetSentinel == "boolean" ? P.charsetSentinel : n.charsetSentinel,
+      comma: typeof P.comma == "boolean" ? P.comma : n.comma,
+      decodeDotInKeys: typeof P.decodeDotInKeys == "boolean" ? P.decodeDotInKeys : n.decodeDotInKeys,
+      decoder: typeof P.decoder == "function" ? P.decoder : n.decoder,
+      delimiter: typeof P.delimiter == "string" || t.isRegExp(P.delimiter) ? P.delimiter : n.delimiter,
       // eslint-disable-next-line no-implicit-coercion, no-extra-parens
-      depth: typeof m.depth == "number" || m.depth === !1 ? +m.depth : n.depth,
+      depth: typeof P.depth == "number" || P.depth === !1 ? +P.depth : n.depth,
       duplicates: O,
-      ignoreQueryPrefix: m.ignoreQueryPrefix === !0,
-      interpretNumericEntities: typeof m.interpretNumericEntities == "boolean" ? m.interpretNumericEntities : n.interpretNumericEntities,
-      parameterLimit: typeof m.parameterLimit == "number" ? m.parameterLimit : n.parameterLimit,
-      parseArrays: m.parseArrays !== !1,
-      plainObjects: typeof m.plainObjects == "boolean" ? m.plainObjects : n.plainObjects,
-      strictDepth: typeof m.strictDepth == "boolean" ? !!m.strictDepth : n.strictDepth,
-      strictNullHandling: typeof m.strictNullHandling == "boolean" ? m.strictNullHandling : n.strictNullHandling
+      ignoreQueryPrefix: P.ignoreQueryPrefix === !0,
+      interpretNumericEntities: typeof P.interpretNumericEntities == "boolean" ? P.interpretNumericEntities : n.interpretNumericEntities,
+      parameterLimit: typeof P.parameterLimit == "number" ? P.parameterLimit : n.parameterLimit,
+      parseArrays: P.parseArrays !== !1,
+      plainObjects: typeof P.plainObjects == "boolean" ? P.plainObjects : n.plainObjects,
+      strictDepth: typeof P.strictDepth == "boolean" ? !!P.strictDepth : n.strictDepth,
+      strictNullHandling: typeof P.strictNullHandling == "boolean" ? P.strictNullHandling : n.strictNullHandling
     };
   };
-  return gn = function(T, m) {
-    var g = h(m);
-    if (T === "" || T === null || typeof T > "u")
-      return g.plainObjects ? { __proto__: null } : {};
-    for (var O = typeof T == "string" ? y(T, g) : T, u = g.plainObjects ? { __proto__: null } : {}, p = Object.keys(O), P = 0; P < p.length; ++P) {
-      var b = p[P], S = l(b, O[b], g, typeof T == "string");
-      u = t.merge(u, S, g);
+  return gn = function(g, P) {
+    var T = c(P);
+    if (g === "" || g === null || typeof g > "u")
+      return T.plainObjects ? { __proto__: null } : {};
+    for (var O = typeof g == "string" ? v(g, T) : g, u = T.plainObjects ? { __proto__: null } : {}, p = Object.keys(O), y = 0; y < p.length; ++y) {
+      var b = p[y], S = l(b, O[b], T, typeof g == "string");
+      u = t.merge(u, S, T);
     }
-    return g.allowSparse === !0 ? u : t.compact(u);
+    return T.allowSparse === !0 ? u : t.compact(u);
   }, gn;
 }
 var Tn, zo;
-function Xi() {
+function is() {
   if (zo) return Tn;
   zo = 1;
-  var t = /* @__PURE__ */ Ji(), e = /* @__PURE__ */ Qi(), r = /* @__PURE__ */ Kn();
+  var t = /* @__PURE__ */ os(), e = /* @__PURE__ */ as(), r = /* @__PURE__ */ Jn();
   return Tn = {
     formats: r,
     parse: e,
     stringify: t
   }, Tn;
 }
-var Zi = /* @__PURE__ */ Xi();
-const Yn = [
+var ss = /* @__PURE__ */ is();
+const Qn = [
   "apiKey",
   "idempotencyKey",
   "stripeAccount",
@@ -2628,11 +2753,11 @@ const Yn = [
   "stripeContext",
   "additionalHeaders"
 ];
-function Ka(t) {
-  return t && typeof t == "object" && Yn.some((e) => Object.prototype.hasOwnProperty.call(t, e));
+function Qa(t) {
+  return t && typeof t == "object" && Qn.some((e) => Object.prototype.hasOwnProperty.call(t, e));
 }
 function Rr(t, e) {
-  return Zi.stringify(t, {
+  return ss.stringify(t, {
     serializeDate: (r) => Math.floor(r.getTime() / 1e3).toString(),
     arrayFormat: e == "v2" ? "repeat" : "indices"
   }).replace(/%5B/g, "[").replace(/%5D/g, "]");
@@ -2652,19 +2777,19 @@ const Nn = /* @__PURE__ */ (() => {
     ));
   };
 })();
-function es(t) {
+function ls(t) {
   const e = t.match(/\{\w+\}/g);
   return e ? e.map((r) => r.replace(/[{}]/g, "")) : [];
 }
-function Jn(t) {
+function Xn(t) {
   if (!Array.isArray(t) || !t[0] || typeof t[0] != "object")
     return {};
-  if (!Ka(t[0]))
+  if (!Qa(t[0]))
     return t.shift();
-  const e = Object.keys(t[0]), r = e.filter((n) => Yn.includes(n));
+  const e = Object.keys(t[0]), r = e.filter((n) => Qn.includes(n));
   return r.length > 0 && r.length !== e.length && wr(`Options found in arguments (${r.join(", ")}). Did you mean to pass an options object? See https://github.com/stripe/stripe-node/wiki/Passing-Options.`), {};
 }
-function Ya(t) {
+function Xa(t) {
   const e = {
     host: null,
     headers: {},
@@ -2673,10 +2798,10 @@ function Ya(t) {
   if (t.length > 0) {
     const r = t[t.length - 1];
     if (typeof r == "string")
-      e.authenticator = Un(t.pop());
-    else if (Ka(r)) {
-      const n = Object.assign({}, t.pop()), a = Object.keys(n).filter((s) => !Yn.includes(s));
-      if (a.length && wr(`Invalid options found (${a.join(", ")}); ignoring.`), n.apiKey && (e.authenticator = Un(n.apiKey)), n.idempotencyKey && (e.headers["Idempotency-Key"] = n.idempotencyKey), n.stripeAccount && (e.headers["Stripe-Account"] = n.stripeAccount), n.stripeContext) {
+      e.authenticator = Ln(t.pop());
+    else if (Qa(r)) {
+      const n = Object.assign({}, t.pop()), a = Object.keys(n).filter((s) => !Qn.includes(s));
+      if (a.length && wr(`Invalid options found (${a.join(", ")}); ignoring.`), n.apiKey && (e.authenticator = Ln(n.apiKey)), n.idempotencyKey && (e.headers["Idempotency-Key"] = n.idempotencyKey), n.stripeAccount && (e.headers["Stripe-Account"] = n.stripeAccount), n.stripeContext) {
         if (e.headers["Stripe-Account"])
           throw new Error("Can't specify both stripeAccount and stripeContext.");
         e.headers["Stripe-Context"] = n.stripeContext;
@@ -2693,7 +2818,7 @@ function Ya(t) {
   }
   return e;
 }
-function ts(t) {
+function us(t) {
   const e = this, r = Object.prototype.hasOwnProperty.call(t, "constructor") ? t.constructor : function(...n) {
     e.apply(this, n);
   };
@@ -2704,13 +2829,13 @@ function _n(t) {
     throw new Error("Argument must be an object");
   return Object.keys(t).reduce((e, r) => (t[r] != null && (e[r] = t[r]), e), {});
 }
-function rs(t) {
-  return t && typeof t == "object" ? Object.keys(t).reduce((e, r) => (e[ns(r)] = t[r], e), {}) : t;
+function cs(t) {
+  return t && typeof t == "object" ? Object.keys(t).reduce((e, r) => (e[ds(r)] = t[r], e), {}) : t;
 }
-function ns(t) {
+function ds(t) {
   return t.split("-").map((e) => e.charAt(0).toUpperCase() + e.substr(1).toLowerCase()).join("-");
 }
-function Qn(t, e) {
+function Zn(t, e) {
   return e ? t.then((r) => {
     setTimeout(() => {
       e(null, r);
@@ -2721,26 +2846,26 @@ function Qn(t, e) {
     }, 0);
   }) : t;
 }
-function os(t) {
+function hs(t) {
   return t === "OAuth" ? "oauth" : t[0].toLowerCase() + t.substring(1);
 }
 function wr(t) {
   return typeof process.emitWarning != "function" ? console.warn(`Stripe: ${t}`) : process.emitWarning(t, "Stripe");
 }
-function as(t) {
+function fs(t) {
   const e = typeof t;
   return (e === "function" || e === "object") && !!t;
 }
-function is(t) {
+function ps(t) {
   const e = {}, r = (n, a) => {
-    Object.entries(n).forEach(([s, c]) => {
+    Object.entries(n).forEach(([s, d]) => {
       const f = a ? `${a}[${s}]` : s;
-      if (as(c)) {
-        if (!(c instanceof Uint8Array) && !Object.prototype.hasOwnProperty.call(c, "data"))
-          return r(c, f);
-        e[f] = c;
+      if (fs(d)) {
+        if (!(d instanceof Uint8Array) && !Object.prototype.hasOwnProperty.call(d, "data"))
+          return r(d, f);
+        e[f] = d;
       } else
-        e[f] = String(c);
+        e[f] = String(d);
     });
   };
   return r(t, null), e;
@@ -2753,26 +2878,26 @@ function En(t, e, r) {
   }
   return e;
 }
-function ss() {
+function ms() {
   return typeof process > "u" ? {} : {
     lang_version: process.version,
     platform: process.platform
   };
 }
-function Un(t) {
+function Ln(t) {
   const e = (r) => (r.headers.Authorization = "Bearer " + t, Promise.resolve());
   return e._apiKey = t, e;
 }
-function ls(t, e) {
+function vs(t, e) {
   return this[t] instanceof Date ? Math.floor(this[t].getTime() / 1e3).toString() : e;
 }
-function us(t) {
-  return JSON.stringify(t, ls);
+function ys(t) {
+  return JSON.stringify(t, vs);
 }
-function Xn(t) {
+function eo(t) {
   return t && t.startsWith("/v2") ? "v2" : "v1";
 }
-const cs = 60;
+const Ps = 60;
 class Yt {
   constructor(e, r) {
     this._stripe = e, this._maxBufferedRequestMetric = r;
@@ -2810,10 +2935,10 @@ class Yt {
    */
   _streamingResponseHandler(e, r, n) {
     return (a) => {
-      const s = a.getHeaders(), c = () => {
-        const y = this._makeResponseEvent(e, a.getStatusCode(), s);
-        this._stripe._emitter.emit("response", y), this._recordRequestMetrics(this._getRequestId(s), y.elapsed, r);
-      }, f = a.toStream(c);
+      const s = a.getHeaders(), d = () => {
+        const v = this._makeResponseEvent(e, a.getStatusCode(), s);
+        this._stripe._emitter.emit("response", v), this._recordRequestMetrics(this._getRequestId(s), v.elapsed, r);
+      }, f = a.toStream(d);
       return this._addHeadersDirectlyToObject(f, s), n(null, f);
     };
   }
@@ -2824,29 +2949,29 @@ class Yt {
    */
   _jsonResponseHandler(e, r, n, a) {
     return (s) => {
-      const c = s.getHeaders(), f = this._getRequestId(c), y = s.getStatusCode(), _ = this._makeResponseEvent(e, y, c);
+      const d = s.getHeaders(), f = this._getRequestId(d), v = s.getStatusCode(), _ = this._makeResponseEvent(e, v, d);
       this._stripe._emitter.emit("response", _), s.toJSON().then((l) => {
         if (l.error) {
-          let h;
+          let c;
           throw typeof l.error == "string" && (l.error = {
             type: l.error,
             message: l.error_description
-          }), l.error.headers = c, l.error.statusCode = y, l.error.requestId = f, y === 401 ? h = new Bn(l.error) : y === 403 ? h = new ka(l.error) : y === 429 ? h = new Wn(l.error) : r === "v2" ? h = Ga(l.error) : h = xr(l.error), h;
+          }), l.error.headers = d, l.error.statusCode = v, l.error.requestId = f, v === 401 ? c = new zn(l.error) : v === 403 ? c = new Na(l.error) : v === 429 ? c = new Vn(l.error) : r === "v2" ? c = ka(l.error) : c = xr(l.error), c;
         }
         return l;
       }, (l) => {
-        throw new Hn({
+        throw new Wn({
           message: "Invalid JSON received from the Stripe API",
           exception: l,
-          requestId: c["request-id"]
+          requestId: d["request-id"]
         });
       }).then((l) => {
         this._recordRequestMetrics(f, _.elapsed, n);
-        const h = s.getRawResponse();
-        this._addHeadersDirectlyToObject(h, c), Object.defineProperty(l, "lastResponse", {
+        const c = s.getRawResponse();
+        this._addHeadersDirectlyToObject(c, d), Object.defineProperty(l, "lastResponse", {
           enumerable: !1,
           writable: !1,
-          value: h
+          value: c
         }), a(null, l);
       }, (l) => a(l, null));
     };
@@ -2861,7 +2986,7 @@ class Yt {
   _getSleepTimeInMS(e, r = null) {
     const n = this._stripe.getInitialNetworkRetryDelay(), a = this._stripe.getMaxNetworkRetryDelay();
     let s = Math.min(n * Math.pow(2, e - 1), a);
-    return s *= 0.5 * (1 + Math.random()), s = Math.max(n, s), Number.isInteger(r) && r <= cs && (s = Math.max(s, r)), s * 1e3;
+    return s *= 0.5 * (1 + Math.random()), s = Math.max(n, s), Number.isInteger(r) && r <= Ps && (s = Math.max(s, r)), s * 1e3;
   }
   // Max retries can be set on a per request basis. Favor those over the global setting
   _getMaxNetworkRetries(e = {}) {
@@ -2876,22 +3001,22 @@ class Yt {
       return s();
     return null;
   }
-  _makeHeaders({ contentType: e, contentLength: r, apiVersion: n, clientUserAgent: a, method: s, userSuppliedHeaders: c, userSuppliedSettings: f, stripeAccount: y, stripeContext: _, apiMode: l }) {
-    const h = {
+  _makeHeaders({ contentType: e, contentLength: r, apiVersion: n, clientUserAgent: a, method: s, userSuppliedHeaders: d, userSuppliedSettings: f, stripeAccount: v, stripeContext: _, apiMode: l }) {
+    const c = {
       Accept: "application/json",
       "Content-Type": e,
       "User-Agent": this._getUserAgentString(l),
       "X-Stripe-Client-User-Agent": a,
       "X-Stripe-Client-Telemetry": this._getTelemetryHeader(),
       "Stripe-Version": n,
-      "Stripe-Account": y,
+      "Stripe-Account": v,
       "Stripe-Context": _,
       "Idempotency-Key": this._defaultIdempotencyKey(s, f, l)
-    }, T = s == "POST" || s == "PUT" || s == "PATCH";
-    return (T || r) && (T || wr(`${s} method had non-zero contentLength but no payload is expected for this verb`), h["Content-Length"] = r), Object.assign(
-      _n(h),
+    }, g = s == "POST" || s == "PUT" || s == "PATCH";
+    return (g || r) && (g || wr(`${s} method had non-zero contentLength but no payload is expected for this verb`), c["Content-Length"] = r), Object.assign(
+      _n(c),
       // If the user supplied, say 'idempotency-key', override instead of appending by ensuring caps are the same.
-      rs(c)
+      cs(d)
     );
   }
   _getUserAgentString(e) {
@@ -2919,119 +3044,119 @@ class Yt {
       }
   }
   _rawRequest(e, r, n, a) {
-    return new Promise((c, f) => {
-      let y;
+    return new Promise((d, f) => {
+      let v;
       try {
-        const m = e.toUpperCase();
-        if (m !== "POST" && n && Object.keys(n).length !== 0)
+        const P = e.toUpperCase();
+        if (P !== "POST" && n && Object.keys(n).length !== 0)
           throw new Error("rawRequest only supports params on POST requests. Please pass null and add your parameters to path.");
-        const g = [].slice.call([n, a]), O = Jn(g), u = Object.assign({}, O), p = Ya(g), P = p.headers, b = p.authenticator;
-        y = {
-          requestMethod: m,
+        const T = [].slice.call([n, a]), O = Xn(T), u = Object.assign({}, O), p = Xa(T), y = p.headers, b = p.authenticator;
+        v = {
+          requestMethod: P,
           requestPath: r,
           bodyData: u,
           queryData: {},
           authenticator: b,
-          headers: P,
+          headers: y,
           host: null,
           streaming: !1,
           settings: {},
           usage: ["raw_request"]
         };
-      } catch (m) {
-        f(m);
+      } catch (P) {
+        f(P);
         return;
       }
-      function _(m, g) {
-        m ? f(m) : c(g);
+      function _(P, T) {
+        P ? f(P) : d(T);
       }
-      const { headers: l, settings: h } = y, T = y.authenticator;
-      this._request(y.requestMethod, y.host, r, y.bodyData, T, { headers: l, settings: h, streaming: y.streaming }, y.usage, _);
+      const { headers: l, settings: c } = v, g = v.authenticator;
+      this._request(v.requestMethod, v.host, r, v.bodyData, g, { headers: l, settings: c, streaming: v.streaming }, v.usage, _);
     });
   }
-  _request(e, r, n, a, s, c, f = [], y, _ = null) {
+  _request(e, r, n, a, s, d, f = [], v, _ = null) {
     var l;
-    let h;
+    let c;
     s = (l = s ?? this._stripe._authenticator) !== null && l !== void 0 ? l : null;
-    const T = Xn(n), m = (u, p, P, b, S) => setTimeout(u, this._getSleepTimeInMS(b, S), p, P, b + 1), g = (u, p, P) => {
-      const b = c.settings && c.settings.timeout && Number.isInteger(c.settings.timeout) && c.settings.timeout >= 0 ? c.settings.timeout : this._stripe.getApiField("timeout"), S = {
+    const g = eo(n), P = (u, p, y, b, S) => setTimeout(u, this._getSleepTimeInMS(b, S), p, y, b + 1), T = (u, p, y) => {
+      const b = d.settings && d.settings.timeout && Number.isInteger(d.settings.timeout) && d.settings.timeout >= 0 ? d.settings.timeout : this._stripe.getApiField("timeout"), S = {
         host: r || this._stripe.getApiField("host"),
         port: this._stripe.getApiField("port"),
         path: n,
         method: e,
         headers: Object.assign({}, p),
-        body: h,
+        body: c,
         protocol: this._stripe.getApiField("protocol")
       };
       s(S).then(() => {
-        const A = this._stripe.getApiField("httpClient").makeRequest(S.host, S.port, S.path, S.method, S.headers, S.body, S.protocol, b), w = Date.now(), I = _n({
+        const C = this._stripe.getApiField("httpClient").makeRequest(S.host, S.port, S.path, S.method, S.headers, S.body, S.protocol, b), w = Date.now(), $ = _n({
           api_version: u,
           account: p["Stripe-Account"],
           idempotency_key: p["Idempotency-Key"],
           method: e,
           path: n,
           request_start_time: w
-        }), R = P || 0, G = this._getMaxNetworkRetries(c.settings || {});
-        this._stripe._emitter.emit("request", I), A.then((C) => Yt._shouldRetry(C, R, G) ? m(
-          g,
+        }), R = y || 0, G = this._getMaxNetworkRetries(d.settings || {});
+        this._stripe._emitter.emit("request", $), C.then((A) => Yt._shouldRetry(A, R, G) ? P(
+          T,
           u,
           p,
           R,
           // @ts-ignore
-          C.getHeaders()["retry-after"]
-        ) : c.streaming && C.getStatusCode() < 400 ? this._streamingResponseHandler(I, f, y)(C) : this._jsonResponseHandler(I, T, f, y)(C)).catch((C) => {
-          if (Yt._shouldRetry(null, R, G, C))
-            return m(g, u, p, R, null);
+          A.getHeaders()["retry-after"]
+        ) : d.streaming && A.getStatusCode() < 400 ? this._streamingResponseHandler($, f, v)(A) : this._jsonResponseHandler($, g, f, v)(A)).catch((A) => {
+          if (Yt._shouldRetry(null, R, G, A))
+            return P(T, u, p, R, null);
           {
-            const L = C.code && C.code === be.TIMEOUT_ERROR_CODE;
-            return y(new qa({
-              message: L ? `Request aborted due to timeout being reached (${b}ms)` : Yt._generateConnectionErrorMessage(R),
+            const U = A.code && A.code === be.TIMEOUT_ERROR_CODE;
+            return v(new La({
+              message: U ? `Request aborted due to timeout being reached (${b}ms)` : Yt._generateConnectionErrorMessage(R),
               // @ts-ignore
-              detail: C
+              detail: A
             }));
           }
         });
-      }).catch((A) => {
+      }).catch((C) => {
         throw new he({
           message: "Unable to authenticate the request",
-          exception: A
+          exception: C
         });
       });
     }, O = (u, p) => {
       if (u)
-        return y(u);
-      h = p, this._stripe.getClientUserAgent((P) => {
+        return v(u);
+      c = p, this._stripe.getClientUserAgent((y) => {
         const b = this._stripe.getApiField("version"), S = this._makeHeaders({
-          contentType: T == "v2" ? "application/json" : "application/x-www-form-urlencoded",
-          contentLength: h.length,
+          contentType: g == "v2" ? "application/json" : "application/x-www-form-urlencoded",
+          contentLength: c.length,
           apiVersion: b,
-          clientUserAgent: P,
+          clientUserAgent: y,
           method: e,
-          userSuppliedHeaders: c.headers,
-          userSuppliedSettings: c.settings,
-          stripeAccount: T == "v2" ? null : this._stripe.getApiField("stripeAccount"),
-          stripeContext: T == "v2" ? this._stripe.getApiField("stripeContext") : null,
-          apiMode: T
+          userSuppliedHeaders: d.headers,
+          userSuppliedSettings: d.settings,
+          stripeAccount: g == "v2" ? null : this._stripe.getApiField("stripeAccount"),
+          stripeContext: g == "v2" ? this._stripe.getApiField("stripeContext") : null,
+          apiMode: g
         });
-        g(b, S, 0);
+        T(b, S, 0);
       });
     };
     if (_)
-      _(e, a, c.headers, O);
+      _(e, a, d.headers, O);
     else {
       let u;
-      T == "v2" ? u = a ? us(a) : "" : u = Rr(a || {}, T), O(null, u);
+      g == "v2" ? u = a ? ys(a) : "" : u = Rr(a || {}, g), O(null, u);
     }
   }
 }
-class Ja {
+class Za {
   constructor(e, r, n, a) {
     this.index = 0, this.pagePromise = e, this.promiseCache = { currentPromise: null }, this.requestArgs = r, this.spec = n, this.stripeResource = a;
   }
   async iterate(e) {
     if (!(e && e.data && typeof e.data.length == "number"))
       throw Error("Unexpected: Stripe API response does not have a well-formed `data` array.");
-    const r = Qa(this.requestArgs);
+    const r = ei(this.requestArgs);
     if (this.index < e.data.length) {
       const n = r ? e.data.length - 1 - this.index : this.index, a = e.data[n];
       return this.index += 1, { value: a, done: !1 };
@@ -3059,15 +3184,15 @@ class Ja {
     return this.promiseCache.currentPromise = e, e;
   }
 }
-class ds extends Ja {
+class gs extends Za {
   getNextPage(e) {
-    const r = Qa(this.requestArgs), n = Ps(e, r);
+    const r = ei(this.requestArgs), n = ws(e, r);
     return this.stripeResource._makeRequest(this.requestArgs, this.spec, {
       [r ? "ending_before" : "starting_after"]: n
     });
   }
 }
-class hs extends Ja {
+class Ts extends Za {
   getNextPage(e) {
     if (!e.next_page)
       throw Error("Unexpected: Stripe API response does not have a well-formed `next_page` field, but `has_more` was true.");
@@ -3076,7 +3201,7 @@ class hs extends Ja {
     });
   }
 }
-class fs {
+class _s {
   constructor(e, r, n, a) {
     this.currentPageIterator = (async () => (await e).data[Symbol.iterator]())(), this.nextPageUrl = (async () => (await e).next_page_url || null)(), this.requestArgs = r, this.spec = n, this.stripeResource = a;
   }
@@ -3101,24 +3226,24 @@ class fs {
     return r.done ? { done: !0, value: void 0 } : { done: !1, value: r.value };
   }
 }
-const ps = (t, e, r, n) => {
-  const a = Xn(r.fullPath || r.path);
-  return a !== "v2" && r.methodType === "search" ? Sn(new hs(n, e, r, t)) : a !== "v2" && r.methodType === "list" ? Sn(new ds(n, e, r, t)) : a === "v2" && r.methodType === "list" ? Sn(new fs(n, e, r, t)) : null;
+const Es = (t, e, r, n) => {
+  const a = eo(r.fullPath || r.path);
+  return a !== "v2" && r.methodType === "search" ? Sn(new Ts(n, e, r, t)) : a !== "v2" && r.methodType === "list" ? Sn(new gs(n, e, r, t)) : a === "v2" && r.methodType === "list" ? Sn(new _s(n, e, r, t)) : null;
 }, Sn = (t) => {
-  const e = gs((...a) => t.next(...a)), r = Ts(e), n = {
+  const e = xs((...a) => t.next(...a)), r = Cs(e), n = {
     autoPagingEach: e,
     autoPagingToArray: r,
     // Async iterator functions:
     next: () => t.next(),
     return: () => ({}),
-    [ms()]: () => n
+    [Ss()]: () => n
   };
   return n;
 };
-function ms() {
+function Ss() {
   return typeof Symbol < "u" && Symbol.asyncIterator ? Symbol.asyncIterator : "@@asyncIterator";
 }
-function vs(t) {
+function bs(t) {
   if (t.length < 2)
     return null;
   const e = t[1];
@@ -3126,7 +3251,7 @@ function vs(t) {
     throw Error(`The second argument to autoPagingEach, if present, must be a callback function; received ${typeof e}`);
   return e;
 }
-function ys(t) {
+function Os(t) {
   if (t.length === 0)
     return;
   const e = t[0];
@@ -3141,75 +3266,75 @@ function ys(t) {
     a(s);
   };
 }
-function Ps(t, e) {
+function ws(t, e) {
   const r = e ? 0 : t.data.length - 1, n = t.data[r], a = n && n.id;
   if (!a)
     throw Error("Unexpected: No `id` found on the last item while auto-paging a list.");
   return a;
 }
-function gs(t) {
+function xs(t) {
   return function() {
-    const r = [].slice.call(arguments), n = ys(r), a = vs(r);
+    const r = [].slice.call(arguments), n = Os(r), a = bs(r);
     if (r.length > 2)
       throw Error(`autoPagingEach takes up to two arguments; received ${r}`);
-    const s = _s(
+    const s = As(
       t,
       // @ts-ignore we might need a null check
       n
     );
-    return Qn(s, a);
+    return Zn(s, a);
   };
 }
-function Ts(t) {
+function Cs(t) {
   return function(r, n) {
     const a = r && r.limit;
     if (!a)
       throw Error("You must pass a `limit` option to autoPagingToArray, e.g., `autoPagingToArray({limit: 1000});`.");
     if (a > 1e4)
       throw Error("You cannot specify a limit of more than 10,000 items to fetch in `autoPagingToArray`; use `autoPagingEach` to iterate through longer lists.");
-    const s = new Promise((c, f) => {
-      const y = [];
+    const s = new Promise((d, f) => {
+      const v = [];
       t((_) => {
-        if (y.push(_), y.length >= a)
+        if (v.push(_), v.length >= a)
           return !1;
       }).then(() => {
-        c(y);
+        d(v);
       }).catch(f);
     });
-    return Qn(s, n);
+    return Zn(s, n);
   };
 }
-function _s(t, e) {
+function As(t, e) {
   return new Promise((r, n) => {
     function a(s) {
       if (s.done) {
         r();
         return;
       }
-      const c = s.value;
+      const d = s.value;
       return new Promise((f) => {
-        e(c, f);
+        e(d, f);
       }).then((f) => f === !1 ? a({ done: !0, value: void 0 }) : t().then(a));
     }
     t().then(a).catch(n);
   });
 }
-function Qa(t) {
+function ei(t) {
   const e = [].slice.call(t);
-  return !!Jn(e).ending_before;
+  return !!Xn(e).ending_before;
 }
-function Es(t) {
+function Rs(t) {
   if (t.path !== void 0 && t.fullPath !== void 0)
     throw new Error(`Method spec specified both a 'path' (${t.path}) and a 'fullPath' (${t.fullPath}).`);
   return function(...e) {
     const r = typeof e[e.length - 1] == "function" && e.pop();
-    t.urlParams = es(t.fullPath || this.createResourcePathWithSymbols(t.path || ""));
-    const n = Qn(this._makeRequest(e, t, {}), r);
-    return Object.assign(n, ps(this, e, t, n)), n;
+    t.urlParams = ls(t.fullPath || this.createResourcePathWithSymbols(t.path || ""));
+    const n = Zn(this._makeRequest(e, t, {}), r);
+    return Object.assign(n, Es(this, e, t, n)), n;
   };
 }
-o.extend = ts;
-o.method = Es;
+o.extend = us;
+o.method = Rs;
 o.MAX_BUFFERED_REQUEST_METRICS = 100;
 function o(t, e) {
   if (this._stripe = t, e)
@@ -3256,22 +3381,22 @@ o.prototype = {
   },
   _getRequestOpts(t, e, r) {
     var n;
-    const a = (e.method || "GET").toUpperCase(), s = e.usage || [], c = e.urlParams || [], f = e.encode || ((I) => I), y = !!e.fullPath, _ = Nn(y ? e.fullPath : e.path || ""), l = y ? e.fullPath : this.createResourcePathWithSymbols(e.path), h = [].slice.call(t), T = c.reduce((I, R) => {
-      const G = h.shift();
+    const a = (e.method || "GET").toUpperCase(), s = e.usage || [], d = e.urlParams || [], f = e.encode || (($) => $), v = !!e.fullPath, _ = Nn(v ? e.fullPath : e.path || ""), l = v ? e.fullPath : this.createResourcePathWithSymbols(e.path), c = [].slice.call(t), g = d.reduce(($, R) => {
+      const G = c.shift();
       if (typeof G != "string")
         throw new Error(`Stripe: Argument "${R}" must be a string, but got: ${G} (on API request to \`${a} ${l}\`)`);
-      return I[R] = G, I;
-    }, {}), m = Jn(h), g = f(Object.assign({}, m, r)), O = Ya(h), u = O.host || e.host, p = !!e.streaming;
-    if (h.filter((I) => I != null).length)
-      throw new Error(`Stripe: Unknown arguments (${h}). Did you mean to pass an options object? See https://github.com/stripe/stripe-node/wiki/Passing-Options. (on API request to ${a} \`${l}\`)`);
-    const P = y ? _(T) : this.createFullPath(_, T), b = Object.assign(O.headers, e.headers);
-    e.validator && e.validator(g, { headers: b });
+      return $[R] = G, $;
+    }, {}), P = Xn(c), T = f(Object.assign({}, P, r)), O = Xa(c), u = O.host || e.host, p = !!e.streaming;
+    if (c.filter(($) => $ != null).length)
+      throw new Error(`Stripe: Unknown arguments (${c}). Did you mean to pass an options object? See https://github.com/stripe/stripe-node/wiki/Passing-Options. (on API request to ${a} \`${l}\`)`);
+    const y = v ? _(g) : this.createFullPath(_, g), b = Object.assign(O.headers, e.headers);
+    e.validator && e.validator(T, { headers: b });
     const S = e.method === "GET" || e.method === "DELETE";
     return {
       requestMethod: a,
-      requestPath: P,
-      bodyData: S ? null : g,
-      queryData: S ? g : {},
+      requestPath: y,
+      bodyData: S ? null : T,
+      queryData: S ? T : {},
       authenticator: (n = O.authenticator) !== null && n !== void 0 ? n : null,
       headers: b,
       host: u ?? null,
@@ -3283,26 +3408,26 @@ o.prototype = {
   _makeRequest(t, e, r) {
     return new Promise((n, a) => {
       var s;
-      let c;
+      let d;
       try {
-        c = this._getRequestOpts(t, e, r);
-      } catch (T) {
-        a(T);
+        d = this._getRequestOpts(t, e, r);
+      } catch (g) {
+        a(g);
         return;
       }
-      function f(T, m) {
-        T ? a(T) : n(e.transformResponseData ? e.transformResponseData(m) : m);
+      function f(g, P) {
+        g ? a(g) : n(e.transformResponseData ? e.transformResponseData(P) : P);
       }
-      const y = Object.keys(c.queryData).length === 0, _ = [
-        c.requestPath,
-        y ? "" : "?",
-        Rr(c.queryData, Xn(c.requestPath))
-      ].join(""), { headers: l, settings: h } = c;
-      this._stripe._requestSender._request(c.requestMethod, c.host, _, c.bodyData, c.authenticator, {
+      const v = Object.keys(d.queryData).length === 0, _ = [
+        d.requestPath,
+        v ? "" : "?",
+        Rr(d.queryData, eo(d.requestPath))
+      ].join(""), { headers: l, settings: c } = d;
+      this._stripe._requestSender._request(d.requestMethod, d.host, _, d.bodyData, d.authenticator, {
         headers: l,
-        settings: h,
-        streaming: c.streaming
-      }, c.usage, f, (s = this.requestDataProcessor) === null || s === void 0 ? void 0 : s.bind(this));
+        settings: c,
+        streaming: d.streaming
+      }, d.usage, f, (s = this.requestDataProcessor) === null || s === void 0 ? void 0 : s.bind(this));
     });
   }
 };
@@ -3311,16 +3436,16 @@ function Vo(t) {
     DEFAULT_TOLERANCE: 300,
     // @ts-ignore
     signature: null,
-    constructEvent(l, h, T, m, g, O) {
+    constructEvent(l, c, g, P, T, O) {
       try {
-        this.signature.verifyHeader(l, h, T, m || e.DEFAULT_TOLERANCE, g, O);
+        this.signature.verifyHeader(l, c, g, P || e.DEFAULT_TOLERANCE, T, O);
       } catch (p) {
-        throw p instanceof Ia && (p.message += "\nUse `await constructEventAsync(...)` instead of `constructEvent(...)`"), p;
+        throw p instanceof qa && (p.message += "\nUse `await constructEventAsync(...)` instead of `constructEvent(...)`"), p;
       }
       return l instanceof Uint8Array ? JSON.parse(new TextDecoder("utf8").decode(l)) : JSON.parse(l);
     },
-    async constructEventAsync(l, h, T, m, g, O) {
-      return await this.signature.verifyHeaderAsync(l, h, T, m || e.DEFAULT_TOLERANCE, g, O), l instanceof Uint8Array ? JSON.parse(new TextDecoder("utf8").decode(l)) : JSON.parse(l);
+    async constructEventAsync(l, c, g, P, T, O) {
+      return await this.signature.verifyHeaderAsync(l, c, g, P || e.DEFAULT_TOLERANCE, T, O), l instanceof Uint8Array ? JSON.parse(new TextDecoder("utf8").decode(l)) : JSON.parse(l);
     },
     /**
      * Generates a header to be used for webhook mocking
@@ -3334,44 +3459,44 @@ function Vo(t) {
      * @property {CryptoProvider} cryptoProvider - Crypto provider to use for computing the signature if none was provided. Defaults to NodeCryptoProvider.
      */
     generateTestHeaderString: function(l) {
-      const h = _(l), T = h.signature || h.cryptoProvider.computeHMACSignature(h.payloadString, h.secret);
-      return h.generateHeaderString(T);
+      const c = _(l), g = c.signature || c.cryptoProvider.computeHMACSignature(c.payloadString, c.secret);
+      return c.generateHeaderString(g);
     },
     generateTestHeaderStringAsync: async function(l) {
-      const h = _(l), T = h.signature || await h.cryptoProvider.computeHMACSignatureAsync(h.payloadString, h.secret);
-      return h.generateHeaderString(T);
+      const c = _(l), g = c.signature || await c.cryptoProvider.computeHMACSignatureAsync(c.payloadString, c.secret);
+      return c.generateHeaderString(g);
     }
   }, r = {
     EXPECTED_SCHEME: "v1",
-    verifyHeader(l, h, T, m, g, O) {
-      const { decodedHeader: u, decodedPayload: p, details: P, suspectPayloadType: b } = a(l, h, this.EXPECTED_SCHEME), S = /\s/.test(T);
-      g = g || y();
-      const A = g.computeHMACSignature(n(p, P), T);
-      return s(p, u, P, A, m, b, S, O), !0;
+    verifyHeader(l, c, g, P, T, O) {
+      const { decodedHeader: u, decodedPayload: p, details: y, suspectPayloadType: b } = a(l, c, this.EXPECTED_SCHEME), S = /\s/.test(g);
+      T = T || v();
+      const C = T.computeHMACSignature(n(p, y), g);
+      return s(p, u, y, C, P, b, S, O), !0;
     },
-    async verifyHeaderAsync(l, h, T, m, g, O) {
-      const { decodedHeader: u, decodedPayload: p, details: P, suspectPayloadType: b } = a(l, h, this.EXPECTED_SCHEME), S = /\s/.test(T);
-      g = g || y();
-      const A = await g.computeHMACSignatureAsync(n(p, P), T);
-      return s(p, u, P, A, m, b, S, O);
+    async verifyHeaderAsync(l, c, g, P, T, O) {
+      const { decodedHeader: u, decodedPayload: p, details: y, suspectPayloadType: b } = a(l, c, this.EXPECTED_SCHEME), S = /\s/.test(g);
+      T = T || v();
+      const C = await T.computeHMACSignatureAsync(n(p, y), g);
+      return s(p, u, y, C, P, b, S, O);
     }
   };
-  function n(l, h) {
-    return `${h.timestamp}.${l}`;
+  function n(l, c) {
+    return `${c.timestamp}.${l}`;
   }
-  function a(l, h, T) {
+  function a(l, c, g) {
     if (!l)
-      throw new ze(h, l, {
+      throw new ze(c, l, {
         message: "No webhook payload was provided."
       });
-    const m = typeof l != "string" && !(l instanceof Uint8Array), g = new TextDecoder("utf8"), O = l instanceof Uint8Array ? g.decode(l) : l;
-    if (Array.isArray(h))
+    const P = typeof l != "string" && !(l instanceof Uint8Array), T = new TextDecoder("utf8"), O = l instanceof Uint8Array ? T.decode(l) : l;
+    if (Array.isArray(c))
       throw new Error("Unexpected: An array was passed as a header, which should not be possible for the stripe-signature header.");
-    if (h == null || h == "")
-      throw new ze(h, l, {
+    if (c == null || c == "")
+      throw new ze(c, l, {
         message: "No stripe-signature header value was provided."
       });
-    const u = h instanceof Uint8Array ? g.decode(h) : h, p = c(u, T);
+    const u = c instanceof Uint8Array ? T.decode(c) : c, p = d(u, g);
     if (!p || p.timestamp === -1)
       throw new ze(u, O, {
         message: "Unable to extract timestamp and signatures from header"
@@ -3384,44 +3509,44 @@ function Vo(t) {
       decodedPayload: O,
       decodedHeader: u,
       details: p,
-      suspectPayloadType: m
+      suspectPayloadType: P
     };
   }
-  function s(l, h, T, m, g, O, u, p) {
-    const P = !!T.signatures.filter(t.secureCompare.bind(t, m)).length, b = `
+  function s(l, c, g, P, T, O, u, p) {
+    const y = !!g.signatures.filter(t.secureCompare.bind(t, P)).length, b = `
 Learn more about webhook signing and explore webhook integration examples for various frameworks at https://docs.stripe.com/webhooks/signature`, S = u ? `
 
 Note: The provided signing secret contains whitespace. This often indicates an extra newline or space is in the value` : "";
-    if (!P)
-      throw O ? new ze(h, l, {
+    if (!y)
+      throw O ? new ze(c, l, {
         message: `Webhook payload must be provided as a string or a Buffer (https://nodejs.org/api/buffer.html) instance representing the _raw_ request body.Payload was provided as a parsed JavaScript object instead. 
 Signature verification is impossible without access to the original signed material. 
 ` + b + `
 ` + S
-      }) : new ze(h, l, {
+      }) : new ze(c, l, {
         message: `No signatures found matching the expected signature for payload. Are you passing the raw request body you received from Stripe? 
  If a webhook request is being forwarded by a third-party tool, ensure that the exact request body, including JSON formatting and new line style, is preserved.
 ` + b + `
 ` + S
       });
-    const A = Math.floor((typeof p == "number" ? p : Date.now()) / 1e3) - T.timestamp;
-    if (g > 0 && A > g)
-      throw new ze(h, l, {
+    const C = Math.floor((typeof p == "number" ? p : Date.now()) / 1e3) - g.timestamp;
+    if (T > 0 && C > T)
+      throw new ze(c, l, {
         message: "Timestamp outside the tolerance zone"
       });
     return !0;
   }
-  function c(l, h) {
-    return typeof l != "string" ? null : l.split(",").reduce((T, m) => {
-      const g = m.split("=");
-      return g[0] === "t" && (T.timestamp = parseInt(g[1], 10)), g[0] === h && T.signatures.push(g[1]), T;
+  function d(l, c) {
+    return typeof l != "string" ? null : l.split(",").reduce((g, P) => {
+      const T = P.split("=");
+      return T[0] === "t" && (g.timestamp = parseInt(T[1], 10)), T[0] === c && g.signatures.push(T[1]), g;
     }, {
       timestamp: -1,
       signatures: []
     });
   }
   let f = null;
-  function y() {
+  function v() {
     return f || (f = t.createDefaultCryptoProvider()), f;
   }
   function _(l) {
@@ -3429,19 +3554,19 @@ Signature verification is impossible without access to the original signed mater
       throw new he({
         message: "Options are required"
       });
-    const h = Math.floor(l.timestamp) || Math.floor(Date.now() / 1e3), T = l.scheme || r.EXPECTED_SCHEME, m = l.cryptoProvider || y(), g = `${h}.${l.payload}`, O = (u) => `t=${h},${T}=${u}`;
+    const c = Math.floor(l.timestamp) || Math.floor(Date.now() / 1e3), g = l.scheme || r.EXPECTED_SCHEME, P = l.cryptoProvider || v(), T = `${c}.${l.payload}`, O = (u) => `t=${c},${g}=${u}`;
     return Object.assign(Object.assign({}, l), {
-      timestamp: h,
-      scheme: T,
-      cryptoProvider: m,
-      payloadString: g,
+      timestamp: c,
+      scheme: g,
+      cryptoProvider: P,
+      payloadString: T,
       generateHeaderString: O
     });
   }
   return e.signature = r, e;
 }
-const Ss = "2024-11-20.acacia";
-function bs(t, e) {
+const Ms = "2024-11-20.acacia";
+function Is(t, e) {
   for (const r in e) {
     if (!Object.prototype.hasOwnProperty.call(e, r))
       continue;
@@ -3451,10 +3576,10 @@ function bs(t, e) {
 }
 function ee(t, e) {
   return function(r) {
-    return new bs(r, e);
+    return new Is(r, e);
   };
 }
-const Xe = o.method, Os = o.extend({
+const Xe = o.method, $s = o.extend({
   retrieve: Xe({
     method: "GET",
     fullPath: "/v1/financial_connections/accounts/{account}"
@@ -3485,7 +3610,7 @@ const Xe = o.method, Os = o.extend({
     method: "POST",
     fullPath: "/v1/financial_connections/accounts/{account}/unsubscribe"
   })
-}), Ko = o.method, ws = o.extend({
+}), Ko = o.method, Gs = o.extend({
   retrieve: Ko({
     method: "GET",
     fullPath: "/v1/entitlements/active_entitlements/{id}"
@@ -3495,27 +3620,27 @@ const Xe = o.method, Os = o.extend({
     fullPath: "/v1/entitlements/active_entitlements",
     methodType: "list"
   })
-}), lt = o.method, xs = o.extend({
-  create: lt({ method: "POST", fullPath: "/v1/billing/alerts" }),
-  retrieve: lt({ method: "GET", fullPath: "/v1/billing/alerts/{id}" }),
-  list: lt({
+}), st = o.method, Ds = o.extend({
+  create: st({ method: "POST", fullPath: "/v1/billing/alerts" }),
+  retrieve: st({ method: "GET", fullPath: "/v1/billing/alerts/{id}" }),
+  list: st({
     method: "GET",
     fullPath: "/v1/billing/alerts",
     methodType: "list"
   }),
-  activate: lt({
+  activate: st({
     method: "POST",
     fullPath: "/v1/billing/alerts/{id}/activate"
   }),
-  archive: lt({
+  archive: st({
     method: "POST",
     fullPath: "/v1/billing/alerts/{id}/archive"
   }),
-  deactivate: lt({
+  deactivate: st({
     method: "POST",
     fullPath: "/v1/billing/alerts/{id}/deactivate"
   })
-}), Ze = o.method, As = o.extend({
+}), Ze = o.method, qs = o.extend({
   create: Ze({
     method: "POST",
     fullPath: "/v1/test_helpers/issuing/authorizations"
@@ -3544,7 +3669,7 @@ const Xe = o.method, Os = o.extend({
     method: "POST",
     fullPath: "/v1/test_helpers/issuing/authorizations/{authorization}/reverse"
   })
-}), Mt = o.method, Cs = o.extend({
+}), Mt = o.method, ks = o.extend({
   retrieve: Mt({
     method: "GET",
     fullPath: "/v1/issuing/authorizations/{authorization}"
@@ -3566,7 +3691,7 @@ const Xe = o.method, Os = o.extend({
     method: "POST",
     fullPath: "/v1/issuing/authorizations/{authorization}/decline"
   })
-}), bn = o.method, Rs = o.extend({
+}), bn = o.method, Fs = o.extend({
   create: bn({ method: "POST", fullPath: "/v1/tax/calculations" }),
   retrieve: bn({
     method: "GET",
@@ -3577,7 +3702,7 @@ const Xe = o.method, Os = o.extend({
     fullPath: "/v1/tax/calculations/{calculation}/line_items",
     methodType: "list"
   })
-}), tr = o.method, Ms = o.extend({
+}), tr = o.method, Ns = o.extend({
   create: tr({ method: "POST", fullPath: "/v1/issuing/cardholders" }),
   retrieve: tr({
     method: "GET",
@@ -3592,28 +3717,28 @@ const Xe = o.method, Os = o.extend({
     fullPath: "/v1/issuing/cardholders",
     methodType: "list"
   })
-}), $t = o.method, $s = o.extend({
-  deliverCard: $t({
+}), It = o.method, Ls = o.extend({
+  deliverCard: It({
     method: "POST",
     fullPath: "/v1/test_helpers/issuing/cards/{card}/shipping/deliver"
   }),
-  failCard: $t({
+  failCard: It({
     method: "POST",
     fullPath: "/v1/test_helpers/issuing/cards/{card}/shipping/fail"
   }),
-  returnCard: $t({
+  returnCard: It({
     method: "POST",
     fullPath: "/v1/test_helpers/issuing/cards/{card}/shipping/return"
   }),
-  shipCard: $t({
+  shipCard: It({
     method: "POST",
     fullPath: "/v1/test_helpers/issuing/cards/{card}/shipping/ship"
   }),
-  submitCard: $t({
+  submitCard: It({
     method: "POST",
     fullPath: "/v1/test_helpers/issuing/cards/{card}/shipping/submit"
   })
-}), rr = o.method, Is = o.extend({
+}), rr = o.method, Us = o.extend({
   create: rr({ method: "POST", fullPath: "/v1/issuing/cards" }),
   retrieve: rr({ method: "GET", fullPath: "/v1/issuing/cards/{card}" }),
   update: rr({ method: "POST", fullPath: "/v1/issuing/cards/{card}" }),
@@ -3622,7 +3747,7 @@ const Xe = o.method, Os = o.extend({
     fullPath: "/v1/issuing/cards",
     methodType: "list"
   })
-}), nr = o.method, Gs = o.extend({
+}), nr = o.method, js = o.extend({
   create: nr({
     method: "POST",
     fullPath: "/v1/billing_portal/configurations"
@@ -3640,44 +3765,44 @@ const Xe = o.method, Os = o.extend({
     fullPath: "/v1/billing_portal/configurations",
     methodType: "list"
   })
-}), It = o.method, Ds = o.extend({
-  create: It({
+}), $t = o.method, Hs = o.extend({
+  create: $t({
     method: "POST",
     fullPath: "/v1/terminal/configurations"
   }),
-  retrieve: It({
+  retrieve: $t({
     method: "GET",
     fullPath: "/v1/terminal/configurations/{configuration}"
   }),
-  update: It({
+  update: $t({
     method: "POST",
     fullPath: "/v1/terminal/configurations/{configuration}"
   }),
-  list: It({
+  list: $t({
     method: "GET",
     fullPath: "/v1/terminal/configurations",
     methodType: "list"
   }),
-  del: It({
+  del: $t({
     method: "DELETE",
     fullPath: "/v1/terminal/configurations/{configuration}"
   })
-}), ks = o.method, qs = o.extend({
-  create: ks({
+}), Bs = o.method, Ws = o.extend({
+  create: Bs({
     method: "POST",
     fullPath: "/v1/test_helpers/confirmation_tokens"
   })
-}), Fs = o.method, Ns = o.extend({
-  create: Fs({
+}), zs = o.method, Vs = o.extend({
+  create: zs({
     method: "POST",
     fullPath: "/v1/terminal/connection_tokens"
   })
-}), Us = o.method, Ls = o.extend({
-  retrieve: Us({
+}), Ks = o.method, Ys = o.extend({
+  retrieve: Ks({
     method: "GET",
     fullPath: "/v1/billing/credit_balance_summary"
   })
-}), Yo = o.method, js = o.extend({
+}), Yo = o.method, Js = o.extend({
   retrieve: Yo({
     method: "GET",
     fullPath: "/v1/billing/credit_balance_transactions/{id}"
@@ -3687,30 +3812,30 @@ const Xe = o.method, Os = o.extend({
     fullPath: "/v1/billing/credit_balance_transactions",
     methodType: "list"
   })
-}), ut = o.method, Hs = o.extend({
-  create: ut({ method: "POST", fullPath: "/v1/billing/credit_grants" }),
-  retrieve: ut({
+}), lt = o.method, Qs = o.extend({
+  create: lt({ method: "POST", fullPath: "/v1/billing/credit_grants" }),
+  retrieve: lt({
     method: "GET",
     fullPath: "/v1/billing/credit_grants/{id}"
   }),
-  update: ut({
+  update: lt({
     method: "POST",
     fullPath: "/v1/billing/credit_grants/{id}"
   }),
-  list: ut({
+  list: lt({
     method: "GET",
     fullPath: "/v1/billing/credit_grants",
     methodType: "list"
   }),
-  expire: ut({
+  expire: lt({
     method: "POST",
     fullPath: "/v1/billing/credit_grants/{id}/expire"
   }),
-  voidGrant: ut({
+  voidGrant: lt({
     method: "POST",
     fullPath: "/v1/billing/credit_grants/{id}/void"
   })
-}), On = o.method, Bs = o.extend({
+}), On = o.method, Xs = o.extend({
   create: On({
     method: "POST",
     fullPath: "/v1/treasury/credit_reversals"
@@ -3724,12 +3849,12 @@ const Xe = o.method, Os = o.extend({
     fullPath: "/v1/treasury/credit_reversals",
     methodType: "list"
   })
-}), Ws = o.method, zs = o.extend({
-  fundCashBalance: Ws({
+}), Zs = o.method, el = o.extend({
+  fundCashBalance: Zs({
     method: "POST",
     fullPath: "/v1/test_helpers/customers/{customer}/fund_cash_balance"
   })
-}), wn = o.method, Vs = o.extend({
+}), wn = o.method, tl = o.extend({
   create: wn({
     method: "POST",
     fullPath: "/v1/treasury/debit_reversals"
@@ -3743,7 +3868,7 @@ const Xe = o.method, Os = o.extend({
     fullPath: "/v1/treasury/debit_reversals",
     methodType: "list"
   })
-}), Gt = o.method, Ks = o.extend({
+}), Gt = o.method, rl = o.extend({
   create: Gt({ method: "POST", fullPath: "/v1/issuing/disputes" }),
   retrieve: Gt({
     method: "GET",
@@ -3762,7 +3887,7 @@ const Xe = o.method, Os = o.extend({
     method: "POST",
     fullPath: "/v1/issuing/disputes/{dispute}/submit"
   })
-}), Jo = o.method, Ys = o.extend({
+}), Jo = o.method, nl = o.extend({
   retrieve: Jo({
     method: "GET",
     fullPath: "/v1/radar/early_fraud_warnings/{early_fraud_warning}"
@@ -3772,7 +3897,7 @@ const Xe = o.method, Os = o.extend({
     fullPath: "/v1/radar/early_fraud_warnings",
     methodType: "list"
   })
-}), je = o.method, Js = o.extend({
+}), je = o.method, ol = o.extend({
   create: je({
     method: "POST",
     fullPath: "/v2/core/event_destinations"
@@ -3806,7 +3931,7 @@ const Xe = o.method, Os = o.extend({
     method: "POST",
     fullPath: "/v2/core/event_destinations/{id}/ping"
   })
-}), xn = o.method, Qs = o.extend({
+}), xn = o.method, al = o.extend({
   retrieve(...t) {
     return xn({
       method: "GET",
@@ -3848,7 +3973,7 @@ const Xe = o.method, Os = o.extend({
       ])
     ) });
   }
-}), or = o.method, Xs = o.extend({
+}), or = o.method, il = o.extend({
   create: or({ method: "POST", fullPath: "/v1/entitlements/features" }),
   retrieve: or({
     method: "GET",
@@ -3863,46 +3988,46 @@ const Xe = o.method, Os = o.extend({
     fullPath: "/v1/entitlements/features",
     methodType: "list"
   })
-}), ct = o.method, Zs = o.extend({
-  create: ct({
+}), ut = o.method, sl = o.extend({
+  create: ut({
     method: "POST",
     fullPath: "/v1/treasury/financial_accounts"
   }),
-  retrieve: ct({
+  retrieve: ut({
     method: "GET",
     fullPath: "/v1/treasury/financial_accounts/{financial_account}"
   }),
-  update: ct({
+  update: ut({
     method: "POST",
     fullPath: "/v1/treasury/financial_accounts/{financial_account}"
   }),
-  list: ct({
+  list: ut({
     method: "GET",
     fullPath: "/v1/treasury/financial_accounts",
     methodType: "list"
   }),
-  retrieveFeatures: ct({
+  retrieveFeatures: ut({
     method: "GET",
     fullPath: "/v1/treasury/financial_accounts/{financial_account}/features"
   }),
-  updateFeatures: ct({
+  updateFeatures: ut({
     method: "POST",
     fullPath: "/v1/treasury/financial_accounts/{financial_account}/features"
   })
-}), An = o.method, el = o.extend({
-  fail: An({
+}), Cn = o.method, ll = o.extend({
+  fail: Cn({
     method: "POST",
     fullPath: "/v1/test_helpers/treasury/inbound_transfers/{id}/fail"
   }),
-  returnInboundTransfer: An({
+  returnInboundTransfer: Cn({
     method: "POST",
     fullPath: "/v1/test_helpers/treasury/inbound_transfers/{id}/return"
   }),
-  succeed: An({
+  succeed: Cn({
     method: "POST",
     fullPath: "/v1/test_helpers/treasury/inbound_transfers/{id}/succeed"
   })
-}), ar = o.method, tl = o.extend({
+}), ar = o.method, ul = o.extend({
   create: ar({
     method: "POST",
     fullPath: "/v1/treasury/inbound_transfers"
@@ -3920,7 +4045,7 @@ const Xe = o.method, Os = o.extend({
     method: "POST",
     fullPath: "/v1/treasury/inbound_transfers/{inbound_transfer}/cancel"
   })
-}), Dt = o.method, rl = o.extend({
+}), Dt = o.method, cl = o.extend({
   create: Dt({ method: "POST", fullPath: "/v1/terminal/locations" }),
   retrieve: Dt({
     method: "GET",
@@ -3939,32 +4064,32 @@ const Xe = o.method, Os = o.extend({
     method: "DELETE",
     fullPath: "/v1/terminal/locations/{location}"
   })
-}), nl = o.method, ol = o.extend({
-  create: nl({
+}), dl = o.method, hl = o.extend({
+  create: dl({
     method: "POST",
     fullPath: "/v1/billing/meter_event_adjustments"
   })
-}), al = o.method, il = o.extend({
-  create: al({
+}), fl = o.method, pl = o.extend({
+  create: fl({
     method: "POST",
     fullPath: "/v2/billing/meter_event_adjustments"
   })
-}), sl = o.method, ll = o.extend({
-  create: sl({
+}), ml = o.method, vl = o.extend({
+  create: ml({
     method: "POST",
     fullPath: "/v2/billing/meter_event_session"
   })
-}), ul = o.method, cl = o.extend({
-  create: ul({
+}), yl = o.method, Pl = o.extend({
+  create: yl({
     method: "POST",
     fullPath: "/v2/billing/meter_event_stream",
     host: "meter-events.stripe.com"
   })
-}), dl = o.method, hl = o.extend({
-  create: dl({ method: "POST", fullPath: "/v1/billing/meter_events" })
-}), fl = o.method, pl = o.extend({
-  create: fl({ method: "POST", fullPath: "/v2/billing/meter_events" })
-}), et = o.method, ml = o.extend({
+}), gl = o.method, Tl = o.extend({
+  create: gl({ method: "POST", fullPath: "/v1/billing/meter_events" })
+}), _l = o.method, El = o.extend({
+  create: _l({ method: "POST", fullPath: "/v2/billing/meter_events" })
+}), et = o.method, Sl = o.extend({
   create: et({ method: "POST", fullPath: "/v1/billing/meters" }),
   retrieve: et({ method: "GET", fullPath: "/v1/billing/meters/{id}" }),
   update: et({ method: "POST", fullPath: "/v1/billing/meters/{id}" }),
@@ -3986,26 +4111,26 @@ const Xe = o.method, Os = o.extend({
     method: "POST",
     fullPath: "/v1/billing/meters/{id}/reactivate"
   })
-}), kt = o.method, vl = o.extend({
-  create: kt({ method: "POST", fullPath: "/v1/climate/orders" }),
-  retrieve: kt({
+}), qt = o.method, bl = o.extend({
+  create: qt({ method: "POST", fullPath: "/v1/climate/orders" }),
+  retrieve: qt({
     method: "GET",
     fullPath: "/v1/climate/orders/{order}"
   }),
-  update: kt({
+  update: qt({
     method: "POST",
     fullPath: "/v1/climate/orders/{order}"
   }),
-  list: kt({
+  list: qt({
     method: "GET",
     fullPath: "/v1/climate/orders",
     methodType: "list"
   }),
-  cancel: kt({
+  cancel: qt({
     method: "POST",
     fullPath: "/v1/climate/orders/{order}/cancel"
   })
-}), ir = o.method, yl = o.extend({
+}), ir = o.method, Ol = o.extend({
   update: ir({
     method: "POST",
     fullPath: "/v1/test_helpers/treasury/outbound_payments/{id}"
@@ -4022,7 +4147,7 @@ const Xe = o.method, Os = o.extend({
     method: "POST",
     fullPath: "/v1/test_helpers/treasury/outbound_payments/{id}/return"
   })
-}), sr = o.method, Pl = o.extend({
+}), sr = o.method, wl = o.extend({
   create: sr({
     method: "POST",
     fullPath: "/v1/treasury/outbound_payments"
@@ -4040,7 +4165,7 @@ const Xe = o.method, Os = o.extend({
     method: "POST",
     fullPath: "/v1/treasury/outbound_payments/{id}/cancel"
   })
-}), lr = o.method, gl = o.extend({
+}), lr = o.method, xl = o.extend({
   update: lr({
     method: "POST",
     fullPath: "/v1/test_helpers/treasury/outbound_transfers/{outbound_transfer}"
@@ -4057,7 +4182,7 @@ const Xe = o.method, Os = o.extend({
     method: "POST",
     fullPath: "/v1/test_helpers/treasury/outbound_transfers/{outbound_transfer}/return"
   })
-}), ur = o.method, Tl = o.extend({
+}), ur = o.method, Cl = o.extend({
   create: ur({
     method: "POST",
     fullPath: "/v1/treasury/outbound_transfers"
@@ -4075,20 +4200,20 @@ const Xe = o.method, Os = o.extend({
     method: "POST",
     fullPath: "/v1/treasury/outbound_transfers/{outbound_transfer}/cancel"
   })
-}), Cn = o.method, _l = o.extend({
-  activate: Cn({
+}), An = o.method, Al = o.extend({
+  activate: An({
     method: "POST",
     fullPath: "/v1/test_helpers/issuing/personalization_designs/{personalization_design}/activate"
   }),
-  deactivate: Cn({
+  deactivate: An({
     method: "POST",
     fullPath: "/v1/test_helpers/issuing/personalization_designs/{personalization_design}/deactivate"
   }),
-  reject: Cn({
+  reject: An({
     method: "POST",
     fullPath: "/v1/test_helpers/issuing/personalization_designs/{personalization_design}/reject"
   })
-}), cr = o.method, El = o.extend({
+}), cr = o.method, Rl = o.extend({
   create: cr({
     method: "POST",
     fullPath: "/v1/issuing/personalization_designs"
@@ -4106,7 +4231,7 @@ const Xe = o.method, Os = o.extend({
     fullPath: "/v1/issuing/personalization_designs",
     methodType: "list"
   })
-}), Qo = o.method, Sl = o.extend({
+}), Qo = o.method, Ml = o.extend({
   retrieve: Qo({
     method: "GET",
     fullPath: "/v1/issuing/physical_bundles/{physical_bundle}"
@@ -4116,7 +4241,7 @@ const Xe = o.method, Os = o.extend({
     fullPath: "/v1/issuing/physical_bundles",
     methodType: "list"
   })
-}), Xo = o.method, bl = o.extend({
+}), Xo = o.method, Il = o.extend({
   retrieve: Xo({
     method: "GET",
     fullPath: "/v1/climate/products/{product}"
@@ -4126,12 +4251,12 @@ const Xe = o.method, Os = o.extend({
     fullPath: "/v1/climate/products",
     methodType: "list"
   })
-}), Ol = o.method, wl = o.extend({
-  presentPaymentMethod: Ol({
+}), $l = o.method, Gl = o.extend({
+  presentPaymentMethod: $l({
     method: "POST",
     fullPath: "/v1/test_helpers/terminal/readers/{reader}/present_payment_method"
   })
-}), Ge = o.method, xl = o.extend({
+}), Ge = o.method, Dl = o.extend({
   create: Ge({ method: "POST", fullPath: "/v1/terminal/readers" }),
   retrieve: Ge({
     method: "GET",
@@ -4170,12 +4295,12 @@ const Xe = o.method, Os = o.extend({
     method: "POST",
     fullPath: "/v1/terminal/readers/{reader}/set_reader_display"
   })
-}), Al = o.method, Cl = o.extend({
-  create: Al({
+}), ql = o.method, kl = o.extend({
+  create: ql({
     method: "POST",
     fullPath: "/v1/test_helpers/treasury/received_credits"
   })
-}), Zo = o.method, Rl = o.extend({
+}), Zo = o.method, Fl = o.extend({
   retrieve: Zo({
     method: "GET",
     fullPath: "/v1/treasury/received_credits/{id}"
@@ -4185,12 +4310,12 @@ const Xe = o.method, Os = o.extend({
     fullPath: "/v1/treasury/received_credits",
     methodType: "list"
   })
-}), Ml = o.method, $l = o.extend({
-  create: Ml({
+}), Nl = o.method, Ll = o.extend({
+  create: Nl({
     method: "POST",
     fullPath: "/v1/test_helpers/treasury/received_debits"
   })
-}), ea = o.method, Il = o.extend({
+}), ea = o.method, Ul = o.extend({
   retrieve: ea({
     method: "GET",
     fullPath: "/v1/treasury/received_debits/{id}"
@@ -4200,12 +4325,12 @@ const Xe = o.method, Os = o.extend({
     fullPath: "/v1/treasury/received_debits",
     methodType: "list"
   })
-}), Gl = o.method, Dl = o.extend({
-  expire: Gl({
+}), jl = o.method, Hl = o.extend({
+  expire: jl({
     method: "POST",
     fullPath: "/v1/test_helpers/refunds/{refund}/expire"
   })
-}), dr = o.method, kl = o.extend({
+}), dr = o.method, Bl = o.extend({
   create: dr({ method: "POST", fullPath: "/v1/tax/registrations" }),
   retrieve: dr({
     method: "GET",
@@ -4220,7 +4345,7 @@ const Xe = o.method, Os = o.extend({
     fullPath: "/v1/tax/registrations",
     methodType: "list"
   })
-}), Rn = o.method, ql = o.extend({
+}), Rn = o.method, Wl = o.extend({
   create: Rn({ method: "POST", fullPath: "/v1/reporting/report_runs" }),
   retrieve: Rn({
     method: "GET",
@@ -4231,7 +4356,7 @@ const Xe = o.method, Os = o.extend({
     fullPath: "/v1/reporting/report_runs",
     methodType: "list"
   })
-}), ta = o.method, Fl = o.extend({
+}), ta = o.method, zl = o.extend({
   retrieve: ta({
     method: "GET",
     fullPath: "/v1/reporting/report_types/{report_type}"
@@ -4241,7 +4366,7 @@ const Xe = o.method, Os = o.extend({
     fullPath: "/v1/reporting/report_types",
     methodType: "list"
   })
-}), Mn = o.method, Nl = o.extend({
+}), Mn = o.method, Vl = o.extend({
   create: Mn({ method: "POST", fullPath: "/v1/forwarding/requests" }),
   retrieve: Mn({
     method: "GET",
@@ -4252,7 +4377,7 @@ const Xe = o.method, Os = o.extend({
     fullPath: "/v1/forwarding/requests",
     methodType: "list"
   })
-}), ra = o.method, Ul = o.extend({
+}), ra = o.method, Kl = o.extend({
   retrieve: ra({
     method: "GET",
     fullPath: "/v1/sigma/scheduled_query_runs/{scheduled_query_run}"
@@ -4262,7 +4387,7 @@ const Xe = o.method, Os = o.extend({
     fullPath: "/v1/sigma/scheduled_query_runs",
     methodType: "list"
   })
-}), hr = o.method, Ll = o.extend({
+}), hr = o.method, Yl = o.extend({
   create: hr({ method: "POST", fullPath: "/v1/apps/secrets" }),
   list: hr({
     method: "GET",
@@ -4274,36 +4399,36 @@ const Xe = o.method, Os = o.extend({
     fullPath: "/v1/apps/secrets/delete"
   }),
   find: hr({ method: "GET", fullPath: "/v1/apps/secrets/find" })
-}), jl = o.method, Hl = o.extend({
-  create: jl({
+}), Jl = o.method, Ql = o.extend({
+  create: Jl({
     method: "POST",
     fullPath: "/v1/billing_portal/sessions"
   })
-}), dt = o.method, Bl = o.extend({
-  create: dt({ method: "POST", fullPath: "/v1/checkout/sessions" }),
-  retrieve: dt({
+}), ct = o.method, Xl = o.extend({
+  create: ct({ method: "POST", fullPath: "/v1/checkout/sessions" }),
+  retrieve: ct({
     method: "GET",
     fullPath: "/v1/checkout/sessions/{session}"
   }),
-  update: dt({
+  update: ct({
     method: "POST",
     fullPath: "/v1/checkout/sessions/{session}"
   }),
-  list: dt({
+  list: ct({
     method: "GET",
     fullPath: "/v1/checkout/sessions",
     methodType: "list"
   }),
-  expire: dt({
+  expire: ct({
     method: "POST",
     fullPath: "/v1/checkout/sessions/{session}/expire"
   }),
-  listLineItems: dt({
+  listLineItems: ct({
     method: "GET",
     fullPath: "/v1/checkout/sessions/{session}/line_items",
     methodType: "list"
   })
-}), na = o.method, Wl = o.extend({
+}), na = o.method, Zl = o.extend({
   create: na({
     method: "POST",
     fullPath: "/v1/financial_connections/sessions"
@@ -4312,10 +4437,10 @@ const Xe = o.method, Os = o.extend({
     method: "GET",
     fullPath: "/v1/financial_connections/sessions/{session}"
   })
-}), oa = o.method, zl = o.extend({
+}), oa = o.method, eu = o.extend({
   retrieve: oa({ method: "GET", fullPath: "/v1/tax/settings" }),
   update: oa({ method: "POST", fullPath: "/v1/tax/settings" })
-}), aa = o.method, Vl = o.extend({
+}), aa = o.method, tu = o.extend({
   retrieve: aa({
     method: "GET",
     fullPath: "/v1/climate/suppliers/{supplier}"
@@ -4325,43 +4450,43 @@ const Xe = o.method, Os = o.extend({
     fullPath: "/v1/climate/suppliers",
     methodType: "list"
   })
-}), qt = o.method, Kl = o.extend({
-  create: qt({
+}), kt = o.method, ru = o.extend({
+  create: kt({
     method: "POST",
     fullPath: "/v1/test_helpers/test_clocks"
   }),
-  retrieve: qt({
+  retrieve: kt({
     method: "GET",
     fullPath: "/v1/test_helpers/test_clocks/{test_clock}"
   }),
-  list: qt({
+  list: kt({
     method: "GET",
     fullPath: "/v1/test_helpers/test_clocks",
     methodType: "list"
   }),
-  del: qt({
+  del: kt({
     method: "DELETE",
     fullPath: "/v1/test_helpers/test_clocks/{test_clock}"
   }),
-  advance: qt({
+  advance: kt({
     method: "POST",
     fullPath: "/v1/test_helpers/test_clocks/{test_clock}/advance"
   })
-}), $n = o.method, Yl = o.extend({
-  retrieve: $n({
+}), In = o.method, nu = o.extend({
+  retrieve: In({
     method: "GET",
     fullPath: "/v1/issuing/tokens/{token}"
   }),
-  update: $n({
+  update: In({
     method: "POST",
     fullPath: "/v1/issuing/tokens/{token}"
   }),
-  list: $n({
+  list: In({
     method: "GET",
     fullPath: "/v1/issuing/tokens",
     methodType: "list"
   })
-}), ia = o.method, Jl = o.extend({
+}), ia = o.method, ou = o.extend({
   retrieve: ia({
     method: "GET",
     fullPath: "/v1/treasury/transaction_entries/{id}"
@@ -4371,20 +4496,20 @@ const Xe = o.method, Os = o.extend({
     fullPath: "/v1/treasury/transaction_entries",
     methodType: "list"
   })
-}), In = o.method, Ql = o.extend({
-  createForceCapture: In({
+}), $n = o.method, au = o.extend({
+  createForceCapture: $n({
     method: "POST",
     fullPath: "/v1/test_helpers/issuing/transactions/create_force_capture"
   }),
-  createUnlinkedRefund: In({
+  createUnlinkedRefund: $n({
     method: "POST",
     fullPath: "/v1/test_helpers/issuing/transactions/create_unlinked_refund"
   }),
-  refund: In({
+  refund: $n({
     method: "POST",
     fullPath: "/v1/test_helpers/issuing/transactions/{transaction}/refund"
   })
-}), sa = o.method, Xl = o.extend({
+}), sa = o.method, iu = o.extend({
   retrieve: sa({
     method: "GET",
     fullPath: "/v1/financial_connections/transactions/{transaction}"
@@ -4394,7 +4519,7 @@ const Xe = o.method, Os = o.extend({
     fullPath: "/v1/financial_connections/transactions",
     methodType: "list"
   })
-}), Gn = o.method, Zl = o.extend({
+}), Gn = o.method, su = o.extend({
   retrieve: Gn({
     method: "GET",
     fullPath: "/v1/issuing/transactions/{transaction}"
@@ -4408,7 +4533,7 @@ const Xe = o.method, Os = o.extend({
     fullPath: "/v1/issuing/transactions",
     methodType: "list"
   })
-}), fr = o.method, eu = o.extend({
+}), fr = o.method, lu = o.extend({
   retrieve: fr({
     method: "GET",
     fullPath: "/v1/tax/transactions/{transaction}"
@@ -4426,7 +4551,7 @@ const Xe = o.method, Os = o.extend({
     fullPath: "/v1/tax/transactions/{transaction}/line_items",
     methodType: "list"
   })
-}), la = o.method, tu = o.extend({
+}), la = o.method, uu = o.extend({
   retrieve: la({
     method: "GET",
     fullPath: "/v1/treasury/transactions/{id}"
@@ -4436,7 +4561,7 @@ const Xe = o.method, Os = o.extend({
     fullPath: "/v1/treasury/transactions",
     methodType: "list"
   })
-}), pr = o.method, ru = o.extend({
+}), pr = o.method, cu = o.extend({
   create: pr({
     method: "POST",
     fullPath: "/v1/radar/value_list_items"
@@ -4454,7 +4579,7 @@ const Xe = o.method, Os = o.extend({
     method: "DELETE",
     fullPath: "/v1/radar/value_list_items/{item}"
   })
-}), Ft = o.method, nu = o.extend({
+}), Ft = o.method, du = o.extend({
   create: Ft({ method: "POST", fullPath: "/v1/radar/value_lists" }),
   retrieve: Ft({
     method: "GET",
@@ -4473,7 +4598,7 @@ const Xe = o.method, Os = o.extend({
     method: "DELETE",
     fullPath: "/v1/radar/value_lists/{value_list}"
   })
-}), ua = o.method, ou = o.extend({
+}), ua = o.method, hu = o.extend({
   retrieve: ua({
     method: "GET",
     fullPath: "/v1/identity/verification_reports/{report}"
@@ -4483,29 +4608,29 @@ const Xe = o.method, Os = o.extend({
     fullPath: "/v1/identity/verification_reports",
     methodType: "list"
   })
-}), ht = o.method, au = o.extend({
-  create: ht({
+}), dt = o.method, fu = o.extend({
+  create: dt({
     method: "POST",
     fullPath: "/v1/identity/verification_sessions"
   }),
-  retrieve: ht({
+  retrieve: dt({
     method: "GET",
     fullPath: "/v1/identity/verification_sessions/{session}"
   }),
-  update: ht({
+  update: dt({
     method: "POST",
     fullPath: "/v1/identity/verification_sessions/{session}"
   }),
-  list: ht({
+  list: dt({
     method: "GET",
     fullPath: "/v1/identity/verification_sessions",
     methodType: "list"
   }),
-  cancel: ht({
+  cancel: dt({
     method: "POST",
     fullPath: "/v1/identity/verification_sessions/{session}/cancel"
   }),
-  redact: ht({
+  redact: dt({
     method: "POST",
     fullPath: "/v1/identity/verification_sessions/{session}/redact"
   })
@@ -4591,11 +4716,11 @@ const Xe = o.method, Os = o.extend({
     method: "POST",
     fullPath: "/v1/accounts/{account}/persons/{person}"
   })
-}), iu = o.method, su = o.extend({
-  create: iu({ method: "POST", fullPath: "/v1/account_links" })
-}), lu = o.method, uu = o.extend({
-  create: lu({ method: "POST", fullPath: "/v1/account_sessions" })
-}), mr = o.method, cu = o.extend({
+}), pu = o.method, mu = o.extend({
+  create: pu({ method: "POST", fullPath: "/v1/account_links" })
+}), vu = o.method, yu = o.extend({
+  create: vu({ method: "POST", fullPath: "/v1/account_sessions" })
+}), mr = o.method, Pu = o.extend({
   create: mr({ method: "POST", fullPath: "/v1/apple_pay/domains" }),
   retrieve: mr({
     method: "GET",
@@ -4610,36 +4735,36 @@ const Xe = o.method, Os = o.extend({
     method: "DELETE",
     fullPath: "/v1/apple_pay/domains/{domain}"
   })
-}), ft = o.method, du = o.extend({
-  retrieve: ft({
+}), ht = o.method, gu = o.extend({
+  retrieve: ht({
     method: "GET",
     fullPath: "/v1/application_fees/{id}"
   }),
-  list: ft({
+  list: ht({
     method: "GET",
     fullPath: "/v1/application_fees",
     methodType: "list"
   }),
-  createRefund: ft({
+  createRefund: ht({
     method: "POST",
     fullPath: "/v1/application_fees/{id}/refunds"
   }),
-  listRefunds: ft({
+  listRefunds: ht({
     method: "GET",
     fullPath: "/v1/application_fees/{id}/refunds",
     methodType: "list"
   }),
-  retrieveRefund: ft({
+  retrieveRefund: ht({
     method: "GET",
     fullPath: "/v1/application_fees/{fee}/refunds/{id}"
   }),
-  updateRefund: ft({
+  updateRefund: ht({
     method: "POST",
     fullPath: "/v1/application_fees/{fee}/refunds/{id}"
   })
-}), hu = o.method, fu = o.extend({
-  retrieve: hu({ method: "GET", fullPath: "/v1/balance" })
-}), da = o.method, pu = o.extend({
+}), Tu = o.method, _u = o.extend({
+  retrieve: Tu({ method: "GET", fullPath: "/v1/balance" })
+}), da = o.method, Eu = o.extend({
   retrieve: da({
     method: "GET",
     fullPath: "/v1/balance_transactions/{id}"
@@ -4649,30 +4774,30 @@ const Xe = o.method, Os = o.extend({
     fullPath: "/v1/balance_transactions",
     methodType: "list"
   })
-}), pt = o.method, mu = o.extend({
-  create: pt({ method: "POST", fullPath: "/v1/charges" }),
-  retrieve: pt({ method: "GET", fullPath: "/v1/charges/{charge}" }),
-  update: pt({ method: "POST", fullPath: "/v1/charges/{charge}" }),
-  list: pt({
+}), ft = o.method, Su = o.extend({
+  create: ft({ method: "POST", fullPath: "/v1/charges" }),
+  retrieve: ft({ method: "GET", fullPath: "/v1/charges/{charge}" }),
+  update: ft({ method: "POST", fullPath: "/v1/charges/{charge}" }),
+  list: ft({
     method: "GET",
     fullPath: "/v1/charges",
     methodType: "list"
   }),
-  capture: pt({
+  capture: ft({
     method: "POST",
     fullPath: "/v1/charges/{charge}/capture"
   }),
-  search: pt({
+  search: ft({
     method: "GET",
     fullPath: "/v1/charges/search",
     methodType: "search"
   })
-}), vu = o.method, yu = o.extend({
-  retrieve: vu({
+}), bu = o.method, Ou = o.extend({
+  retrieve: bu({
     method: "GET",
     fullPath: "/v1/confirmation_tokens/{confirmation_token}"
   })
-}), ha = o.method, Pu = o.extend({
+}), ha = o.method, wu = o.extend({
   retrieve: ha({
     method: "GET",
     fullPath: "/v1/country_specs/{country}"
@@ -4682,7 +4807,7 @@ const Xe = o.method, Os = o.extend({
     fullPath: "/v1/country_specs",
     methodType: "list"
   })
-}), Nt = o.method, gu = o.extend({
+}), Nt = o.method, xu = o.extend({
   create: Nt({ method: "POST", fullPath: "/v1/coupons" }),
   retrieve: Nt({ method: "GET", fullPath: "/v1/coupons/{coupon}" }),
   update: Nt({ method: "POST", fullPath: "/v1/coupons/{coupon}" }),
@@ -4692,7 +4817,7 @@ const Xe = o.method, Os = o.extend({
     methodType: "list"
   }),
   del: Nt({ method: "DELETE", fullPath: "/v1/coupons/{coupon}" })
-}), He = o.method, Tu = o.extend({
+}), He = o.method, Cu = o.extend({
   create: He({ method: "POST", fullPath: "/v1/credit_notes" }),
   retrieve: He({ method: "GET", fullPath: "/v1/credit_notes/{id}" }),
   update: He({ method: "POST", fullPath: "/v1/credit_notes/{id}" }),
@@ -4716,9 +4841,9 @@ const Xe = o.method, Os = o.extend({
     method: "POST",
     fullPath: "/v1/credit_notes/{id}/void"
   })
-}), _u = o.method, Eu = o.extend({
-  create: _u({ method: "POST", fullPath: "/v1/customer_sessions" })
-}), J = o.method, Su = o.extend({
+}), Au = o.method, Ru = o.extend({
+  create: Au({ method: "POST", fullPath: "/v1/customer_sessions" })
+}), J = o.method, Mu = o.extend({
   create: J({ method: "POST", fullPath: "/v1/customers" }),
   retrieve: J({ method: "GET", fullPath: "/v1/customers/{customer}" }),
   update: J({ method: "POST", fullPath: "/v1/customers/{customer}" }),
@@ -4826,7 +4951,7 @@ const Xe = o.method, Os = o.extend({
     method: "POST",
     fullPath: "/v1/customers/{customer}/sources/{id}/verify"
   })
-}), vr = o.method, bu = o.extend({
+}), vr = o.method, Iu = o.extend({
   retrieve: vr({ method: "GET", fullPath: "/v1/disputes/{dispute}" }),
   update: vr({ method: "POST", fullPath: "/v1/disputes/{dispute}" }),
   list: vr({
@@ -4838,7 +4963,7 @@ const Xe = o.method, Os = o.extend({
     method: "POST",
     fullPath: "/v1/disputes/{dispute}/close"
   })
-}), fa = o.method, Ou = o.extend({
+}), fa = o.method, $u = o.extend({
   create: fa({
     method: "POST",
     fullPath: "/v1/ephemeral_keys",
@@ -4848,14 +4973,14 @@ const Xe = o.method, Os = o.extend({
     }
   }),
   del: fa({ method: "DELETE", fullPath: "/v1/ephemeral_keys/{key}" })
-}), pa = o.method, wu = o.extend({
+}), pa = o.method, Gu = o.extend({
   retrieve: pa({ method: "GET", fullPath: "/v1/events/{id}" }),
   list: pa({
     method: "GET",
     fullPath: "/v1/events",
     methodType: "list"
   })
-}), ma = o.method, xu = o.extend({
+}), ma = o.method, Du = o.extend({
   retrieve: ma({
     method: "GET",
     fullPath: "/v1/exchange_rates/{rate_id}"
@@ -4865,7 +4990,7 @@ const Xe = o.method, Os = o.extend({
     fullPath: "/v1/exchange_rates",
     methodType: "list"
   })
-}), yr = o.method, Au = o.extend({
+}), yr = o.method, qu = o.extend({
   create: yr({ method: "POST", fullPath: "/v1/file_links" }),
   retrieve: yr({ method: "GET", fullPath: "/v1/file_links/{link}" }),
   update: yr({ method: "POST", fullPath: "/v1/file_links/{link}" }),
@@ -4874,42 +4999,42 @@ const Xe = o.method, Os = o.extend({
     fullPath: "/v1/file_links",
     methodType: "list"
   })
-}), Cu = (t, e, r) => {
+}), ku = (t, e, r) => {
   const n = (Math.round(Math.random() * 1e16) + Math.round(Math.random() * 1e16)).toString();
   r["Content-Type"] = `multipart/form-data; boundary=${n}`;
   const a = new TextEncoder();
   let s = new Uint8Array(0);
-  const c = a.encode(`\r
+  const d = a.encode(`\r
 `);
   function f(l) {
-    const h = s, T = l instanceof Uint8Array ? l : new Uint8Array(a.encode(l));
-    s = new Uint8Array(h.length + T.length + 2), s.set(h), s.set(T, h.length), s.set(c, s.length - 2);
+    const c = s, g = l instanceof Uint8Array ? l : new Uint8Array(a.encode(l));
+    s = new Uint8Array(c.length + g.length + 2), s.set(c), s.set(g, c.length), s.set(d, s.length - 2);
   }
-  function y(l) {
+  function v(l) {
     return `"${l.replace(/"|"/g, "%22").replace(/\r\n|\r|\n/g, " ")}"`;
   }
-  const _ = is(e);
+  const _ = ps(e);
   for (const l in _) {
     if (!Object.prototype.hasOwnProperty.call(_, l))
       continue;
-    const h = _[l];
-    if (f(`--${n}`), Object.prototype.hasOwnProperty.call(h, "data")) {
-      const T = h;
-      f(`Content-Disposition: form-data; name=${y(l)}; filename=${y(T.name || "blob")}`), f(`Content-Type: ${T.type || "application/octet-stream"}`), f(""), f(T.data);
+    const c = _[l];
+    if (f(`--${n}`), Object.prototype.hasOwnProperty.call(c, "data")) {
+      const g = c;
+      f(`Content-Disposition: form-data; name=${v(l)}; filename=${v(g.name || "blob")}`), f(`Content-Type: ${g.type || "application/octet-stream"}`), f(""), f(g.data);
     } else
-      f(`Content-Disposition: form-data; name=${y(l)}`), f(""), f(h);
+      f(`Content-Disposition: form-data; name=${v(l)}`), f(""), f(c);
   }
   return f(`--${n}--`), s;
 };
-function Ru(t, e, r, n) {
+function Fu(t, e, r, n) {
   if (e = e || {}, t !== "POST")
     return n(null, Rr(e));
   this._stripe._platformFunctions.tryBufferData(e).then((a) => {
-    const s = Cu(t, a, r);
+    const s = ku(t, a, r);
     return n(null, s);
   }).catch((a) => n(a, null));
 }
-const Dn = o.method, Mu = o.extend({
+const Dn = o.method, Nu = o.extend({
   create: Dn({
     method: "POST",
     fullPath: "/v1/files",
@@ -4924,27 +5049,27 @@ const Dn = o.method, Mu = o.extend({
     fullPath: "/v1/files",
     methodType: "list"
   }),
-  requestDataProcessor: Ru
-}), Ut = o.method, $u = o.extend({
-  create: Ut({ method: "POST", fullPath: "/v1/invoiceitems" }),
-  retrieve: Ut({
+  requestDataProcessor: Fu
+}), Lt = o.method, Lu = o.extend({
+  create: Lt({ method: "POST", fullPath: "/v1/invoiceitems" }),
+  retrieve: Lt({
     method: "GET",
     fullPath: "/v1/invoiceitems/{invoiceitem}"
   }),
-  update: Ut({
+  update: Lt({
     method: "POST",
     fullPath: "/v1/invoiceitems/{invoiceitem}"
   }),
-  list: Ut({
+  list: Lt({
     method: "GET",
     fullPath: "/v1/invoiceitems",
     methodType: "list"
   }),
-  del: Ut({
+  del: Lt({
     method: "DELETE",
     fullPath: "/v1/invoiceitems/{invoiceitem}"
   })
-}), Pr = o.method, Iu = o.extend({
+}), Pr = o.method, Uu = o.extend({
   retrieve: Pr({
     method: "GET",
     fullPath: "/v1/invoice_rendering_templates/{template}"
@@ -4962,7 +5087,7 @@ const Dn = o.method, Mu = o.extend({
     method: "POST",
     fullPath: "/v1/invoice_rendering_templates/{template}/unarchive"
   })
-}), se = o.method, Gu = o.extend({
+}), se = o.method, ju = o.extend({
   create: se({ method: "POST", fullPath: "/v1/invoices" }),
   retrieve: se({ method: "GET", fullPath: "/v1/invoices/{invoice}" }),
   update: se({ method: "POST", fullPath: "/v1/invoices/{invoice}" }),
@@ -5028,28 +5153,28 @@ const Dn = o.method, Mu = o.extend({
     method: "POST",
     fullPath: "/v1/invoices/{invoice}/void"
   })
-}), Du = o.method, ku = o.extend({
-  retrieve: Du({ method: "GET", fullPath: "/v1/mandates/{mandate}" })
-}), va = o.method, kn = "connect.stripe.com", qu = o.extend({
+}), Hu = o.method, Bu = o.extend({
+  retrieve: Hu({ method: "GET", fullPath: "/v1/mandates/{mandate}" })
+}), va = o.method, qn = "connect.stripe.com", Wu = o.extend({
   basePath: "/",
   authorizeUrl(t, e) {
     t = t || {}, e = e || {};
     let r = "oauth/authorize";
-    return e.express && (r = `express/${r}`), t.response_type || (t.response_type = "code"), t.client_id || (t.client_id = this._stripe.getClientId()), t.scope || (t.scope = "read_write"), `https://${kn}/${r}?${Rr(t)}`;
+    return e.express && (r = `express/${r}`), t.response_type || (t.response_type = "code"), t.client_id || (t.client_id = this._stripe.getClientId()), t.scope || (t.scope = "read_write"), `https://${qn}/${r}?${Rr(t)}`;
   },
   token: va({
     method: "POST",
     path: "oauth/token",
-    host: kn
+    host: qn
   }),
   deauthorize(t, ...e) {
     return t.client_id || (t.client_id = this._stripe.getClientId()), va({
       method: "POST",
       path: "oauth/deauthorize",
-      host: kn
+      host: qn
     }).apply(this, [t, ...e]);
   }
-}), Re = o.method, Fu = o.extend({
+}), Re = o.method, zu = o.extend({
   create: Re({ method: "POST", fullPath: "/v1/payment_intents" }),
   retrieve: Re({
     method: "GET",
@@ -5093,27 +5218,27 @@ const Dn = o.method, Mu = o.extend({
     method: "POST",
     fullPath: "/v1/payment_intents/{intent}/verify_microdeposits"
   })
-}), Lt = o.method, Nu = o.extend({
-  create: Lt({ method: "POST", fullPath: "/v1/payment_links" }),
-  retrieve: Lt({
+}), Ut = o.method, Vu = o.extend({
+  create: Ut({ method: "POST", fullPath: "/v1/payment_links" }),
+  retrieve: Ut({
     method: "GET",
     fullPath: "/v1/payment_links/{payment_link}"
   }),
-  update: Lt({
+  update: Ut({
     method: "POST",
     fullPath: "/v1/payment_links/{payment_link}"
   }),
-  list: Lt({
+  list: Ut({
     method: "GET",
     fullPath: "/v1/payment_links",
     methodType: "list"
   }),
-  listLineItems: Lt({
+  listLineItems: Ut({
     method: "GET",
     fullPath: "/v1/payment_links/{payment_link}/line_items",
     methodType: "list"
   })
-}), gr = o.method, Uu = o.extend({
+}), gr = o.method, Ku = o.extend({
   create: gr({
     method: "POST",
     fullPath: "/v1/payment_method_configurations"
@@ -5131,7 +5256,7 @@ const Dn = o.method, Mu = o.extend({
     fullPath: "/v1/payment_method_configurations",
     methodType: "list"
   })
-}), jt = o.method, Lu = o.extend({
+}), jt = o.method, Yu = o.extend({
   create: jt({
     method: "POST",
     fullPath: "/v1/payment_method_domains"
@@ -5153,47 +5278,47 @@ const Dn = o.method, Mu = o.extend({
     method: "POST",
     fullPath: "/v1/payment_method_domains/{payment_method_domain}/validate"
   })
-}), mt = o.method, ju = o.extend({
-  create: mt({ method: "POST", fullPath: "/v1/payment_methods" }),
-  retrieve: mt({
+}), pt = o.method, Ju = o.extend({
+  create: pt({ method: "POST", fullPath: "/v1/payment_methods" }),
+  retrieve: pt({
     method: "GET",
     fullPath: "/v1/payment_methods/{payment_method}"
   }),
-  update: mt({
+  update: pt({
     method: "POST",
     fullPath: "/v1/payment_methods/{payment_method}"
   }),
-  list: mt({
+  list: pt({
     method: "GET",
     fullPath: "/v1/payment_methods",
     methodType: "list"
   }),
-  attach: mt({
+  attach: pt({
     method: "POST",
     fullPath: "/v1/payment_methods/{payment_method}/attach"
   }),
-  detach: mt({
+  detach: pt({
     method: "POST",
     fullPath: "/v1/payment_methods/{payment_method}/detach"
   })
-}), vt = o.method, Hu = o.extend({
-  create: vt({ method: "POST", fullPath: "/v1/payouts" }),
-  retrieve: vt({ method: "GET", fullPath: "/v1/payouts/{payout}" }),
-  update: vt({ method: "POST", fullPath: "/v1/payouts/{payout}" }),
-  list: vt({
+}), mt = o.method, Qu = o.extend({
+  create: mt({ method: "POST", fullPath: "/v1/payouts" }),
+  retrieve: mt({ method: "GET", fullPath: "/v1/payouts/{payout}" }),
+  update: mt({ method: "POST", fullPath: "/v1/payouts/{payout}" }),
+  list: mt({
     method: "GET",
     fullPath: "/v1/payouts",
     methodType: "list"
   }),
-  cancel: vt({
+  cancel: mt({
     method: "POST",
     fullPath: "/v1/payouts/{payout}/cancel"
   }),
-  reverse: vt({
+  reverse: mt({
     method: "POST",
     fullPath: "/v1/payouts/{payout}/reverse"
   })
-}), Ht = o.method, Bu = o.extend({
+}), Ht = o.method, Xu = o.extend({
   create: Ht({ method: "POST", fullPath: "/v1/plans" }),
   retrieve: Ht({ method: "GET", fullPath: "/v1/plans/{plan}" }),
   update: Ht({ method: "POST", fullPath: "/v1/plans/{plan}" }),
@@ -5203,7 +5328,7 @@ const Dn = o.method, Mu = o.extend({
     methodType: "list"
   }),
   del: Ht({ method: "DELETE", fullPath: "/v1/plans/{plan}" })
-}), Bt = o.method, Wu = o.extend({
+}), Bt = o.method, Zu = o.extend({
   create: Bt({ method: "POST", fullPath: "/v1/prices" }),
   retrieve: Bt({ method: "GET", fullPath: "/v1/prices/{price}" }),
   update: Bt({ method: "POST", fullPath: "/v1/prices/{price}" }),
@@ -5217,7 +5342,7 @@ const Dn = o.method, Mu = o.extend({
     fullPath: "/v1/prices/search",
     methodType: "search"
   })
-}), De = o.method, zu = o.extend({
+}), De = o.method, ec = o.extend({
   create: De({ method: "POST", fullPath: "/v1/products" }),
   retrieve: De({ method: "GET", fullPath: "/v1/products/{id}" }),
   update: De({ method: "POST", fullPath: "/v1/products/{id}" }),
@@ -5249,7 +5374,7 @@ const Dn = o.method, Mu = o.extend({
     fullPath: "/v1/products/search",
     methodType: "search"
   })
-}), Tr = o.method, Vu = o.extend({
+}), Tr = o.method, tc = o.extend({
   create: Tr({ method: "POST", fullPath: "/v1/promotion_codes" }),
   retrieve: Tr({
     method: "GET",
@@ -5264,38 +5389,38 @@ const Dn = o.method, Mu = o.extend({
     fullPath: "/v1/promotion_codes",
     methodType: "list"
   })
-}), ke = o.method, Ku = o.extend({
-  create: ke({ method: "POST", fullPath: "/v1/quotes" }),
-  retrieve: ke({ method: "GET", fullPath: "/v1/quotes/{quote}" }),
-  update: ke({ method: "POST", fullPath: "/v1/quotes/{quote}" }),
-  list: ke({
+}), qe = o.method, rc = o.extend({
+  create: qe({ method: "POST", fullPath: "/v1/quotes" }),
+  retrieve: qe({ method: "GET", fullPath: "/v1/quotes/{quote}" }),
+  update: qe({ method: "POST", fullPath: "/v1/quotes/{quote}" }),
+  list: qe({
     method: "GET",
     fullPath: "/v1/quotes",
     methodType: "list"
   }),
-  accept: ke({ method: "POST", fullPath: "/v1/quotes/{quote}/accept" }),
-  cancel: ke({ method: "POST", fullPath: "/v1/quotes/{quote}/cancel" }),
-  finalizeQuote: ke({
+  accept: qe({ method: "POST", fullPath: "/v1/quotes/{quote}/accept" }),
+  cancel: qe({ method: "POST", fullPath: "/v1/quotes/{quote}/cancel" }),
+  finalizeQuote: qe({
     method: "POST",
     fullPath: "/v1/quotes/{quote}/finalize"
   }),
-  listComputedUpfrontLineItems: ke({
+  listComputedUpfrontLineItems: qe({
     method: "GET",
     fullPath: "/v1/quotes/{quote}/computed_upfront_line_items",
     methodType: "list"
   }),
-  listLineItems: ke({
+  listLineItems: qe({
     method: "GET",
     fullPath: "/v1/quotes/{quote}/line_items",
     methodType: "list"
   }),
-  pdf: ke({
+  pdf: qe({
     method: "GET",
     fullPath: "/v1/quotes/{quote}/pdf",
     host: "files.stripe.com",
     streaming: !0
   })
-}), Wt = o.method, Yu = o.extend({
+}), Wt = o.method, nc = o.extend({
   create: Wt({ method: "POST", fullPath: "/v1/refunds" }),
   retrieve: Wt({ method: "GET", fullPath: "/v1/refunds/{refund}" }),
   update: Wt({ method: "POST", fullPath: "/v1/refunds/{refund}" }),
@@ -5308,24 +5433,24 @@ const Dn = o.method, Mu = o.extend({
     method: "POST",
     fullPath: "/v1/refunds/{refund}/cancel"
   })
-}), qn = o.method, Ju = o.extend({
-  retrieve: qn({ method: "GET", fullPath: "/v1/reviews/{review}" }),
-  list: qn({
+}), kn = o.method, oc = o.extend({
+  retrieve: kn({ method: "GET", fullPath: "/v1/reviews/{review}" }),
+  list: kn({
     method: "GET",
     fullPath: "/v1/reviews",
     methodType: "list"
   }),
-  approve: qn({
+  approve: kn({
     method: "POST",
     fullPath: "/v1/reviews/{review}/approve"
   })
-}), Qu = o.method, Xu = o.extend({
-  list: Qu({
+}), ac = o.method, ic = o.extend({
+  list: ac({
     method: "GET",
     fullPath: "/v1/setup_attempts",
     methodType: "list"
   })
-}), tt = o.method, Zu = o.extend({
+}), tt = o.method, sc = o.extend({
   create: tt({ method: "POST", fullPath: "/v1/setup_intents" }),
   retrieve: tt({
     method: "GET",
@@ -5352,7 +5477,7 @@ const Dn = o.method, Mu = o.extend({
     method: "POST",
     fullPath: "/v1/setup_intents/{intent}/verify_microdeposits"
   })
-}), _r = o.method, ec = o.extend({
+}), _r = o.method, lc = o.extend({
   create: _r({ method: "POST", fullPath: "/v1/shipping_rates" }),
   retrieve: _r({
     method: "GET",
@@ -5367,7 +5492,7 @@ const Dn = o.method, Mu = o.extend({
     fullPath: "/v1/shipping_rates",
     methodType: "list"
   })
-}), zt = o.method, tc = o.extend({
+}), zt = o.method, uc = o.extend({
   create: zt({ method: "POST", fullPath: "/v1/sources" }),
   retrieve: zt({ method: "GET", fullPath: "/v1/sources/{source}" }),
   update: zt({ method: "POST", fullPath: "/v1/sources/{source}" }),
@@ -5380,7 +5505,7 @@ const Dn = o.method, Mu = o.extend({
     method: "POST",
     fullPath: "/v1/sources/{source}/verify"
   })
-}), rt = o.method, rc = o.extend({
+}), rt = o.method, cc = o.extend({
   create: rt({ method: "POST", fullPath: "/v1/subscription_items" }),
   retrieve: rt({
     method: "GET",
@@ -5408,33 +5533,33 @@ const Dn = o.method, Mu = o.extend({
     fullPath: "/v1/subscription_items/{subscription_item}/usage_record_summaries",
     methodType: "list"
   })
-}), yt = o.method, nc = o.extend({
-  create: yt({
+}), vt = o.method, dc = o.extend({
+  create: vt({
     method: "POST",
     fullPath: "/v1/subscription_schedules"
   }),
-  retrieve: yt({
+  retrieve: vt({
     method: "GET",
     fullPath: "/v1/subscription_schedules/{schedule}"
   }),
-  update: yt({
+  update: vt({
     method: "POST",
     fullPath: "/v1/subscription_schedules/{schedule}"
   }),
-  list: yt({
+  list: vt({
     method: "GET",
     fullPath: "/v1/subscription_schedules",
     methodType: "list"
   }),
-  cancel: yt({
+  cancel: vt({
     method: "POST",
     fullPath: "/v1/subscription_schedules/{schedule}/cancel"
   }),
-  release: yt({
+  release: vt({
     method: "POST",
     fullPath: "/v1/subscription_schedules/{schedule}/release"
   })
-}), Be = o.method, oc = o.extend({
+}), Be = o.method, hc = o.extend({
   create: Be({ method: "POST", fullPath: "/v1/subscriptions" }),
   retrieve: Be({
     method: "GET",
@@ -5466,14 +5591,14 @@ const Dn = o.method, Mu = o.extend({
     fullPath: "/v1/subscriptions/search",
     methodType: "search"
   })
-}), ya = o.method, ac = o.extend({
+}), ya = o.method, fc = o.extend({
   retrieve: ya({ method: "GET", fullPath: "/v1/tax_codes/{id}" }),
   list: ya({
     method: "GET",
     fullPath: "/v1/tax_codes",
     methodType: "list"
   })
-}), Er = o.method, ic = o.extend({
+}), Er = o.method, pc = o.extend({
   create: Er({ method: "POST", fullPath: "/v1/tax_ids" }),
   retrieve: Er({ method: "GET", fullPath: "/v1/tax_ids/{id}" }),
   list: Er({
@@ -5482,7 +5607,7 @@ const Dn = o.method, Mu = o.extend({
     methodType: "list"
   }),
   del: Er({ method: "DELETE", fullPath: "/v1/tax_ids/{id}" })
-}), Sr = o.method, sc = o.extend({
+}), Sr = o.method, mc = o.extend({
   create: Sr({ method: "POST", fullPath: "/v1/tax_rates" }),
   retrieve: Sr({ method: "GET", fullPath: "/v1/tax_rates/{tax_rate}" }),
   update: Sr({ method: "POST", fullPath: "/v1/tax_rates/{tax_rate}" }),
@@ -5491,10 +5616,10 @@ const Dn = o.method, Mu = o.extend({
     fullPath: "/v1/tax_rates",
     methodType: "list"
   })
-}), Pa = o.method, lc = o.extend({
+}), Pa = o.method, vc = o.extend({
   create: Pa({ method: "POST", fullPath: "/v1/tokens" }),
   retrieve: Pa({ method: "GET", fullPath: "/v1/tokens/{token}" })
-}), Vt = o.method, uc = o.extend({
+}), Vt = o.method, yc = o.extend({
   create: Vt({ method: "POST", fullPath: "/v1/topups" }),
   retrieve: Vt({ method: "GET", fullPath: "/v1/topups/{topup}" }),
   update: Vt({ method: "POST", fullPath: "/v1/topups/{topup}" }),
@@ -5504,7 +5629,7 @@ const Dn = o.method, Mu = o.extend({
     methodType: "list"
   }),
   cancel: Vt({ method: "POST", fullPath: "/v1/topups/{topup}/cancel" })
-}), We = o.method, cc = o.extend({
+}), We = o.method, Pc = o.extend({
   create: We({ method: "POST", fullPath: "/v1/transfers" }),
   retrieve: We({ method: "GET", fullPath: "/v1/transfers/{transfer}" }),
   update: We({ method: "POST", fullPath: "/v1/transfers/{transfer}" }),
@@ -5530,7 +5655,7 @@ const Dn = o.method, Mu = o.extend({
     method: "POST",
     fullPath: "/v1/transfers/{transfer}/reversals/{id}"
   })
-}), Kt = o.method, dc = o.extend({
+}), Kt = o.method, gc = o.extend({
   create: Kt({ method: "POST", fullPath: "/v1/webhook_endpoints" }),
   retrieve: Kt({
     method: "GET",
@@ -5549,180 +5674,180 @@ const Dn = o.method, Mu = o.extend({
     method: "DELETE",
     fullPath: "/v1/webhook_endpoints/{webhook_endpoint}"
   })
-}), hc = ee("apps", { Secrets: Ll }), fc = ee("billing", {
-  Alerts: xs,
-  CreditBalanceSummary: Ls,
-  CreditBalanceTransactions: js,
-  CreditGrants: Hs,
-  MeterEventAdjustments: ol,
-  MeterEvents: hl,
-  Meters: ml
-}), pc = ee("billingPortal", {
-  Configurations: Gs,
-  Sessions: Hl
-}), mc = ee("checkout", {
-  Sessions: Bl
-}), vc = ee("climate", {
-  Orders: vl,
-  Products: bl,
-  Suppliers: Vl
-}), yc = ee("entitlements", {
-  ActiveEntitlements: ws,
-  Features: Xs
-}), Pc = ee("financialConnections", {
-  Accounts: Os,
-  Sessions: Wl,
-  Transactions: Xl
-}), gc = ee("forwarding", {
-  Requests: Nl
-}), Tc = ee("identity", {
-  VerificationReports: ou,
-  VerificationSessions: au
-}), _c = ee("issuing", {
-  Authorizations: Cs,
-  Cardholders: Ms,
-  Cards: Is,
-  Disputes: Ks,
-  PersonalizationDesigns: El,
-  PhysicalBundles: Sl,
-  Tokens: Yl,
-  Transactions: Zl
-}), Ec = ee("radar", {
-  EarlyFraudWarnings: Ys,
-  ValueListItems: ru,
-  ValueLists: nu
-}), Sc = ee("reporting", {
-  ReportRuns: ql,
-  ReportTypes: Fl
-}), bc = ee("sigma", {
-  ScheduledQueryRuns: Ul
-}), Oc = ee("tax", {
-  Calculations: Rs,
-  Registrations: kl,
-  Settings: zl,
-  Transactions: eu
-}), wc = ee("terminal", {
-  Configurations: Ds,
-  ConnectionTokens: Ns,
-  Locations: rl,
-  Readers: xl
-}), xc = ee("testHelpers", {
-  ConfirmationTokens: qs,
-  Customers: zs,
-  Refunds: Dl,
-  TestClocks: Kl,
+}), Tc = ee("apps", { Secrets: Yl }), _c = ee("billing", {
+  Alerts: Ds,
+  CreditBalanceSummary: Ys,
+  CreditBalanceTransactions: Js,
+  CreditGrants: Qs,
+  MeterEventAdjustments: hl,
+  MeterEvents: Tl,
+  Meters: Sl
+}), Ec = ee("billingPortal", {
+  Configurations: js,
+  Sessions: Ql
+}), Sc = ee("checkout", {
+  Sessions: Xl
+}), bc = ee("climate", {
+  Orders: bl,
+  Products: Il,
+  Suppliers: tu
+}), Oc = ee("entitlements", {
+  ActiveEntitlements: Gs,
+  Features: il
+}), wc = ee("financialConnections", {
+  Accounts: $s,
+  Sessions: Zl,
+  Transactions: iu
+}), xc = ee("forwarding", {
+  Requests: Vl
+}), Cc = ee("identity", {
+  VerificationReports: hu,
+  VerificationSessions: fu
+}), Ac = ee("issuing", {
+  Authorizations: ks,
+  Cardholders: Ns,
+  Cards: Us,
+  Disputes: rl,
+  PersonalizationDesigns: Rl,
+  PhysicalBundles: Ml,
+  Tokens: nu,
+  Transactions: su
+}), Rc = ee("radar", {
+  EarlyFraudWarnings: nl,
+  ValueListItems: cu,
+  ValueLists: du
+}), Mc = ee("reporting", {
+  ReportRuns: Wl,
+  ReportTypes: zl
+}), Ic = ee("sigma", {
+  ScheduledQueryRuns: Kl
+}), $c = ee("tax", {
+  Calculations: Fs,
+  Registrations: Bl,
+  Settings: eu,
+  Transactions: lu
+}), Gc = ee("terminal", {
+  Configurations: Hs,
+  ConnectionTokens: Vs,
+  Locations: cl,
+  Readers: Dl
+}), Dc = ee("testHelpers", {
+  ConfirmationTokens: Ws,
+  Customers: el,
+  Refunds: Hl,
+  TestClocks: ru,
   Issuing: ee("issuing", {
-    Authorizations: As,
-    Cards: $s,
-    PersonalizationDesigns: _l,
-    Transactions: Ql
+    Authorizations: qs,
+    Cards: Ls,
+    PersonalizationDesigns: Al,
+    Transactions: au
   }),
   Terminal: ee("terminal", {
-    Readers: wl
+    Readers: Gl
   }),
   Treasury: ee("treasury", {
-    InboundTransfers: el,
-    OutboundPayments: yl,
-    OutboundTransfers: gl,
-    ReceivedCredits: Cl,
-    ReceivedDebits: $l
+    InboundTransfers: ll,
+    OutboundPayments: Ol,
+    OutboundTransfers: xl,
+    ReceivedCredits: kl,
+    ReceivedDebits: Ll
   })
-}), Ac = ee("treasury", {
-  CreditReversals: Bs,
-  DebitReversals: Vs,
-  FinancialAccounts: Zs,
-  InboundTransfers: tl,
-  OutboundPayments: Pl,
-  OutboundTransfers: Tl,
-  ReceivedCredits: Rl,
-  ReceivedDebits: Il,
-  TransactionEntries: Jl,
-  Transactions: tu
-}), Cc = ee("v2", {
+}), qc = ee("treasury", {
+  CreditReversals: Xs,
+  DebitReversals: tl,
+  FinancialAccounts: sl,
+  InboundTransfers: ul,
+  OutboundPayments: wl,
+  OutboundTransfers: Cl,
+  ReceivedCredits: Fl,
+  ReceivedDebits: Ul,
+  TransactionEntries: ou,
+  Transactions: uu
+}), kc = ee("v2", {
   Billing: ee("billing", {
-    MeterEventAdjustments: il,
-    MeterEventSession: ll,
-    MeterEventStream: cl,
-    MeterEvents: pl
+    MeterEventAdjustments: pl,
+    MeterEventSession: vl,
+    MeterEventStream: Pl,
+    MeterEvents: El
   }),
   Core: ee("core", {
-    EventDestinations: Js,
-    Events: Qs
+    EventDestinations: ol,
+    Events: al
   })
 }), br = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   Account: ca,
-  AccountLinks: su,
-  AccountSessions: uu,
+  AccountLinks: mu,
+  AccountSessions: yu,
   Accounts: ca,
-  ApplePayDomains: cu,
-  ApplicationFees: du,
-  Apps: hc,
-  Balance: fu,
-  BalanceTransactions: pu,
-  Billing: fc,
-  BillingPortal: pc,
-  Charges: mu,
-  Checkout: mc,
-  Climate: vc,
-  ConfirmationTokens: yu,
-  CountrySpecs: Pu,
-  Coupons: gu,
-  CreditNotes: Tu,
-  CustomerSessions: Eu,
-  Customers: Su,
-  Disputes: bu,
-  Entitlements: yc,
-  EphemeralKeys: Ou,
-  Events: wu,
-  ExchangeRates: xu,
-  FileLinks: Au,
-  Files: Mu,
-  FinancialConnections: Pc,
-  Forwarding: gc,
-  Identity: Tc,
-  InvoiceItems: $u,
-  InvoiceRenderingTemplates: Iu,
-  Invoices: Gu,
-  Issuing: _c,
-  Mandates: ku,
-  OAuth: qu,
-  PaymentIntents: Fu,
-  PaymentLinks: Nu,
-  PaymentMethodConfigurations: Uu,
-  PaymentMethodDomains: Lu,
-  PaymentMethods: ju,
-  Payouts: Hu,
-  Plans: Bu,
-  Prices: Wu,
-  Products: zu,
-  PromotionCodes: Vu,
-  Quotes: Ku,
-  Radar: Ec,
-  Refunds: Yu,
-  Reporting: Sc,
-  Reviews: Ju,
-  SetupAttempts: Xu,
-  SetupIntents: Zu,
-  ShippingRates: ec,
-  Sigma: bc,
-  Sources: tc,
-  SubscriptionItems: rc,
-  SubscriptionSchedules: nc,
-  Subscriptions: oc,
-  Tax: Oc,
-  TaxCodes: ac,
-  TaxIds: ic,
-  TaxRates: sc,
-  Terminal: wc,
-  TestHelpers: xc,
-  Tokens: lc,
-  Topups: uc,
-  Transfers: cc,
-  Treasury: Ac,
-  V2: Cc,
-  WebhookEndpoints: dc
-}, Symbol.toStringTag, { value: "Module" })), ga = "api.stripe.com", Ta = "443", _a = "/v1/", Ea = Ss, Sa = 8e4, ba = 5, Oa = 0.5, Rc = ["name", "version", "url", "partner_id"], wa = [
+  ApplePayDomains: Pu,
+  ApplicationFees: gu,
+  Apps: Tc,
+  Balance: _u,
+  BalanceTransactions: Eu,
+  Billing: _c,
+  BillingPortal: Ec,
+  Charges: Su,
+  Checkout: Sc,
+  Climate: bc,
+  ConfirmationTokens: Ou,
+  CountrySpecs: wu,
+  Coupons: xu,
+  CreditNotes: Cu,
+  CustomerSessions: Ru,
+  Customers: Mu,
+  Disputes: Iu,
+  Entitlements: Oc,
+  EphemeralKeys: $u,
+  Events: Gu,
+  ExchangeRates: Du,
+  FileLinks: qu,
+  Files: Nu,
+  FinancialConnections: wc,
+  Forwarding: xc,
+  Identity: Cc,
+  InvoiceItems: Lu,
+  InvoiceRenderingTemplates: Uu,
+  Invoices: ju,
+  Issuing: Ac,
+  Mandates: Bu,
+  OAuth: Wu,
+  PaymentIntents: zu,
+  PaymentLinks: Vu,
+  PaymentMethodConfigurations: Ku,
+  PaymentMethodDomains: Yu,
+  PaymentMethods: Ju,
+  Payouts: Qu,
+  Plans: Xu,
+  Prices: Zu,
+  Products: ec,
+  PromotionCodes: tc,
+  Quotes: rc,
+  Radar: Rc,
+  Refunds: nc,
+  Reporting: Mc,
+  Reviews: oc,
+  SetupAttempts: ic,
+  SetupIntents: sc,
+  ShippingRates: lc,
+  Sigma: Ic,
+  Sources: uc,
+  SubscriptionItems: cc,
+  SubscriptionSchedules: dc,
+  Subscriptions: hc,
+  Tax: $c,
+  TaxCodes: fc,
+  TaxIds: pc,
+  TaxRates: mc,
+  Terminal: Gc,
+  TestHelpers: Dc,
+  Tokens: vc,
+  Topups: yc,
+  Transfers: Pc,
+  Treasury: qc,
+  V2: kc,
+  WebhookEndpoints: gc
+}, Symbol.toStringTag, { value: "Module" })), ga = "api.stripe.com", Ta = "443", _a = "/v1/", Ea = Ms, Sa = 8e4, ba = 5, Oa = 0.5, Fc = ["name", "version", "url", "partner_id"], wa = [
   "authenticator",
   "apiVersion",
   "typescript",
@@ -5737,9 +5862,9 @@ const Dn = o.method, Mu = o.extend({
   "appInfo",
   "stripeAccount",
   "stripeContext"
-], Mc = (t) => new Yt(t, o.MAX_BUFFERED_REQUEST_METRICS);
-function $c(t, e = Mc) {
-  n.PACKAGE_VERSION = "17.4.0", n.USER_AGENT = Object.assign({ bindings_version: n.PACKAGE_VERSION, lang: "node", publisher: "stripe", uname: null, typescript: !1 }, ss()), n.StripeResource = o, n.resources = br, n.HttpClient = be, n.HttpClientResponse = Ma, n.CryptoProvider = $a;
+], Nc = (t) => new Yt(t, o.MAX_BUFFERED_REQUEST_METRICS);
+function Lc(t, e = Nc) {
+  n.PACKAGE_VERSION = "17.4.0", n.USER_AGENT = Object.assign({ bindings_version: n.PACKAGE_VERSION, lang: "node", publisher: "stripe", uname: null, typescript: !1 }, ms()), n.StripeResource = o, n.resources = br, n.HttpClient = be, n.HttpClientResponse = Ga, n.CryptoProvider = Da;
   function r(a = t) {
     return Vo(a);
   }
@@ -5747,30 +5872,30 @@ function $c(t, e = Mc) {
   function n(a, s = {}) {
     if (!(this instanceof n))
       return new n(a, s);
-    const c = this._getPropsFromConfig(s);
+    const d = this._getPropsFromConfig(s);
     this._platformFunctions = t, Object.defineProperty(this, "_emitter", {
       value: this._platformFunctions.createEmitter(),
       enumerable: !1,
       configurable: !1,
       writable: !1
     }), this.VERSION = n.PACKAGE_VERSION, this.on = this._emitter.on.bind(this._emitter), this.once = this._emitter.once.bind(this._emitter), this.off = this._emitter.removeListener.bind(this._emitter);
-    const f = c.httpAgent || null;
+    const f = d.httpAgent || null;
     this._api = {
-      host: c.host || ga,
-      port: c.port || Ta,
-      protocol: c.protocol || "https",
+      host: d.host || ga,
+      port: d.port || Ta,
+      protocol: d.protocol || "https",
       basePath: _a,
-      version: c.apiVersion || Ea,
-      timeout: En("timeout", c.timeout, Sa),
-      maxNetworkRetries: En("maxNetworkRetries", c.maxNetworkRetries, 2),
+      version: d.apiVersion || Ea,
+      timeout: En("timeout", d.timeout, Sa),
+      maxNetworkRetries: En("maxNetworkRetries", d.maxNetworkRetries, 2),
       agent: f,
-      httpClient: c.httpClient || (f ? this._platformFunctions.createNodeHttpClient(f) : this._platformFunctions.createDefaultHttpClient()),
+      httpClient: d.httpClient || (f ? this._platformFunctions.createNodeHttpClient(f) : this._platformFunctions.createDefaultHttpClient()),
       dev: !1,
-      stripeAccount: c.stripeAccount || null,
-      stripeContext: c.stripeContext || null
+      stripeAccount: d.stripeAccount || null,
+      stripeContext: d.stripeContext || null
     };
-    const y = c.typescript || !1;
-    y !== n.USER_AGENT.typescript && (n.USER_AGENT.typescript = y), c.appInfo && this._setAppInfo(c.appInfo), this._prepResources(), this._setAuthenticator(a, c.authenticator), this.errors = io, this.webhooks = r(), this._prevRequestMetrics = [], this._enableTelemetry = c.telemetry !== !1, this._requestSender = e(this), this.StripeResource = n.StripeResource;
+    const v = d.typescript || !1;
+    v !== n.USER_AGENT.typescript && (n.USER_AGENT.typescript = v), d.appInfo && this._setAppInfo(d.appInfo), this._prepResources(), this._setAuthenticator(a, d.authenticator), this.errors = io, this.webhooks = r(), this._prevRequestMetrics = [], this._enableTelemetry = d.telemetry !== !1, this._requestSender = e(this), this.StripeResource = n.StripeResource;
   }
   return n.errors = io, n.createNodeHttpClient = t.createNodeHttpClient, n.createFetchHttpClient = t.createFetchHttpClient, n.createNodeCryptoProvider = t.createNodeCryptoProvider, n.createSubtleCryptoProvider = t.createSubtleCryptoProvider, n.prototype = {
     // Properties are set in the constructor above
@@ -5788,8 +5913,8 @@ function $c(t, e = Mc) {
     _enableTelemetry: null,
     _requestSender: null,
     _platformFunctions: null,
-    rawRequest(a, s, c, f) {
-      return this._requestSender._rawRequest(a, s, c, f);
+    rawRequest(a, s, d, f) {
+      return this._requestSender._rawRequest(a, s, d, f);
     },
     /**
      * @private
@@ -5799,7 +5924,7 @@ function $c(t, e = Mc) {
         throw new Error("Can't specify both apiKey and authenticator");
       if (!a && !s)
         throw new Error("Neither apiKey nor config.authenticator provided");
-      this._authenticator = a ? Un(a) : s;
+      this._authenticator = a ? Ln(a) : s;
     },
     /**
      * @private
@@ -5810,8 +5935,8 @@ function $c(t, e = Mc) {
         throw new Error("AppInfo must be an object.");
       if (a && !a.name)
         throw new Error("AppInfo.name is required");
-      a = a || {}, this._appInfo = Rc.reduce(
-        (s, c) => (typeof a[c] == "string" && (s = s || {}, s[c] = a[c]), s),
+      a = a || {}, this._appInfo = Fc.reduce(
+        (s, d) => (typeof a[d] == "string" && (s = s || {}, s[d] = a[d]), s),
         // @ts-ignore
         void 0
       );
@@ -5872,8 +5997,8 @@ function $c(t, e = Mc) {
      * @private
      * This may be removed in the future.
      */
-    _setApiNumberField(a, s, c) {
-      const f = En(a, s, c);
+    _setApiNumberField(a, s, d) {
+      const f = En(a, s, d);
       this._setApiField(a, f);
     },
     getMaxNetworkRetryDelay() {
@@ -5906,14 +6031,14 @@ function $c(t, e = Mc) {
      * fetching a uname from the system.
      */
     getClientUserAgentSeeded(a, s) {
-      this._platformFunctions.getUname().then((c) => {
+      this._platformFunctions.getUname().then((d) => {
         var f;
-        const y = {};
+        const v = {};
         for (const l in a)
-          Object.prototype.hasOwnProperty.call(a, l) && (y[l] = encodeURIComponent((f = a[l]) !== null && f !== void 0 ? f : "null"));
-        y.uname = encodeURIComponent(c || "UNKNOWN");
+          Object.prototype.hasOwnProperty.call(a, l) && (v[l] = encodeURIComponent((f = a[l]) !== null && f !== void 0 ? f : "null"));
+        v.uname = encodeURIComponent(d || "UNKNOWN");
         const _ = this.getApiField("httpClient");
-        _ && (y.httplib = encodeURIComponent(_.getClientName())), this._appInfo && (y.application = this._appInfo), s(JSON.stringify(y));
+        _ && (v.httplib = encodeURIComponent(_.getClientName())), this._appInfo && (v.application = this._appInfo), s(JSON.stringify(v));
       });
     },
     /**
@@ -5938,7 +6063,7 @@ function $c(t, e = Mc) {
      */
     _prepResources() {
       for (const a in br)
-        Object.prototype.hasOwnProperty.call(br, a) && (this[os(a)] = new br[a](this));
+        Object.prototype.hasOwnProperty.call(br, a) && (this[hs(a)] = new br[a](this));
     },
     /**
      * @private
@@ -5954,220 +6079,49 @@ function $c(t, e = Mc) {
         return {
           apiVersion: a
         };
-      if (Object.keys(a).filter((y) => !wa.includes(y)).length > 0)
+      if (Object.keys(a).filter((v) => !wa.includes(v)).length > 0)
         throw new Error(`Config object may only contain the following: ${wa.join(", ")}`);
       return a;
     },
-    parseThinEvent(a, s, c, f, y, _) {
-      return this.webhooks.constructEvent(a, s, c, f, y, _);
+    parseThinEvent(a, s, d, f, v, _) {
+      return this.webhooks.constructEvent(a, s, d, f, v, _);
     }
   }, n;
 }
-const Ic = $c(new Ei());
-async function Gc(t, e) {
-  return (await new Ic(e.secretKey).paymentIntents.create({
+const Uc = Lc(new Ri());
+async function jc(t, e) {
+  return (await new Uc(e.secretKey).paymentIntents.create({
     customer: "cus_RQATBsWqSFeYZp",
     amount: t,
     currency: "USD",
     automatic_payment_methods: { enabled: !0 }
   })).client_secret;
 }
-async function Xa(t, { amount: e }, r) {
-  if (t === "nuvei")
-    return yi(e.toString(), r);
-  if (t === "stripe")
-    return Gc(e, r);
+async function Hc(t, { amount: e }, r) {
+  return jc(e, r);
 }
-async function Dc(t) {
-  return new Promise((e, r) => {
-    if (document.querySelector(`script[src="${t}"]`)) {
-      e();
-      return;
-    }
-    const a = Object.assign(document.createElement("script"), {
-      type: "text/javascript",
-      defer: !0,
-      src: t,
-      onerror: (s) => {
-        r(s);
-      }
-    });
-    a.onload = () => {
-      e();
-    }, document.body.appendChild(a);
-  });
-}
-function kc(t) {
-  return t.charAt(0).toUpperCase() + t.slice(1);
-}
-function Za(t) {
-  const { text: e, onSuccess: r, onError: n, onComplete: a, submitPayment: s, ...c } = t;
-  return /* @__PURE__ */ ie.jsx("button", { onClick: async () => (c.onSubmit && await c.onSubmit(), s({
-    onSuccess: r || (() => {
-    }),
-    onError: n || (() => {
-    }),
-    onComplete: a || (() => {
-    })
-  })), ...c, children: e });
-}
-function ei(t) {
-  const { onChange: e, ...r } = t;
-  return /* @__PURE__ */ ie.jsx("input", { onChange: e, ...r });
-}
-const qc = "https://cdn.safecharge.com/safecharge_resources/v1/websdk/safecharge.js", ti = Aa(void 0);
-async function Fc(t, e) {
-  return new Promise(function(r, n) {
-    t.createPayment(
-      e,
-      (a) => {
-        if (a.result === "APPROVED")
-          r(a);
-        else {
-          const s = a.errorDescription ? String(a.errorDescription).toLowerCase() : "", c = a.transactionStatus ? String(a.transactionStatus).toLowerCase() : "failed";
-          n(new Error(`Transaction ${c}.${c.includes(s) ? "" : ` Reason: ${kc(s)}.`}`));
-        }
-      }
-    );
-  });
-}
-function Nc({ children: t, amount: e, config: r }) {
-  const [n, a] = qe({
-    cardNumber: null,
-    cardExpiry: null,
-    cardCvc: null,
-    cardHolderName: ""
-  }), [s, c] = qe(), [f, y] = qe(), [_, l] = qe("");
-  if (!r)
-    throw new Error("config missing");
-  nt(() => {
-    async function m() {
-      const g = await Xa("nuvei", { amount: e }, r);
-      l(g);
-    }
-    m();
-  }, []), nt(() => {
-    Dc(qc).then(() => {
-      window.SafeCharge !== void 0 && c(
-        window.SafeCharge({
-          env: r.env,
-          merchantId: r.merchantId,
-          merchantSiteId: r.merchantSiteId
-        })
-      );
-    });
-  }, []), nt(() => {
-    if (s && !f) {
-      const m = s.fields({
-        // fonts: [{ cssUrl: 'https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap' }],
-        // locale: 'en',
-        // fontSize: '16px',
-      });
-      y(m);
-    }
-  }, [s, f]);
-  function h(m, g) {
-    a((O) => ({ ...O, [m]: g }));
-  }
-  async function T(m) {
-    try {
-      if (!n.cardHolderName)
-        throw new Error("Card holder name is required.");
-      if (!n.cardNumber.parentElm.classList.contains(n.cardNumber.stateClass.complete))
-        throw new Error("Invalid card number.");
-      if (!n.cardExpiry.parentElm.classList.contains(n.cardExpiry.stateClass.complete))
-        throw new Error("Invalid card expiry.");
-      if (!n.cardCvc.parentElm.classList.contains(n.cardCvc.stateClass.complete))
-        throw new Error("Invalid card cvc.");
-    } catch (g) {
-      console.error(g), m.onError(g), m.onComplete();
-      return;
-    }
-    try {
-      const g = await Fc(s, {
-        cardHolderName: n.cardHolderName,
-        sessionToken: _,
-        paymentOption: n.cardNumber
-      });
-      m.onSuccess(g);
-    } catch (g) {
-      console.error(g), m.onError(g);
-    }
-    m.onComplete();
-  }
-  return !s || !f || !_ ? null : /* @__PURE__ */ ie.jsx(ti.Provider, { value: { submitPayment: T, form: n, updateField: h, safeCharge: s, safeChargeFields: f }, children: t });
-}
-function Zn() {
-  return Ca(ti);
-}
-function Uc(t) {
-  switch (t) {
-    case "cardNumber":
-      return "ccNumber";
-    case "cardExpiry":
-      return "ccExpiration";
-    case "cardCvc":
-      return "ccCvc";
-  }
-}
-const eo = ii(({ fieldType: t }) => {
-  const { updateField: e, safeChargeFields: r } = Zn(), n = `accru-payment-form-${t}-container`;
-  return nt(() => {
-    const a = Uc(t);
-    if (!r.instances.map((s) => s.type).includes(a)) {
-      const s = r.create(a, {});
-      s.attach(`#${n}`), e(t, s);
-    }
-  }, []), /* @__PURE__ */ ie.jsx("div", { id: n });
-});
-function Lc() {
-  return /* @__PURE__ */ ie.jsx(eo, { fieldType: "cardNumber" });
-}
-function jc() {
-  return /* @__PURE__ */ ie.jsx(eo, { fieldType: "cardExpiry" });
-}
-function Hc() {
-  return /* @__PURE__ */ ie.jsx(eo, { fieldType: "cardCvc" });
-}
-function Bc(t) {
-  const { updateField: e } = Zn();
-  function r(n) {
-    return e("cardHolderName", n.target.value);
-  }
-  return /* @__PURE__ */ ie.jsx(ei, { ...t, onChange: r });
-}
-function Wc(t) {
-  const { submitPayment: e } = Zn();
-  return /* @__PURE__ */ ie.jsx(Za, { ...t, submitPayment: e });
-}
-const zc = {
-  CardHolderName: Bc,
-  CreditCardNumber: Lc,
-  CreditCardExpiration: jc,
-  CreditCardCvc: Hc,
-  SubmitBtn: Wc
-}, ri = Aa(void 0);
-function Vc({ amount: t, children: e, config: r }) {
-  const [n, a] = qe(), [s, c] = qe("");
-  return nt(() => {
+const ti = Ca(void 0);
+function Bc({ amount: t, children: e, config: r }) {
+  const [n, a] = Fe(), [s, d] = Fe("");
+  return yt(() => {
     async function f() {
-      const y = await li(r.publishableKey), _ = t * 100, l = parseInt(_.toFixed(2), 10), h = await Xa("stripe", { amount: l }, { secretKey: r.secretKey });
-      a(y), c(h);
+      const v = await si(r.publishableKey), _ = t * 100, l = parseInt(_.toFixed(2), 10), c = await Hc("stripe", { amount: l }, { secretKey: r.secretKey });
+      a(v), d(c);
     }
     f();
-  }, []), !s || !n ? null : /* @__PURE__ */ ie.jsx(ui, { stripe: n, options: { clientSecret: s }, children: /* @__PURE__ */ ie.jsx(Kc, { clientSecret: s, children: e }) });
+  }, []), !s || !n ? null : /* @__PURE__ */ re.jsx(li, { stripe: n, options: { clientSecret: s }, children: /* @__PURE__ */ re.jsx(Wc, { clientSecret: s, children: e }) });
 }
-function Kc({ children: t, clientSecret: e }) {
-  const r = ci(), n = Ra(), [a, s] = qe({
+function Wc({ children: t, clientSecret: e }) {
+  const r = ui(), n = Ra(), [a, s] = Fe({
     cardNumber: null,
     cardExpiry: null,
     cardCvc: null,
     cardHolderName: ""
   });
-  function c(y, _) {
-    s((l) => ({ ...l, [y]: _ }));
+  function d(v, _) {
+    s((l) => ({ ...l, [v]: _ }));
   }
-  async function f(y) {
+  async function f(v) {
     if (!(!r || !n))
       try {
         const _ = n.getElement("cardNumber"), l = await r.confirmCardPayment(e, {
@@ -6178,78 +6132,85 @@ function Kc({ children: t, clientSecret: e }) {
         });
         if (l.error)
           throw new Error(l.error.message);
-        y.onSuccess(l);
+        v.onSuccess(l);
       } catch (_) {
-        y.onError(_);
+        v.onError(_);
       } finally {
-        y.onComplete();
+        v.onComplete();
       }
   }
-  return /* @__PURE__ */ ie.jsx(ri.Provider, { value: { submitPayment: f, form: a, updateField: c }, children: t });
+  return /* @__PURE__ */ re.jsx(ti.Provider, { value: { submitPayment: f, form: a, updateField: d }, children: t });
 }
-function ni() {
-  return Ca(ri);
+function ri() {
+  return Aa(ti);
 }
 const to = ({ fieldType: t }) => {
-  const e = Ra(), r = `accru-payment-form-${t}-container`, n = si(!1);
-  return nt(() => {
+  const e = Ra(), r = `accru-payment-form-${t}-container`, n = ii(!1);
+  return yt(() => {
     function a() {
       e.create(t).mount(`#${r}`);
     }
     n.current || (n.current = !0, a());
-  }, []), /* @__PURE__ */ ie.jsx("div", { id: r });
+  }, []), /* @__PURE__ */ re.jsx("div", { id: r });
 };
-function Yc(t) {
-  const { updateField: e } = ni();
+function zc(t) {
+  const { updateField: e } = ri();
   function r(n) {
     return e("cardHolderName", n.target.value);
   }
-  return /* @__PURE__ */ ie.jsx(ei, { ...t, onChange: r });
+  return /* @__PURE__ */ re.jsx(Ia, { ...t, onChange: r });
 }
-function Jc(t) {
-  const { submitPayment: e } = ni();
-  return /* @__PURE__ */ ie.jsx(Za, { ...t, submitPayment: e });
+function Vc(t) {
+  const { submitPayment: e } = ri();
+  return /* @__PURE__ */ re.jsx(Ma, { ...t, submitPayment: e });
 }
-function Qc() {
-  return /* @__PURE__ */ ie.jsx(to, { fieldType: "cardNumber" });
+function Kc() {
+  return /* @__PURE__ */ re.jsx(to, { fieldType: "cardNumber" });
 }
-function Xc() {
-  return /* @__PURE__ */ ie.jsx(to, { fieldType: "cardExpiry" });
+function Yc() {
+  return /* @__PURE__ */ re.jsx(to, { fieldType: "cardExpiry" });
 }
-function Zc() {
-  return /* @__PURE__ */ ie.jsx(to, { fieldType: "cardCvc" });
+function Jc() {
+  return /* @__PURE__ */ re.jsx(to, { fieldType: "cardCvc" });
 }
-const ed = {
-  CardHolderName: Yc,
-  CreditCardNumber: Qc,
-  CreditCardExpiration: Xc,
-  CreditCardCvc: Zc,
-  SubmitBtn: Jc
+const Qc = {
+  CardHolderName: zc,
+  CreditCardNumber: Kc,
+  CreditCardExpiration: Yc,
+  CreditCardCvc: Jc,
+  SubmitBtn: Vc
 };
-function td(t, e) {
+function Xc(t, e) {
   return e.find((r) => r.name === t).config;
 }
-function ad(t) {
-  const [e, r] = qe(!1), [n] = qe(t.preferredProvider), [a, s] = qe([]);
-  if (nt(() => {
+function rd(t) {
+  const [e, r] = Fe(!1), [n] = Fe(t.preferredProvider), [a, s] = Fe([]);
+  if (yt(() => {
     async function f() {
-      const y = await t.preReleaseGetProviders();
-      if (!y.map((l) => l.name).includes(n))
+      const v = await t.preReleaseGetProviders();
+      if (!v.map((l) => l.name).includes(n))
         throw new Error(
           "Provider not found."
         );
-      s(y), r(!0);
+      s(v), r(!0);
     }
     f();
   }, []), e === !1)
     return null;
-  const c = td(n, a);
-  return n === "nuvei" ? /* @__PURE__ */ ie.jsx(Nc, { amount: t.amount, config: c, children: t.children }) : n === "stripe" ? /* @__PURE__ */ ie.jsx(Vc, { amount: t.amount, config: c, children: t.children }) : null;
+  const d = Xc(n, a);
+  return n === "nuvei" ? t.sessionToken ? /* @__PURE__ */ re.jsx(
+    Pi,
+    {
+      sessionToken: t.sessionToken,
+      config: d,
+      children: t.children
+    }
+  ) : /* @__PURE__ */ re.jsx("div", { children: "Missing sessionToken" }) : n === "stripe" ? t.amount ? /* @__PURE__ */ re.jsx(Bc, { amount: t.amount, config: d, children: t.children }) : /* @__PURE__ */ re.jsx("div", { children: "Missing amount" }) : null;
 }
-function id(t) {
-  return t === "nuvei" ? zc : t === "stripe" ? ed : null;
+function nd(t) {
+  return t === "nuvei" ? Oi : t === "stripe" ? Qc : null;
 }
 export {
-  ad as AccruPay,
-  id as form
+  rd as AccruPay,
+  nd as form
 };
