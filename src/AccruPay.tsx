@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Provider, ProvidersConfiguration } from './types';
 import { NuveiWrapper, NuveiPaymentFields, Props as NuveiProps } from './providers/nuvei/NuveiElements';
-import { StripeWrapper, StripePaymentFields, Props as StripeProps } from './providers/stripe/StripeElements';
+// import { StripeWrapper, StripePaymentFields, Props as StripeProps } from './providers/stripe/StripeElements';
 
 type Props = {
   amount?: number;
@@ -55,13 +55,13 @@ export function AccruPay(props: Props) {
     </NuveiWrapper>);
   }
 
-  if (provider === 'stripe') {
-    if (!props.amount) {
-      return <div>Missing amount</div>
-    }
-
-    return (<StripeWrapper amount={props.amount} config={config as unknown as StripeProps['config']}>{props.children}</StripeWrapper>);
-  }
+  // if (provider === 'stripe') {
+  //   if (!props.amount) {
+  //     return <div>Missing amount</div>
+  //   }
+  //
+  //   return (<StripeWrapper amount={props.amount} config={config as unknown as StripeProps['config']}>{props.children}</StripeWrapper>);
+  // }
 
   return null;
 }
@@ -71,9 +71,9 @@ export function form(provider: Provider) {
     return NuveiPaymentFields;
   }
 
-  if (provider === 'stripe') {
-    return StripePaymentFields;
-  }
+  // if (provider === 'stripe') {
+  //   return StripePaymentFields;
+  // }
 
   return null;
 }
