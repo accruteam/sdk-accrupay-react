@@ -18,8 +18,8 @@ export default defineConfig({
         globals: {
           react: 'React',
           'react-dom': 'ReactDOM',
-          '@stripe/react-stripe-js': 'ReactStripeJs',
-          '@stripe/stripe-js': 'StripeJs',
+          // '@stripe/react-stripe-js': 'ReactStripeJs',
+          // '@stripe/stripe-js': 'StripeJs',
         },
       },
     },
