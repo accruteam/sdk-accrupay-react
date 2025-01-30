@@ -1,5 +1,4 @@
 import { memo, useEffect, useState, createContext, useContext } from 'react';
-import * as Api from '../../api/api';
 import { CreditCardForm, NuveiPaymentPayload, NuveiPaymentResponse, PaymentContext, SecureField, SubmitPaymentCallbacks } from '../../types';
 import { loadScript } from './helpers';
 import { capitalizeFirstLetter } from '../helpers';
@@ -35,7 +34,7 @@ type ExpandNuveiContext = {
 const PaymentFormContext = createContext<PaymentContext<ExpandNuveiContext, NuveiField> | undefined>(undefined);
 
 export type Props = {
-  amount: number;
+  sessionToken: string;
   config: {
     env: string,
     merchantId: string,
@@ -59,7 +58,7 @@ async function submitPaymentToNuvei(safeCharge: NuveiSafeCharge, payload: Parame
       )})
 }
 
-export function NuveiWrapper({ children, amount, config }: Props) {
+export function NuveiWrapper({ children, sessionToken, config }: Props) {
   const [form, setForm] = useState<CreditCardForm>({
     cardNumber: null,
     cardExpiry: null,
@@ -69,20 +68,10 @@ export function NuveiWrapper({ children, amount, config }: Props) {
 
   const [safeCharge, setSafeCharge] = useState<NuveiSafeCharge>();
   const [safeChargeFields, setSafeChargeFields] = useState<NuveiSafeChargeFields>();
-  const [sessionToken, setSessionToken] = useState<string>('');
 
   if (!config) {
     throw new Error('config missing');
   }
-
-  useEffect(() => {
-    async function fetchSessionToken() {
-      const sessionToken = await Api.getToken('nuvei', { amount }, config as unknown as Parameters<typeof Api.getToken>[2]);
-      setSessionToken(sessionToken);
-    }
-
-    fetchSessionToken();
-  }, [])
 
   useEffect(() => {
     loadScript(NUVEI_SDK_URL).then(() => {

@@ -4,7 +4,8 @@ import { NuveiWrapper, NuveiPaymentFields, Props as NuveiProps } from './provide
 import { StripeWrapper, StripePaymentFields, Props as StripeProps } from './providers/stripe/StripeElements';
 
 type Props = {
-  amount: number;
+  amount?: number;
+  sessionToken?: string;
   omniprovider?: true;
   preReleaseGetProviders: () => Promise<ProvidersConfiguration>;
   preferredProvider: 'nuvei' | 'stripe';
@@ -44,10 +45,21 @@ export function AccruPay(props: Props) {
   const config = pluckProviderConfig(provider, providersData);
 
   if (provider === 'nuvei') {
-    return (<NuveiWrapper amount={props.amount} config={config as unknown as NuveiProps['config']}>{props.children}</NuveiWrapper>);
+    if (!props.sessionToken) {
+      return <div>Missing sessionToken</div>
+    }
+
+    return (<NuveiWrapper 
+      sessionToken={props.sessionToken} 
+      config={config as unknown as NuveiProps['config']}>{props.children}
+    </NuveiWrapper>);
   }
 
   if (provider === 'stripe') {
+    if (!props.amount) {
+      return <div>Missing amount</div>
+    }
+
     return (<StripeWrapper amount={props.amount} config={config as unknown as StripeProps['config']}>{props.children}</StripeWrapper>);
   }
 
