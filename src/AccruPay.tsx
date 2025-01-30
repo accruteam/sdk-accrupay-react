@@ -4,8 +4,7 @@ import { NuveiWrapper, NuveiPaymentFields, Props as NuveiProps } from './provide
 // import { StripeWrapper, StripePaymentFields, Props as StripeProps } from './providers/stripe/StripeElements';
 
 type Props = {
-  amount?: number;
-  sessionToken?: string;
+  sessionToken: string;
   omniprovider?: true;
   preReleaseGetProviders: () => Promise<ProvidersConfiguration>;
   preferredProvider: 'nuvei' | 'stripe';

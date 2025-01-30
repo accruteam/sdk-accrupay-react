@@ -15,7 +15,6 @@ const App = () => {
 
   return (
     <AccruPay 
-      amount={500.55}
       sessionToken={'a2eadf57-6374-42fc-89fc-1ace1ebd772a'}
       preferredProvider={provider}
       preReleaseGetProviders={getProviders}
