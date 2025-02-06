@@ -23,7 +23,10 @@ const App = () => {
         <h2>Payment Form</h2>
         <p>Name</p>
         <div>
-          <AccruPaymentForm.CardHolderName placeholder="Name on Card" />
+          <AccruPaymentForm.CardHolderName 
+            placeholder="Name on Card" 
+            initialValue="john doe"
+          />
         </div>
         <p>Credit Card Number</p>
         <div style={{ border: '1px solid gray'}}>

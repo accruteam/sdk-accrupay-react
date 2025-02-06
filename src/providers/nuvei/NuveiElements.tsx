@@ -200,14 +200,20 @@ function CreditCardCvc() {
   return <GenericSecureFormField fieldType="cardCvc" />
 }
 
-function CardHolderNameWrapper(props: Omit<React.InputHTMLAttributes<HTMLInputElement>, 'onChange'>) {
-  const { updateField } = useFormContext();
+function CardHolderNameWrapper({ initialValue, ...props }: Omit<React.InputHTMLAttributes<HTMLInputElement>, 'onChange'> & { initialValue?: string }) {
+  const { form, updateField } = useFormContext();
+
+  useEffect(() => {
+    if (initialValue) {
+      updateField('cardHolderName', initialValue);
+    }
+  }, [])
   
   function onChange(e: React.ChangeEvent<HTMLInputElement>) {
     return updateField('cardHolderName', e.target.value)
   }
 
-  return <CardHolderName {...props} onChange={onChange} />
+  return <CardHolderName {...props} onChange={onChange} value={form.cardHolderName} />
 }
 
 export function SubmitBtnWrapper(props: Omit<SubmitBtnProps, 'submitPayment'>) {
