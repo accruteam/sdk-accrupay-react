@@ -17,7 +17,7 @@
     "clean": "yarn workspaces run clean && rm -rf node_modules",
     "changeset": "changeset",
     "version-packages": "changeset version",
-    "release": "yarn workspace @accrupay/react release",
+    "release": "yarn workspace @accrupay/react build && changeset publish",
     "prepare": "husky"
   },
   "devDependencies": {
