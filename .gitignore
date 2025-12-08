@@ -7,8 +7,21 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# Dependencies
 node_modules
+.pnp
+.pnp.js
+
+# Build outputs
+dist
+dist-ssr
 *.local
+*.tsbuildinfo
+
+# Environment
+.env
+.env.local
+.env.*.local
 
 # Editor directories and files
 .vscode/*
@@ -21,4 +34,15 @@ node_modules
 *.sln
 *.sw?
 
-.env
+# Yarn
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# Husky
+.husky/_
+
+# Changesets (keep the directory, ignore temp files if any)
+.changeset/*.md.tmp

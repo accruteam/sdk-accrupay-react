@@ -1,0 +1,119 @@
+name: CI
+on:
+  push:
+    branches:
+      - main
+
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: 'yarn'
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Check types
+        id: lint
+        run: |
+          set +e
+          LINT_OUTPUT=$(yarn lint 2>&1)
+          LINT_EXIT_CODE=$?
+          set -e
+          
+          # Strip ANSI color codes from output
+          LINT_OUTPUT_CLEAN=$(echo "$LINT_OUTPUT" | sed 's/\x1b\[[0-9;]*m//g')
+          
+          # Display output in logs
+          echo "::group::Lint Output"
+          echo "$LINT_OUTPUT_CLEAN"
+          echo "::endgroup::"
+          
+          # Add to step summary
+          {
+            echo "## Lint Results"
+            echo ""
+            echo "**Status:** $([ $LINT_EXIT_CODE -eq 0 ] && echo '✅ Passed' || echo '❌ Failed')"
+            echo "**Exit Code:** $LINT_EXIT_CODE"
+            echo ""
+            echo "<details>"
+            echo "<summary>View Full Output</summary>"
+            echo ""
+            echo '```'
+            echo "$LINT_OUTPUT_CLEAN"
+            echo '```'
+            echo "</details>"
+            echo ""
+          } >> $GITHUB_STEP_SUMMARY
+          
+          if [ $LINT_EXIT_CODE -ne 0 ]; then
+            exit 1
+          fi
+
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: 'yarn'
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Run build
+        id: build
+        run: |
+          set +e
+          BUILD_OUTPUT=$(yarn build 2>&1)
+          BUILD_EXIT_CODE=$?
+          set -e
+          
+          # Strip ANSI color codes from output
+          BUILD_OUTPUT_CLEAN=$(echo "$BUILD_OUTPUT" | sed 's/\x1b\[[0-9;]*m//g')
+          
+          # Display output in logs
+          echo "::group::Build Output"
+          echo "$BUILD_OUTPUT_CLEAN"
+          echo "::endgroup::"
+          
+          # Add to step summary
+          {
+            echo "## Build Results"
+            echo ""
+            echo "**Status:** $([ $BUILD_EXIT_CODE -eq 0 ] && echo '✅ Passed' || echo '❌ Failed')"
+            echo "**Exit Code:** $BUILD_EXIT_CODE"
+            echo ""
+            echo "<details>"
+            echo "<summary>View Full Output</summary>"
+            echo ""
+            echo '```'
+            echo "$BUILD_OUTPUT_CLEAN"
+            echo '```'
+            echo "</details>"
+            echo ""
+          } >> $GITHUB_STEP_SUMMARY
+          
+          if [ $BUILD_EXIT_CODE -ne 0 ]; then
+            exit 1
+          fi
+
