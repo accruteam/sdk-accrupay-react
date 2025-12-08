@@ -1,0 +1,236 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+  id-token: write
+
+concurrency: ${{ github.workflow }}-${{ github.ref }}
+
+jobs:
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
+      id-token: write
+
+    steps:
+      - name: Checkout to Branch
+        uses: actions/checkout@v3
+
+      - name: Extract branch name
+        id: extract-branch
+        shell: bash
+        run: echo "branch=$(echo ${GITHUB_REF#refs/heads/})" >> $GITHUB_OUTPUT
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: 'yarn'
+
+      - name: Install Dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Lint
+        run: yarn lint
+
+      - name: Create Release Pull Request or Publish to npm
+        id: changesets
+        uses: changesets/action@v1
+        with:
+          publish: yarn release
+        env:
+          HUSKY: 0
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Check for changeset PR
+        if: steps.changesets.outputs.published == 'false'
+        id: check-pr
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          prs=$(gh pr list --json number,title,body --state open --base ${{ github.ref_name }})
+          match=$(echo "$prs" | jq '[.[] | select(.title | contains("Version Packages"))]')
+          details=$(echo "$match" | jq -c '[.[] | {number: .number, body: .body}]')
+
+          if [ "$(echo "$match" | jq length)" -eq 0 ]; then
+            echo "No changeset PR found for the current branch."
+            echo "has_pr=false" >> $GITHUB_OUTPUT
+          else
+            echo "Found changeset PR:"
+            echo "$details"
+            echo "has_pr=true" >> $GITHUB_OUTPUT
+            echo "pr_details=$details" >> $GITHUB_OUTPUT
+            echo "pr_number=$(echo "$match" | jq -r '.[0].number')" >> $GITHUB_OUTPUT
+            {
+              echo "pr_body<<EOF"
+              echo "$match" | jq -r '.[0].body'
+              echo "EOF"
+            } >> $GITHUB_OUTPUT
+          fi
+
+      - name: Parse Slack Message
+        if: steps.check-pr.outputs.has_pr == 'true'
+        id: pr-message
+        uses: LoveToKnow/slackify-markdown-action@v1.1.1
+        with:
+          text: ${{ steps.check-pr.outputs.pr_body }}
+
+      - name: Send Slack notification for PR
+        if: steps.check-pr.outputs.has_pr == 'true'
+        uses: slackapi/slack-github-action@v2.0.0
+        with:
+          webhook: ${{ secrets.SLACK_WEBHOOK_URL }}
+          webhook-type: incoming-webhook
+          payload-templated: true
+          errors: true
+          payload: |
+            {
+              "text": "[AccruPay] A release of ${{ github.repository }} (${{ github.ref_name }} branch) is ready to review and publish. :mag:",
+              "blocks": [
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": ":floppy_disk: *[AccruPay] A release of `${{ github.repository }}` (${{ github.ref_name }} branch) is ready to review and publish.* :mag:\n\n*Note:* No publish/release will be triggered until the PR is merged.\nPlease take action on the PR. :bulb:"
+                  }
+                },
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "*Description:*\n\n${{ steps.pr-message.outputs.text }}"
+                  }
+                },
+                {
+                  "type": "actions",
+                  "elements": [
+                    {
+                      "type": "button",
+                      "text": {
+                        "type": "plain_text",
+                        "text": ":mag_right: Open Pull Request"
+                      },
+                      "url": "${{ github.server_url }}/${{ github.repository }}/pull/${{ steps.check-pr.outputs.pr_number }}"
+                    },
+                    {
+                      "type": "button",
+                      "text": {
+                        "type": "plain_text",
+                        "text": ":gear: See action run"
+                      },
+                      "url": "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+                    }
+                  ]
+                }
+              ]
+            }
+
+      - name: Get release information
+        if: steps.changesets.outputs.published == 'true'
+        id: get-release
+        uses: actions/github-script@v6
+        with:
+          result-encoding: string
+          script: |
+            const markdownParser = require('slackify-markdown');
+            const release = await github.rest.repos.getReleaseByTag({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              tag: "v${{ fromJSON(steps.changesets.outputs.publishedPackages)[0].version }}"
+            });
+            return markdownParser(release.data.body);
+
+      - name: Send a Slack notification
+        if: steps.changesets.outputs.published == 'true'
+        id: slack
+        uses: slackapi/slack-github-action@v2.0.0
+        with:
+          webhook: ${{ secrets.SLACK_WEBHOOK_URL }}
+          webhook-type: incoming-webhook
+          payload-templated: true
+          payload: |
+            {
+              "text": "[AccruPay] A new version of ${{ github.repository }} was published! Version ${{ fromJSON(steps.changesets.outputs.publishedPackages)[0].version }} is now available! :tada:",
+              "blocks": [
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "*[AccruPay] :package: ${{ fromJSON(steps.changesets.outputs.publishedPackages)[0].name }} v${{ fromJSON(steps.changesets.outputs.publishedPackages)[0].version }} published* :rocket:\nUpdate the package using `npm install ${{ fromJSON(steps.changesets.outputs.publishedPackages)[0].name }}@${{ fromJSON(steps.changesets.outputs.publishedPackages)[0].version }}`"
+                  }
+                },
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "*Release Notes:*\n\n${{ steps.get-release.outputs.result }}"
+                  }
+                },
+                {
+                  "type": "actions",
+                  "elements": [
+                    {
+                      "type": "button",
+                      "text": {
+                        "type": "plain_text",
+                        "text": ":gear: See action run"
+                      },
+                      "url": "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+                    },
+                    {
+                      "type": "button",
+                      "text": {
+                      "type": "plain_text",
+                      "text": ":bookmark: View Release"
+                      },
+                      "url": "${{ github.server_url }}/${{ github.repository }}/releases/tag/v${{ fromJSON(steps.changesets.outputs.publishedPackages)[0].version }}"
+                    },
+                    {
+                      "type": "button",
+                      "text": {
+                      "type": "plain_text",
+                      "text": ":bookmark_tabs: Checkout to Git Tag"
+                      },
+                      "url": "${{ github.server_url }}/${{ github.repository }}/tree/v${{ fromJSON(steps.changesets.outputs.publishedPackages)[0].version }}"
+                    },
+                    {
+                      "type": "button",
+                      "text": {
+                        "type": "plain_text",
+                        "text": ":package: Open NPM package"
+                      },
+                      "url": "https://www.npmjs.com/package/${{ fromJSON(steps.changesets.outputs.publishedPackages)[0].name }}/v/${{ fromJSON(steps.changesets.outputs.publishedPackages)[0].version }}"
+                    }
+                  ]
+                }
+              ]
+            }
+
+      - name: Sync changes from main into develop
+        if: github.ref == 'refs/heads/main' && steps.changesets.outputs.published == 'true'
+        continue-on-error: true
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+      
+          git fetch origin
+      
+          git checkout develop
+          git reset --hard origin/develop
+      
+          git merge origin/main -X theirs --no-ff --no-edit
+          
+          git push origin develop
+

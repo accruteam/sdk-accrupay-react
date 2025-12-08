@@ -40,3 +40,9 @@ dist-ssr
 !.yarn/plugins
 !.yarn/releases
 !.yarn/versions
+
+# Husky
+.husky/_
+
+# Changesets (keep the directory, ignore temp files if any)
+.changeset/*.md.tmp

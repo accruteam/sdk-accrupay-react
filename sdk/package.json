@@ -1,8 +1,26 @@
 {
   "name": "@accrupay/react",
+  "private": false,
   "version": "0.0.1",
   "description": "AccruPay React SDK – Payment router platform for React applications",
   "license": "MIT",
+  "author": "Luiz Felipe Laviola <luiz@laviola.dev>",
+  "homepage": "https://accru.co",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/accruteam/sdk-accrupay-react"
+  },
+  "bugs": {
+    "url": "https://github.com/accruteam/sdk-accrupay-react/issues"
+  },
+  "keywords": [
+    "accru",
+    "accrupay",
+    "payment",
+    "react",
+    "graphql",
+    "nuvei"
+  ],
   "type": "module",
   "main": "./dist/index.cjs.js",
   "module": "./dist/index.mjs",
@@ -18,6 +36,9 @@
   },
   "sideEffects": false,
   "files": ["dist"],
+  "engines": {
+    "node": ">=18"
+  },
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch",
@@ -25,7 +46,8 @@
     "codegen": "graphql-codegen",
     "codegen:watch": "graphql-codegen -w",
     "clean": "rm -rf dist node_modules",
-    "prepublishOnly": "yarn build"
+    "prepublishOnly": "yarn build",
+    "release": "yarn build && changeset publish"
   },
   "dependencies": {
     "@apollo/client": "^4.0.4",
