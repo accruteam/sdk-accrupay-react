@@ -1,5 +1,5 @@
-import { useAccruPay } from "../context";
-import { NuveiCardExpiry } from "../gateways/nuvei/fields/CardExpiry";
+import { useAccruPay } from '../context';
+import { NuveiCardExpiry } from '../gateways/nuvei/fields/CardExpiry';
 
 interface CardExpiryProps {
   className?: string;
@@ -11,7 +11,7 @@ export function CardExpiry(props: CardExpiryProps) {
   if (!provider) return null;
 
   switch (provider) {
-    case "NUVEI":
+    case 'NUVEI':
       return <NuveiCardExpiry {...props} />;
     default:
       return <div>Provider not supported</div>;

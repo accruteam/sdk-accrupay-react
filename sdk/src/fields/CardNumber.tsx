@@ -1,5 +1,5 @@
-import { useAccruPay } from "../context";
-import { NuveiCardNumber } from "../gateways/nuvei/fields/CardNumber";
+import { useAccruPay } from '../context';
+import { NuveiCardNumber } from '../gateways/nuvei/fields/CardNumber';
 
 interface CardNumberProps {
   className?: string;
@@ -11,7 +11,7 @@ export function CardNumber(props: CardNumberProps) {
   if (!provider) return null;
 
   switch (provider) {
-    case "NUVEI":
+    case 'NUVEI':
       return <NuveiCardNumber {...props} />;
     default:
       return <div>Provider not supported</div>;

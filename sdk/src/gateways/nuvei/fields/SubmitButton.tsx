@@ -1,7 +1,7 @@
-import { useAccruPay } from "../../../context";
+import { useAccruPay } from '../../../context';
 
 interface NuveiSubmitButtonProps
-  extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "onError"> {
+  extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'onError'> {
   onSuccess?: (result: any) => void;
   onError?: (error: Error) => void;
 }
@@ -33,7 +33,7 @@ export function NuveiSubmitButton({
       onClick={handleClick}
       disabled={disabled || !isReady || isProcessing}
     >
-      {children || (isProcessing ? "Processing..." : "Submit Payment")}
+      {children || (isProcessing ? 'Processing...' : 'Submit Payment')}
     </button>
   );
 }

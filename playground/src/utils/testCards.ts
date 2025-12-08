@@ -1,6 +1,6 @@
-import type { TRANSACTION_PROVIDER } from "@accrupay/react";
+import type { TRANSACTION_PROVIDER } from '@accrupay/react';
 
-export type TestCardScenario = "frictionless" | "challenge" | "non3ds";
+export type TestCardScenario = 'frictionless' | 'challenge' | 'non3ds';
 
 export interface TestCard {
   scenario: TestCardScenario;
@@ -14,31 +14,31 @@ export interface TestCard {
 
 const NUVEI_TEST_CARDS: Record<TestCardScenario, TestCard> = {
   frictionless: {
-    scenario: "frictionless",
-    cardNumber: "4000020951595032",
-    cardHolderName: "FL-BRW1",
-    cardExpiry: "12/25",
-    cardCvc: "123",
+    scenario: 'frictionless',
+    cardNumber: '4000020951595032',
+    cardHolderName: 'FL-BRW1',
+    cardExpiry: '12/25',
+    cardCvc: '123',
     minAmount: 150,
-    description: "Frictionless 3DS flow (amount >= 150)",
+    description: 'Frictionless 3DS flow (amount >= 150)',
   },
   challenge: {
-    scenario: "challenge",
-    cardNumber: "2221008123677736",
-    cardHolderName: "CL-BRW2",
-    cardExpiry: "12/25",
-    cardCvc: "123",
+    scenario: 'challenge',
+    cardNumber: '2221008123677736',
+    cardHolderName: 'CL-BRW2',
+    cardExpiry: '12/25',
+    cardCvc: '123',
     minAmount: 151,
-    description: "3DS Challenge flow (amount = 151)",
+    description: '3DS Challenge flow (amount = 151)',
   },
   non3ds: {
-    scenario: "non3ds",
-    cardNumber: "4000027891380961",
-    cardHolderName: "Jane Smith",
-    cardExpiry: "12/25",
-    cardCvc: "123",
+    scenario: 'non3ds',
+    cardNumber: '4000027891380961',
+    cardHolderName: 'Jane Smith',
+    cardExpiry: '12/25',
+    cardCvc: '123',
     minAmount: 10,
-    description: "Non-3DS transaction (amount = 10)",
+    description: 'Non-3DS transaction (amount = 10)',
   },
 };
 

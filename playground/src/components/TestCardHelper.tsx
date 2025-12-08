@@ -1,6 +1,6 @@
-import { useCallback, useState } from "react";
-import { useAccruPay } from "@accrupay/react";
-import { getAllTestCards } from "../utils/testCards";
+import { useCallback, useState } from 'react';
+import { useAccruPay } from '@accrupay/react';
+import { getAllTestCards } from '../utils/testCards';
 
 interface TestCardHelperProps {
   className?: string;
@@ -26,8 +26,8 @@ export function TestCardHelper({ className }: TestCardHelperProps) {
     );
     if (cardHolderNameInput) {
       cardHolderNameInput.value = name;
-      cardHolderNameInput.dispatchEvent(new Event("input", { bubbles: true }));
-      cardHolderNameInput.dispatchEvent(new Event("change", { bubbles: true }));
+      cardHolderNameInput.dispatchEvent(new Event('input', { bubbles: true }));
+      cardHolderNameInput.dispatchEvent(new Event('change', { bubbles: true }));
     }
   }, []);
 
@@ -51,45 +51,45 @@ export function TestCardHelper({ className }: TestCardHelperProps) {
 
   return (
     <div className={className} data-testid="test-card-helper">
-      <div style={{ marginBottom: "16px" }}>
+      <div style={{ marginBottom: '16px' }}>
         <strong>Test Cards</strong>
-        <p style={{ fontSize: "12px", color: "#666", marginTop: "4px" }}>
+        <p style={{ fontSize: '12px', color: '#666', marginTop: '4px' }}>
           Click values to copy to clipboard
         </p>
       </div>
       <table
         style={{
-          width: "100%",
-          borderCollapse: "collapse",
-          fontSize: "12px",
+          width: '100%',
+          borderCollapse: 'collapse',
+          fontSize: '12px',
         }}
       >
         <thead>
-          <tr style={{ borderBottom: "1px solid #ddd" }}>
-            <th style={{ padding: "8px", textAlign: "left" }}>Scenario</th>
-            <th style={{ padding: "8px", textAlign: "left" }}>Card Number</th>
-            <th style={{ padding: "8px", textAlign: "left" }}>Expiry</th>
-            <th style={{ padding: "8px", textAlign: "left" }}>CVC</th>
-            <th style={{ padding: "8px", textAlign: "left" }}>Cardholder</th>
+          <tr style={{ borderBottom: '1px solid #ddd' }}>
+            <th style={{ padding: '8px', textAlign: 'left' }}>Scenario</th>
+            <th style={{ padding: '8px', textAlign: 'left' }}>Card Number</th>
+            <th style={{ padding: '8px', textAlign: 'left' }}>Expiry</th>
+            <th style={{ padding: '8px', textAlign: 'left' }}>CVC</th>
+            <th style={{ padding: '8px', textAlign: 'left' }}>Cardholder</th>
           </tr>
         </thead>
         <tbody>
           {testCards.map(card => (
-            <tr key={card.scenario} style={{ borderBottom: "1px solid #eee" }}>
-              <td style={{ padding: "8px" }}>
+            <tr key={card.scenario} style={{ borderBottom: '1px solid #eee' }}>
+              <td style={{ padding: '8px' }}>
                 <strong>{card.scenario.toUpperCase()}</strong>
                 <div
-                  style={{ fontSize: "10px", color: "#666", marginTop: "2px" }}
+                  style={{ fontSize: '10px', color: '#666', marginTop: '2px' }}
                 >
                   {card.description}
                 </div>
                 {card.minAmount && (
-                  <div style={{ fontSize: "10px", color: "#666" }}>
+                  <div style={{ fontSize: '10px', color: '#666' }}>
                     Min: ${card.minAmount}
                   </div>
                 )}
               </td>
-              <td style={{ padding: "8px" }}>
+              <td style={{ padding: '8px' }}>
                 <button
                   type="button"
                   onClick={() =>
@@ -98,39 +98,39 @@ export function TestCardHelper({ className }: TestCardHelperProps) {
                   style={{
                     background:
                       copiedField === `card-${card.scenario}-number`
-                        ? "#e8f5e9"
-                        : "transparent",
-                    border: "none",
-                    cursor: "pointer",
-                    textDecoration: "underline",
+                        ? '#e8f5e9'
+                        : 'transparent',
+                    border: 'none',
+                    cursor: 'pointer',
+                    textDecoration: 'underline',
                     color:
                       copiedField === `card-${card.scenario}-number`
-                        ? "#2e7d32"
-                        : "#0066cc",
-                    fontFamily: "monospace",
-                    fontSize: "11px",
-                    padding: "4px 8px",
-                    borderRadius: "4px",
-                    transition: "all 0.2s",
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "4px",
+                        ? '#2e7d32'
+                        : '#0066cc',
+                    fontFamily: 'monospace',
+                    fontSize: '11px',
+                    padding: '4px 8px',
+                    borderRadius: '4px',
+                    transition: 'all 0.2s',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '4px',
                   }}
                   title="Click to copy card number and set cardholder name"
                 >
                   {card.cardNumber}
-                  <span style={{ fontSize: "12px" }}>
+                  <span style={{ fontSize: '12px' }}>
                     {copiedField === `card-${card.scenario}-number`
-                      ? "✓"
-                      : "📋"}
+                      ? '✓'
+                      : '📋'}
                   </span>
                 </button>
               </td>
               <td
                 style={{
-                  padding: "8px",
-                  fontFamily: "monospace",
-                  fontSize: "11px",
+                  padding: '8px',
+                  fontFamily: 'monospace',
+                  fontSize: '11px',
                 }}
               >
                 <button
@@ -144,37 +144,37 @@ export function TestCardHelper({ className }: TestCardHelperProps) {
                   style={{
                     background:
                       copiedField === `card-${card.scenario}-expiry`
-                        ? "#e8f5e9"
-                        : "transparent",
-                    border: "none",
-                    cursor: "pointer",
-                    textDecoration: "underline",
+                        ? '#e8f5e9'
+                        : 'transparent',
+                    border: 'none',
+                    cursor: 'pointer',
+                    textDecoration: 'underline',
                     color:
                       copiedField === `card-${card.scenario}-expiry`
-                        ? "#2e7d32"
-                        : "#0066cc",
-                    padding: "4px 8px",
-                    borderRadius: "4px",
-                    transition: "all 0.2s",
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "4px",
+                        ? '#2e7d32'
+                        : '#0066cc',
+                    padding: '4px 8px',
+                    borderRadius: '4px',
+                    transition: 'all 0.2s',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '4px',
                   }}
                   title="Click to copy expiry"
                 >
                   {card.cardExpiry}
-                  <span style={{ fontSize: "12px" }}>
+                  <span style={{ fontSize: '12px' }}>
                     {copiedField === `card-${card.scenario}-expiry`
-                      ? "✓"
-                      : "📋"}
+                      ? '✓'
+                      : '📋'}
                   </span>
                 </button>
               </td>
               <td
                 style={{
-                  padding: "8px",
-                  fontFamily: "monospace",
-                  fontSize: "11px",
+                  padding: '8px',
+                  fontFamily: 'monospace',
+                  fontSize: '11px',
                 }}
               >
                 <button
@@ -185,31 +185,31 @@ export function TestCardHelper({ className }: TestCardHelperProps) {
                   style={{
                     background:
                       copiedField === `card-${card.scenario}-cvc`
-                        ? "#e8f5e9"
-                        : "transparent",
-                    border: "none",
-                    cursor: "pointer",
-                    textDecoration: "underline",
+                        ? '#e8f5e9'
+                        : 'transparent',
+                    border: 'none',
+                    cursor: 'pointer',
+                    textDecoration: 'underline',
                     color:
                       copiedField === `card-${card.scenario}-cvc`
-                        ? "#2e7d32"
-                        : "#0066cc",
-                    padding: "4px 8px",
-                    borderRadius: "4px",
-                    transition: "all 0.2s",
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "4px",
+                        ? '#2e7d32'
+                        : '#0066cc',
+                    padding: '4px 8px',
+                    borderRadius: '4px',
+                    transition: 'all 0.2s',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '4px',
                   }}
                   title="Click to copy CVC"
                 >
                   {card.cardCvc}
-                  <span style={{ fontSize: "12px" }}>
-                    {copiedField === `card-${card.scenario}-cvc` ? "✓" : "📋"}
+                  <span style={{ fontSize: '12px' }}>
+                    {copiedField === `card-${card.scenario}-cvc` ? '✓' : '📋'}
                   </span>
                 </button>
               </td>
-              <td style={{ padding: "8px", fontSize: "11px" }}>
+              <td style={{ padding: '8px', fontSize: '11px' }}>
                 <button
                   type="button"
                   onClick={() => {
@@ -222,29 +222,29 @@ export function TestCardHelper({ className }: TestCardHelperProps) {
                   style={{
                     background:
                       copiedField === `card-${card.scenario}-holder`
-                        ? "#e8f5e9"
-                        : "transparent",
-                    border: "none",
-                    cursor: "pointer",
-                    textDecoration: "underline",
+                        ? '#e8f5e9'
+                        : 'transparent',
+                    border: 'none',
+                    cursor: 'pointer',
+                    textDecoration: 'underline',
                     color:
                       copiedField === `card-${card.scenario}-holder`
-                        ? "#2e7d32"
-                        : "#0066cc",
-                    padding: "4px 8px",
-                    borderRadius: "4px",
-                    transition: "all 0.2s",
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "4px",
+                        ? '#2e7d32'
+                        : '#0066cc',
+                    padding: '4px 8px',
+                    borderRadius: '4px',
+                    transition: 'all 0.2s',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '4px',
                   }}
                   title="Click to copy cardholder name"
                 >
                   {card.cardHolderName}
-                  <span style={{ fontSize: "12px" }}>
+                  <span style={{ fontSize: '12px' }}>
                     {copiedField === `card-${card.scenario}-holder`
-                      ? "✓"
-                      : "📋"}
+                      ? '✓'
+                      : '📋'}
                   </span>
                 </button>
               </td>

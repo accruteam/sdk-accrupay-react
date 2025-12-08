@@ -1,4 +1,4 @@
-import { gql } from "../../gql";
+import { gql } from '../../gql';
 
 export const CLIENT_PUBLIC_TRANSACTION_SESSION_BASE_CONFIG_QUERY = gql(`
   query ClientPublicTransactionSessionBaseConfig(

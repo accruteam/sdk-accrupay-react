@@ -1,8 +1,8 @@
-import { useState } from "react";
-import AccruPay from "@accrupay/node";
-import type { Merchant, AccruPayParams } from "@accrupay/react";
+import { useState } from 'react';
+import AccruPay from '@accrupay/node';
+import type { Merchant, AccruPayParams } from '@accrupay/react';
 
-type AccruPayEnvironment = NonNullable<AccruPayParams["environment"]>;
+type AccruPayEnvironment = NonNullable<AccruPayParams['environment']>;
 
 interface ServerConfigurationProps {
   environment: AccruPayEnvironment;
@@ -17,7 +17,7 @@ export function ServerConfiguration({
   onSecretChange,
   disabled,
 }: ServerConfigurationProps) {
-  const [secret, setSecret] = useState("");
+  const [secret, setSecret] = useState('');
   const [showSecret, setShowSecret] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<Error | null>(null);
@@ -25,8 +25,8 @@ export function ServerConfiguration({
 
   const handleLoadServerSDK = async () => {
     if (!secret.trim()) {
-      const error = new Error("Secret is required");
-      console.error("[ServerConfig] Validation error:", error);
+      const error = new Error('Secret is required');
+      console.error('[ServerConfig] Validation error:', error);
       setError(error);
       return;
     }
@@ -35,8 +35,8 @@ export function ServerConfiguration({
     setError(null);
 
     try {
-      const sdkEnvironment: "qa" | "production" =
-        environment === "production" ? "production" : "qa";
+      const sdkEnvironment: 'qa' | 'production' =
+        environment === 'production' ? 'production' : 'qa';
 
       const sdk = new AccruPay({
         apiSecret: secret,
@@ -46,11 +46,11 @@ export function ServerConfiguration({
       const merchantData = await sdk.merchants.getCurrent({});
 
       if (!merchantData) {
-        throw new Error("No merchant data returned");
+        throw new Error('No merchant data returned');
       }
 
       const merchantResponse = {
-        __typename: "Merchant" as const,
+        __typename: 'Merchant' as const,
         id: merchantData.id,
         publicId: merchantData.publicId || null,
         name: merchantData.name,
@@ -61,7 +61,7 @@ export function ServerConfiguration({
       onMerchantLoaded(merchantResponse);
     } catch (err) {
       const error = err instanceof Error ? err : new Error(String(err));
-      console.error("[ServerConfig] Load server SDK error:", error, err);
+      console.error('[ServerConfig] Load server SDK error:', error, err);
       setError(error);
       onMerchantLoaded(null);
     } finally {
@@ -70,7 +70,7 @@ export function ServerConfiguration({
   };
 
   const handleClear = () => {
-    setSecret("");
+    setSecret('');
     setMerchant(null);
     setError(null);
     onMerchantLoaded(null);
@@ -85,7 +85,7 @@ export function ServerConfiguration({
         <div className="secret-input-wrapper">
           <input
             id="server-secret"
-            type={showSecret ? "text" : "password"}
+            type={showSecret ? 'text' : 'password'}
             value={secret}
             onChange={e => {
               setSecret(e.target.value);
@@ -107,7 +107,7 @@ export function ServerConfiguration({
             data-testid="btn-toggle-secret"
             disabled={disabled || isLoading}
           >
-            {showSecret ? "Hide" : "Show"}
+            {showSecret ? 'Hide' : 'Show'}
           </button>
         </div>
         <small className="control-hint">
@@ -122,7 +122,7 @@ export function ServerConfiguration({
           data-testid="btn-load-server-sdk"
           className="btn btn-primary"
         >
-          {isLoading ? "Loading..." : "Load Server SDK"}
+          {isLoading ? 'Loading...' : 'Load Server SDK'}
         </button>
         {merchant && (
           <button
