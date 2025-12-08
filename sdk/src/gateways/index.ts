@@ -1,4 +1,4 @@
-import { NuveiGateway } from "./nuvei";
+import { NuveiGateway } from './nuvei';
 
 export const AccruPayGateways = {
   NUVEI: NuveiGateway,

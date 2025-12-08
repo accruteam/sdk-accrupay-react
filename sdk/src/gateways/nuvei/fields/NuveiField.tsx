@@ -1,6 +1,6 @@
-import { useEffect, useId, useMemo } from "react";
-import { useNuvei } from "../context";
-import { AccruPayFieldName } from "../../../types";
+import { useEffect, useId, useMemo } from 'react';
+import { useNuvei } from '../context';
+import { AccruPayFieldName } from '../../../types';
 
 interface NuveiFieldProps {
   fieldName: AccruPayFieldName;
@@ -13,7 +13,7 @@ export function NuveiField({ fieldName, className, style }: NuveiFieldProps) {
   const reactId = useId();
 
   const id = useMemo(
-    () => `accrupay-nuvei-${fieldName}-${reactId.replace(/:/g, "-")}`,
+    () => `accrupay-nuvei-${fieldName}-${reactId.replace(/:/g, '-')}`,
     [fieldName, reactId],
   );
 

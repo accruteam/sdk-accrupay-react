@@ -6,26 +6,26 @@ import {
   useImperativeHandle,
   useCallback,
   useRef,
-} from "react";
-import type { NuveiForm, NuveiFormField, SafeChargeInstance } from "./types";
-import { NuveiContext } from "./context";
+} from 'react';
+import type { NuveiForm, NuveiFormField, SafeChargeInstance } from './types';
+import { NuveiContext } from './context';
 import type {
   AccruPayInternalProviderRef,
   AccruPayInternalProviderProps,
   AccruPayFieldName,
-} from "../../types";
-import type { NuveiFormFieldName } from "./types";
+} from '../../types';
+import type { NuveiFormFieldName } from './types';
 
 const SDK_FIELD_TYPES: Record<AccruPayFieldName, NuveiFormFieldName> = {
-  cardNumber: "ccNumber",
-  cardExpiry: "ccExpiration",
-  cardCVC: "ccCvc",
+  cardNumber: 'ccNumber',
+  cardExpiry: 'ccExpiration',
+  cardCVC: 'ccCvc',
 };
 
 const REQUIRED_FIELDS: AccruPayFieldName[] = [
-  "cardNumber",
-  "cardExpiry",
-  "cardCVC",
+  'cardNumber',
+  'cardExpiry',
+  'cardCVC',
 ];
 
 export const NuveiProvider = forwardRef<
@@ -44,7 +44,7 @@ export const NuveiProvider = forwardRef<
     ref,
   ) => {
     const [isFormReady, setIsFormReady] = useState(false);
-    const [cardHolderName, setCardHolderName] = useState("");
+    const [cardHolderName, setCardHolderName] = useState('');
 
     const [readyFields, setReadyFields] = useState<Set<AccruPayFieldName>>(
       new Set(),
@@ -68,11 +68,11 @@ export const NuveiProvider = forwardRef<
           fonts: [
             {
               cssUrl:
-                "https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap",
+                'https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap',
             },
           ],
-          locale: "en",
-          fontSize: "16px",
+          locale: 'en',
+          fontSize: '16px',
         });
 
         formRef.current = form;
@@ -147,7 +147,7 @@ export const NuveiProvider = forwardRef<
           sdkField.attach(`#${containerId}`);
           fieldsRef.current.set(name, sdkField);
 
-          sdkField.on("ready", () => {
+          sdkField.on('ready', () => {
             updateFieldReadyStatus(name, true);
           });
         } catch (error) {
@@ -175,24 +175,24 @@ export const NuveiProvider = forwardRef<
     const submitPayment = useCallback(
       async (params?: Record<string, any>) => {
         if (!formRef.current || !transactionSession) {
-          throw new Error("Payment form not ready");
+          throw new Error('Payment form not ready');
         }
 
         if (!areAllFieldsReady) {
-          throw new Error("Not all payment fields are ready");
+          throw new Error('Not all payment fields are ready');
         }
 
-        const cardNumberField = fieldsRef.current.get("cardNumber");
-        const cardExpiryField = fieldsRef.current.get("cardExpiry");
-        const cardCvcField = fieldsRef.current.get("cardCVC");
+        const cardNumberField = fieldsRef.current.get('cardNumber');
+        const cardExpiryField = fieldsRef.current.get('cardExpiry');
+        const cardCvcField = fieldsRef.current.get('cardCVC');
 
         if (!cardNumberField || !cardExpiryField || !cardCvcField) {
-          throw new Error("Payment fields not initialized");
+          throw new Error('Payment fields not initialized');
         }
 
         try {
           if (!cardHolderName.trim()) {
-            throw new Error("Card holder name is required");
+            throw new Error('Card holder name is required');
           }
 
           const cardNumberElm = cardNumberField.parentElm;
@@ -207,7 +207,7 @@ export const NuveiProvider = forwardRef<
             !cardNumberStateClass?.complete ||
             !cardNumberElm.classList.contains(cardNumberStateClass.complete)
           ) {
-            throw new Error("Invalid card number");
+            throw new Error('Invalid card number');
           }
 
           if (
@@ -215,7 +215,7 @@ export const NuveiProvider = forwardRef<
             !cardExpiryStateClass?.complete ||
             !cardExpiryElm.classList.contains(cardExpiryStateClass.complete)
           ) {
-            throw new Error("Invalid card expiry");
+            throw new Error('Invalid card expiry');
           }
 
           if (
@@ -223,7 +223,7 @@ export const NuveiProvider = forwardRef<
             !cardCvcStateClass?.complete ||
             !cardCvcElm.classList.contains(cardCvcStateClass.complete)
           ) {
-            throw new Error("Invalid card CVC");
+            throw new Error('Invalid card CVC');
           }
         } catch (error) {
           const err = error instanceof Error ? error : new Error(String(error));
@@ -233,7 +233,7 @@ export const NuveiProvider = forwardRef<
 
         return new Promise<Record<string, any>>((resolve, reject) => {
           if (!transactionSession.token) {
-            reject(new Error("Session token not available"));
+            reject(new Error('Session token not available'));
             return;
           }
 
@@ -247,11 +247,11 @@ export const NuveiProvider = forwardRef<
               billingAddress: params?.billingAddress || {},
             },
             response => {
-              if (response.result === "APPROVED") {
+              if (response.result === 'APPROVED') {
                 resolve(response);
               } else {
                 reject(
-                  new Error(response.errorDescription || "Payment failed"),
+                  new Error(response.errorDescription || 'Payment failed'),
                 );
               }
             },

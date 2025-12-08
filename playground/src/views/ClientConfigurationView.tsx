@@ -1,9 +1,9 @@
-import { useMemo } from "react";
-import { TRANSACTION_PROVIDER, type AccruPayParams } from "@accrupay/react";
+import { useMemo } from 'react';
+import { TRANSACTION_PROVIDER, type AccruPayParams } from '@accrupay/react';
 
-type AccruPayEnvironment = NonNullable<AccruPayParams["environment"]>;
+type AccruPayEnvironment = NonNullable<AccruPayParams['environment']>;
 
-const MERCHANT_IDS_STORAGE_KEY = "accrupay-merchant-ids";
+const MERCHANT_IDS_STORAGE_KEY = 'accrupay-merchant-ids';
 
 type CachedMerchantIds = {
   sandbox: string[];
@@ -118,12 +118,12 @@ export function ClientConfig({
                   type="button"
                   onClick={() => handleSelectMerchantId(id)}
                   disabled={disabled}
-                  className={`btn-quick-select ${merchantPublicId === id ? "active" : ""}`}
+                  className={`btn-quick-select ${merchantPublicId === id ? 'active' : ''}`}
                   data-testid={`btn-quick-select-${id}`}
                 >
                   <span className="btn-merchant-id">{id}</span>
                   <span className="btn-env-badge">
-                    {environment === "production" ? "prod" : "sandbox"}
+                    {environment === 'production' ? 'prod' : 'sandbox'}
                   </span>
                   <span
                     className="btn-remove"
@@ -167,7 +167,7 @@ export function ClientConfig({
             type="button"
             onClick={() => onPreloadProviderChange(null)}
             disabled={disabled}
-            className={`btn-provider ${preloadProvider === null ? "active" : ""}`}
+            className={`btn-provider ${preloadProvider === null ? 'active' : ''}`}
             data-testid="btn-provider-none"
           >
             None
@@ -178,7 +178,7 @@ export function ClientConfig({
               type="button"
               onClick={() => onPreloadProviderChange(provider)}
               disabled={disabled}
-              className={`btn-provider ${preloadProvider === provider ? "active" : ""}`}
+              className={`btn-provider ${preloadProvider === provider ? 'active' : ''}`}
               data-testid={`btn-provider-${provider}`}
             >
               {provider}

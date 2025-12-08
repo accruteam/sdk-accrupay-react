@@ -1,7 +1,7 @@
-import { ApolloClient } from "@apollo/client/core";
-import type { AccruPayContext } from "./context.types";
-import { TransactionSession } from "./services/transactionSession";
-import { createApolloClient, type IAccruPayParams } from "./apolloClient";
+import { ApolloClient } from '@apollo/client/core';
+import type { AccruPayContext } from './context.types';
+import { TransactionSession } from './services/transactionSession';
+import { createApolloClient, type IAccruPayParams } from './apolloClient';
 
 export class AccruPayClient {
   public readonly apolloClient: ApolloClient;

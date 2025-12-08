@@ -1,10 +1,10 @@
-import { ApolloClient, InMemoryCache, ApolloLink } from "@apollo/client/core";
-import { HttpLink } from "@apollo/client/link/http";
-import { ErrorLink } from "@apollo/client/link/error";
-import { CombinedGraphQLErrors, ServerError } from "@apollo/client";
-import { SetContextLink } from "@apollo/client/link/context";
-import { withScalars } from "apollo-link-scalars";
-import { DateTimeISOResolver } from "graphql-scalars";
+import { ApolloClient, InMemoryCache, ApolloLink } from '@apollo/client/core';
+import { HttpLink } from '@apollo/client/link/http';
+import { ErrorLink } from '@apollo/client/link/error';
+import { CombinedGraphQLErrors, ServerError } from '@apollo/client';
+import { SetContextLink } from '@apollo/client/link/context';
+import { withScalars } from 'apollo-link-scalars';
+import { DateTimeISOResolver } from 'graphql-scalars';
 import {
   GraphQLError,
   type GraphQLFormattedError,
@@ -12,12 +12,12 @@ import {
   type IntrospectionQuery,
   Kind,
   buildClientSchema,
-} from "graphql";
-import introspectionResult from "./gql/schema.graphql.json" assert { type: "json" };
+} from 'graphql';
+import introspectionResult from './gql/schema.graphql.json' assert { type: 'json' };
 
 const AccruPayEnvironmentUrls = {
-  production: "https://api.pay.accru.co/graphql",
-  sandbox: "https://api.qa.pay.accru.co/graphql",
+  production: 'https://api.pay.accru.co/graphql',
+  sandbox: 'https://api.qa.pay.accru.co/graphql',
 };
 
 interface IAccruPayParams {
@@ -34,9 +34,9 @@ interface IAccruPayParams {
 };
 
 const BigIntResolver = new GraphQLScalarType({
-  name: "BigInt",
+  name: 'BigInt',
   description:
-    "The `BigInt` scalar type represents non-fractional signed whole numeric values.",
+    'The `BigInt` scalar type represents non-fractional signed whole numeric values.',
   serialize(outputValue: any) {
     const bigint = BigInt(outputValue.toString());
     if (outputValue.toString() !== bigint.toString())
@@ -63,10 +63,10 @@ const BigIntResolver = new GraphQLScalarType({
     }
   },
   extensions: {
-    codegenScalarType: "bigint",
+    codegenScalarType: 'bigint',
     jsonSchema: {
-      type: "integer",
-      format: "int64",
+      type: 'integer',
+      format: 'int64',
     },
   },
 });
@@ -89,13 +89,13 @@ export const createApolloClient = ({
         validationErrors: (e.extensions as any)?.exception?.validationErrors,
       }));
 
-      if (typeof onGraphQLError === "function") {
+      if (typeof onGraphQLError === 'function') {
         onGraphQLError(errors);
       }
 
       if (
-        errors.some(e => e.extensions?.code === "UNAUTHENTICATED") &&
-        typeof onAuthError === "function"
+        errors.some(e => e.extensions?.code === 'UNAUTHENTICATED') &&
+        typeof onAuthError === 'function'
       ) {
         onAuthError();
       }
@@ -104,13 +104,13 @@ export const createApolloClient = ({
     }
 
     if (ServerError.is(error)) {
-      if (typeof onNetworkError === "function") {
+      if (typeof onNetworkError === 'function') {
         onNetworkError(error);
       }
       return;
     }
 
-    if (error && typeof onNetworkError === "function") {
+    if (error && typeof onNetworkError === 'function') {
       onNetworkError(error);
     }
   });
@@ -132,8 +132,8 @@ export const createApolloClient = ({
   });
 
   const selectedEnvironmentUrl =
-    AccruPayEnvironmentUrls[environment || "production"];
-  if (!selectedEnvironmentUrl && !url) throw new Error("Invalid environment.");
+    AccruPayEnvironmentUrls[environment || 'production'];
+  if (!selectedEnvironmentUrl && !url) throw new Error('Invalid environment.');
 
   const httpLink = new HttpLink({
     uri: url || selectedEnvironmentUrl,
@@ -144,13 +144,13 @@ export const createApolloClient = ({
     cache: new InMemoryCache(),
     defaultOptions: {
       watchQuery: {
-        fetchPolicy: "no-cache",
+        fetchPolicy: 'no-cache',
       },
       query: {
-        fetchPolicy: "no-cache",
+        fetchPolicy: 'no-cache',
       },
       mutate: {
-        fetchPolicy: "no-cache",
+        fetchPolicy: 'no-cache',
       },
     },
   });

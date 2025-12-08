@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, useCallback } from "react";
+import { useState, useRef, useEffect, useCallback } from 'react';
 import {
   AccruPay,
   AccruPayRef,
@@ -6,24 +6,24 @@ import {
   Merchant,
   MerchantClientTransactionSession,
   TRANSACTION_PROVIDER,
-} from "@accrupay/react";
-import { EnvironmentSelector } from "./components/EnvironmentSelector";
-import { TestCardHelper } from "./components/TestCardHelper";
-import { StatusDisplay } from "./components/StatusDisplay";
-import { ServerConfiguration } from "./views/ServerConfiguration";
-import { SessionConfiguration } from "./views/SessionConfiguration";
-import { ClientConfiguration } from "./views/ClientConfiguration";
-import { Payment } from "./views/Payment";
-import { Interaction } from "./views/Interaction";
-import "./App.css";
+} from '@accrupay/react';
+import { EnvironmentSelector } from './components/EnvironmentSelector';
+import { TestCardHelper } from './components/TestCardHelper';
+import { StatusDisplay } from './components/StatusDisplay';
+import { ServerConfiguration } from './views/ServerConfiguration';
+import { SessionConfiguration } from './views/SessionConfiguration';
+import { ClientConfiguration } from './views/ClientConfiguration';
+import { Payment } from './views/Payment';
+import { Interaction } from './views/Interaction';
+import './App.css';
 
 function App() {
   const [environment, setEnvironment] =
-    useState<NonNullable<AccruPayParams["environment"]>>("sandbox");
-  const [serverSecret, setServerSecret] = useState("");
+    useState<NonNullable<AccruPayParams['environment']>>('sandbox');
+  const [serverSecret, setServerSecret] = useState('');
   const [serverMerchant, setServerMerchant] = useState<Merchant | null>(null);
-  const [merchantPublicId, setMerchantPublicId] = useState("");
-  const [transactionSessionId, setTransactionSessionId] = useState("");
+  const [merchantPublicId, setMerchantPublicId] = useState('');
+  const [transactionSessionId, setTransactionSessionId] = useState('');
   const [preloadProvider, setPreloadProvider] =
     useState<TRANSACTION_PROVIDER | null>(null);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -70,8 +70,8 @@ function App() {
 
   const handleResetSDK = () => {
     setIsLoaded(false);
-    setMerchantPublicId("");
-    setTransactionSessionId("");
+    setMerchantPublicId('');
+    setTransactionSessionId('');
     setPreloadProvider(null);
     setRefSubmissionError(null);
   };
@@ -82,13 +82,13 @@ function App() {
 
   const handleResetEverything = () => {
     setIsLoaded(false);
-    setMerchantPublicId("");
-    setTransactionSessionId("");
+    setMerchantPublicId('');
+    setTransactionSessionId('');
     setPreloadProvider(null);
     setRefSubmissionError(null);
     setSessionFormResetKey(prev => prev + 1);
     setServerMerchant(null);
-    setServerSecret("");
+    setServerSecret('');
   };
 
   const handleUseSession = (sessionId: string) => {
@@ -101,9 +101,9 @@ function App() {
     setRefSubmissionError(null);
     try {
       const result = await accruPayRef.current?.submitPayment();
-      console.log("Payment submitted via ref:", result);
+      console.log('Payment submitted via ref:', result);
     } catch (error) {
-      console.error("Payment submission error:", error);
+      console.error('Payment submission error:', error);
       const err = error instanceof Error ? error : new Error(String(error));
       setRefSubmissionError(err);
     }
@@ -142,7 +142,7 @@ function App() {
               <SessionConfiguration
                 key={sessionFormResetKey}
                 environment={environment}
-                merchantPublicId={serverMerchant.publicId || ""}
+                merchantPublicId={serverMerchant.publicId || ''}
                 secret={serverSecret}
                 onSessionCreated={handleSessionCreated}
                 onReset={handleResetSession}
@@ -164,12 +164,12 @@ function App() {
               onPreloadProviderChange={setPreloadProvider}
               disabled={isLoaded}
             />
-            <div style={{ marginTop: "12px" }}>
+            <div style={{ marginTop: '12px' }}>
               <button
                 onClick={handleResetSDK}
                 data-testid="btn-reset-sdk"
                 className="btn btn-secondary"
-                style={{ width: "100%" }}
+                style={{ width: '100%' }}
               >
                 Reset Client Config
               </button>
@@ -197,12 +197,12 @@ function App() {
             )}
           </div>
 
-          <div className="control-actions" style={{ marginTop: "12px" }}>
+          <div className="control-actions" style={{ marginTop: '12px' }}>
             <button
               onClick={handleResetEverything}
               data-testid="btn-reset-everything"
               className="btn btn-secondary"
-              style={{ width: "100%" }}
+              style={{ width: '100%' }}
             >
               Reset Everything
             </button>
@@ -246,7 +246,7 @@ function App() {
             <div className="sdk-placeholder" data-testid="sdk-placeholder">
               <p>
                 {isLoaded
-                  ? "SDK is unloaded"
+                  ? 'SDK is unloaded'
                   : "Configure the SDK parameters and click 'Load SDK' to see the payment form"}
               </p>
             </div>

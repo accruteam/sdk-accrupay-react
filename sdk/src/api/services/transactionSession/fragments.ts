@@ -1,4 +1,4 @@
-import { gql } from "../../gql";
+import { gql } from '../../gql';
 
 export const MERCHANT_CLIENT_TRANSACTION_SESSION_BASE_FRAGMENT = gql(`
   fragment MerchantClientTransactionSessionBaseFragment on MerchantClientTransactionSession {

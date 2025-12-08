@@ -1,4 +1,4 @@
-import { useAccruPay } from "@accrupay/react";
+import { useAccruPay } from '@accrupay/react';
 
 export function StatusDisplay() {
   const { isReady, isProcessing, error, provider, transactionSession } =
@@ -10,24 +10,24 @@ export function StatusDisplay() {
         <span className="status-label">Ready:</span>
         <span
           data-testid="status-ready"
-          className={`status-value ${isReady ? "ready" : "not-ready"}`}
+          className={`status-value ${isReady ? 'ready' : 'not-ready'}`}
         >
-          {isReady ? "Yes" : "No"}
+          {isReady ? 'Yes' : 'No'}
         </span>
       </div>
       <div className="status-item">
         <span className="status-label">Processing:</span>
         <span
           data-testid="status-processing"
-          className={`status-value ${isProcessing ? "processing" : ""}`}
+          className={`status-value ${isProcessing ? 'processing' : ''}`}
         >
-          {isProcessing ? "Yes" : "No"}
+          {isProcessing ? 'Yes' : 'No'}
         </span>
       </div>
       <div className="status-item">
         <span className="status-label">Provider:</span>
         <span data-testid="status-provider" className="status-value">
-          {provider || "None"}
+          {provider || 'None'}
         </span>
       </div>
       {transactionSession && (

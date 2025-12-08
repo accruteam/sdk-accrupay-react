@@ -42,10 +42,10 @@ export interface INuveiTransactionParamsDTO {
 }
 
 export interface INuveiTransactionResponseDTO {
-  result: "APPROVED" | "DECLINED" | "ERROR" | "PENDING";
+  result: 'APPROVED' | 'DECLINED' | 'ERROR' | 'PENDING';
   errCode: number;
   errorDescription: string;
-  transactionStatus: "APPROVED" | "DECLINED" | "ERROR";
+  transactionStatus: 'APPROVED' | 'DECLINED' | 'ERROR';
   ccCardNumber: string;
   bin: string;
   last4Digits: string;
@@ -68,8 +68,8 @@ export interface INuveiCustomPropsDTO {
   fontSize?: string;
 }
 
-export type NuveiFormFieldName = "ccNumber" | "ccExpiration" | "ccCvc";
-export type NuveiFormFieldEvents = "ready" | "change" | "focus" | "blur";
+export type NuveiFormFieldName = 'ccNumber' | 'ccExpiration' | 'ccCvc';
+export type NuveiFormFieldEvents = 'ready' | 'change' | 'focus' | 'blur';
 
 export interface INuveiFormFieldStylePropsDTO {
   color: string;
@@ -90,15 +90,15 @@ export interface INuveiFormFieldStylePropsDTO {
 }
 
 export interface INuveiFormFieldStyleOptionsDTO {
-  "-webkit-font-smoothing": INuveiFormFieldStylePropsDTO;
-  "-moz-osx-font-smoothing": INuveiFormFieldStylePropsDTO;
-  "::placeholder": INuveiFormFieldStylePropsDTO;
-  "::selection": INuveiFormFieldStylePropsDTO;
-  "::-ms-clear": INuveiFormFieldStylePropsDTO;
-  ":-webkit-autofill": INuveiFormFieldStylePropsDTO;
-  ":disabled": INuveiFormFieldStylePropsDTO;
-  ":focus": INuveiFormFieldStylePropsDTO;
-  ":hover": INuveiFormFieldStylePropsDTO;
+  '-webkit-font-smoothing': INuveiFormFieldStylePropsDTO;
+  '-moz-osx-font-smoothing': INuveiFormFieldStylePropsDTO;
+  '::placeholder': INuveiFormFieldStylePropsDTO;
+  '::selection': INuveiFormFieldStylePropsDTO;
+  '::-ms-clear': INuveiFormFieldStylePropsDTO;
+  ':-webkit-autofill': INuveiFormFieldStylePropsDTO;
+  ':disabled': INuveiFormFieldStylePropsDTO;
+  ':focus': INuveiFormFieldStylePropsDTO;
+  ':hover': INuveiFormFieldStylePropsDTO;
 }
 
 export type INuveiFormFieldStyleDTO = INuveiFormFieldStylePropsDTO &
@@ -146,16 +146,16 @@ export type NuveiForm = {
 export interface INuveiConfig {
   merchantId: string;
   merchantSiteId: string;
-  environment: "sandbox" | "production";
+  environment: 'sandbox' | 'production';
 }
 
 export type ISafeChargeParamsDTO = {
   sessionToken?: string;
-  env: "prod" | "int";
+  env: 'prod' | 'int';
   merchantId: string;
   merchantSiteId: string;
 
-  logLevel?: "0" | "1" | "2" | "3" | "4" | "5" | "6";
+  logLevel?: '0' | '1' | '2' | '3' | '4' | '5' | '6';
   blockCards?: [string, string, string][];
   blockPasteCard?: boolean;
   support19Digits?: boolean;
@@ -167,7 +167,7 @@ export type ISafeChargeParamsDTO = {
 
   cvvIcon?: boolean;
   backgroundImage?: string;
-  tooltipPosition?: "top" | "bottom";
+  tooltipPosition?: 'top' | 'bottom';
 };
 
 export type SafeChargeInstance = {

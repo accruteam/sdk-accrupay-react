@@ -5,8 +5,8 @@ const loadScript = (src: string) =>
       return;
     }
 
-    const script = Object.assign(document.createElement("script"), {
-      type: "text/javascript",
+    const script = Object.assign(document.createElement('script'), {
+      type: 'text/javascript',
       defer: true,
       src,
       onerror: (e: Error) =>

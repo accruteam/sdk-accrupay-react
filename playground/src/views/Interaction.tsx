@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { useAccruPay } from "@accrupay/react";
+import { useState } from 'react';
+import { useAccruPay } from '@accrupay/react';
 
 interface InteractionProps {
   refSubmissionError: Error | null;
@@ -20,9 +20,9 @@ export function Interaction({
     setStateSubmissionError(null);
     try {
       const result = await hookState.submitPayment();
-      console.log("Payment submitted via state:", result);
+      console.log('Payment submitted via state:', result);
     } catch (error) {
-      console.error("Payment submission error:", error);
+      console.error('Payment submission error:', error);
       const err = error instanceof Error ? error : new Error(String(error));
       setStateSubmissionError(err);
     }
@@ -53,24 +53,24 @@ export function Interaction({
             <span className="status-label">Ready:</span>
             <span
               data-testid="hook-state-ready"
-              className={`status-value ${hookState.isReady ? "ready" : "not-ready"}`}
+              className={`status-value ${hookState.isReady ? 'ready' : 'not-ready'}`}
             >
-              {hookState.isReady ? "Yes" : "No"}
+              {hookState.isReady ? 'Yes' : 'No'}
             </span>
           </div>
           <div className="status-item">
             <span className="status-label">Processing:</span>
             <span
               data-testid="hook-state-processing"
-              className={`status-value ${hookState.isProcessing ? "processing" : ""}`}
+              className={`status-value ${hookState.isProcessing ? 'processing' : ''}`}
             >
-              {hookState.isProcessing ? "Yes" : "No"}
+              {hookState.isProcessing ? 'Yes' : 'No'}
             </span>
           </div>
           <div className="status-item">
             <span className="status-label">Provider:</span>
             <span data-testid="hook-state-provider" className="status-value">
-              {hookState.provider || "None"}
+              {hookState.provider || 'None'}
             </span>
           </div>
           {hookState.transactionSession && (
@@ -118,7 +118,7 @@ export function Interaction({
           {stateSubmissionError && (
             <div className="error-display">
               <div className="error-message">
-                <strong>Submission Error:</strong>{" "}
+                <strong>Submission Error:</strong>{' '}
                 {stateSubmissionError.message}
               </div>
             </div>

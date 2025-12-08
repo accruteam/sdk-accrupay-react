@@ -7,21 +7,21 @@ import {
   forwardRef,
   useCallback,
   useImperativeHandle,
-} from "react";
+} from 'react';
 import type {
   AccruPayInternalProviderRef,
   AccruPayParams,
   AccruPayRef,
   AccruPayContextValue,
-} from "./types";
-import { AccruPayGateways } from "./gateways";
-import { AccruPayContext } from "./context";
-import { AccruPayClient } from "./api";
+} from './types';
+import { AccruPayGateways } from './gateways';
+import { AccruPayContext } from './context';
+import { AccruPayClient } from './api';
 import type {
   MerchantClientTransactionSession,
   TRANSACTION_PROVIDER,
-} from "./api/gql/graphql";
-import type { MerchantBaseConfig } from "./api/services/transactionSession/types";
+} from './api/gql/graphql';
+import type { MerchantBaseConfig } from './api/services/transactionSession/types';
 
 const AccruPay = memo(
   forwardRef<AccruPayRef, AccruPayParams>((params, ref) => {
@@ -29,7 +29,7 @@ const AccruPay = memo(
       merchantPublicId,
       transactionSessionId,
       preloadProvider,
-      environment = "production",
+      environment = 'production',
       children,
     } = params;
 
@@ -47,7 +47,7 @@ const AccruPay = memo(
     const accruPayClient = useMemo(
       () =>
         new AccruPayClient({
-          environment: environment === "production" ? "production" : "sandbox",
+          environment: environment === 'production' ? 'production' : 'sandbox',
         }),
       [environment],
     );
@@ -55,7 +55,7 @@ const AccruPay = memo(
 
     useEffect(() => {
       if (!merchantPublicId) {
-        setError("Merchant identifier not provided");
+        setError('Merchant identifier not provided');
         setIsReady(false);
         return;
       }
@@ -95,12 +95,12 @@ const AccruPay = memo(
             setTransactionSession(null);
           } else {
             throw new Error(
-              "Transaction session ID or provider must be provided",
+              'Transaction session ID or provider must be provided',
             );
           }
         } catch (err: any) {
           if (abortController.signal.aborted) return;
-          setError(err.message || "Failed to load payment configuration");
+          setError(err.message || 'Failed to load payment configuration');
           setIsReady(false);
         }
       };
@@ -120,7 +120,7 @@ const AccruPay = memo(
 
     const submitPayment = useCallback(async (params?: Record<string, any>) => {
       if (!providerRef.current) {
-        throw new Error("Payment provider not ready");
+        throw new Error('Payment provider not ready');
       }
 
       setIsProcessing(true);
@@ -132,7 +132,7 @@ const AccruPay = memo(
         return result;
       } catch (err: any) {
         setIsProcessing(false);
-        setError(err.message || "Payment failed");
+        setError(err.message || 'Payment failed');
         throw err;
       }
     }, []);

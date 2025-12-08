@@ -1,5 +1,5 @@
-import { useAccruPay } from "../context";
-import { NuveiCardCVC } from "../gateways/nuvei/fields/CardCVC";
+import { useAccruPay } from '../context';
+import { NuveiCardCVC } from '../gateways/nuvei/fields/CardCVC';
 
 interface CardCVCProps {
   className?: string;
@@ -11,7 +11,7 @@ export function CardCVC(props: CardCVCProps) {
   if (!provider) return null;
 
   switch (provider) {
-    case "NUVEI":
+    case 'NUVEI':
       return <NuveiCardCVC {...props} />;
     default:
       return <div>Provider not supported</div>;

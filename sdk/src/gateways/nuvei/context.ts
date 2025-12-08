@@ -1,5 +1,5 @@
-import { createContext, useContext } from "react";
-import type { AccruPayFieldName } from "../../types";
+import { createContext, useContext } from 'react';
+import type { AccruPayFieldName } from '../../types';
 
 export interface NuveiContextValue {
   isFormReady: boolean;
@@ -16,7 +16,7 @@ export const NuveiContext = createContext<NuveiContextValue | null>(null);
 export const useNuvei = () => {
   const context = useContext(NuveiContext);
   if (!context) {
-    throw new Error("useNuvei must be used within NuveiProvider");
+    throw new Error('useNuvei must be used within NuveiProvider');
   }
   return context;
 };

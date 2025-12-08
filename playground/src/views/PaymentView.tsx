@@ -4,8 +4,8 @@ import {
   CardCVC,
   SubmitButton,
   useAccruPay,
-} from "@accrupay/react";
-import { CardholderNameInput } from "./CardholderNameInput";
+} from '@accrupay/react';
+import { CardholderNameInput } from '../components/CardholderNameInput';
 
 export function PaymentForm() {
   const { isReady, isProcessing } = useAccruPay();
@@ -51,9 +51,8 @@ export function PaymentForm() {
         className="submit-btn"
         disabled={!isReady || isProcessing}
       >
-        {isProcessing ? "Processing..." : "Submit Payment"}
+        {isProcessing ? 'Processing...' : 'Submit Payment'}
       </SubmitButton>
     </div>
   );
 }
-

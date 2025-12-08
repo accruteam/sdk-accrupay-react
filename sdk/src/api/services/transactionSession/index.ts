@@ -1,12 +1,12 @@
 import type {
   ClientPublicTransactionSessionBaseConfigQueryVariables,
   ClientPublicTransactionSessionQueryVariables,
-} from "../../gql/graphql";
+} from '../../gql/graphql';
 import {
   CLIENT_PUBLIC_TRANSACTION_SESSION_BASE_CONFIG_QUERY,
   CLIENT_PUBLIC_TRANSACTION_SESSION_QUERY,
-} from "./queries";
-import type { AccruPayContext } from "../../context.types";
+} from './queries';
+import type { AccruPayContext } from '../../context.types';
 
 class TransactionSession {
   private context: AccruPayContext;

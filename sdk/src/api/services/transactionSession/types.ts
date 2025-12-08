@@ -1,4 +1,4 @@
-import type { ClientPublicTransactionSessionBaseConfigQuery } from "../../gql/graphql";
+import type { ClientPublicTransactionSessionBaseConfigQuery } from '../../gql/graphql';
 
 export type MerchantBaseConfig =
-  ClientPublicTransactionSessionBaseConfigQuery["clientPublicTransactionSessionBaseConfig"]["data"];
+  ClientPublicTransactionSessionBaseConfigQuery['clientPublicTransactionSessionBaseConfig']['data'];

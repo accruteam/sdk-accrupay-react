@@ -1,6 +1,6 @@
-import type { AccruPayParams } from "@accrupay/react";
+import type { AccruPayParams } from '@accrupay/react';
 
-type AccruPayEnvironment = NonNullable<AccruPayParams["environment"]>;
+type AccruPayEnvironment = NonNullable<AccruPayParams['environment']>;
 
 interface EnvironmentSelectorProps {
   environment: AccruPayEnvironment;

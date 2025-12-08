@@ -1,12 +1,12 @@
-import { forwardRef, memo, useEffect, useState } from "react";
+import { forwardRef, memo, useEffect, useState } from 'react';
 import type {
   AccruPayInternalProviderProps,
   AccruPayInternalProviderRef,
-} from "../../types";
-import type { SafeChargeInstance, SafeChargeFactory } from "./types";
-import { NuveiProvider } from "./provider";
-import { loadScript } from "../../utils/loadScript.util";
-import type { MerchantClientTransactionSessionNuveiBaseConfig } from "../../api/gql/graphql";
+} from '../../types';
+import type { SafeChargeInstance, SafeChargeFactory } from './types';
+import { NuveiProvider } from './provider';
+import { loadScript } from '../../utils/loadScript.util';
+import type { MerchantClientTransactionSessionNuveiBaseConfig } from '../../api/gql/graphql';
 
 const NuveiGateway = memo(
   forwardRef<AccruPayInternalProviderRef, AccruPayInternalProviderProps>(
@@ -24,27 +24,27 @@ const NuveiGateway = memo(
           setSafeCharge(null);
           onError?.(
             new Error(
-              "Missing Nuvei configuration: merchantId, merchantSiteId, or env",
+              'Missing Nuvei configuration: merchantId, merchantSiteId, or env',
             ),
           );
           return;
         }
 
         loadScript(
-          "https://cdn.safecharge.com/safecharge_resources/v1/websdk/safecharge.js",
+          'https://cdn.safecharge.com/safecharge_resources/v1/websdk/safecharge.js',
         )
           .then(async () => {
             if (
               !!window &&
               typeof (window as { SafeCharge?: SafeChargeFactory })
-                ?.SafeCharge === "function"
+                ?.SafeCharge === 'function'
             ) {
               const SafeCharge = (
                 window as unknown as Window & { SafeCharge: SafeChargeFactory }
               ).SafeCharge;
               setSafeCharge(
                 SafeCharge({
-                  env: env as "prod" | "int",
+                  env: env as 'prod' | 'int',
                   merchantId,
                   merchantSiteId,
                 }),

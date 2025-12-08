@@ -1,4 +1,4 @@
-import { NuveiField } from "./NuveiField";
+import { NuveiField } from './NuveiField';
 
 interface NuveiCardNumberProps {
   className?: string;

@@ -1,6 +1,6 @@
-import { useState, useRef } from "react";
-import { useAccruPay } from "@accrupay/react";
-import { useNuvei } from "../../../sdk/src/gateways/nuvei/context";
+import { useState, useRef } from 'react';
+import { useAccruPay } from '@accrupay/react';
+import { useNuvei } from '../../../sdk/src/gateways/nuvei/context';
 
 function NuveiCardholderNameInput() {
   const { cardHolderName, setCardHolderName } = useNuvei();
@@ -18,7 +18,7 @@ function NuveiCardholderNameInput() {
 }
 
 function FallbackCardholderNameInput() {
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState('');
   const [applied, setApplied] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -27,16 +27,16 @@ function FallbackCardholderNameInput() {
 
     const input = inputRef.current;
     input.focus();
-    input.dispatchEvent(new Event("input", { bubbles: true }));
-    input.dispatchEvent(new Event("change", { bubbles: true }));
-    input.dispatchEvent(new Event("blur", { bubbles: true }));
+    input.dispatchEvent(new Event('input', { bubbles: true }));
+    input.dispatchEvent(new Event('change', { bubbles: true }));
+    input.dispatchEvent(new Event('blur', { bubbles: true }));
 
     setApplied(true);
     setTimeout(() => setApplied(false), 2000);
   };
 
   return (
-    <div style={{ display: "flex", gap: "0.5rem", alignItems: "stretch" }}>
+    <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'stretch' }}>
       <input
         ref={inputRef}
         id="cardholder-name"
@@ -51,7 +51,7 @@ function FallbackCardholderNameInput() {
         data-testid="cardholder-name-input"
         style={{ flex: 1 }}
         onKeyDown={e => {
-          if (e.key === "Enter") {
+          if (e.key === 'Enter') {
             e.preventDefault();
             handleApply();
           }
@@ -63,13 +63,13 @@ function FallbackCardholderNameInput() {
         disabled={!value.trim()}
         className="btn btn-secondary"
         style={{
-          padding: "0.75rem 1rem",
-          whiteSpace: "nowrap",
+          padding: '0.75rem 1rem',
+          whiteSpace: 'nowrap',
           marginBottom: 0,
         }}
         data-testid="cardholder-name-apply"
       >
-        {applied ? "✓ Applied" : "Apply"}
+        {applied ? '✓ Applied' : 'Apply'}
       </button>
     </div>
   );
@@ -77,7 +77,7 @@ function FallbackCardholderNameInput() {
 
 export function CardholderNameInput() {
   const { provider } = useAccruPay();
-  if (provider === "NUVEI") {
+  if (provider === 'NUVEI') {
     return <NuveiCardholderNameInput />;
   }
   return <FallbackCardholderNameInput />;

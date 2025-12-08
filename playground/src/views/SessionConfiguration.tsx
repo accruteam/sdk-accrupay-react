@@ -1,17 +1,17 @@
-import { useState } from "react";
+import { useState } from 'react';
 import AccruPay, {
   CURRENCY,
   COUNTRY_ISO_2,
   TRANSACTION_PROVIDER,
   DEVICE_TYPE,
-} from "@accrupay/node";
-import { fakerEN_US as faker } from "@faker-js/faker";
+} from '@accrupay/node';
+import { fakerEN_US as faker } from '@faker-js/faker';
 import type {
   MerchantClientTransactionSession,
   AccruPayParams,
-} from "@accrupay/react";
+} from '@accrupay/react';
 
-type AccruPayEnvironment = NonNullable<AccruPayParams["environment"]>;
+type AccruPayEnvironment = NonNullable<AccruPayParams['environment']>;
 
 interface SessionConfigurationProps {
   environment: AccruPayEnvironment;
@@ -81,58 +81,58 @@ interface FormData {
 }
 
 const initialFormData: FormData = {
-  amount: "",
-  currency: "USD",
-  merchantInternalCustomerCode: "",
-  merchantInternalTransactionCode: "",
+  amount: '',
+  currency: 'USD',
+  merchantInternalCustomerCode: '',
+  merchantInternalTransactionCode: '',
   transactionProvider: TRANSACTION_PROVIDER.NUVEI,
   storePaymentMethod: false,
   billing: {
-    firstName: "",
-    lastName: "",
-    email: "",
-    phone: "",
-    addressLine1: "",
-    addressLine2: "",
-    city: "",
-    state: "",
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    addressLine1: '',
+    addressLine2: '',
+    city: '',
+    state: '',
     country: COUNTRY_ISO_2.US,
-    postalCode: "",
+    postalCode: '',
   },
   shipping: {
-    firstName: "",
-    lastName: "",
-    email: "",
-    phone: "",
-    addressLine1: "",
-    addressLine2: "",
-    city: "",
-    state: "",
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    addressLine1: '',
+    addressLine2: '',
+    city: '',
+    state: '',
     country: COUNTRY_ISO_2.US,
-    postalCode: "",
+    postalCode: '',
   },
   user: {
-    firstName: "",
-    lastName: "",
-    email: "",
-    phone: "",
-    birthDate: "",
-    locale: "",
-    legalIdentifier: "",
-    legalIdentifierType: "",
-    addressLine1: "",
-    addressLine2: "",
-    city: "",
-    state: "",
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    birthDate: '',
+    locale: '',
+    legalIdentifier: '',
+    legalIdentifierType: '',
+    addressLine1: '',
+    addressLine2: '',
+    city: '',
+    state: '',
     country: COUNTRY_ISO_2.US,
-    postalCode: "",
+    postalCode: '',
   },
   device: {
-    id: "",
-    ip: "",
-    browser: "",
-    os: "",
-    name: "",
+    id: '',
+    ip: '',
+    browser: '',
+    os: '',
+    name: '',
     type: null,
   },
 };
@@ -177,7 +177,7 @@ export function SessionConfiguration({
 
   const handleLoadRandomData = () => {
     const now = new Date();
-    const dateStr = now.toISOString().slice(2, 10).replace(/-/g, "");
+    const dateStr = now.toISOString().slice(2, 10).replace(/-/g, '');
     const randomId = faker.string.alphanumeric(8).toLowerCase();
     const prefix = `sdk-playground-${dateStr}`;
 
@@ -199,7 +199,7 @@ export function SessionConfiguration({
         firstName: faker.person.firstName(),
         lastName: faker.person.lastName(),
         email: faker.internet.email(),
-        phone: "",
+        phone: '',
         addressLine1: faker.location.streetAddress(),
         addressLine2: faker.location.secondaryAddress(),
         city: faker.location.city(),
@@ -211,7 +211,7 @@ export function SessionConfiguration({
         firstName: faker.person.firstName(),
         lastName: faker.person.lastName(),
         email: faker.internet.email(),
-        phone: "",
+        phone: '',
         addressLine1: faker.location.streetAddress(),
         addressLine2: faker.location.secondaryAddress(),
         city: faker.location.city(),
@@ -223,11 +223,11 @@ export function SessionConfiguration({
         firstName: faker.person.firstName(),
         lastName: faker.person.lastName(),
         email: faker.internet.email(),
-        phone: "",
-        birthDate: faker.date.birthdate().toISOString().split("T")[0],
-        locale: "en-US",
+        phone: '',
+        birthDate: faker.date.birthdate().toISOString().split('T')[0],
+        locale: 'en-US',
         legalIdentifier: faker.string.numeric(11),
-        legalIdentifierType: "SSN",
+        legalIdentifierType: 'SSN',
         addressLine1: faker.location.streetAddress(),
         addressLine2: faker.location.secondaryAddress(),
         city: faker.location.city(),
@@ -239,19 +239,19 @@ export function SessionConfiguration({
         id: faker.string.uuid(),
         ip: faker.internet.ip(),
         browser: faker.helpers.arrayElement([
-          "Chrome",
-          "Firefox",
-          "Safari",
-          "Edge",
+          'Chrome',
+          'Firefox',
+          'Safari',
+          'Edge',
         ]),
         os: faker.helpers.arrayElement([
-          "Windows",
-          "macOS",
-          "Linux",
-          "iOS",
-          "Android",
+          'Windows',
+          'macOS',
+          'Linux',
+          'iOS',
+          'Android',
         ]),
-        name: faker.helpers.arrayElement(["Mobile", "Tablet", "Desktop"]),
+        name: faker.helpers.arrayElement(['Mobile', 'Tablet', 'Desktop']),
         type: faker.helpers.arrayElement(availableDeviceTypes),
       },
     });
@@ -265,9 +265,9 @@ export function SessionConfiguration({
       !formData.transactionProvider
     ) {
       const error = new Error(
-        "Amount, currency, customer code, and transaction provider are required",
+        'Amount, currency, customer code, and transaction provider are required',
       );
-      console.error("[SessionCreationForm] Validation error:", error);
+      console.error('[SessionCreationForm] Validation error:', error);
       setError(error);
       return;
     }
@@ -278,9 +278,9 @@ export function SessionConfiguration({
       !formData.billing.email
     ) {
       const error = new Error(
-        "Billing first name, last name, and email are required",
+        'Billing first name, last name, and email are required',
       );
-      console.error("[SessionCreationForm] Validation error:", error);
+      console.error('[SessionCreationForm] Validation error:', error);
       setError(error);
       return;
     }
@@ -289,8 +289,8 @@ export function SessionConfiguration({
     setError(null);
 
     try {
-      const sdkEnvironment: "qa" | "production" =
-        environment === "production" ? "production" : "qa";
+      const sdkEnvironment: 'qa' | 'production' =
+        environment === 'production' ? 'production' : 'qa';
 
       const sdk = new AccruPay({
         apiSecret: secret,
@@ -367,7 +367,7 @@ export function SessionConfiguration({
         currency: currencyEnum,
         merchantInternalCustomerCode: formData.merchantInternalCustomerCode,
         merchantInternalTransactionCode:
-          formData.merchantInternalTransactionCode || "",
+          formData.merchantInternalTransactionCode || '',
         storePaymentMethod: formData.storePaymentMethod,
         billing: {
           billingFirstName: formData.billing.firstName,
@@ -513,7 +513,7 @@ export function SessionConfiguration({
     } catch (err) {
       const error = err instanceof Error ? err : new Error(String(err));
       console.error(
-        "[SessionCreationForm] Session creation error:",
+        '[SessionCreationForm] Session creation error:',
         error,
         err,
       );
@@ -525,13 +525,13 @@ export function SessionConfiguration({
 
   const availableCountries = Object.values(COUNTRY_ISO_2);
   const availableCurrencies = Object.values(CURRENCY).filter(
-    c => typeof c === "string",
+    c => typeof c === 'string',
   ) as string[];
   const deviceTypes = Object.values(DEVICE_TYPE);
 
   return (
     <div>
-      <div className="control-actions" style={{ marginBottom: "1rem" }}>
+      <div className="control-actions" style={{ marginBottom: '1rem' }}>
         <button
           type="button"
           onClick={handleLoadRandomData}
@@ -551,7 +551,7 @@ export function SessionConfiguration({
           step="0.01"
           min="0"
           value={formData.amount}
-          onChange={e => updateField("amount", e.target.value)}
+          onChange={e => updateField('amount', e.target.value)}
           placeholder="0.00"
           className="control-input"
           disabled={isCreating}
@@ -563,7 +563,7 @@ export function SessionConfiguration({
         <select
           id="session-currency"
           value={formData.currency}
-          onChange={e => updateField("currency", e.target.value)}
+          onChange={e => updateField('currency', e.target.value)}
           className="control-input"
           disabled={isCreating}
         >
@@ -582,7 +582,7 @@ export function SessionConfiguration({
           type="text"
           value={formData.merchantInternalCustomerCode}
           onChange={e =>
-            updateField("merchantInternalCustomerCode", e.target.value)
+            updateField('merchantInternalCustomerCode', e.target.value)
           }
           placeholder="customer-123"
           className="control-input"
@@ -597,7 +597,7 @@ export function SessionConfiguration({
           type="text"
           value={formData.merchantInternalTransactionCode}
           onChange={e =>
-            updateField("merchantInternalTransactionCode", e.target.value)
+            updateField('merchantInternalTransactionCode', e.target.value)
           }
           placeholder="txn-123"
           className="control-input"
@@ -610,7 +610,7 @@ export function SessionConfiguration({
           <input
             type="checkbox"
             checked={formData.storePaymentMethod}
-            onChange={e => updateField("storePaymentMethod", e.target.checked)}
+            onChange={e => updateField('storePaymentMethod', e.target.checked)}
             disabled={isCreating}
           />
           Store Payment Method
@@ -624,10 +624,10 @@ export function SessionConfiguration({
             <button
               key={provider}
               type="button"
-              onClick={() => updateField("transactionProvider", provider)}
+              onClick={() => updateField('transactionProvider', provider)}
               disabled={isCreating}
               className={`btn-provider ${
-                formData.transactionProvider === provider ? "active" : ""
+                formData.transactionProvider === provider ? 'active' : ''
               }`}
             >
               {provider}
@@ -649,7 +649,7 @@ export function SessionConfiguration({
               type="text"
               value={formData.billing.firstName}
               onChange={e =>
-                updateNestedField("billing", "firstName", e.target.value)
+                updateNestedField('billing', 'firstName', e.target.value)
               }
               className="control-input"
               disabled={isCreating}
@@ -662,7 +662,7 @@ export function SessionConfiguration({
               type="text"
               value={formData.billing.lastName}
               onChange={e =>
-                updateNestedField("billing", "lastName", e.target.value)
+                updateNestedField('billing', 'lastName', e.target.value)
               }
               className="control-input"
               disabled={isCreating}
@@ -677,7 +677,7 @@ export function SessionConfiguration({
               type="email"
               value={formData.billing.email}
               onChange={e =>
-                updateNestedField("billing", "email", e.target.value)
+                updateNestedField('billing', 'email', e.target.value)
               }
               className="control-input"
               disabled={isCreating}
@@ -690,7 +690,7 @@ export function SessionConfiguration({
               type="tel"
               value={formData.billing.phone}
               onChange={e =>
-                updateNestedField("billing", "phone", e.target.value)
+                updateNestedField('billing', 'phone', e.target.value)
               }
               className="control-input"
               disabled={isCreating}
@@ -705,7 +705,7 @@ export function SessionConfiguration({
               type="text"
               value={formData.billing.addressLine1}
               onChange={e =>
-                updateNestedField("billing", "addressLine1", e.target.value)
+                updateNestedField('billing', 'addressLine1', e.target.value)
               }
               className="control-input"
               disabled={isCreating}
@@ -718,7 +718,7 @@ export function SessionConfiguration({
               type="text"
               value={formData.billing.addressLine2}
               onChange={e =>
-                updateNestedField("billing", "addressLine2", e.target.value)
+                updateNestedField('billing', 'addressLine2', e.target.value)
               }
               className="control-input"
               disabled={isCreating}
@@ -733,7 +733,7 @@ export function SessionConfiguration({
               type="text"
               value={formData.billing.city}
               onChange={e =>
-                updateNestedField("billing", "city", e.target.value)
+                updateNestedField('billing', 'city', e.target.value)
               }
               className="control-input"
               disabled={isCreating}
@@ -746,7 +746,7 @@ export function SessionConfiguration({
               type="text"
               value={formData.billing.state}
               onChange={e =>
-                updateNestedField("billing", "state", e.target.value)
+                updateNestedField('billing', 'state', e.target.value)
               }
               className="control-input"
               disabled={isCreating}
@@ -761,8 +761,8 @@ export function SessionConfiguration({
               value={formData.billing.country}
               onChange={e =>
                 updateNestedField(
-                  "billing",
-                  "country",
+                  'billing',
+                  'country',
                   e.target.value as COUNTRY_ISO_2,
                 )
               }
@@ -783,7 +783,7 @@ export function SessionConfiguration({
               type="text"
               value={formData.billing.postalCode}
               onChange={e =>
-                updateNestedField("billing", "postalCode", e.target.value)
+                updateNestedField('billing', 'postalCode', e.target.value)
               }
               className="control-input"
               disabled={isCreating}
@@ -802,7 +802,7 @@ export function SessionConfiguration({
               type="text"
               value={formData.shipping.firstName}
               onChange={e =>
-                updateNestedField("shipping", "firstName", e.target.value)
+                updateNestedField('shipping', 'firstName', e.target.value)
               }
               className="control-input"
               disabled={isCreating}
@@ -815,7 +815,7 @@ export function SessionConfiguration({
               type="text"
               value={formData.shipping.lastName}
               onChange={e =>
-                updateNestedField("shipping", "lastName", e.target.value)
+                updateNestedField('shipping', 'lastName', e.target.value)
               }
               className="control-input"
               disabled={isCreating}
@@ -830,7 +830,7 @@ export function SessionConfiguration({
               type="email"
               value={formData.shipping.email}
               onChange={e =>
-                updateNestedField("shipping", "email", e.target.value)
+                updateNestedField('shipping', 'email', e.target.value)
               }
               className="control-input"
               disabled={isCreating}
@@ -843,7 +843,7 @@ export function SessionConfiguration({
               type="tel"
               value={formData.shipping.phone}
               onChange={e =>
-                updateNestedField("shipping", "phone", e.target.value)
+                updateNestedField('shipping', 'phone', e.target.value)
               }
               className="control-input"
               disabled={isCreating}
@@ -858,7 +858,7 @@ export function SessionConfiguration({
               type="text"
               value={formData.shipping.addressLine1}
               onChange={e =>
-                updateNestedField("shipping", "addressLine1", e.target.value)
+                updateNestedField('shipping', 'addressLine1', e.target.value)
               }
               className="control-input"
               disabled={isCreating}
@@ -871,7 +871,7 @@ export function SessionConfiguration({
               type="text"
               value={formData.shipping.addressLine2}
               onChange={e =>
-                updateNestedField("shipping", "addressLine2", e.target.value)
+                updateNestedField('shipping', 'addressLine2', e.target.value)
               }
               className="control-input"
               disabled={isCreating}
@@ -886,7 +886,7 @@ export function SessionConfiguration({
               type="text"
               value={formData.shipping.city}
               onChange={e =>
-                updateNestedField("shipping", "city", e.target.value)
+                updateNestedField('shipping', 'city', e.target.value)
               }
               className="control-input"
               disabled={isCreating}
@@ -899,7 +899,7 @@ export function SessionConfiguration({
               type="text"
               value={formData.shipping.state}
               onChange={e =>
-                updateNestedField("shipping", "state", e.target.value)
+                updateNestedField('shipping', 'state', e.target.value)
               }
               className="control-input"
               disabled={isCreating}
@@ -914,8 +914,8 @@ export function SessionConfiguration({
               value={formData.shipping.country}
               onChange={e =>
                 updateNestedField(
-                  "shipping",
-                  "country",
+                  'shipping',
+                  'country',
                   e.target.value as COUNTRY_ISO_2,
                 )
               }
@@ -936,7 +936,7 @@ export function SessionConfiguration({
               type="text"
               value={formData.shipping.postalCode}
               onChange={e =>
-                updateNestedField("shipping", "postalCode", e.target.value)
+                updateNestedField('shipping', 'postalCode', e.target.value)
               }
               className="control-input"
               disabled={isCreating}
@@ -955,7 +955,7 @@ export function SessionConfiguration({
               type="text"
               value={formData.user.firstName}
               onChange={e =>
-                updateNestedField("user", "firstName", e.target.value)
+                updateNestedField('user', 'firstName', e.target.value)
               }
               className="control-input"
               disabled={isCreating}
@@ -968,7 +968,7 @@ export function SessionConfiguration({
               type="text"
               value={formData.user.lastName}
               onChange={e =>
-                updateNestedField("user", "lastName", e.target.value)
+                updateNestedField('user', 'lastName', e.target.value)
               }
               className="control-input"
               disabled={isCreating}
@@ -982,7 +982,7 @@ export function SessionConfiguration({
               id="user-email"
               type="email"
               value={formData.user.email}
-              onChange={e => updateNestedField("user", "email", e.target.value)}
+              onChange={e => updateNestedField('user', 'email', e.target.value)}
               className="control-input"
               disabled={isCreating}
             />
@@ -993,7 +993,7 @@ export function SessionConfiguration({
               id="user-phone"
               type="tel"
               value={formData.user.phone}
-              onChange={e => updateNestedField("user", "phone", e.target.value)}
+              onChange={e => updateNestedField('user', 'phone', e.target.value)}
               className="control-input"
               disabled={isCreating}
             />
@@ -1007,7 +1007,7 @@ export function SessionConfiguration({
               type="date"
               value={formData.user.birthDate}
               onChange={e =>
-                updateNestedField("user", "birthDate", e.target.value)
+                updateNestedField('user', 'birthDate', e.target.value)
               }
               className="control-input"
               disabled={isCreating}
@@ -1020,7 +1020,7 @@ export function SessionConfiguration({
               type="text"
               value={formData.user.locale}
               onChange={e =>
-                updateNestedField("user", "locale", e.target.value)
+                updateNestedField('user', 'locale', e.target.value)
               }
               className="control-input"
               disabled={isCreating}
@@ -1035,7 +1035,7 @@ export function SessionConfiguration({
               type="text"
               value={formData.user.legalIdentifier}
               onChange={e =>
-                updateNestedField("user", "legalIdentifier", e.target.value)
+                updateNestedField('user', 'legalIdentifier', e.target.value)
               }
               className="control-input"
               disabled={isCreating}
@@ -1050,7 +1050,7 @@ export function SessionConfiguration({
               type="text"
               value={formData.user.legalIdentifierType}
               onChange={e =>
-                updateNestedField("user", "legalIdentifierType", e.target.value)
+                updateNestedField('user', 'legalIdentifierType', e.target.value)
               }
               className="control-input"
               disabled={isCreating}
@@ -1065,7 +1065,7 @@ export function SessionConfiguration({
               type="text"
               value={formData.user.addressLine1}
               onChange={e =>
-                updateNestedField("user", "addressLine1", e.target.value)
+                updateNestedField('user', 'addressLine1', e.target.value)
               }
               className="control-input"
               disabled={isCreating}
@@ -1078,7 +1078,7 @@ export function SessionConfiguration({
               type="text"
               value={formData.user.addressLine2}
               onChange={e =>
-                updateNestedField("user", "addressLine2", e.target.value)
+                updateNestedField('user', 'addressLine2', e.target.value)
               }
               className="control-input"
               disabled={isCreating}
@@ -1092,7 +1092,7 @@ export function SessionConfiguration({
               id="user-city"
               type="text"
               value={formData.user.city}
-              onChange={e => updateNestedField("user", "city", e.target.value)}
+              onChange={e => updateNestedField('user', 'city', e.target.value)}
               className="control-input"
               disabled={isCreating}
             />
@@ -1103,7 +1103,7 @@ export function SessionConfiguration({
               id="user-state"
               type="text"
               value={formData.user.state}
-              onChange={e => updateNestedField("user", "state", e.target.value)}
+              onChange={e => updateNestedField('user', 'state', e.target.value)}
               className="control-input"
               disabled={isCreating}
             />
@@ -1117,8 +1117,8 @@ export function SessionConfiguration({
               value={formData.user.country}
               onChange={e =>
                 updateNestedField(
-                  "user",
-                  "country",
+                  'user',
+                  'country',
                   e.target.value as COUNTRY_ISO_2,
                 )
               }
@@ -1139,7 +1139,7 @@ export function SessionConfiguration({
               type="text"
               value={formData.user.postalCode}
               onChange={e =>
-                updateNestedField("user", "postalCode", e.target.value)
+                updateNestedField('user', 'postalCode', e.target.value)
               }
               className="control-input"
               disabled={isCreating}
@@ -1157,7 +1157,7 @@ export function SessionConfiguration({
               id="device-id"
               type="text"
               value={formData.device.id}
-              onChange={e => updateNestedField("device", "id", e.target.value)}
+              onChange={e => updateNestedField('device', 'id', e.target.value)}
               className="control-input"
               disabled={isCreating}
             />
@@ -1168,7 +1168,7 @@ export function SessionConfiguration({
               id="device-ip"
               type="text"
               value={formData.device.ip}
-              onChange={e => updateNestedField("device", "ip", e.target.value)}
+              onChange={e => updateNestedField('device', 'ip', e.target.value)}
               className="control-input"
               disabled={isCreating}
             />
@@ -1182,7 +1182,7 @@ export function SessionConfiguration({
               type="text"
               value={formData.device.browser}
               onChange={e =>
-                updateNestedField("device", "browser", e.target.value)
+                updateNestedField('device', 'browser', e.target.value)
               }
               className="control-input"
               disabled={isCreating}
@@ -1194,7 +1194,7 @@ export function SessionConfiguration({
               id="device-os"
               type="text"
               value={formData.device.os}
-              onChange={e => updateNestedField("device", "os", e.target.value)}
+              onChange={e => updateNestedField('device', 'os', e.target.value)}
               className="control-input"
               disabled={isCreating}
             />
@@ -1208,7 +1208,7 @@ export function SessionConfiguration({
               type="text"
               value={formData.device.name}
               onChange={e =>
-                updateNestedField("device", "name", e.target.value)
+                updateNestedField('device', 'name', e.target.value)
               }
               className="control-input"
               disabled={isCreating}
@@ -1218,11 +1218,11 @@ export function SessionConfiguration({
             <label htmlFor="device-type">Device Type</label>
             <select
               id="device-type"
-              value={formData.device.type || ""}
+              value={formData.device.type || ''}
               onChange={e =>
                 updateNestedField(
-                  "device",
-                  "type",
+                  'device',
+                  'type',
                   e.target.value ? (e.target.value as DEVICE_TYPE) : null,
                 )
               }
@@ -1254,7 +1254,7 @@ export function SessionConfiguration({
           className="btn btn-primary"
           data-testid="btn-create-session"
         >
-          {isCreating ? "Creating..." : "Create Session"}
+          {isCreating ? 'Creating...' : 'Create Session'}
         </button>
       </div>
 
@@ -1278,12 +1278,12 @@ export function SessionConfiguration({
             <span className="status-value">{createdSession.token}</span>
           </div>
           {!isSDKLoaded && onUseSession && createdSession.id && (
-            <div style={{ marginTop: "12px" }}>
+            <div style={{ marginTop: '12px' }}>
               <button
                 type="button"
                 onClick={() => onUseSession(createdSession.id)}
                 className="btn btn-primary"
-                style={{ width: "100%" }}
+                style={{ width: '100%' }}
                 data-testid="btn-use-session"
               >
                 Use Session in Client Config
@@ -1291,12 +1291,12 @@ export function SessionConfiguration({
             </div>
           )}
           {onReset && (
-            <div style={{ marginTop: "8px" }}>
+            <div style={{ marginTop: '8px' }}>
               <button
                 type="button"
                 onClick={onReset}
                 className="btn btn-secondary"
-                style={{ width: "100%" }}
+                style={{ width: '100%' }}
                 data-testid="btn-reset-session"
               >
                 Reset Session Form

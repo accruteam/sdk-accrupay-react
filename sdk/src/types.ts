@@ -1,11 +1,11 @@
-import type { ReactNode } from "react";
+import type { ReactNode } from 'react';
 import type {
   MerchantClientTransactionSession,
   TRANSACTION_PROVIDER,
-} from "./api/gql/graphql";
-import type { MerchantBaseConfig } from "./api/services/transactionSession/types";
+} from './api/gql/graphql';
+import type { MerchantBaseConfig } from './api/services/transactionSession/types';
 
-export type AccruPayFieldName = "cardNumber" | "cardExpiry" | "cardCVC";
+export type AccruPayFieldName = 'cardNumber' | 'cardExpiry' | 'cardCVC';
 
 export type AccruPayParams = {
   merchantPublicId: string;
@@ -13,7 +13,7 @@ export type AccruPayParams = {
   transactionSessionId?: string | null;
   preloadProvider?: TRANSACTION_PROVIDER | null;
 
-  environment?: "production" | "sandbox" | null;
+  environment?: 'production' | 'sandbox' | null;
 
   children: ReactNode;
 };
