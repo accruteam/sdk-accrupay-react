@@ -42,15 +42,42 @@ const NUVEI_TEST_CARDS: Record<TestCardScenario, TestCard> = {
   },
 };
 
-// Provider-specific test cards
+const STRIPE_TEST_CARDS: Record<TestCardScenario, TestCard> = {
+  frictionless: {
+    scenario: 'frictionless',
+    cardNumber: '4000002760003184',
+    cardHolderName: 'Stripe 3DS2 Frictionless',
+    cardExpiry: '12/30',
+    cardCvc: '123',
+    minAmount: 150,
+    description: 'Stripe test card with 3DS2 frictionless flow',
+  },
+  challenge: {
+    scenario: 'challenge',
+    cardNumber: '4000002500003155',
+    cardHolderName: 'Stripe 3DS2 Challenge',
+    cardExpiry: '12/30',
+    cardCvc: '123',
+    minAmount: 151,
+    description: 'Stripe test card with 3DS2 challenge flow',
+  },
+  non3ds: {
+    scenario: 'non3ds',
+    cardNumber: '4242424242424242',
+    cardHolderName: 'Stripe Non-3DS',
+    cardExpiry: '12/30',
+    cardCvc: '123',
+    minAmount: 10,
+    description: 'Stripe standard non-3DS test card',
+  },
+};
+
 const TEST_CARDS_BY_PROVIDER: Record<
   TRANSACTION_PROVIDER,
   Record<TestCardScenario, TestCard>
 > = {
   NUVEI: NUVEI_TEST_CARDS,
-  // Add other providers here as they are implemented
-  // STRIPE: STRIPE_TEST_CARDS,
-  // ADYEN: ADYEN_TEST_CARDS,
+  STRIPE: STRIPE_TEST_CARDS,
 };
 
 export function getTestCard(

@@ -692,6 +692,7 @@ const context: AccruPayContextValue = useAccruPay();
 // Transaction Provider Enum
 enum TRANSACTION_PROVIDER {
   NUVEI = 'NUVEI'
+  STRIPE = 'STRIPE'
 }
 
 // Transaction Session
@@ -815,7 +816,8 @@ function CardholderNameInput() {
 
 The SDK automatically handles provider-specific configurations. Currently supported providers:
 
-- **NUVEI**: Fully supported with all features
+- **NUVEI**: Fully supported with WebSDK payment.
+- **STRIPE**: Fully supported with split card elements (CardNumber, CardExpiry, CardCVC) and Payment Intents.
 
 ### Ref Access for External Control
 

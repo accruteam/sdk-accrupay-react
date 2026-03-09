@@ -1,5 +1,6 @@
 import { useAccruPay } from '../context';
 import { NuveiSubmitButton } from '../gateways/nuvei/fields/SubmitButton';
+import { StripeSubmitButton } from '../gateways/stripe/fields/SubmitButton';
 
 interface SubmitButtonProps
   extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'onError'> {
@@ -14,6 +15,8 @@ export function SubmitButton(props: SubmitButtonProps) {
   switch (provider) {
     case 'NUVEI':
       return <NuveiSubmitButton {...props} />;
+    case 'STRIPE':
+      return <StripeSubmitButton {...props} />;
     default:
       return <button disabled>Provider not supported</button>;
   }

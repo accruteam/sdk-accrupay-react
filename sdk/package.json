@@ -19,7 +19,8 @@
     "payment",
     "react",
     "graphql",
-    "nuvei"
+    "nuvei",
+    "stripe"
   ],
   "type": "module",
   "main": "./dist/index.cjs.js",
@@ -49,6 +50,8 @@
   },
   "dependencies": {
     "@apollo/client": "^4.0.4",
+    "@stripe/react-stripe-js": "^2.8.1",
+    "@stripe/stripe-js": "^4.8.0",
     "apollo-link-scalars": "^4.0.3",
     "graphql": "^16.12.0",
     "graphql-scalars": "^1.24.2",
