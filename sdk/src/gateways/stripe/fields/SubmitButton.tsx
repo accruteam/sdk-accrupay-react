@@ -1,7 +1,9 @@
 import { useAccruPay } from '../../../context';
 
-interface StripeSubmitButtonProps
-  extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'onError'> {
+interface StripeSubmitButtonProps extends Omit<
+  React.ButtonHTMLAttributes<HTMLButtonElement>,
+  'onError'
+> {
   onSuccess?: (result: any) => void;
   onError?: (error: Error) => void;
 }

@@ -1,7 +1,7 @@
 import { createContext, useContext } from 'react';
 import type { AccruPayFieldName } from '../../types';
 
-export interface NuveiContextValue {
+export interface NuveiInternalContextValue {
   isFormReady: boolean;
 
   registerField: (name: AccruPayFieldName, containerId: string) => void;
@@ -11,10 +11,11 @@ export interface NuveiContextValue {
   setCardHolderName: (value: string) => void;
 }
 
-export const NuveiContext = createContext<NuveiContextValue | null>(null);
+export const NuveiInternalContext =
+  createContext<NuveiInternalContextValue | null>(null);
 
 export const useNuvei = () => {
-  const context = useContext(NuveiContext);
+  const context = useContext(NuveiInternalContext);
   if (!context) {
     throw new Error('useNuvei must be used within NuveiProvider');
   }

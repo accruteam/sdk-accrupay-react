@@ -1,6 +1,12 @@
 export { AccruPay } from './AccruPay';
 export { useAccruPay } from './context';
-export { CardNumber, CardExpiry, CardCVC, SubmitButton } from './fields';
+export {
+  CardholderName,
+  CardNumber,
+  CardExpiry,
+  CardCVC,
+  SubmitButton,
+} from './fields';
 export type {
   AccruPayParams,
   AccruPayContextValue,

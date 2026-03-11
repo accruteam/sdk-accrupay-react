@@ -2,42 +2,20 @@ export interface INuveiTransactionParamsDTO {
   sessionToken: string;
   cardHolderName: string;
   paymentOption: NuveiFormField;
-  userDetails: {
-    zip: string;
-    firstName: string;
-    lastName: string;
-    country: string;
-    address: string;
-    phone: string;
-    city: string;
-    county: string;
-    dateOfBirth: string;
-    cell: string;
-    email: string;
-  };
-  shippingAddress: {
-    zip: string;
-    firstName: string;
-    lastName: string;
-    country: string;
-    address: string;
-    phone: string;
-    city: string;
-    county: string;
-    cell: string;
-    email: string;
-  };
+
   billingAddress: {
-    zip: string;
+    country: string;
+    email: string;
     firstName: string;
     lastName: string;
-    country: string;
-    address: string;
-    phone: string;
-    city: string;
-    county: string;
-    cell: string;
-    email: string;
+    address?: string;
+    addressLine2?: string;
+    addressLine3?: string;
+    phone?: string;
+    zip?: string;
+    city?: string;
+    state?: string;
+    county?: string;
   };
 }
 

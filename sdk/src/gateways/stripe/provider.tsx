@@ -11,11 +11,12 @@ import {
   useElements,
   CardNumberElement,
 } from '@stripe/react-stripe-js';
-import { StripeContext } from './context';
+import { StripeInternalContext } from './context';
 import type {
   AccruPayInternalProviderRef,
   AccruPayInternalProviderProps,
   AccruPayFieldName,
+  AccruPayTransactionSubmitParams,
 } from '../../types';
 
 const REQUIRED_FIELDS: AccruPayFieldName[] = [
@@ -71,7 +72,7 @@ export const StripeProvider = forwardRef<
   }, [isFormReady, areAllFieldsReady, onReadyChange]);
 
   const submitPayment = useCallback(
-    async (params?: Record<string, any>) => {
+    async (params?: AccruPayTransactionSubmitParams) => {
       if (!stripe || !elements) {
         throw new Error('Payment provider not ready');
       }
@@ -98,19 +99,22 @@ export const StripeProvider = forwardRef<
         throw new Error('Payment fields not initialized');
       }
 
+      const billing = params?.billing;
+
       const result = await stripe.confirmCardPayment(clientSecret, {
         payment_method: {
           card: cardElement,
           billing_details: {
             name: cardHolderName.trim(),
-            ...(params?.billingAddress && {
+            ...(billing && {
+              email: billing.billingEmail,
               address: {
-                line1: params.billingAddress.line1,
-                line2: params.billingAddress.line2,
-                city: params.billingAddress.city,
-                state: params.billingAddress.state,
-                postal_code: params.billingAddress.postal_code,
-                country: params.billingAddress.country,
+                line1: billing.billingAddressLine1 ?? undefined,
+                line2: billing.billingAddressLine2 ?? undefined,
+                city: billing.billingAddressCity ?? undefined,
+                state: billing.billingAddressState ?? undefined,
+                postal_code: billing.billingAddressPostalCode ?? undefined,
+                country: billing.billingAddressCountry,
               },
             }),
           },
@@ -149,12 +153,18 @@ export const StripeProvider = forwardRef<
       cardHolderName,
       setCardHolderName,
     }),
-    [isFormReady, registerFieldReady, unregisterField, cardHolderName],
+    [
+      isFormReady,
+      registerFieldReady,
+      unregisterField,
+      cardHolderName,
+      setCardHolderName,
+    ],
   );
 
   return (
-    <StripeContext.Provider value={contextValue}>
+    <StripeInternalContext.Provider value={contextValue}>
       {children}
-    </StripeContext.Provider>
+    </StripeInternalContext.Provider>
   );
 });
