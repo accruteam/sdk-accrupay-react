@@ -1,6 +1,6 @@
 import { useAccruPay } from '../../../context';
 
-interface NuveiSubmitButtonProps extends Omit<
+interface StripeSubmitButtonProps extends Omit<
   React.ButtonHTMLAttributes<HTMLButtonElement>,
   'onError'
 > {
@@ -8,13 +8,13 @@ interface NuveiSubmitButtonProps extends Omit<
   onError?: (error: Error) => void;
 }
 
-export function NuveiSubmitButton({
+export function StripeSubmitButton({
   onSuccess,
   onError,
   disabled,
   children,
   ...buttonProps
-}: NuveiSubmitButtonProps) {
+}: StripeSubmitButtonProps) {
   const { submitPayment, isProcessing, isReady } = useAccruPay();
 
   const handleClick = async () => {

@@ -7,12 +7,18 @@ import {
   useCallback,
   useRef,
 } from 'react';
-import type { NuveiForm, NuveiFormField, SafeChargeInstance } from './types';
-import { NuveiContext } from './context';
+import type {
+  INuveiTransactionParamsDTO,
+  NuveiForm,
+  NuveiFormField,
+  SafeChargeInstance,
+} from './types';
+import { NuveiInternalContext } from './context';
 import type {
   AccruPayInternalProviderRef,
   AccruPayInternalProviderProps,
   AccruPayFieldName,
+  AccruPayTransactionSubmitParams,
 } from '../../types';
 import type { NuveiFormFieldName } from './types';
 
@@ -173,7 +179,7 @@ export const NuveiProvider = forwardRef<
     );
 
     const submitPayment = useCallback(
-      async (params?: Record<string, any>) => {
+      async (params?: AccruPayTransactionSubmitParams) => {
         if (!formRef.current || !transactionSession) {
           throw new Error('Payment form not ready');
         }
@@ -231,31 +237,63 @@ export const NuveiProvider = forwardRef<
           throw err;
         }
 
+        const billing = params?.billing;
+
+        const parseNuveiAddress =
+          (): INuveiTransactionParamsDTO['billingAddress'] => {
+            if (billing) {
+              return {
+                country: billing.billingAddressCountry,
+                email: billing.billingEmail,
+                firstName: billing.billingFirstName,
+                lastName: billing.billingLastName,
+                address: billing.billingAddressLine1 ?? undefined,
+                addressLine2: billing.billingAddressLine2 ?? undefined,
+                phone: billing.billingPhone ?? undefined,
+                zip: billing.billingAddressPostalCode ?? undefined,
+                city: billing.billingAddressCity ?? undefined,
+                state: billing.billingAddressState ?? undefined,
+                county: undefined,
+              };
+            }
+
+            return {
+              country: transactionSession.billingAddressCountry ?? '',
+              email: transactionSession.billingEmail ?? '',
+              firstName: transactionSession.billingFirstName ?? '',
+              lastName: transactionSession.billingLastName ?? '',
+              address: transactionSession.billingAddressLine1 ?? '',
+              addressLine2: transactionSession.billingAddressLine2 ?? undefined,
+              phone: transactionSession.billingPhone ?? undefined,
+              zip: transactionSession.billingAddressPostalCode ?? undefined,
+              city: transactionSession.billingAddressCity ?? undefined,
+              state: transactionSession.billingAddressState ?? undefined,
+              county: undefined,
+            };
+          };
+
         return new Promise<Record<string, any>>((resolve, reject) => {
           if (!transactionSession.token) {
             reject(new Error('Session token not available'));
             return;
           }
 
-          safeCharge.createPayment(
-            {
-              sessionToken: transactionSession.token,
-              cardHolderName,
-              paymentOption: cardNumberField,
-              userDetails: params?.userDetails || {},
-              shippingAddress: params?.shippingAddress || {},
-              billingAddress: params?.billingAddress || {},
-            },
-            response => {
-              if (response.result === 'APPROVED') {
-                resolve(response);
-              } else {
-                reject(
-                  new Error(response.errorDescription || 'Payment failed'),
-                );
-              }
-            },
-          );
+          const billingAddress = parseNuveiAddress();
+
+          const createParams: INuveiTransactionParamsDTO = {
+            sessionToken: transactionSession.token,
+            cardHolderName,
+            paymentOption: cardNumberField,
+            billingAddress,
+          };
+
+          safeCharge.createPayment(createParams, response => {
+            if (response.result === 'APPROVED') {
+              resolve(response);
+            } else {
+              reject(new Error(response.errorDescription || 'Payment failed'));
+            }
+          });
         });
       },
       [
@@ -281,13 +319,19 @@ export const NuveiProvider = forwardRef<
         cardHolderName,
         setCardHolderName,
       }),
-      [isFormReady, registerField, unregisterField, cardHolderName],
+      [
+        isFormReady,
+        registerField,
+        unregisterField,
+        cardHolderName,
+        setCardHolderName,
+      ],
     );
 
     return (
-      <NuveiContext.Provider value={contextValue}>
+      <NuveiInternalContext.Provider value={contextValue}>
         {children}
-      </NuveiContext.Provider>
+      </NuveiInternalContext.Provider>
     );
   },
 );

@@ -13,6 +13,7 @@ import type {
   AccruPayParams,
   AccruPayRef,
   AccruPayContextValue,
+  AccruPayTransactionSubmitParams,
 } from './types';
 import { AccruPayGateways } from './gateways';
 import { AccruPayContext } from './context';
@@ -30,6 +31,7 @@ const AccruPay = memo(
       transactionSessionId,
       preloadProvider,
       environment = 'production',
+      url,
       children,
     } = params;
 
@@ -48,8 +50,9 @@ const AccruPay = memo(
       () =>
         new AccruPayClient({
           environment: environment === 'production' ? 'production' : 'sandbox',
+          url: url ?? null,
         }),
-      [environment],
+      [environment, url],
     );
     const fetchConfigRef = useRef<AbortController | null>(null);
 
@@ -118,24 +121,27 @@ const AccruPay = memo(
       preloadProvider,
     ]);
 
-    const submitPayment = useCallback(async (params?: Record<string, any>) => {
-      if (!providerRef.current) {
-        throw new Error('Payment provider not ready');
-      }
+    const submitPayment = useCallback(
+      async (params?: AccruPayTransactionSubmitParams) => {
+        if (!providerRef.current) {
+          throw new Error('Payment provider not ready');
+        }
 
-      setIsProcessing(true);
-      setError(null);
+        setIsProcessing(true);
+        setError(null);
 
-      try {
-        const result = await providerRef.current.submitPayment(params);
-        setIsProcessing(false);
-        return result;
-      } catch (err: any) {
-        setIsProcessing(false);
-        setError(err.message || 'Payment failed');
-        throw err;
-      }
-    }, []);
+        try {
+          const result = await providerRef.current.submitPayment(params);
+          setIsProcessing(false);
+          return result;
+        } catch (err: any) {
+          setIsProcessing(false);
+          setError(err.message || 'Payment failed');
+          throw err;
+        }
+      },
+      [],
+    );
 
     useImperativeHandle(ref, () => ({
       submitPayment,

@@ -1,5 +1,17 @@
 import { defineConfig } from 'tsup';
 
+const external = [
+  'react',
+  'react-dom',
+  '@apollo/client',
+  '@stripe/react-stripe-js',
+  '@stripe/stripe-js',
+  'apollo-link-scalars',
+  'graphql',
+  'graphql-scalars',
+  'rxjs',
+];
+
 export default defineConfig([
   {
     entry: ['src/index.ts'],
@@ -10,15 +22,7 @@ export default defineConfig([
     splitting: false,
     treeshake: true,
     minify: false,
-    external: [
-      'react',
-      'react-dom',
-      '@apollo/client',
-      'apollo-link-scalars',
-      'graphql',
-      'graphql-scalars',
-      'rxjs',
-    ],
+    external,
     outExtension({ format }) {
       return { js: format === 'esm' ? '.mjs' : '.cjs.js' };
     },
@@ -35,6 +39,7 @@ export default defineConfig([
     treeshake: true,
     minify: true,
     splitting: false,
+    external,
     esbuildOptions(options) {
       options.jsx = 'automatic';
     },

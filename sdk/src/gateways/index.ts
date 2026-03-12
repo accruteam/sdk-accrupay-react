@@ -1,5 +1,7 @@
 import { NuveiGateway } from './nuvei';
+import { StripeGateway } from './stripe';
 
 export const AccruPayGateways = {
   NUVEI: NuveiGateway,
-} as const;
+  STRIPE: StripeGateway,
+};
