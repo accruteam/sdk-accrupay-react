@@ -1,19 +1,24 @@
-import { ApolloClient, InMemoryCache, ApolloLink } from '@apollo/client/core';
-import { HttpLink } from '@apollo/client/link/http';
+import { ApolloClient, InMemoryCache, ApolloLink } from '@apollo/client';
 import { ErrorLink } from '@apollo/client/link/error';
-import { CombinedGraphQLErrors, ServerError } from '@apollo/client';
+import {
+  CombinedGraphQLErrors,
+  CombinedProtocolErrors,
+  ServerError,
+} from '@apollo/client/errors';
 import { SetContextLink } from '@apollo/client/link/context';
+import { HttpLink } from '@apollo/client/link/http';
 import { withScalars } from 'apollo-link-scalars';
 import { DateTimeISOResolver } from 'graphql-scalars';
 import {
   GraphQLError,
-  type GraphQLFormattedError,
+  GraphQLFormattedError,
   GraphQLScalarType,
-  type IntrospectionQuery,
+  IntrospectionQuery,
   Kind,
   buildClientSchema,
 } from 'graphql';
 import introspectionResult from './gql/schema.graphql.json' assert { type: 'json' };
+import { collectAppMetadata } from '../utils/appMetadata';
 
 const AccruPayEnvironmentUrls = {
   production: 'https://api.pay.accru.co/graphql',
@@ -22,16 +27,23 @@ const AccruPayEnvironmentUrls = {
 
 interface IAccruPayParams {
   environment?: keyof typeof AccruPayEnvironmentUrls;
-  url?: string | null;
+
+  /** Overrides the environment base URL */
+  url?: string;
+
+  /** Enable telemetry data collection (browser runtime/platform hints). Default: true */
+  enableTelemetry?: boolean;
 
   onAuthError?: () => void;
   onGraphQLError?: (errors: ReadonlyArray<GraphQLFormattedError>) => void;
   onNetworkError?: (error: GraphQLFormattedError) => void;
 }
 
-(BigInt.prototype as any).toJSON = function () {
-  return this.toString();
-};
+if (!(BigInt.prototype as any).toJSON) {
+  (BigInt.prototype as any).toJSON = function () {
+    return this.toString();
+  };
+}
 
 const BigIntResolver = new GraphQLScalarType({
   name: 'BigInt',
@@ -75,44 +87,49 @@ const schema = buildClientSchema(
   introspectionResult as unknown as IntrospectionQuery,
 );
 
+export const buildSdkMetadataHeaders = (enableTelemetry = true) => {
+  const metadata = collectAppMetadata(enableTelemetry);
+  return {
+    'accrupay-sdk-name': metadata.sdk.name,
+    'accrupay-sdk-version': metadata.sdk.version,
+    'accrupay-app-metadata': JSON.stringify(metadata),
+  } as const;
+};
+
 export const createApolloClient = ({
   environment,
   url,
+  enableTelemetry = true,
   onGraphQLError,
   onNetworkError,
   onAuthError,
 }: IAccruPayParams) => {
   const errorLink = new ErrorLink(({ error }) => {
     if (CombinedGraphQLErrors.is(error)) {
-      const errors = error.errors.map(e => ({
-        ...e,
-        validationErrors: (e.extensions as any)?.exception?.validationErrors,
-      }));
-
-      if (typeof onGraphQLError === 'function') {
-        onGraphQLError(errors);
-      }
+      if (error.errors.length && typeof onGraphQLError === 'function')
+        onGraphQLError(error.errors);
 
       if (
-        errors.some(e => e.extensions?.code === 'UNAUTHENTICATED') &&
+        error.errors.some(err => err.extensions?.code === 'UNAUTHENTICATED') &&
         typeof onAuthError === 'function'
-      ) {
+      )
         onAuthError();
-      }
 
+      return;
+    }
+
+    if (CombinedProtocolErrors.is(error)) {
+      if (typeof onNetworkError === 'function') onNetworkError(error);
       return;
     }
 
     if (ServerError.is(error)) {
-      if (typeof onNetworkError === 'function') {
-        onNetworkError(error);
-      }
+      if (typeof onNetworkError === 'function') onNetworkError(error);
       return;
     }
 
-    if (error && typeof onNetworkError === 'function') {
-      onNetworkError(error);
-    }
+    if (error && typeof onNetworkError === 'function')
+      onNetworkError(error instanceof Error ? error : new Error(String(error)));
   });
 
   const scalarLink = withScalars({
@@ -127,6 +144,7 @@ export const createApolloClient = ({
     return {
       headers: {
         ...prevContext.headers,
+        ...buildSdkMetadataHeaders(enableTelemetry),
       },
     };
   });

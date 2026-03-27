@@ -24,7 +24,7 @@ export default defineConfig([
     minify: false,
     external,
     outExtension({ format }) {
-      return { js: format === 'esm' ? '.mjs' : '.cjs.js' };
+      return { js: format === 'esm' ? '.mjs' : '.cjs' };
     },
     esbuildOptions(options) {
       options.jsx = 'automatic';

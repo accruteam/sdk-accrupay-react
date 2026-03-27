@@ -7,6 +7,10 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# yalc
+.yalc
+yalc.lock
+
 # Dependencies
 node_modules
 .pnp
@@ -46,3 +50,7 @@ dist-ssr
 
 # Changesets (keep the directory, ignore temp files if any)
 .changeset/*.md.tmp
+
+test-results
+playwright-report
+.playwright

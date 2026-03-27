@@ -1,4 +1,5 @@
 import { useAccruPay } from '../context';
+import type { AccruPayTransactionSubmitParams } from '../types';
 import { NuveiSubmitButton } from '../gateways/nuvei/fields/SubmitButton';
 import { StripeSubmitButton } from '../gateways/stripe/fields/SubmitButton';
 
@@ -8,6 +9,7 @@ interface SubmitButtonProps extends Omit<
 > {
   onSuccess?: (result: any) => void;
   onError?: (error: Error) => void;
+  submitParams?: AccruPayTransactionSubmitParams;
 }
 
 export function SubmitButton(props: SubmitButtonProps) {

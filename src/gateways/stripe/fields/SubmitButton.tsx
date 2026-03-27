@@ -1,27 +1,30 @@
 import { useAccruPay } from '../../../context';
+import type { AccruPayTransactionSubmitParams } from '../../../types';
 
-interface NuveiSubmitButtonProps extends Omit<
+interface StripeSubmitButtonProps extends Omit<
   React.ButtonHTMLAttributes<HTMLButtonElement>,
   'onError'
 > {
   onSuccess?: (result: any) => void;
   onError?: (error: Error) => void;
+  submitParams?: AccruPayTransactionSubmitParams;
 }
 
-export function NuveiSubmitButton({
+export function StripeSubmitButton({
   onSuccess,
   onError,
+  submitParams,
   disabled,
   children,
   ...buttonProps
-}: NuveiSubmitButtonProps) {
+}: StripeSubmitButtonProps) {
   const { submitPayment, isProcessing, isReady } = useAccruPay();
 
   const handleClick = async () => {
     if (!isReady || isProcessing) return;
 
     try {
-      const result = await submitPayment();
+      const result = await submitPayment(submitParams);
       onSuccess?.(result);
     } catch (error) {
       const err = error instanceof Error ? error : new Error(String(error));

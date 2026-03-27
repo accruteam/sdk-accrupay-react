@@ -50,7 +50,7 @@ const AccruPay = memo(
       () =>
         new AccruPayClient({
           environment: environment === 'production' ? 'production' : 'sandbox',
-          url: url ?? null,
+          url: url ?? undefined,
         }),
       [environment, url],
     );

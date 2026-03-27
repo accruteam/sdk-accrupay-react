@@ -12,12 +12,14 @@ import {
   CardNumberElement,
 } from '@stripe/react-stripe-js';
 import { StripeInternalContext } from './context';
+import { TRANSACTION_ACTION } from '../../api/gql/graphql';
 import type {
   AccruPayInternalProviderRef,
   AccruPayInternalProviderProps,
   AccruPayFieldName,
   AccruPayTransactionSubmitParams,
 } from '../../types';
+import type { StripeCardNumberElement } from '@stripe/stripe-js';
 
 const REQUIRED_FIELDS: AccruPayFieldName[] = [
   'cardNumber',
@@ -100,36 +102,91 @@ export const StripeProvider = forwardRef<
       }
 
       const billing = params?.billing;
-
-      const result = await stripe.confirmCardPayment(clientSecret, {
-        payment_method: {
-          card: cardElement,
-          billing_details: {
-            name: cardHolderName.trim(),
-            ...(billing && {
-              email: billing.billingEmail,
-              address: {
-                line1: billing.billingAddressLine1 ?? undefined,
-                line2: billing.billingAddressLine2 ?? undefined,
-                city: billing.billingAddressCity ?? undefined,
-                state: billing.billingAddressState ?? undefined,
-                postal_code: billing.billingAddressPostalCode ?? undefined,
-                country: billing.billingAddressCountry,
-              },
-            }),
+      const billingDetails = {
+        name: cardHolderName.trim(),
+        ...(billing && {
+          email: billing.billingEmail,
+          address: {
+            line1: billing.billingAddressLine1 ?? undefined,
+            line2: billing.billingAddressLine2 ?? undefined,
+            city: billing.billingAddressCity ?? undefined,
+            state: billing.billingAddressState ?? undefined,
+            postal_code: billing.billingAddressPostalCode ?? undefined,
+            country: billing.billingAddressCountry,
           },
-        },
-      });
+        }),
+      };
 
-      if (result.error) {
+      type SubmitHandler = (input: {
+        clientSecret: string;
+        card: StripeCardNumberElement;
+        billingDetails: typeof billingDetails;
+      }) => Promise<Record<string, any>>;
+      const submitByAction: Partial<Record<TRANSACTION_ACTION, SubmitHandler>> =
+        {
+          [TRANSACTION_ACTION.PAYMENT]: async ({
+            clientSecret,
+            card,
+            billingDetails,
+          }) => {
+            const result = await stripe.confirmCardPayment(clientSecret, {
+              payment_method: {
+                card,
+                billing_details: billingDetails,
+              },
+            });
+
+            if (result.error) {
+              throw result.error;
+            }
+            return (result.paymentIntent ?? result) as Record<string, any>;
+          },
+          [TRANSACTION_ACTION.ADD_PAYMENT_METHOD]: async ({
+            clientSecret,
+            card,
+            billingDetails,
+          }) => {
+            const result = await stripe.confirmCardSetup(clientSecret, {
+              payment_method: {
+                card,
+                billing_details: billingDetails,
+              },
+            });
+
+            if (result.error) {
+              throw result.error;
+            }
+            return (result.setupIntent ?? result) as Record<string, any>;
+          },
+        };
+
+      const defaultSubmitHandler = submitByAction[TRANSACTION_ACTION.PAYMENT];
+      if (!defaultSubmitHandler) {
+        throw new Error('Missing Stripe payment submit handler');
+      }
+
+      const actionHandler =
+        submitByAction[
+          transactionSession?.action ?? TRANSACTION_ACTION.UNKNOWN
+        ] ?? defaultSubmitHandler;
+
+      let result: Record<string, any>;
+      try {
+        result = await actionHandler({
+          clientSecret,
+          card: cardElement,
+          billingDetails,
+        });
+      } catch (error) {
+        const stripeError = error as { message?: string; code?: string };
         const message =
-          result.error.message ?? result.error.code ?? 'Payment failed';
+          stripeError.message ?? stripeError.code ?? 'Payment failed';
         const err = new Error(message);
         onError?.(err);
         throw err;
       }
 
-      return (result.paymentIntent ?? result) as Record<string, any>;
+      return result;
     },
     [
       stripe,
