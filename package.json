@@ -1,45 +1,108 @@
 {
-  "name": "@accrupay/react-workspace",
-  "license": "MIT",
-  "private": true,
+  "name": "@accrupay/react",
+  "private": false,
   "version": "0.0.1",
-  "type": "module",
-  "workspaces": [
-    "sdk",
-    "playground"
+  "description": "AccruPay React SDK – Payment router platform for React applications",
+  "license": "MIT",
+  "author": "Luiz Felipe Laviola <luiz@laviola.dev>",
+  "homepage": "https://accru.co",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/accruteam/sdk-accrupay-react"
+  },
+  "bugs": {
+    "url": "https://github.com/accruteam/sdk-accrupay-react/issues"
+  },
+  "keywords": [
+    "accru",
+    "accrupay",
+    "payment",
+    "react",
+    "graphql",
+    "nuvei",
+    "stripe"
   ],
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "unpkg": "./dist/index.global.js",
+  "jsdelivr": "./dist/index.global.js",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    },
+    "./package.json": "./package.json"
+  },
+  "sideEffects": false,
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
   "scripts": {
-    "build": "yarn workspace @accrupay/react build",
-    "dev": "yarn workspace playground dev",
-    "lint": "yarn workspaces run lint",
-    "codegen": "yarn workspace @accrupay/react codegen",
-    "codegen:watch": "yarn workspace @accrupay/react codegen:watch",
-    "clean": "yarn workspaces run clean && rm -rf node_modules",
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "start": "./scripts/run.sh",
+    "lint": "tsc --noEmit && eslint . --fix",
+    "codegen": "graphql-codegen",
+    "codegen:update": "graphql-codegen && yalc publish",
+    "codegen:watch": "graphql-codegen -w",
+    "yalc:publish": "yarn build && yalc publish",
+    "yalc:push": "yarn build && yalc push",
+    "clean": "rm -rf dist node_modules",
     "changeset": "changeset",
     "version-packages": "changeset version",
-    "release": "yarn workspace @accrupay/react build && changeset publish",
+    "release": "yarn build && changeset publish",
     "prepare": "husky"
   },
+  "dependencies": {
+    "@apollo/client": "^4.1.6",
+    "@stripe/react-stripe-js": "^5.6.1",
+    "@stripe/stripe-js": "^8.11.0",
+    "apollo-link-scalars": "^4.0.3",
+    "graphql": "^16.12.0",
+    "graphql-scalars": "^1.24.2",
+    "rxjs": "^7.8.2"
+  },
+  "peerDependencies": {
+    "react": ">=16.8 <21",
+    "react-dom": ">=16.8 <21"
+  },
   "devDependencies": {
-    "@changesets/cli": "^2.29.7",
-    "@commitlint/cli": "^20.1.0",
-    "@commitlint/config-conventional": "^20.0.0",
-    "@eslint/js": "^9.33.0",
+    "@changesets/cli": "^2.30.0",
+    "@commitlint/cli": "^20.5.0",
+    "@commitlint/config-conventional": "^20.5.0",
+    "@eslint/js": "^10.0.1",
+    "@graphql-codegen/cli": "^6.2.1",
+    "@graphql-codegen/client-preset": "^5.2.4",
+    "@graphql-codegen/introspection": "^5.0.1",
+    "@graphql-codegen/schema-ast": "^5.0.1",
+    "@types/node": "^25.5.0",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
     "commitizen": "^4.3.0",
     "cz-conventional-changelog": "^3.3.0",
-    "eslint": "^9.33.0",
+    "dotenv": "^17.3.1",
+    "eslint": "^10.1.0",
     "eslint-config-prettier": "^10.1.8",
-    "eslint-plugin-prettier": "^5.5.4",
+    "eslint-plugin-prettier": "^5.5.5",
     "eslint-plugin-react-hooks": "^7.0.1",
-    "eslint-plugin-react-refresh": "^0.4.24",
-    "globals": "^16.5.0",
+    "eslint-plugin-react-refresh": "^0.5.2",
+    "globals": "^17.4.0",
     "husky": "^9.1.6",
-    "lint-staged": "^16.2.6",
-    "npm-run-all": "^4.1.5",
-    "prettier": "^3.6.2",
+    "lint-staged": "^16.4.0",
+    "prettier": "^3.8.1",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
     "slackify-markdown": "^5.0.0",
+    "tsup": "^8.5.1",
     "typescript": "~5.9.3",
-    "typescript-eslint": "^8.39.1"
+    "typescript-eslint": "^8.57.1",
+    "yalc": "^1.0.0-pre.53"
   },
   "lint-staged": {
     "**/*.{ts,tsx}": [

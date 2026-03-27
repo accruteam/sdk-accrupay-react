@@ -6,8 +6,10 @@ import tseslint from 'typescript-eslint';
 import prettier from 'eslint-plugin-prettier';
 import prettierConfig from 'eslint-config-prettier';
 
-export default tseslint.config(
-  { ignores: ['**/dist/**', '**/node_modules/**', '**/sdk/src/api/gql/**/*'] },
+export default [
+  {
+    ignores: ['**/dist/**', '**/node_modules/**', '**/src/api/gql/**/*'],
+  },
   js.configs.recommended,
   ...tseslint.configs.recommended,
   {
@@ -30,5 +32,4 @@ export default tseslint.config(
       'no-empty': ['error', { allowEmptyCatch: true }],
     },
   },
-);
-
+];

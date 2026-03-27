@@ -52,7 +52,7 @@ jobs:
         env:
           HUSKY: 0
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN_ACCRUPAY }}
 
       - name: Check for changeset PR
         if: steps.changesets.outputs.published == 'false'
@@ -83,9 +83,15 @@ jobs:
       - name: Parse Slack Message
         if: steps.check-pr.outputs.has_pr == 'true'
         id: pr-message
-        uses: LoveToKnow/slackify-markdown-action@v1.1.1
+        uses: actions/github-script@v8
         with:
-          text: ${{ steps.check-pr.outputs.pr_body }}
+          result-encoding: string
+          script: |
+            const { slackifyMarkdown } = require('slackify-markdown');
+            const body = process.env.PR_BODY || '';
+            return slackifyMarkdown(body);
+        env:
+          PR_BODY: ${{ steps.check-pr.outputs.pr_body }}
 
       - name: Send Slack notification for PR
         if: steps.check-pr.outputs.has_pr == 'true'
@@ -110,7 +116,7 @@ jobs:
                   "type": "section",
                   "text": {
                     "type": "mrkdwn",
-                    "text": "*Description:*\n\n${{ steps.pr-message.outputs.text }}"
+                    "text": "*Description:*\n\n${{ steps.pr-message.outputs.result }}"
                   }
                 },
                 {
@@ -140,17 +146,21 @@ jobs:
       - name: Get release information
         if: steps.changesets.outputs.published == 'true'
         id: get-release
-        uses: actions/github-script@v6
+        uses: actions/github-script@v8
         with:
           result-encoding: string
           script: |
-            const markdownParser = require('slackify-markdown');
+            const { slackifyMarkdown } = require('slackify-markdown');
+            const tag = process.env.RELEASE_TAG;
             const release = await github.rest.repos.getReleaseByTag({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              tag: "v${{ fromJSON(steps.changesets.outputs.publishedPackages)[0].version }}"
+              tag
             });
-            return markdownParser(release.data.body);
+            const body = release?.data?.body || '';
+            return slackifyMarkdown(body);
+        env:
+          RELEASE_TAG: v${{ fromJSON(steps.changesets.outputs.publishedPackages)[0].version }}
 
       - name: Send a Slack notification
         if: steps.changesets.outputs.published == 'true'
@@ -233,4 +243,3 @@ jobs:
           git merge origin/main -X theirs --no-ff --no-edit
           
           git push origin develop
-

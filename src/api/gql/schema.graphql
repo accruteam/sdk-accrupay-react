@@ -1,0 +1,1989 @@
+enum AUTHENTICATOR_ENTITY_TYPE {
+  MERCHANT
+  USER
+}
+
+enum AUTHENTICATOR_STATUS {
+  ACTIVE
+  REVOKED
+}
+
+enum AUTHENTICATOR_TYPE {
+  TOTP
+}
+
+input AdminMerchantCreateSchema {
+  addressCity: String!
+  addressCountry: COUNTRY_ISO_2!
+  addressLine1: String!
+  addressLine2: String
+  addressPostalCode: String!
+  addressState: String!
+  email: String!
+  entityType: MERCHANT_ENTITY_TYPE!
+  industry: String!
+  legalAddressCity: String!
+  legalAddressCountry: COUNTRY_ISO_2!
+  legalAddressLine1: String!
+  legalAddressLine2: String
+  legalAddressPostalCode: String!
+  legalAddressState: String!
+  legalIdentifier: String!
+  legalIdentifierType: LEGAL_IDENTIFIER_TYPE!
+  locale: String
+  name: String!
+  phone: String!
+  primaryContactEmail: String!
+  primaryContactName: String!
+  primaryContactPhone: String!
+  timezone: String
+  websiteUrl: String
+}
+
+input AdminMerchantTransactionProviderApplicationUpdateSchema {
+  providerError: String
+  providerStatus: MERCHANT_TRANSACTION_PROVIDER_APPLICATION_STATUS
+  status: MERCHANT_TRANSACTION_PROVIDER_APPLICATION_STATUS
+  statusDescription: String
+}
+
+input AdminMerchantTransactionProviderCreateSchema {
+  applicationId: String
+  credentials: JSON!
+  environment: TRANSACTION_PROVIDER_ENVIRONMENT!
+  merchantId: String!
+  provider: TRANSACTION_PROVIDER!
+}
+
+input AdminMerchantTransactionProviderUpdateSchema {
+  applicationId: String
+  credentials: JSON
+}
+
+input AdminMerchantUpdateSchema {
+  addressCity: String
+  addressCountry: COUNTRY_ISO_2
+  addressLine1: String
+  addressLine2: String
+  addressPostalCode: String
+  addressState: String
+  email: String
+  entityType: MERCHANT_ENTITY_TYPE
+  industry: String
+  legalAddressCity: String
+  legalAddressCountry: COUNTRY_ISO_2
+  legalAddressLine1: String
+  legalAddressLine2: String
+  legalAddressPostalCode: String
+  legalAddressState: String
+  legalIdentifier: String
+  legalIdentifierType: LEGAL_IDENTIFIER_TYPE
+  locale: String
+  name: String
+  phone: String
+  primaryContactEmail: String
+  primaryContactName: String
+  primaryContactPhone: String
+  timezone: String
+  websiteUrl: String
+}
+
+input AdminMerchantUserCreateSchema {
+  isEnabled: Boolean!
+  role: MERCHANT_USER_ROLE!
+  userId: String!
+}
+
+input AdminMerchantUserUpdateSchema {
+  isEnabled: Boolean!
+  role: MERCHANT_USER_ROLE!
+}
+
+type Authenticator {
+  createdAt: DateTimeISO!
+  entityId: String!
+  entityType: AUTHENTICATOR_ENTITY_TYPE!
+  id: ID!
+  label: String
+  lastUsedAt: DateTimeISO
+  status: AUTHENTICATOR_STATUS!
+  statusReason: String
+  type: AUTHENTICATOR_TYPE!
+  updatedAt: DateTimeISO!
+}
+
+input AuthenticatorEnrollmentConfirmSchema {
+  enrollmentId: String!
+  label: String
+}
+
+type AuthenticatorEnrollmentSession {
+  enrollmentId: String!
+  entityId: String!
+  entityType: String!
+  expiresAt: DateTimeISO!
+  label: String
+  payload: JSON!
+  type: AUTHENTICATOR_TYPE!
+}
+
+input AuthenticatorEnrollmentStartSchema {
+  label: String
+  type: AUTHENTICATOR_TYPE!
+}
+
+type AuthenticatorPaginationConnection {
+  edges: [AuthenticatorPaginationEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+type AuthenticatorPaginationEdge {
+  cursor: ConnectionCursor!
+  node: Authenticator!
+}
+
+input AuthenticatorReplacementConfirmSchema {
+  label: String
+  replacementId: String!
+}
+
+type AuthenticatorReplacementSession {
+  entityId: String!
+  entityType: String!
+  expiresAt: DateTimeISO!
+  label: String
+  payload: JSON!
+  replacementId: String!
+  type: AUTHENTICATOR_TYPE!
+}
+
+input AuthenticatorReplacementStartSchema {
+  label: String
+  type: AUTHENTICATOR_TYPE!
+}
+
+type AuthenticatorSession {
+  agentInfo: JSON
+  createdAt: DateTimeISO!
+  entityId: String!
+  entityType: String!
+  expiresAt: DateTimeISO!
+  featureKey: String!
+  ip: String
+  metadata: JSON
+  sessionId: ID!
+}
+
+"""
+The `BigInt` scalar type represents non-fractional signed whole numeric values.
+"""
+scalar BigInt
+
+input BillingDataSchema {
+  billingAddressCity: String
+
+  """
+  Country using the [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) format (e.g. US, UK, etc.).
+  """
+  billingAddressCountry: COUNTRY_ISO_2!
+  billingAddressLine1: String
+  billingAddressLine2: String
+  billingAddressPostalCode: String
+
+  """
+  State using the [ISO 3166-2](https://en.wikipedia.org/wiki/ISO_3166-2) format for main country subdivisions, provinces, states (e.g. [for US] → NY, IN, CA, etc.). The [iso-3166-2](https://www.npmjs.com/package/iso-3166-2) package is suggested.
+  """
+  billingAddressState: String
+  billingEmail: String!
+  billingFirstName: String!
+  billingLastName: String!
+  billingPhone: String
+}
+
+enum CLIENT_TRANSACTION_SESSION_KIND {
+  CLIENT
+  SERVER
+}
+
+enum CLIENT_TRANSACTION_SESSION_STATUS {
+  ACTIVE
+  CANCELED
+  COMPLETED
+  DECLINED
+  ERROR
+  EXPIRED
+  PENDING
+  UNKNOWN
+}
+
+enum COUNTRY_ISO_2 {
+  AD
+  AE
+  AF
+  AG
+  AI
+  AL
+  AM
+  AO
+  AQ
+  AR
+  AS
+  AT
+  AU
+  AW
+  AX
+  AZ
+  BA
+  BB
+  BD
+  BE
+  BF
+  BG
+  BH
+  BI
+  BJ
+  BL
+  BM
+  BN
+  BO
+  BQ
+  BR
+  BS
+  BT
+  BV
+  BW
+  BY
+  BZ
+  CA
+  CC
+  CD
+  CF
+  CG
+  CH
+  CI
+  CK
+  CL
+  CM
+  CN
+  CO
+  CR
+  CU
+  CV
+  CW
+  CX
+  CY
+  CZ
+  DE
+  DJ
+  DK
+  DM
+  DO
+  DZ
+  EC
+  EE
+  EG
+  EH
+  ER
+  ES
+  ET
+  FI
+  FJ
+  FK
+  FM
+  FO
+  FR
+  GA
+  GB
+  GD
+  GE
+  GF
+  GG
+  GH
+  GI
+  GL
+  GM
+  GN
+  GP
+  GQ
+  GR
+  GS
+  GT
+  GU
+  GW
+  GY
+  HK
+  HM
+  HN
+  HR
+  HT
+  HU
+  ID
+  IE
+  IL
+  IM
+  IN
+  IO
+  IQ
+  IR
+  IS
+  IT
+  JE
+  JM
+  JO
+  JP
+  KE
+  KG
+  KH
+  KI
+  KM
+  KN
+  KP
+  KR
+  KW
+  KY
+  KZ
+  LA
+  LB
+  LC
+  LI
+  LK
+  LR
+  LS
+  LT
+  LU
+  LV
+  LY
+  MA
+  MC
+  MD
+  ME
+  MF
+  MG
+  MH
+  MK
+  ML
+  MM
+  MN
+  MO
+  MP
+  MQ
+  MR
+  MS
+  MT
+  MU
+  MV
+  MW
+  MX
+  MY
+  MZ
+  NA
+  NC
+  NE
+  NF
+  NG
+  NI
+  NL
+  NO
+  NP
+  NR
+  NU
+  NZ
+  OM
+  PA
+  PE
+  PF
+  PG
+  PH
+  PK
+  PL
+  PM
+  PN
+  PR
+  PS
+  PT
+  PW
+  PY
+  QA
+  RE
+  RO
+  RS
+  RU
+  RW
+  SA
+  SB
+  SC
+  SD
+  SE
+  SG
+  SH
+  SI
+  SJ
+  SK
+  SL
+  SM
+  SN
+  SO
+  SR
+  SS
+  ST
+  SV
+  SX
+  SY
+  SZ
+  TC
+  TD
+  TF
+  TG
+  TH
+  TJ
+  TK
+  TL
+  TM
+  TN
+  TO
+  TR
+  TT
+  TV
+  TW
+  TZ
+  UA
+  UG
+  UM
+  US
+  UY
+  UZ
+  VA
+  VC
+  VE
+  VG
+  VI
+  VN
+  VU
+  WF
+  WS
+  YE
+  YT
+  ZA
+  ZM
+  ZW
+}
+
+enum CURRENCY {
+  EUR
+  USD
+}
+
+"""
+Determines how to resolve a customer based on the provided identifiers.
+"""
+enum CUSTOMER_RESOLUTION_STRATEGY {
+  """
+  Automatically resolve customer based on the provided identifiers and metadata. Internal IDs and provider codes are prioritized. If the provided identifiers do not match, an error will be thrown.
+  """
+  AUTO
+
+  """
+  Match or create customer based on the provided identifiers and metadata. If not found, a new customer will be created with the provided data.
+  """
+  MATCH_OR_CREATE
+
+  """
+  Match or fail customer based on the provided identifiers and metadata. If not found, an error will be thrown.
+  """
+  MATCH_OR_FAIL
+
+  """
+  Strict customer resolution based on the provided identifiers only (e.g. id, providerCode). No metadata will be used. If not found, an error will be thrown.
+  """
+  STRICT
+}
+
+enum CUSTOMER_STATUS {
+  DISABLED
+  ENABLED
+  ERROR
+  UNKNOWN
+}
+
+"""Cursor for pagination"""
+scalar ConnectionCursor
+
+enum DEVICE_TYPE {
+  DESKTOP
+  SMARTPHONE
+  TABLET
+  TV
+  UNKNOWN
+}
+
+"""
+A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.This scalar is serialized to a string in ISO 8601 format and parsed from a string in ISO 8601 format.
+"""
+scalar DateTimeISO
+
+input DeviceDataSchema {
+  deviceBrowser: String
+  deviceId: String
+  deviceIp: String
+  deviceName: String
+  deviceOS: String
+  deviceType: DEVICE_TYPE
+}
+
+type ErrorLog {
+  code: String
+  createdAt: DateTimeISO!
+  debug: JSON
+  environment: String
+  handler: String
+  id: ID!
+  key: String
+  merchantId: String
+  message: String!
+  method: String
+  operation: String
+  path: String
+  payload: JSON
+  requestAgentInfo: JSON
+  requestContext: JSON
+  requestData: JSON
+  resolvedAt: DateTimeISO
+  resolvedByEmail: String
+  responseContext: JSON
+  responseData: JSON
+  source: String
+  stack: String
+  statusCode: Int
+  updatedAt: DateTimeISO!
+  userEmail: String
+  userId: String
+  version: String
+}
+
+type ErrorLogPaginationConnection {
+  edges: [ErrorLogPaginationEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+type ErrorLogPaginationEdge {
+  cursor: ConnectionCursor!
+  node: ErrorLog!
+}
+
+"""
+The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
+"""
+scalar JSON
+
+enum LEGAL_IDENTIFIER_TYPE {
+  EIN
+  ITIN
+  SSN
+}
+
+enum MERCHANT_ENTITY_TYPE {
+  COMPANY
+  INDIVIDUAL
+}
+
+enum MERCHANT_STATUS {
+  ACTIVE
+  DISABLED
+  PENDING
+}
+
+enum MERCHANT_TRANSACTION_PROVIDER_APPLICATION_STATUS {
+  COMPLETED
+  FAILED
+  PENDING
+  PROCESSING
+}
+
+enum MERCHANT_TRANSACTION_PROVIDER_STATUS {
+  DISABLED
+  ENABLED
+}
+
+enum MERCHANT_USER_ROLE {
+  ADMIN
+  DEVELOPER
+  OWNER
+  VIEWER
+}
+
+type Merchant {
+  addressCity: String
+  addressCountry: COUNTRY_ISO_2
+  addressLine1: String
+  addressLine2: String
+  addressPostalCode: String
+  addressState: String
+  archivedAt: DateTimeISO
+  createdAt: DateTimeISO!
+  email: String!
+  emailVerificationId: String
+  entityType: MERCHANT_ENTITY_TYPE!
+  id: ID!
+  industry: String
+  legalAddressCity: String
+  legalAddressCountry: COUNTRY_ISO_2
+  legalAddressLine1: String
+  legalAddressLine2: String
+  legalAddressPostalCode: String
+  legalAddressState: String
+  legalIdentifier: String
+  legalIdentifierType: LEGAL_IDENTIFIER_TYPE
+  locale: String
+  name: String!
+  phone: String
+  phoneVerificationId: String
+  primaryContactEmail: String
+  primaryContactName: String
+  primaryContactPhone: String
+  publicId: String
+  publicIdUpdatedAt: DateTimeISO
+  status: MERCHANT_STATUS!
+  timezone: String
+  updatedAt: DateTimeISO!
+  websiteUrl: String
+}
+
+input MerchantApiClientTransactionAddPaymentMethodSessionStartSchema {
+  billing: BillingDataSchema!
+  currency: CURRENCY!
+  customer: MerchantCustomerSelector
+  device: DeviceDataSchema
+  merchantInternalCustomerCode: String
+  merchantInternalTransactionCode: String!
+  shipping: ShippingDataSchema
+  user: UserDataSchema
+}
+
+input MerchantApiClientTransactionPaymentSessionStartSchema {
+  amount: BigInt!
+  billing: BillingDataSchema!
+  currency: CURRENCY!
+  customer: MerchantCustomerSelector
+  device: DeviceDataSchema
+  merchantInternalCustomerCode: String
+  merchantInternalTransactionCode: String!
+  shipping: ShippingDataSchema
+  storePaymentMethod: Boolean!
+  user: UserDataSchema
+}
+
+input MerchantApiClientTransactionPaymentStartSchema {
+  amount: BigInt!
+  billing: BillingDataSchema!
+  currency: CURRENCY!
+  customer: MerchantCustomerSelector
+  device: DeviceDataSchema
+  merchantInternalCustomerCode: String
+  merchantInternalTransactionCode: String!
+  shipping: ShippingDataSchema
+  storePaymentMethod: Boolean!
+  user: UserDataSchema
+}
+
+type MerchantApiKey {
+  archivedAt: DateTimeISO
+  createdAt: DateTimeISO!
+  id: ID!
+  merchantId: String!
+  secret: String!
+  updatedAt: DateTimeISO!
+}
+
+type MerchantApiKeyPaginationConnection {
+  edges: [MerchantApiKeyPaginationEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+type MerchantApiKeyPaginationEdge {
+  cursor: ConnectionCursor!
+  node: MerchantApiKey!
+}
+
+input MerchantApiServerAchPaymentTransactionCreateSchema {
+  ach: MerchantServerAchTransactionDataSchema!
+  amount: BigInt!
+  billing: BillingDataSchema!
+  currency: CURRENCY!
+  customer: MerchantCustomerSelector
+  device: DeviceDataSchema
+  merchantInternalCustomerCode: String
+  merchantInternalTransactionCode: String!
+  shipping: ShippingDataSchema
+  storePaymentMethod: Boolean!
+  user: UserDataSchema
+}
+
+input MerchantApiServerPaymentMethodTransactionCreateSchema {
+  amount: BigInt!
+  billing: BillingDataSchema!
+  currency: CURRENCY!
+  device: DeviceDataSchema
+  merchantCustomerPaymentMethodId: String!
+  merchantInternalCustomerCode: String @deprecated(reason: "This field is deprecated. Handle the merchantInternalCustomerCode through the customer data instead.")
+  merchantInternalTransactionCode: String!
+  shipping: ShippingDataSchema
+  user: UserDataSchema
+}
+
+type MerchantClientPublicTransactionSessionData {
+  baseConfig: MerchantClientTransactionSessionBaseConfigData!
+  provider: TRANSACTION_PROVIDER!
+  transactionSession: MerchantClientTransactionSession!
+}
+
+type MerchantClientTransactionGenericPreSessionData {
+  provider: TRANSACTION_PROVIDER!
+  publicKey: String
+}
+
+type MerchantClientTransactionNuveiPreSessionData {
+  env: String!
+  environment: String! @deprecated(reason: "Use `env` instead.")
+  merchantId: String!
+  merchantSiteId: String!
+  provider: TRANSACTION_PROVIDER!
+}
+
+union MerchantClientTransactionPreSessionData = MerchantClientTransactionGenericPreSessionData | MerchantClientTransactionNuveiPreSessionData
+
+type MerchantClientTransactionSession {
+  action: TRANSACTION_ACTION!
+  amount: BigInt!
+  billingAddressCity: String
+  billingAddressCountry: COUNTRY_ISO_2
+  billingAddressLine1: String
+  billingAddressLine2: String
+  billingAddressPostalCode: String
+  billingAddressState: String
+  billingEmail: String
+  billingFirstName: String
+  billingLastName: String
+  billingPhone: String
+  canceledAt: DateTimeISO
+  completedAt: DateTimeISO
+  createdAt: DateTimeISO!
+  currency: CURRENCY!
+  customerId: String
+  deviceBrowser: String
+  deviceId: String
+  deviceIp: String
+  deviceName: String
+  deviceOS: String
+  deviceType: DEVICE_TYPE
+  id: ID!
+  kind: CLIENT_TRANSACTION_SESSION_KIND!
+  merchantInternalCustomerCode: String
+  merchantInternalTransactionCode: String
+  payload: JSON!
+  paymentMethod: MerchantCustomerPaymentMethod
+  paymentMethodId: String
+  paymentPlan: MerchantPaymentPlan
+  paymentPlanId: String
+  providerCode: String!
+  providerCustomerCode: String
+  providerError: String
+  providerLastSyncedAt: DateTimeISO
+  providerLastVerifiedAt: DateTimeISO!
+  providerStatus: CLIENT_TRANSACTION_SESSION_STATUS!
+  shippingAddressCity: String
+  shippingAddressCountry: COUNTRY_ISO_2
+  shippingAddressLine1: String
+  shippingAddressLine2: String
+  shippingAddressPostalCode: String
+  shippingAddressState: String
+  shippingEmail: String
+  shippingFirstName: String
+  shippingLastName: String
+  shippingPhone: String
+  startedAt: DateTimeISO
+  status: CLIENT_TRANSACTION_SESSION_STATUS!
+  storePaymentMethod: Boolean
+  token: String
+  tokenExpiresAt: DateTimeISO
+  transactionProvider: MerchantTransactionProvider!
+  transactionProviderId: String!
+  transactions: [MerchantTransaction!]
+  updatedAt: DateTimeISO!
+  userAddressCity: String
+  userAddressCountry: COUNTRY_ISO_2
+  userAddressLine1: String
+  userAddressLine2: String
+  userAddressPostalCode: String
+  userAddressState: String
+  userBirthDate: DateTimeISO
+  userEmail: String
+  userFirstName: String
+  userLastName: String
+  userLegalIdentifier: String
+  userLegalIdentifierType: String
+  userLocale: String
+  userPhone: String
+}
+
+type MerchantClientTransactionSessionBaseConfig {
+  data: MerchantClientTransactionSessionBaseConfigData!
+  provider: TRANSACTION_PROVIDER!
+}
+
+union MerchantClientTransactionSessionBaseConfigData = MerchantClientTransactionSessionGenericBaseConfig | MerchantClientTransactionSessionNuveiBaseConfig
+
+type MerchantClientTransactionSessionGenericBaseConfig {
+  provider: TRANSACTION_PROVIDER!
+  publicKey: String
+}
+
+type MerchantClientTransactionSessionNuveiBaseConfig {
+  env: String!
+  environment: String! @deprecated(reason: "Use `env` instead.")
+  merchantId: String!
+  merchantSiteId: String!
+  provider: TRANSACTION_PROVIDER! @deprecated(reason: "Use parent `provider` instead.")
+}
+
+type MerchantClientTransactionSessionPaginationConnection {
+  edges: [MerchantClientTransactionSessionPaginationEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+type MerchantClientTransactionSessionPaginationEdge {
+  cursor: ConnectionCursor!
+  node: MerchantClientTransactionSession!
+}
+
+input MerchantCreateSchema {
+  addressCity: String!
+  addressCountry: COUNTRY_ISO_2!
+  addressLine1: String!
+  addressLine2: String
+  addressPostalCode: String!
+  addressState: String!
+  email: String!
+  entityType: MERCHANT_ENTITY_TYPE!
+  industry: String!
+  legalAddressCity: String!
+  legalAddressCountry: COUNTRY_ISO_2!
+  legalAddressLine1: String!
+  legalAddressLine2: String
+  legalAddressPostalCode: String!
+  legalAddressState: String!
+  legalIdentifier: String!
+  legalIdentifierType: LEGAL_IDENTIFIER_TYPE!
+  locale: String
+  name: String!
+  phone: String!
+  primaryContactEmail: String!
+  primaryContactName: String!
+  primaryContactPhone: String!
+  timezone: String
+  websiteUrl: String
+}
+
+type MerchantCustomer {
+  addressCity: String
+  addressCountry: String
+  addressLine1: String
+  addressLine2: String
+  addressPostalCode: String
+  addressState: String
+  createdAt: DateTimeISO!
+  email: String
+  firstName: String
+  id: ID!
+  lastName: String
+  merchantInternalCustomerCode: String
+  phone: String
+  providerCode: String!
+  providerError: String
+  providerLastSyncedAt: DateTimeISO
+  providerLastVerifiedAt: DateTimeISO!
+  providerStatus: CUSTOMER_STATUS!
+  transactionProviderId: String!
+  updatedAt: DateTimeISO!
+}
+
+input MerchantCustomerCreateSchema {
+  addressCity: String
+  addressCountry: String
+  addressLine1: String
+  addressLine2: String
+  addressPostalCode: String
+  addressState: String
+  email: String
+  firstName: String
+  lastName: String
+  merchantInternalCustomerCode: String
+  phone: String
+}
+
+type MerchantCustomerPaymentMethod {
+  billingAddressCity: String
+  billingAddressCountry: COUNTRY_ISO_2
+  billingAddressLine1: String
+  billingAddressLine2: String
+  billingAddressPostalCode: String
+  billingAddressState: String
+  billingEmail: String
+  billingFirstName: String
+  billingLastName: String
+  billingPhone: String
+  createdAt: DateTimeISO!
+  customerId: String
+  expiresAt: DateTimeISO
+  id: ID!
+  initialTransactionId: String
+  isDefault: Boolean!
+  isEnabled: Boolean!
+  merchantInternalCustomerCode: String
+  methodType: PAYMENT_METHOD!
+  paymentMethodInfo: MerchantCustomerPaymentMethodInfo
+  providerCode: String!
+  providerCustomerCode: String
+  providerError: String
+  providerLastSyncedAt: DateTimeISO
+  providerLastVerifiedAt: DateTimeISO!
+  providerStatus: PAYMENT_METHOD_STATUS!
+  status: PAYMENT_METHOD_STATUS!
+  transactionProviderId: String!
+  updatedAt: DateTimeISO!
+}
+
+type MerchantCustomerPaymentMethodAchInfo {
+  accountNumber: String
+  bankName: String
+  methodType: PAYMENT_METHOD!
+  routingNumber: String
+  secCode: TRANSACTION_ACH_SECCODE
+}
+
+type MerchantCustomerPaymentMethodCreditCardInfo {
+  cardBrand: String
+  cardNumberMasked: String
+  expirationMonth: Float
+  expirationYear: Float
+  methodType: PAYMENT_METHOD!
+}
+
+type MerchantCustomerPaymentMethodGenericInfo {
+  methodType: PAYMENT_METHOD!
+}
+
+union MerchantCustomerPaymentMethodInfo = MerchantCustomerPaymentMethodAchInfo | MerchantCustomerPaymentMethodCreditCardInfo | MerchantCustomerPaymentMethodGenericInfo
+
+type MerchantCustomerPaymentMethodPaginationConnection {
+  edges: [MerchantCustomerPaymentMethodPaginationEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+type MerchantCustomerPaymentMethodPaginationEdge {
+  cursor: ConnectionCursor!
+  node: MerchantCustomerPaymentMethod!
+}
+
+input MerchantCustomerSelector {
+  """Customer ID on AccruPay API."""
+  id: String
+
+  """Customer code given by Merchant API."""
+  merchantInternalCustomerCode: String!
+
+  """Customer code on Transaction Provider."""
+  providerCode: String
+
+  """Customer resolution strategy."""
+  resolutionStrategy: CUSTOMER_RESOLUTION_STRATEGY
+}
+
+type MerchantPaginationConnection {
+  edges: [MerchantPaginationEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+type MerchantPaginationEdge {
+  cursor: ConnectionCursor!
+  node: Merchant!
+}
+
+type MerchantPaymentPlan {
+  amount: BigInt!
+  canceledAt: DateTimeISO
+  createdAt: DateTimeISO!
+  currency: CURRENCY!
+  currentPeriodEnd: DateTimeISO!
+  currentPeriodStart: DateTimeISO!
+  customerId: String
+  endsAfterDays: Int!
+  endsAfterMonths: Int!
+  endsAfterYears: Int!
+  endsAt: DateTimeISO!
+  id: ID!
+  initialAmount: BigInt!
+  merchantInternalCustomerCode: String!
+  merchantInternalPaymentPlanCode: String!
+  merchantInternalPaymentPlanDescription: String
+  payload: JSON!
+  paymentMethod: MerchantCustomerPaymentMethod!
+  paymentMethodId: String!
+  periodCount: Int!
+  providerCode: String!
+  providerCustomerCode: String
+  providerError: String
+  providerLastSyncedAt: DateTimeISO
+  providerLastVerifiedAt: DateTimeISO!
+  providerStatus: PAYMENT_PLAN_STATUS!
+  renewalIntervalDays: Int!
+  renewalIntervalMonths: Int!
+  renewalIntervalYears: Int!
+  startedAt: DateTimeISO
+  status: PAYMENT_PLAN_STATUS!
+  template: MerchantPaymentPlanTemplate
+  templateId: String
+  timeAnchor: DateTimeISO!
+  transactionProvider: MerchantTransactionProvider!
+  transactionProviderId: String!
+  transactions: [MerchantTransaction!]!
+  trialEndsAt: DateTimeISO!
+  trialPeriodDays: Int!
+  trialPeriodMonths: Int!
+  trialPeriodYears: Int!
+  updatedAt: DateTimeISO!
+}
+
+input MerchantPaymentPlanCreateSchema {
+  amount: BigInt!
+  currency: CURRENCY!
+  customer: MerchantCustomerSelector
+  endsAfterDays: Int!
+  endsAfterMonths: Int!
+  endsAfterYears: Int!
+  initialAmount: BigInt!
+  merchantInternalCustomerCode: String @deprecated(reason: "Use 'customer' field instead.")
+  merchantInternalPaymentPlanCode: String!
+  merchantInternalPaymentPlanDescription: String
+  paymentMethodId: String!
+  renewalIntervalDays: Int!
+  renewalIntervalMonths: Int!
+  renewalIntervalYears: Int!
+  templateId: String!
+  trialPeriodDays: Int!
+  trialPeriodMonths: Int!
+  trialPeriodYears: Int!
+}
+
+type MerchantPaymentPlanPaginationConnection {
+  edges: [MerchantPaymentPlanPaginationEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+type MerchantPaymentPlanPaginationEdge {
+  cursor: ConnectionCursor!
+  node: MerchantPaymentPlan!
+}
+
+type MerchantPaymentPlanTemplate {
+  amount: BigInt!
+  createdAt: DateTimeISO!
+  currency: CURRENCY!
+  description: String
+  endsAfterDays: Int!
+  endsAfterMonths: Int!
+  endsAfterYears: Int!
+  id: ID!
+  initialAmount: BigInt!
+  name: String!
+  payload: JSON!
+  providerCode: String!
+  providerError: String
+  providerLastSyncedAt: DateTimeISO
+  providerLastVerifiedAt: DateTimeISO!
+  providerParentTemplateCode: String
+  providerStatus: PAYMENT_PLAN_TEMPLATE_STATUS!
+  renewalIntervalDays: Int!
+  renewalIntervalMonths: Int!
+  renewalIntervalYears: Int!
+  transactionProviderId: String!
+  trialPeriodDays: Int!
+  trialPeriodMonths: Int!
+  trialPeriodYears: Int!
+  updatedAt: DateTimeISO!
+}
+
+input MerchantPaymentPlanTemplateCreateSchema {
+  amount: BigInt!
+  currency: CURRENCY!
+  description: String
+  endsAfterDays: Int!
+  endsAfterMonths: Int!
+  endsAfterYears: Int!
+  initialAmount: BigInt!
+  name: String!
+  providerParentTemplateCode: String
+  providerStatus: PAYMENT_PLAN_TEMPLATE_STATUS!
+  renewalIntervalDays: Int!
+  renewalIntervalMonths: Int!
+  renewalIntervalYears: Int!
+  trialPeriodDays: Int!
+  trialPeriodMonths: Int!
+  trialPeriodYears: Int!
+}
+
+type MerchantPaymentPlanTemplatePaginationConnection {
+  edges: [MerchantPaymentPlanTemplatePaginationEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+type MerchantPaymentPlanTemplatePaginationEdge {
+  cursor: ConnectionCursor!
+  node: MerchantPaymentPlanTemplate!
+}
+
+input MerchantPaymentPlanTemplateUpdateSchema {
+  amount: BigInt
+  currency: CURRENCY
+  description: String
+  endsAfterDays: Int
+  endsAfterMonths: Int
+  endsAfterYears: Int
+  initialAmount: BigInt
+  name: String
+  providerStatus: PAYMENT_PLAN_TEMPLATE_STATUS
+  renewalIntervalDays: Int
+  renewalIntervalMonths: Int
+  renewalIntervalYears: Int
+  trialPeriodDays: Int
+  trialPeriodMonths: Int
+  trialPeriodYears: Int
+}
+
+input MerchantServerAchTransactionDataSchema {
+  accountNumber: String!
+  routingNumber: String!
+  secCode: TRANSACTION_ACH_SECCODE
+}
+
+type MerchantTransaction {
+  action: TRANSACTION_ACTION!
+  amount: BigInt!
+  billingAddressCity: String
+  billingAddressCountry: COUNTRY_ISO_2
+  billingAddressLine1: String
+  billingAddressLine2: String
+  billingAddressPostalCode: String
+  billingAddressState: String
+  billingEmail: String
+  billingFirstName: String
+  billingLastName: String
+  billingPhone: String
+  canceledAt: DateTimeISO
+  clientTransactionSession: MerchantClientTransactionSession
+  clientTransactionSessionId: String
+  code: String! @deprecated(reason: "Use other identifiers instead.")
+  createdAt: DateTimeISO!
+  currency: CURRENCY!
+  customerId: String
+  deviceBrowser: String
+  deviceId: String
+  deviceIp: String
+  deviceName: String
+  deviceOS: String
+  deviceType: DEVICE_TYPE
+  disputedAt: DateTimeISO
+  failedAt: DateTimeISO
+  id: ID!
+  merchantInternalCustomerCode: String
+  merchantInternalTransactionCode: String
+  payload: JSON!
+  paymentMethod: MerchantCustomerPaymentMethod
+  paymentMethodCode: String
+  paymentMethodId: String
+  paymentMethodInitialTransaction: MerchantCustomerPaymentMethod
+  paymentMethodType: PAYMENT_METHOD
+  paymentPlan: MerchantPaymentPlan
+  paymentPlanId: String
+  providerCode: String!
+  providerCustomerCode: String
+  providerError: String
+  providerLastSyncedAt: DateTimeISO
+  providerLastVerifiedAt: DateTimeISO!
+  providerRelatedCode: String
+  providerStatus: TRANSACTION_STATUS!
+  refundedAmount: BigInt
+  refundedAt: DateTimeISO
+  relatedTransaction: MerchantTransaction
+  relatedTransactionId: String
+  shippingAddressCity: String
+  shippingAddressCountry: COUNTRY_ISO_2
+  shippingAddressLine1: String
+  shippingAddressLine2: String
+  shippingAddressPostalCode: String
+  shippingAddressState: String
+  shippingEmail: String
+  shippingFirstName: String
+  shippingLastName: String
+  shippingPhone: String
+  startedAt: DateTimeISO
+  status: TRANSACTION_STATUS!
+  storePaymentMethod: Boolean
+  succeededAt: DateTimeISO
+  token: String @deprecated(reason: "Use Payment Session API instead.")
+  tokenExpiresAt: DateTimeISO @deprecated(reason: "Use Payment Session API instead.")
+  transactionDate: DateTimeISO!
+  transactionError: String
+  transactionProvider: MerchantTransactionProvider!
+  transactionProviderId: String!
+  transactionsRelated: [MerchantTransaction!]
+  updatedAt: DateTimeISO!
+  userAddressCity: String
+  userAddressCountry: COUNTRY_ISO_2
+  userAddressLine1: String
+  userAddressLine2: String
+  userAddressPostalCode: String
+  userAddressState: String
+  userBirthDate: DateTimeISO
+  userEmail: String
+  userFirstName: String
+  userLastName: String
+  userLegalIdentifier: String
+  userLegalIdentifierType: String
+  userLocale: String
+  userPhone: String
+  voidedAt: DateTimeISO
+}
+
+type MerchantTransactionPaginationConnection {
+  edges: [MerchantTransactionPaginationEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+type MerchantTransactionPaginationEdge {
+  cursor: ConnectionCursor!
+  node: MerchantTransaction!
+}
+
+type MerchantTransactionProvider {
+  applicationId: String
+  createdAt: DateTimeISO!
+  id: ID!
+  merchantId: String!
+  provider: TRANSACTION_PROVIDER!
+  providerCode: String!
+  status: MERCHANT_TRANSACTION_PROVIDER_STATUS!
+  updatedAt: DateTimeISO!
+}
+
+type MerchantTransactionProviderApplication {
+  addressCity: String!
+  addressCountry: COUNTRY_ISO_2!
+  addressLine1: String!
+  addressLine2: String
+  addressPostalCode: String!
+  addressState: String!
+  closedAt: DateTimeISO
+  createdAt: DateTimeISO!
+  email: String!
+  entityType: MERCHANT_ENTITY_TYPE!
+  id: ID!
+  industry: String!
+  legalAddressCity: String!
+  legalAddressCountry: COUNTRY_ISO_2!
+  legalAddressLine1: String!
+  legalAddressLine2: String
+  legalAddressPostalCode: String!
+  legalAddressState: String!
+  legalIdentifier: String!
+  legalIdentifierType: LEGAL_IDENTIFIER_TYPE!
+  merchantId: String!
+  name: String!
+  phone: String!
+  primaryContactEmail: String!
+  primaryContactName: String!
+  primaryContactPhone: String!
+  provider: TRANSACTION_PROVIDER!
+  providerCode: String!
+  providerError: String
+  providerLastSyncedAt: DateTimeISO
+  providerLastVerifiedAt: DateTimeISO
+  providerStatus: MERCHANT_TRANSACTION_PROVIDER_APPLICATION_STATUS
+  startedAt: DateTimeISO
+  status: MERCHANT_TRANSACTION_PROVIDER_APPLICATION_STATUS!
+  statusDescription: String
+  updatedAt: DateTimeISO!
+  websiteUrl: String!
+}
+
+type MerchantTransactionProviderApplicationPaginationConnection {
+  edges: [MerchantTransactionProviderApplicationPaginationEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+type MerchantTransactionProviderApplicationPaginationEdge {
+  cursor: ConnectionCursor!
+  node: MerchantTransactionProviderApplication!
+}
+
+type MerchantTransactionProviderPaginationConnection {
+  edges: [MerchantTransactionProviderPaginationEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+type MerchantTransactionProviderPaginationEdge {
+  cursor: ConnectionCursor!
+  node: MerchantTransactionProvider!
+}
+
+input MerchantUpdateSchema {
+  addressCity: String
+  addressCountry: COUNTRY_ISO_2
+  addressLine1: String
+  addressLine2: String
+  addressPostalCode: String
+  addressState: String
+  industry: String
+  legalAddressCity: String
+  legalAddressCountry: COUNTRY_ISO_2
+  legalAddressLine1: String
+  legalAddressLine2: String
+  legalAddressPostalCode: String
+  legalAddressState: String
+  locale: String
+  name: String
+  primaryContactEmail: String
+  primaryContactName: String
+  primaryContactPhone: String
+  timezone: String
+  websiteUrl: String
+}
+
+type MerchantUser {
+  createdAt: DateTimeISO!
+  id: ID!
+  invitationId: String
+  isEnabled: Boolean!
+  merchant: Merchant!
+  merchantId: String!
+  role: MERCHANT_USER_ROLE!
+  updatedAt: DateTimeISO!
+  user: User
+  userId: String!
+}
+
+type MerchantUserInvitation {
+  acceptedAt: DateTimeISO
+  canceledAt: DateTimeISO
+  createdAt: DateTimeISO!
+  createdByMerchantUserId: String!
+  email: String!
+  expiresAt: DateTimeISO!
+  id: ID!
+  merchant: Merchant!
+  merchantId: String!
+  rejectedAt: DateTimeISO
+  role: MERCHANT_USER_ROLE!
+  updatedAt: DateTimeISO!
+}
+
+input MerchantUserInvitationCreateSchema {
+  email: String!
+  expiresAt: DateTimeISO!
+  role: MERCHANT_USER_ROLE!
+}
+
+type MerchantUserInvitationPaginationConnection {
+  edges: [MerchantUserInvitationPaginationEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+type MerchantUserInvitationPaginationEdge {
+  cursor: ConnectionCursor!
+  node: MerchantUserInvitation!
+}
+
+type MerchantUserPaginationConnection {
+  edges: [MerchantUserPaginationEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+type MerchantUserPaginationEdge {
+  cursor: ConnectionCursor!
+  node: MerchantUser!
+}
+
+type Mutation {
+  adminAuthenticatorRevoke(authenticatorId: String!): Authenticator!
+  adminErrorLogMarkAllAsResolved: DateTimeISO!
+  adminErrorLogMarkAsResolved(errorLogId: String!): ErrorLog!
+  adminMerchantApiKeyCreate(merchantId: String!): MerchantApiKey!
+  adminMerchantApiKeyDelete(merchantApiKeyId: String!): DateTimeISO!
+  adminMerchantCreate(data: AdminMerchantCreateSchema!): Merchant!
+  adminMerchantResetPublicId(merchantId: String!): Merchant!
+  adminMerchantTransactionProviderApplicationUpdate(data: AdminMerchantTransactionProviderApplicationUpdateSchema!, merchantTransactionProviderApplicationId: String!): MerchantTransactionProviderApplication!
+  adminMerchantTransactionProviderCreate(data: AdminMerchantTransactionProviderCreateSchema!): MerchantTransactionProvider!
+  adminMerchantTransactionProviderUpdate(data: AdminMerchantTransactionProviderUpdateSchema!, merchantTransactionProviderId: String!): MerchantTransactionProvider!
+  adminMerchantTransactionProviderUpdateStatus(merchantTransactionProviderId: String!, status: MERCHANT_TRANSACTION_PROVIDER_STATUS!): MerchantTransactionProvider!
+  adminMerchantUpdate(data: AdminMerchantUpdateSchema!, merchantId: String!): Merchant!
+  adminMerchantUpdateStatus(merchantId: String!, status: MERCHANT_STATUS!): Merchant!
+  adminMerchantUserCreate(data: AdminMerchantUserCreateSchema!, merchantId: String!): MerchantUser!
+  adminMerchantUserUpdate(data: AdminMerchantUserUpdateSchema!, merchantUserId: String!): MerchantUser!
+  merchantApiClientTransactionAddPaymentMethodSessionStart(data: MerchantApiClientTransactionAddPaymentMethodSessionStartSchema!, merchantTransactionProviderId: String, transactionProvider: TRANSACTION_PROVIDER): MerchantClientTransactionSession!
+  merchantApiClientTransactionAddPaymentMethodSessionVerify(
+    """Transaction code on AccruPay API."""
+    code: String @deprecated(reason: "Transaction `code` field is deprecated. Please use the other identifiers instead.")
+
+    """Transaction ID on AccruPay API."""
+    id: String
+
+    """Transaction code given by Merchant API."""
+    merchantInternalTransactionCode: String
+
+    """Client transaction session code on Transaction Provider."""
+    providerCode: String
+
+    """Token for the session."""
+    token: String
+  ): MerchantTransaction!
+  merchantApiClientTransactionPaymentSessionStart(data: MerchantApiClientTransactionPaymentStartSchema!, merchantTransactionProviderId: String, transactionProvider: TRANSACTION_PROVIDER): MerchantTransaction!
+  merchantApiClientTransactionPaymentSessionStartV2(data: MerchantApiClientTransactionPaymentSessionStartSchema!, merchantTransactionProviderId: String, transactionProvider: TRANSACTION_PROVIDER): MerchantClientTransactionSession!
+  merchantApiClientTransactionPaymentSessionVerify(
+    """Transaction code on AccruPay API."""
+    code: String @deprecated(reason: "Transaction `code` field is deprecated. Please use the other identifiers instead.")
+
+    """Transaction ID on AccruPay API."""
+    id: String
+
+    """Transaction code given by Merchant API."""
+    merchantInternalTransactionCode: String
+
+    """Client transaction session code on Transaction Provider."""
+    providerCode: String
+
+    """Token for the session."""
+    token: String
+  ): MerchantTransaction!
+  merchantApiCustomerCreate(data: MerchantCustomerCreateSchema!, merchantTransactionProviderId: String, transactionProvider: TRANSACTION_PROVIDER): MerchantCustomer!
+  merchantApiCustomerPaymentMethodSyncAll(customer: MerchantCustomerSelector, merchantInternalCustomerCode: String @deprecated(reason: "Use customer selector instead."), merchantTransactionProviderId: String!): [MerchantCustomerPaymentMethod!]!
+  merchantApiCustomerPaymentMethodSyncOne(customer: MerchantCustomerSelector, merchantInternalCustomerCode: String @deprecated(reason: "Use customer selector instead."), merchantTransactionProviderId: String!, providerCode: String!): MerchantCustomerPaymentMethod!
+  merchantApiPaymentPlanCancel(merchantPaymentPlanId: String!, merchantTransactionProviderId: String!): MerchantPaymentPlan!
+  merchantApiPaymentPlanCreate(data: MerchantPaymentPlanCreateSchema!, merchantTransactionProviderId: String!): MerchantPaymentPlan!
+  merchantApiPaymentPlanSyncAll(merchantTransactionProviderId: String!): [MerchantPaymentPlan!]!
+  merchantApiPaymentPlanSyncOne(merchantTransactionProviderId: String!, providerCode: String!): MerchantPaymentPlan!
+  merchantApiPaymentPlanTemplateCreate(data: MerchantPaymentPlanTemplateCreateSchema!, merchantTransactionProviderId: String!): MerchantPaymentPlanTemplate!
+  merchantApiPaymentPlanTemplateSyncAll(merchantTransactionProviderId: String!): [MerchantPaymentPlanTemplate!]!
+  merchantApiPaymentPlanTemplateSyncOne(merchantTransactionProviderId: String!, providerCode: String!): MerchantPaymentPlanTemplate!
+  merchantApiPaymentPlanTemplateUpdate(data: MerchantPaymentPlanTemplateUpdateSchema!, merchantPaymentPlanTemplateId: String!, merchantTransactionProviderId: String!): MerchantPaymentPlanTemplate!
+  merchantApiServerAchPaymentTransactionCreate(data: MerchantApiServerAchPaymentTransactionCreateSchema!, merchantTransactionProviderId: String, transactionProvider: TRANSACTION_PROVIDER): MerchantTransaction!
+  merchantApiServerPaymentMethodTransactionCreate(data: MerchantApiServerPaymentMethodTransactionCreateSchema!, merchantTransactionProviderId: String, transactionProvider: TRANSACTION_PROVIDER): MerchantTransaction!
+  merchantApiTransactionRefund(
+    amount: BigInt!
+
+    """Transaction code on AccruPay API."""
+    code: String @deprecated(reason: "Transaction `code` field is deprecated. Please use the other identifiers instead.")
+
+    """Transaction ID on AccruPay API."""
+    id: String
+
+    """Transaction code given by Merchant API."""
+    merchantInternalTransactionCode: String
+
+    """Transaction code on Transaction Provider."""
+    providerCode: String
+
+    """Transaction token, only when the transaction is not finished/expired."""
+    token: String @deprecated(reason: "Use Transaction Session API.")
+  ): MerchantTransaction!
+  merchantApiTransactionSyncOne(
+    """Transaction code on AccruPay API."""
+    code: String @deprecated(reason: "Transaction `code` field is deprecated. Please use the other identifiers instead.")
+
+    """Transaction ID on AccruPay API."""
+    id: String
+
+    """Transaction code given by Merchant API."""
+    merchantInternalTransactionCode: String
+    merchantTransactionProviderId: String!
+
+    """Transaction code on Transaction Provider."""
+    providerCode: String
+
+    """Transaction token, only when the transaction is not finished/expired."""
+    token: String @deprecated(reason: "Use Transaction Session API.")
+  ): MerchantTransaction!
+  merchantApiTransactionVoid(
+    """Transaction code on AccruPay API."""
+    code: String @deprecated(reason: "Transaction `code` field is deprecated. Please use the other identifiers instead.")
+
+    """Transaction ID on AccruPay API."""
+    id: String
+
+    """Transaction code given by Merchant API."""
+    merchantInternalTransactionCode: String
+
+    """Transaction code on Transaction Provider."""
+    providerCode: String
+
+    """Transaction token, only when the transaction is not finished/expired."""
+    token: String @deprecated(reason: "Use Transaction Session API.")
+  ): MerchantTransaction!
+  userAuthenticatorRevoke(authenticatorChallengePayload: JSON!, authenticatorId: String!): Authenticator!
+  userAuthenticatorTotpEnrollmentConfirm(data: AuthenticatorEnrollmentConfirmSchema!, payload: TotpEnrollmentConfirmPayloadSchema!): Authenticator!
+  userAuthenticatorTotpEnrollmentStart(data: AuthenticatorEnrollmentStartSchema!): AuthenticatorEnrollmentSession!
+  userAuthenticatorTotpReplacementConfirm(data: AuthenticatorReplacementConfirmSchema!, payload: TotpReplacementConfirmPayloadSchema!): Authenticator!
+  userAuthenticatorTotpReplacementStart(authenticatorChallengePayload: JSON!, data: AuthenticatorReplacementStartSchema!): AuthenticatorReplacementSession!
+  userEmailVerifyOrChangeFinish(data: UserEmailVerifyOrChangeFinishSchema!): User!
+  userEmailVerifyOrChangeStart(data: UserEmailVerifyOrChangeStartSchema!): DateTimeISO!
+  userHandleLoginAttempt(email: String!): DateTimeISO!
+  userMerchantApiKeyCreate(authenticatorChallengePayload: JSON!, merchantId: String): MerchantApiKey!
+  userMerchantApiKeyDelete(authenticatorChallengePayload: JSON!, merchantApiKeyId: String!, merchantId: String): Boolean!
+  userMerchantApiKeyShowSecret(authenticatorChallengePayload: JSON!, merchantApiKeyId: String!, merchantId: String): String!
+  userMerchantCreate(data: MerchantCreateSchema!): MerchantUser!
+  userMerchantCustomerPaymentMethodSyncOne(customer: MerchantCustomerSelector, merchantId: String, merchantInternalCustomerCode: String @deprecated(reason: "Use customer selector instead."), merchantTransactionProviderId: String!, providerCode: String!): MerchantCustomerPaymentMethod!
+  userMerchantEmailUpdateFinish(data: UserMerchantEmailVerifyFinishSchema!, merchantId: String): Merchant!
+  userMerchantEmailUpdateStart(data: UserMerchantEmailVerifyStartSchema!, merchantId: String): DateTimeISO!
+  userMerchantPaymentPlanSyncOne(merchantId: String, merchantTransactionProviderId: String!, providerCode: String!): MerchantPaymentPlan!
+  userMerchantPaymentPlanTemplateSyncOne(merchantId: String, merchantTransactionProviderId: String!, providerCode: String!): MerchantPaymentPlanTemplate!
+  userMerchantPhoneUpdateFinish(data: UserMerchantPhoneVerifyFinishSchema!, merchantId: String): Merchant!
+  userMerchantPhoneUpdateStart(data: UserMerchantPhoneVerifyStartSchema!, merchantId: String): DateTimeISO!
+  userMerchantSentInvitationCancel(invitationId: String!, merchantId: String): MerchantUserInvitation!
+  userMerchantSentInvitationCreate(data: MerchantUserInvitationCreateSchema!, merchantId: String): MerchantUserInvitation!
+  userMerchantTransactionProviderApplicationApply(merchantId: String, provider: TRANSACTION_PROVIDER!): MerchantTransactionProviderApplication!
+  userMerchantTransactionProviderCreate(data: UserMerchantTransactionProviderCreateSchema!, merchantId: String): MerchantTransactionProvider!
+  userMerchantTransactionProviderIntegrationLogAuthenticatorSessionCreate(authenticatorChallengePayload: JSON!, merchantId: String): AuthenticatorSession!
+  userMerchantTransactionSyncOne(
+    """Transaction code on AccruPay API."""
+    code: String @deprecated(reason: "Transaction `code` field is deprecated. Please use the other identifiers instead.")
+
+    """Transaction ID on AccruPay API."""
+    id: String
+    merchantId: String
+
+    """Transaction code given by Merchant API."""
+    merchantInternalTransactionCode: String
+
+    """Transaction code on Transaction Provider."""
+    providerCode: String
+
+    """Transaction token, only when the transaction is not finished/expired."""
+    token: String @deprecated(reason: "Use Transaction Session API.")
+  ): MerchantTransaction!
+  userMerchantUpdate(data: MerchantUpdateSchema!, merchantId: String): Merchant!
+  userPasswordChangeFinish(data: UserPasswordChangeFinishSchema!): String!
+  userPasswordChangeStart: DateTimeISO!
+  userPasswordResetFinish(data: UserPasswordResetFinishSchema!): String!
+  userPasswordResetStart(data: UserPasswordResetStartSchema!): String!
+  userPhoneVerifyOrChangeFinish(data: UserPhoneVerifyOrChangeFinishSchema!): User!
+  userPhoneVerifyOrChangeStart(data: UserPhoneVerifyOrChangeStartSchema!): DateTimeISO!
+  userReceivedMerchantInvitationAccept(invitationId: String!): MerchantUserInvitation!
+  userReceivedMerchantInvitationReject(invitationId: String!): MerchantUserInvitation!
+  userSessionsClose: DateTimeISO!
+
+  """
+  This method is used to finish the user sign up process. The string returned is the authentication provider custom token, use it to log in.
+  """
+  userSignUpWithEmailFinish(data: UserSignUpWithEmailFinishSchema!): String!
+  userSignUpWithEmailStart(data: UserSignUpWithEmailStartSchema!): DateTimeISO!
+  userSignUpWithEmailVerify(data: UserSignUpWithEmailVerifySchema!): DateTimeISO!
+  userUpdateData(data: UserUpdateDataSchema!): User!
+}
+
+enum PAYMENT_METHOD {
+  ACH
+  CARD
+  OTHER
+}
+
+enum PAYMENT_METHOD_STATUS {
+  DISABLED
+  ENABLED
+  EXPIRED
+}
+
+enum PAYMENT_PLAN_STATUS {
+  ACTIVE
+  CANCELED
+  ENDED
+  ERROR
+  INACTIVE
+  INITIALIZING
+}
+
+enum PAYMENT_PLAN_TEMPLATE_STATUS {
+  DISABLED
+  ENABLED
+}
+
+type PageInfo {
+  endCursor: String
+  hasNextPage: Boolean!
+  hasPreviousPage: Boolean!
+  startCursor: String
+}
+
+type Query {
+  adminAuthenticators(after: ConnectionCursor, before: ConnectionCursor, entityId: String, entityType: AUTHENTICATOR_ENTITY_TYPE, first: Int, id: String, last: Int, skip: Int, sorting: [SortingFieldSchema!], status: AUTHENTICATOR_STATUS, take: Int, type: AUTHENTICATOR_TYPE): AuthenticatorPaginationConnection!
+  adminErrorLogs(after: ConnectionCursor, before: ConnectionCursor, code: String, environment: String, first: Int, handler: String, id: String, key: String, last: Int, merchantId: String, message: String, method: String, operation: String, path: String, resolved: Boolean, resolvedByEmail: String, skip: Int, sorting: [SortingFieldSchema!], source: String, statusCode: Int, take: Int, userEmail: String, userId: String, version: String): ErrorLogPaginationConnection!
+  adminMerchant(merchantId: String!): Merchant!
+  adminMerchantApiKey(merchantApiKeyId: String!): MerchantApiKey!
+  adminMerchantApiKeys(after: ConnectionCursor, before: ConnectionCursor, first: Int, last: Int, merchantId: String!, skip: Int, sorting: [SortingFieldSchema!], take: Int): MerchantApiKeyPaginationConnection!
+  adminMerchantTransactionProvider(merchantTransactionProviderId: String!): MerchantTransactionProvider!
+  adminMerchantTransactionProviderApplication(merchantTransactionProviderApplicationId: String!): MerchantTransactionProviderApplication!
+  adminMerchantTransactionProviderApplications(after: ConnectionCursor, before: ConnectionCursor, closed: Boolean, first: Int, id: String, last: Int, merchantId: String, provider: TRANSACTION_PROVIDER, providerCode: String, skip: Int, sorting: [SortingFieldSchema!], started: Boolean, status: MERCHANT_TRANSACTION_PROVIDER_APPLICATION_STATUS, take: Int): MerchantTransactionProviderApplicationPaginationConnection!
+  adminMerchantTransactionProviderCredential(merchantTransactionProviderId: String!): JSON!
+  adminMerchantTransactionProviders(after: ConnectionCursor, before: ConnectionCursor, first: Int, id: String, last: Int, merchantId: String, provider: TRANSACTION_PROVIDER, providerCode: String, skip: Int, sorting: [SortingFieldSchema!], status: MERCHANT_TRANSACTION_PROVIDER_STATUS, take: Int): MerchantTransactionProviderPaginationConnection!
+  adminMerchantUser(merchantUserId: String!): MerchantUser!
+  adminMerchantUsers(after: ConnectionCursor, before: ConnectionCursor, first: Int, id: String, isEnabled: Boolean, last: Int, merchantId: String, role: MERCHANT_USER_ROLE, skip: Int, sorting: [SortingFieldSchema!], take: Int, userEmail: String, userId: String, userName: String): MerchantUserPaginationConnection!
+  adminMerchants(addressCity: String, addressCountry: COUNTRY_ISO_2, addressPostalCode: String, addressState: String, after: ConnectionCursor, before: ConnectionCursor, email: String, entityType: MERCHANT_ENTITY_TYPE, first: Int, id: String, last: Int, legalIdentifier: String, legalIdentifierType: LEGAL_IDENTIFIER_TYPE, name: String, phone: String, publicId: String, skip: Int, sorting: [SortingFieldSchema!], status: MERCHANT_STATUS, take: Int, userId: String): MerchantPaginationConnection!
+  adminUsers(after: ConnectionCursor, before: ConnectionCursor, email: String, emailVerified: Boolean, first: Int, id: String, last: Int, name: String, phone: String, phoneVerified: Boolean, skip: Int, sorting: [SortingFieldSchema!], take: Int): UserPaginationConnection!
+  clientPublicTransactionGetPreSessionData(merchantPublicId: String!, transactionCode: String!, transactionId: String!): MerchantClientTransactionPreSessionData! @deprecated(reason: "Use query `clientPublicTransactionSessionBaseConfig` instead.")
+  clientPublicTransactionSession(merchantPublicId: String!, transactionSessionId: String!): MerchantClientPublicTransactionSessionData!
+  clientPublicTransactionSessionBaseConfig(merchantPublicId: String!, transactionProvider: TRANSACTION_PROVIDER, transactionSessionId: String): MerchantClientTransactionSessionBaseConfig!
+  healthCheck: DateTimeISO!
+  healthLivenessCheck: DateTimeISO!
+  healthReadinessCheck: DateTimeISO!
+  merchantApi: Merchant!
+  merchantApiClientGetPreSessionData(merchantTransactionProviderId: String, transactionProvider: TRANSACTION_PROVIDER): MerchantClientTransactionPreSessionData! @deprecated(reason: "Use query `merchantApiClientSessionGetBaseConfig` instead.")
+  merchantApiClientTransactionSession(
+    """Transaction code on AccruPay API."""
+    code: String @deprecated(reason: "Transaction `code` field is deprecated. Please use the other identifiers instead.")
+
+    """Transaction ID on AccruPay API."""
+    id: String
+
+    """Transaction code given by Merchant API."""
+    merchantInternalTransactionCode: String
+
+    """Client transaction session code on Transaction Provider."""
+    providerCode: String
+
+    """Token for the session."""
+    token: String
+  ): MerchantClientTransactionSession!
+  merchantApiClientTransactionSessionBaseConfig(merchantTransactionProviderId: String, transactionProvider: TRANSACTION_PROVIDER): MerchantClientTransactionSessionBaseConfig!
+  merchantApiClientTransactionSessions(action: TRANSACTION_ACTION, after: ConnectionCursor, amount: BigInt, before: ConnectionCursor, canceled: Boolean, completed: Boolean, currency: CURRENCY, customerId: String, first: Int, hasProviderError: Boolean, id: String, kind: CLIENT_TRANSACTION_SESSION_KIND, last: Int, merchantInternalCustomerCode: String, merchantInternalTransactionCode: String, paymentMethodId: String, paymentPlanId: String, providerCode: String, providerCustomerCode: String, providerStatus: CLIENT_TRANSACTION_SESSION_STATUS, skip: Int, sorting: [SortingFieldSchema!], started: Boolean, take: Int, token: String, transactionProviderId: String): MerchantClientTransactionSessionPaginationConnection!
+  merchantApiCustomerPaymentMethod(merchantCustomerPaymentMethodId: String!): MerchantCustomerPaymentMethod!
+  merchantApiCustomerPaymentMethods(after: ConnectionCursor, before: ConnectionCursor, customerId: String, first: Int, hasProviderError: Boolean, id: String, initialTransactionId: String, isDefault: Boolean, last: Int, merchantInternalCustomerCode: String, methodType: PAYMENT_METHOD, providerCode: String, skip: Int, sorting: [SortingFieldSchema!], take: Int, transactionProvider: TRANSACTION_PROVIDER, transactionProviderId: String): MerchantCustomerPaymentMethodPaginationConnection!
+  merchantApiCustomerResolve(merchantTransactionProviderId: String, selector: MerchantCustomerSelector!, transactionProvider: TRANSACTION_PROVIDER): MerchantCustomer!
+  merchantApiPaymentPlan(merchantPaymentPlanId: String!): MerchantPaymentPlan!
+  merchantApiPaymentPlanTemplate(merchantPaymentPlanTemplateId: String!): MerchantPaymentPlanTemplate!
+  merchantApiPaymentPlanTemplates(after: ConnectionCursor, before: ConnectionCursor, currency: CURRENCY, first: Int, id: String, last: Int, name: String, providerCode: String, providerParentTemplateCode: String, providerStatus: PAYMENT_PLAN_TEMPLATE_STATUS, skip: Int, sorting: [SortingFieldSchema!], take: Int, transactionProvider: TRANSACTION_PROVIDER, transactionProviderId: String): MerchantPaymentPlanTemplatePaginationConnection!
+  merchantApiPaymentPlans(after: ConnectionCursor, before: ConnectionCursor, canceled: Boolean, currency: CURRENCY, customerId: String, ended: Boolean, first: Int, hasProviderError: Boolean, id: String, last: Int, merchantInternalCustomerCode: String, merchantInternalPaymentPlanCode: String, paymentMethod: PAYMENT_METHOD, paymentMethodId: String, providerCode: String, providerCustomerCode: String, providerStatus: PAYMENT_PLAN_STATUS, skip: Int, sorting: [SortingFieldSchema!], started: Boolean, take: Int, templateId: String, transactionProvider: TRANSACTION_PROVIDER, transactionProviderId: String): MerchantPaymentPlanPaginationConnection!
+  merchantApiTransaction(
+    """Transaction code on AccruPay API."""
+    code: String @deprecated(reason: "Transaction `code` field is deprecated. Please use the other identifiers instead.")
+
+    """Transaction ID on AccruPay API."""
+    id: String
+
+    """Transaction code given by Merchant API."""
+    merchantInternalTransactionCode: String
+
+    """Transaction code on Transaction Provider."""
+    providerCode: String
+
+    """Transaction token, only when the transaction is not finished/expired."""
+    token: String @deprecated(reason: "Use Transaction Session API.")
+  ): MerchantTransaction!
+  merchantApiTransactionProvider(merchantTransactionProviderId: String!): MerchantTransactionProvider!
+  merchantApiTransactionProviders(after: ConnectionCursor, before: ConnectionCursor, first: Int, id: String, last: Int, provider: TRANSACTION_PROVIDER, skip: Int, sorting: [SortingFieldSchema!], status: MERCHANT_TRANSACTION_PROVIDER_STATUS, take: Int): MerchantTransactionProviderPaginationConnection!
+  merchantApiTransactions(action: TRANSACTION_ACTION, actions: [TRANSACTION_ACTION!], after: ConnectionCursor, before: ConnectionCursor, canceled: Boolean, clientTransactionSessionId: String, code: String @deprecated(reason: "Use other identifiers instead."), currency: CURRENCY, customerId: String, disputed: Boolean, failed: Boolean, first: Int, hasProviderError: Boolean, id: String, last: Int, merchantInternalCustomerCode: String, merchantInternalTransactionCode: String, paymentMethodCode: String, paymentMethodId: String, paymentMethodType: PAYMENT_METHOD, paymentPlanId: String, providerCode: String, providerRelatedCode: String, relatedTransactionId: String, reverted: Boolean, skip: Int, sorting: [SortingFieldSchema!], started: Boolean, status: TRANSACTION_STATUS, statuses: [TRANSACTION_STATUS!], succeeded: Boolean, take: Int, token: String @deprecated(reason: "Use Payment Session API instead."), transactionDateFrom: DateTimeISO, transactionDateTo: DateTimeISO, transactionProvider: TRANSACTION_PROVIDER, transactionProviderId: String): MerchantTransactionPaginationConnection!
+  user: User!
+  userAuthenticator(authenticatorId: String!): Authenticator!
+  userAuthenticators(after: ConnectionCursor, before: ConnectionCursor, first: Int, last: Int, skip: Int, sorting: [SortingFieldSchema!], take: Int, type: AUTHENTICATOR_TYPE!): AuthenticatorPaginationConnection!
+  userMerchant(merchantId: String): Merchant!
+  userMerchantApiKey(merchantApiKeyId: String!, merchantId: String): MerchantApiKey!
+  userMerchantApiKeys(after: ConnectionCursor, before: ConnectionCursor, first: Int, id: String, includeArchived: Boolean, last: Int, merchantId: String, skip: Int, sorting: [SortingFieldSchema!], take: Int): MerchantApiKeyPaginationConnection!
+  userMerchantCustomerPaymentMethod(merchantCustomerPaymentMethodId: String!, merchantId: String): MerchantCustomerPaymentMethod!
+  userMerchantCustomerPaymentMethods(after: ConnectionCursor, before: ConnectionCursor, customerId: String, first: Int, hasProviderError: Boolean, id: String, initialTransactionId: String, isDefault: Boolean, last: Int, merchantId: String, merchantInternalCustomerCode: String, methodType: PAYMENT_METHOD, providerCode: String, skip: Int, sorting: [SortingFieldSchema!], take: Int, transactionProvider: TRANSACTION_PROVIDER, transactionProviderId: String): MerchantCustomerPaymentMethodPaginationConnection!
+  userMerchantPaymentPlan(merchantId: String, merchantPaymentPlanId: String!): MerchantPaymentPlan!
+  userMerchantPaymentPlanTemplate(id: String!, merchantId: String): MerchantPaymentPlanTemplate!
+  userMerchantPaymentPlanTemplates(after: ConnectionCursor, before: ConnectionCursor, currency: CURRENCY, first: Int, id: String, last: Int, merchantId: String, name: String, providerCode: String, providerParentTemplateCode: String, providerStatus: PAYMENT_PLAN_TEMPLATE_STATUS, skip: Int, sorting: [SortingFieldSchema!], take: Int, transactionProvider: TRANSACTION_PROVIDER, transactionProviderId: String): MerchantPaymentPlanTemplatePaginationConnection!
+  userMerchantPaymentPlans(after: ConnectionCursor, before: ConnectionCursor, canceled: Boolean, currency: CURRENCY, customerId: String, ended: Boolean, first: Int, hasProviderError: Boolean, id: String, last: Int, merchantId: String, merchantInternalCustomerCode: String, merchantInternalPaymentPlanCode: String, paymentMethod: PAYMENT_METHOD, paymentMethodId: String, providerCode: String, providerCustomerCode: String, providerStatus: PAYMENT_PLAN_STATUS, skip: Int, sorting: [SortingFieldSchema!], started: Boolean, take: Int, templateId: String, transactionProvider: TRANSACTION_PROVIDER, transactionProviderId: String): MerchantPaymentPlanPaginationConnection!
+  userMerchantSentInvitation(invitationId: String!, merchantId: String): MerchantUserInvitation!
+  userMerchantSentInvitations(accepted: Boolean, after: ConnectionCursor, before: ConnectionCursor, canceled: Boolean, expired: Boolean, first: Int, last: Int, merchantId: String, rejected: Boolean, skip: Int, sorting: [SortingFieldSchema!], take: Int): MerchantUserInvitationPaginationConnection!
+  userMerchantTransaction(
+    """Transaction code on AccruPay API."""
+    code: String @deprecated(reason: "Transaction `code` field is deprecated. Please use the other identifiers instead.")
+
+    """Transaction ID on AccruPay API."""
+    id: String
+    merchantId: String
+
+    """Transaction code given by Merchant API."""
+    merchantInternalTransactionCode: String
+
+    """Transaction code on Transaction Provider."""
+    providerCode: String
+
+    """Transaction token, only when the transaction is not finished/expired."""
+    token: String @deprecated(reason: "Use Transaction Session API.")
+  ): MerchantTransaction!
+  userMerchantTransactionProvider(merchantId: String, merchantTransactionProviderId: String!): MerchantTransactionProvider!
+  userMerchantTransactionProviderApplication(merchantId: String, merchantTransactionProviderApplicationId: String!): MerchantTransactionProviderApplication!
+  userMerchantTransactionProviderApplications(after: ConnectionCursor, before: ConnectionCursor, closed: Boolean, first: Int, id: String, last: Int, merchantId: String, provider: TRANSACTION_PROVIDER, providerCode: String, skip: Int, sorting: [SortingFieldSchema!], started: Boolean, status: MERCHANT_TRANSACTION_PROVIDER_APPLICATION_STATUS, take: Int): MerchantTransactionProviderApplicationPaginationConnection!
+  userMerchantTransactionProviderGetCredentialsSchema(format: TRANSACTION_PROVIDER_CREDENTIALS_SCHEMA_FORMAT!, merchantId: String, provider: TRANSACTION_PROVIDER!): JSON!
+  userMerchantTransactionProviderIntegrationLog(authenticatorSessionId: String!, merchantId: String, transactionProviderIntegrationLogId: String!): TransactionProviderIntegrationLog!
+  userMerchantTransactionProviderIntegrationLogs(after: ConnectionCursor, authenticatorSessionId: String!, before: ConnectionCursor, first: Int, id: String, last: Int, merchantCustomerPaymentMethodCode: String, merchantId: String, merchantPaymentPlanCode: String, merchantPaymentPlanTransactionCode: String, merchantTransactionCode: String, merchantTransactionProviderId: String, provider: TRANSACTION_PROVIDER, skip: Int, sorting: [SortingFieldSchema!], succeeded: Boolean, take: Int, url: String): TransactionProviderIntegrationLogPaginationConnection!
+  userMerchantTransactionProviders(after: ConnectionCursor, before: ConnectionCursor, first: Int, id: String, last: Int, merchantId: String, provider: TRANSACTION_PROVIDER, skip: Int, sorting: [SortingFieldSchema!], status: MERCHANT_TRANSACTION_PROVIDER_STATUS, take: Int): MerchantTransactionProviderPaginationConnection!
+  userMerchantTransactions(action: TRANSACTION_ACTION, actions: [TRANSACTION_ACTION!], after: ConnectionCursor, before: ConnectionCursor, canceled: Boolean, clientTransactionSessionId: String, code: String @deprecated(reason: "Use other identifiers instead."), currency: CURRENCY, customerId: String, disputed: Boolean, failed: Boolean, first: Int, hasProviderError: Boolean, id: String, last: Int, merchantId: String, merchantInternalCustomerCode: String, merchantInternalTransactionCode: String, paymentMethodCode: String, paymentMethodId: String, paymentMethodType: PAYMENT_METHOD, paymentPlanId: String, providerCode: String, providerRelatedCode: String, relatedTransactionId: String, reverted: Boolean, skip: Int, sorting: [SortingFieldSchema!], started: Boolean, status: TRANSACTION_STATUS, statuses: [TRANSACTION_STATUS!], succeeded: Boolean, take: Int, token: String @deprecated(reason: "Use Payment Session API instead."), transactionDateFrom: DateTimeISO, transactionDateTo: DateTimeISO, transactionProvider: TRANSACTION_PROVIDER, transactionProviderId: String): MerchantTransactionPaginationConnection!
+  userMerchants(addressCity: String, addressCountry: COUNTRY_ISO_2, addressPostalCode: String, addressState: String, after: ConnectionCursor, before: ConnectionCursor, email: String, entityType: MERCHANT_ENTITY_TYPE, first: Int, id: String, last: Int, legalIdentifier: String, legalIdentifierType: LEGAL_IDENTIFIER_TYPE, name: String, phone: String, publicId: String, skip: Int, sorting: [SortingFieldSchema!], status: MERCHANT_STATUS, take: Int): MerchantPaginationConnection!
+  userReceivedMerchantInvitation(invitationId: String!): MerchantUserInvitation!
+  userReceivedMerchantInvitations(after: ConnectionCursor, before: ConnectionCursor, first: Int, last: Int, skip: Int, sorting: [SortingFieldSchema!], take: Int): MerchantUserInvitationPaginationConnection!
+}
+
+enum SORT_ORDER {
+  ASC
+  DESC
+}
+
+input ShippingDataSchema {
+  shippingAddressCity: String
+
+  """
+  Country using the [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) format (e.g. US, UK, etc.).
+  """
+  shippingAddressCountry: COUNTRY_ISO_2!
+  shippingAddressLine1: String
+  shippingAddressLine2: String
+  shippingAddressPostalCode: String
+
+  """
+  State using the [ISO 3166-2](https://en.wikipedia.org/wiki/ISO_3166-2) format for main country subdivisions, provinces, states (e.g. [for US] → NY, IN, CA, etc.). The [iso-3166-2](https://www.npmjs.com/package/iso-3166-2) package is suggested.
+  """
+  shippingAddressState: String
+  shippingEmail: String!
+  shippingFirstName: String!
+  shippingLastName: String!
+  shippingPhone: String
+}
+
+input SortingFieldSchema {
+  field: String!
+  order: SORT_ORDER!
+}
+
+enum TRANSACTION_ACH_SECCODE {
+  CCD
+  TEL
+  UNKNOWN
+  WEB
+}
+
+enum TRANSACTION_ACTION {
+  ADD_PAYMENT_METHOD
+  AUTHENTICATION
+  AUTHORIZATION
+  CHARGEBACK
+  CREDIT
+  MODIFICATION
+  PAYMENT
+  PAYOUT
+  REFUND
+  SETTLE
+  UNKNOWN
+  VOID
+}
+
+enum TRANSACTION_PROVIDER {
+  NUVEI
+  STRIPE
+}
+
+enum TRANSACTION_PROVIDER_CREDENTIALS_SCHEMA_FORMAT {
+  JSON_SCHEMA_D07
+}
+
+enum TRANSACTION_PROVIDER_ENVIRONMENT {
+  PRODUCTION
+  SANDBOX
+}
+
+enum TRANSACTION_STATUS {
+  CANCELED
+  DECLINED
+  ERROR
+  EXPIRED
+  FAILED
+  PENDING
+  STARTED
+  SUCCEEDED
+  UNKNOWN
+}
+
+input TotpEnrollmentConfirmPayloadSchema {
+  code: String!
+}
+
+input TotpReplacementConfirmPayloadSchema {
+  code: String!
+}
+
+type TransactionProviderIntegrationLog {
+  createdAt: DateTimeISO!
+  id: ID!
+  merchantCustomerPaymentMethodCode: String
+  merchantId: String
+  merchantPaymentPlanCode: String
+  merchantPaymentPlanTransactionCode: String
+  merchantTransactionCode: String
+  merchantTransactionProviderId: String
+  metadata: JSON
+  payload: JSON
+  provider: TRANSACTION_PROVIDER!
+  request: JSON!
+  response: JSON!
+  succeeded: Boolean!
+  updatedAt: DateTimeISO!
+  url: String!
+}
+
+type TransactionProviderIntegrationLogPaginationConnection {
+  edges: [TransactionProviderIntegrationLogPaginationEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+type TransactionProviderIntegrationLogPaginationEdge {
+  cursor: ConnectionCursor!
+  node: TransactionProviderIntegrationLog!
+}
+
+type User {
+  createdAt: DateTimeISO!
+  email: String!
+  emailVerificationId: String
+  id: ID!
+  isAdmin: Boolean!
+  merchants: [MerchantUser!]!
+  name: String!
+  phone: String
+  phoneVerificationId: String
+  updatedAt: DateTimeISO!
+}
+
+input UserDataSchema {
+  userAddressCity: String
+
+  """
+  Country using the [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) format (e.g. US, UK, etc.).
+  """
+  userAddressCountry: COUNTRY_ISO_2!
+  userAddressLine1: String
+  userAddressLine2: String
+  userAddressPostalCode: String
+
+  """
+  State using the [ISO 3166-2](https://en.wikipedia.org/wiki/ISO_3166-2) format for main country subdivisions, provinces, states (e.g. [for US] → NY, IN, CA, etc.). The [iso-3166-2](https://www.npmjs.com/package/iso-3166-2) package is suggested.
+  """
+  userAddressState: String
+  userBirthDate: DateTimeISO
+  userEmail: String!
+  userFirstName: String!
+  userLastName: String!
+  userLegalIdentifier: String
+  userLegalIdentifierType: String
+  userLocale: String
+  userPhone: String
+}
+
+input UserEmailVerifyOrChangeFinishSchema {
+  email: String!
+  verificationCode: String!
+}
+
+input UserEmailVerifyOrChangeStartSchema {
+  email: String!
+}
+
+input UserMerchantEmailVerifyFinishSchema {
+  email: String!
+  verificationCode: String!
+}
+
+input UserMerchantEmailVerifyStartSchema {
+  email: String!
+}
+
+input UserMerchantPhoneVerifyFinishSchema {
+  phone: String!
+  verificationCode: String!
+}
+
+input UserMerchantPhoneVerifyStartSchema {
+  phone: String!
+}
+
+input UserMerchantTransactionProviderCreateSchema {
+  credentials: JSON!
+  provider: TRANSACTION_PROVIDER!
+}
+
+type UserPaginationConnection {
+  edges: [UserPaginationEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+type UserPaginationEdge {
+  cursor: ConnectionCursor!
+  node: User!
+}
+
+input UserPasswordChangeFinishSchema {
+  updatedPassword: String!
+  verificationCode: String!
+}
+
+input UserPasswordResetFinishSchema {
+  email: String!
+  updatedPassword: String!
+  userId: String!
+  verificationCode: String!
+}
+
+input UserPasswordResetStartSchema {
+  email: String!
+}
+
+input UserPhoneVerifyOrChangeFinishSchema {
+  phone: String!
+  verificationCode: String!
+}
+
+input UserPhoneVerifyOrChangeStartSchema {
+  phone: String!
+}
+
+input UserSignUpWithEmailFinishSchema {
+  email: String!
+  password: String!
+  verificationCode: String!
+}
+
+input UserSignUpWithEmailStartSchema {
+  email: String!
+}
+
+input UserSignUpWithEmailVerifySchema {
+  email: String!
+  verificationCode: String!
+}
+
+input UserUpdateDataSchema {
+  name: String!
+  phone: String
+}
