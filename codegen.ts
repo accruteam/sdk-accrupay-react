@@ -29,6 +29,7 @@ const config: CodegenConfig & Record<string, any> = {
       },
       config: {
         namingConvention: 'keep',
+        enumType: 'native',
         scalars: {
           BigInt: 'bigint',
           DateTimeISO: 'Date',
